@@ -1,10 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Awesome Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Zichen's Website!</title> {/* --- CHANGE: Update title --- */}
+
+    <style>
+        /* Basic Reset & Body Styling */
+        body {
+            font-family: sans-serif; /* Use a common sans-serif font */
+            line-height: 1.6;
+            margin: 0; /* Remove default body margin */
+            padding: 0;
+            background-color: #f4f4f4; /* Light grey background */
+            color: #333; /* Dark grey text */
+        }
+
+        /* Container for centering content */
+        .container {
+            max-width: 960px; /* Max width of content */
+            margin: 20px auto; /* Center the container horizontally with some top/bottom margin */
+            padding: 0 20px; /* Add padding on the sides */
+            background-color: #fff; /* White background for content area */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+            border-radius: 8px; /* Slightly rounded corners */
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #333; /* Dark background for header */
+            color: #fff; /* White text */
+            padding: 20px 0;
+            text-align: center;
+            border-top-left-radius: 8px; /* Match container rounding */
+            border-top-right-radius: 8px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        /* Navigation Styling */
+        nav {
+            background-color: #444; /* Slightly lighter dark background for nav */
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none; /* Remove bullet points */
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline; /* Display menu items horizontally */
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff; /* White link text */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold;
+            transition: color 0.3s ease; /* Smooth transition for hover */
+        }
+        nav ul li a:hover {
+            color: #aaa; /* Lighter color on hover */
+        }
+
+        /* Main Content Area Styling */
+        main {
+            padding: 30px 20px; /* Add padding inside the main content area */
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 30px; /* Space between sections */
+        }
+        section h2 {
+            color: #333; /* Heading color */
+            border-bottom: 2px solid #f4f4f4; /* Subtle underline for section titles */
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #777; /* Lighter text color */
+            font-size: 0.9em;
+            border-top: 1px solid #eee; /* Separator line */
+        }
+        footer p {
+            margin: 0;
+        }
+
+        /* Simple Link Styling */
+        a {
+            color: #007bff; /* Standard blue link color */
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Website!</h1>
-    <p>This site is under construction.</p>
+
+    <header>
+        <h1>Welcome to My Website!</h1> {/* --- CONTENT: Main heading --- */}
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li> {/* --- CHANGE: Added placeholder link --- */}
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container"> {/* --- STRUCTURE: Added container --- */}
+        <main>
+            <section id="about">
+                <h2>About Me</h2>
+                <p>
+                    Hello! I'm Zichen. {/* --- CHANGE: Add your name --- */}
+                    This is my personal space on the web. I'm interested in physics, and running.
+                    Feel free to look around!
+                </p>
+                <p>
+                    This website is built using HTML and CSS, hosted on GitHub Pages.
+                </p>
+            </section>
+
+            <section id="projects"> {/* --- CONTENT: Added placeholder section --- */}
+                <h2>My Projects (Coming Soon)</h2>
+                <p>
+                    I'll showcase some of the things I've been working on here soon.
+                </p>
+            </section>
+
+        </main>
+    </div> {/* --- STRUCTURE: End container --- */}
+
+    <footer>
+        <p>&copy; 2025 Zichen. All rights reserved.</p> {/* --- CHANGE: Update year and name --- */}
+    </footer>
+
 </body>
 </html>
