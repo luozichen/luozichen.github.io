@@ -3,164 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zichen's slightly-above-average corner of the internet. May or may not contain physics, running, and HTML wizardry.">
-    <meta name="google-site-verification" content="Gefr8Ao6VZ4F2YDwOyKPOAAIfL1fjRW7UpGcTqVIX5k" />
+    <meta name="description" content="The academic portfolio of Zichen Luo, a physics undergraduate at Tsinghua University, showcasing research projects and writings.">
+    <meta name="google-site-verification" content="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
 
-    <title>Zichen Luo | Personal Website for Zichen Luo</title>
+    <title>Zichen Luo | Physics Portfolio</title>
 
     <style>
         /* Basic Reset & Body Styling */
         body {
-            font-family: sans-serif; /* Use a common sans-serif font */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
-            margin: 0; /* Remove default body margin */
+            margin: 0;
             padding: 0;
-            background-color: #f4f4f4; /* Light grey background */
-            color: #333; /* Dark grey text */
+            background-color: #f8f9fa; /* Lighter grey background */
+            color: #212529; /* Darker, more standard text colour */
         }
 
         /* Container for centering content */
         .container {
-            max-width: 960px; /* Max width of content */
-            margin: 20px auto; /* Center the container horizontally with some top/bottom margin */
-            padding: 0 20px; /* Add padding on the sides */
-            background-color: #fff; /* White background for content area */
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
-            border-radius: 8px; /* Slightly rounded corners */
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-radius: 8px;
         }
 
         /* Header Styling */
         header {
-            background-color: #333; /* Dark background for header */
-            color: #fff; /* White text */
-            padding: 20px 0;
             text-align: center;
-            border-top-left-radius: 8px; /* Match container rounding */
-            border-top-right-radius: 8px;
+            padding: 30px 20px;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 20px;
         }
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.8em;
+            font-weight: 600;
         }
-        /* Added styling for the new paragraph in the header from the second code, using inline style as provided */
         header p {
-             font-style: italic;
-             font-size: 1.1em;
-             margin-top: 10px;
+            margin: 10px 0 0;
+            font-size: 1.2em;
+            color: #6c757d; /* Muted text colour */
         }
-
 
         /* Navigation Styling */
         nav {
-            background-color: #444; /* Slightly lighter dark background for nav */
-            padding: 10px 0;
             text-align: center;
+            margin-bottom: 30px;
         }
         nav ul {
-            list-style: none; /* Remove bullet points */
+            list-style: none;
             padding: 0;
             margin: 0;
         }
         nav ul li {
-            display: inline; /* Display menu items horizontally */
+            display: inline;
             margin: 0 15px;
         }
         nav ul li a {
-            color: #fff; /* White link text */
-            text-decoration: none; /* Remove underline */
-            font-weight: bold;
-            transition: color 0.3s ease; /* Smooth transition for hover */
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
         }
-        nav ul li a:hover {
-            color: #aaa; /* Lighter color on hover */
+        nav ul li a:hover, nav ul li a:focus {
+            color: #0056b3;
+            text-decoration: underline;
         }
 
         /* Main Content Area Styling */
         main {
-            padding: 30px 20px; /* Add padding inside the main content area */
+            padding: 0 20px;
         }
 
         /* Section Styling */
         section {
-            margin-bottom: 30px; /* Space between sections */
+            margin-bottom: 40px;
         }
         section h2 {
-            color: #333; /* Heading color */
-            border-bottom: 2px solid #f4f4f4; /* Subtle underline for section titles */
-            padding-bottom: 5px;
-            margin-bottom: 15px;
+            font-size: 1.8em;
+            color: #343a40;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        /* Footer Styling */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            color: #777; /* Lighter text color */
-            font-size: 0.9em;
-            border-top: 1px solid #eee; /* Separator line */
+        /* Project List Styling */
+        .project-list {
+            list-style: none;
+            padding-left: 0;
         }
-        footer p {
-            margin: 5px 0; /* Added slight margin for the new paragraph */
+        .project-list li {
+            margin-bottom: 25px;
         }
-        /* Added styling for the second paragraph in the footer from the second code, using inline style as provided */
-        footer p:last-child {
-            font-size: 0.8em;
-            color: #aaa;
+        .project-list a {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .project-list a:hover {
+            text-decoration: underline;
+        }
+        .project-list p {
+            margin: 5px 0 0 0;
+            color: #495057;
         }
 
-
-        /* Simple Link Styling */
-        a {
-            color: #007bff; /* Standard blue link color */
+        /* General Link Styling */
+         a {
+            color: #007bff;
+            text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
         }
 
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #6c757d;
+            font-size: 0.9em;
+            border-top: 1px solid #dee2e6;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to My Awesome Website!</h1>
-        <p>Prepare to be mildly impressed.</p>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#about">About Me (In Case You’re Curious)</a></li>
-            <li><a href="#projects">Projects (Eventually)</a></li>
-            <li><a href="#contact">Contact (If You Must)</a></li>
-        </ul>
-    </nav>
-
     <div class="container">
+        <header>
+            <h1>Zichen Luo</h1>
+            <p>Physics Undergraduate | Tsinghua University</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects & Writings</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
         <main>
             <section id="about">
                 <h2>About Me</h2>
                 <p>
-                    Hello! I'm Zichen, a third-year physics undergraduate. This is my very professional-looking corner of the internet.
-                    I'm interested in physics, running, and pretending I know web design.
-                    Feel free to look around—there’s not much yet, but hey, it’s minimalism, right?
+                    I am a third-year undergraduate student pursuing a degree in Physics at Tsinghua University. My academic interests lie primarily in theoretical physics, with a focus on statistical mechanics, classical electrodynamics, and particle physics.
                 </p>
                 <p>
-                    This website is built using HTML and CSS, powered by caffeine and hosted on GitHub Pages.
+                    This website serves as a portfolio for my academic projects and technical writings. Outside of my studies, I am a dedicated long-distance runner.
                 </p>
             </section>
 
             <section id="projects">
-                <h2>My Projects & Essays</h2>
+                <h2>Projects & Writings</h2>
                 <ul class="project-list">
                     <li>
                         <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="noopener noreferrer">
-                            Statistical Mechanics of the Quantum Harmonic Ensemble in Energy, Position, and Momentum Representations
+                            Statistical Mechanics of the Quantum Harmonic Ensemble
                         </a>
                         <p>An analysis of a canonical ensemble of quantum harmonic oscillators, deriving thermodynamic properties from the partition function and comparing the utility of different representations.</p>
                     </li>
                     <li>
                         <a href="中微子质量与振荡.pdf" target="_blank" rel="noopener noreferrer">
-                            中微子质量与振荡 (Neutrino Mass and Oscillations)
+                            Neutrino Mass and Oscillations (中微子质量与振荡)
                         </a>
                         <p>A review of the experimental evidence for neutrino flavour oscillations, exploring the PMNS matrix and the implications of non-zero neutrino mass for physics beyond the Standard Model.</p>
                     </li>
@@ -173,12 +184,18 @@
                 </ul>
             </section>
 
-            </main>
-    </div>
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>
+                    You can reach me via email at: <a href="mailto:your.email@university.com">your.professional.email@domain.com</a>.
+                </p>
+                </section>
+        </main>
 
-    <footer>
-        <p>&copy; 2025 Zichen. All rights reserved.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2025 Zichen Luo. All rights reserved.</p>
+        </footer>
+    </div>
 
 </body>
 </html>
