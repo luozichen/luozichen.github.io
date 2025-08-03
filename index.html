@@ -133,6 +133,24 @@
             font-size: 0.9em;
             border-top: 1px solid #dee2e6;
         }
+
+        /* Styles for the profile picture */
+        .profile-picture {
+            float: left; /* Aligns the image to the left */
+            width: 180px; /* Adjust size as needed */
+            height: 180px;
+            margin-right: 25px; /* Space between picture and text */
+            margin-bottom: 10px; /* Space below picture if text is short */
+            border-radius: 50%; /* Makes the image circular */
+            border: 4px solid #dee2e6; /* Adds a border, matching other subtle lines */
+            object-fit: cover; /* Prevents image distortion */
+        }
+        
+        /* Ensures the section correctly wraps the floating image */
+        #about {
+            overflow: auto; /* A modern way to clear floats */
+        }
+
     </style>
 </head>
 <body>
@@ -154,6 +172,7 @@
         <main>
             <section id="about">
                 <h2>About Me</h2>
+                <img src="images/profile.jpg" alt="A photograph of Zichen Luo" class="profile-picture">
                 <p>
                 I’m a third-year Physics undergraduate at Tsinghua University, currently part of an experimental nuclear physics research group. My research focuses on detector simulations and design for a polarised deuteron breakup experiment, which probes the nuclear symmetry energy. I study the performance of scintillators and simulate detector response using Geant4 to support the development of the polarimeter.
                 </p>
