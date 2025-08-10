@@ -9,90 +9,68 @@
   <title>Zichen Luo | Physics Portfolio</title>
 
   <style>
-    /* ---------- Variables & reset ---------- */
     :root{
-      --bg: #f6f7fa;
-      --card: #ffffff;
-      --accent: #5b1a9e;       /* main purple */
-      --accent-2: #7f4de0;
-      --muted: #475057;
-      --text: #111217;
-      --left-w: 320px;
-      --radius: 12px;
-      --gap: 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.6;
+      --bg:#f6f7fa;
+      --card:#ffffff;
+      --accent:#660099;
+      --accent-2:#8a4dd6;
+      --muted:#495057;
+      --text:#212529;
+      --left-width:320px;
+      --radius:12px;
+      --gap:20px;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      line-height:1.6;
     }
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;background:linear-gradient(180deg,#fbfbfe,#f3f4f8);color:var(--text);-webkit-font-smoothing:antialiased}
     a{color:var(--accent);text-decoration:none}
     a:hover,a:focus{color:var(--accent-2);text-decoration:underline}
 
-    /* ---------- Container & header ---------- */
-    .site {
+    .container{
       max-width:1100px;
       margin:36px auto;
       padding:22px;
       background:var(--card);
       border-radius:var(--radius);
-      box-shadow: 0 10px 30px rgba(33,20,60,0.06);
+      box-shadow:0 10px 30px rgba(33,20,60,0.06);
     }
 
-    header {
+    header{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:16px;
       padding-bottom:14px;
-      border-bottom:1px solid rgba(91,18,143,0.06);
+      border-bottom:1px solid rgba(102,0,153,0.06);
     }
-    .brand {
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
-    .avatar{
-      width:88px;height:88px;border-radius:50%;overflow:hidden;border:4px solid rgba(209,179,255,0.6);flex:0 0 88px;
-    }
+    .brand{display:flex;gap:14px;align-items:center}
+    .avatar{width:88px;height:88px;border-radius:50%;overflow:hidden;border:4px solid rgba(209,179,255,0.6);flex:0 0 88px}
     .avatar img{width:100%;height:100%;object-fit:cover;display:block}
     h1{margin:0;font-size:1.5rem;color:var(--accent);font-weight:700}
     .subtitle{margin:4px 0 0;color:var(--accent);font-size:0.98rem}
 
-    /* small nav */
     nav.top{display:flex;gap:12px}
     nav.top a{padding:6px;border-radius:8px;font-weight:600}
     nav.top a:focus{outline:3px solid rgba(91,18,143,0.08)}
 
-    /* ---------- Two-column grid (left = about+contact stacked) ---------- */
-    .grid {
+    .layout{
       display:grid;
-      grid-template-columns: var(--left-w) 1fr;
-      gap: var(--gap);
+      grid-template-columns: var(--left-width) 1fr;
+      gap:var(--gap);
       margin-top:22px;
-      align-items:start; /* <-- critical: keeps left column top-aligned and prevents awkward gap */
+      align-items:start;
     }
 
-    /* left column stacks ABOUT then CONTACT (short content) */
-    .left {
+    .left{
       display:flex;
       flex-direction:column;
       gap:18px;
     }
-    .panel {
-      background:transparent;
-      padding:0;
-      border-radius:10px;
-    }
-    .panel h2{
-      margin:0 0 10px 0;
-      font-size:1.05rem;
-      color:var(--accent-2);
-      border-bottom:2px solid rgba(153,51,204,0.06);
-      padding-bottom:8px;
-    }
+    .panel{background:transparent;padding:0;border-radius:10px}
+    .panel h2{margin:0 0 10px 0;font-size:1.05rem;color:var(--accent-2);border-bottom:2px solid rgba(153,51,204,0.06);padding-bottom:8px}
     .panel p{margin:0 0 10px 0;color:var(--muted);font-size:0.98rem}
 
-    /* contact reveal button */
     .reveal-btn{
       display:inline-block;
       margin-top:8px;
@@ -104,40 +82,27 @@
       cursor:pointer;
       font-weight:600;
     }
-    .reveal-btn.secondary{
-      background:transparent;color:var(--accent);border:1px solid rgba(91,18,143,0.08);
-    }
 
-    /* right column: long projects */
-    .right {
-      padding-left:6px;
+    .right{padding-left:6px}
+    .projects{display:flex;flex-direction:column;gap:12px;list-style:none;margin:0;padding:0}
+    .proj{
+      padding:12px;border-radius:10px;border:1px solid rgba(127,77,224,0.06);
+      background:linear-gradient(180deg, rgba(127,77,224,0.01), rgba(255,255,255,0));
+      transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
     }
-    .projects {
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      list-style:none;
-      margin:0;padding:0;
-    }
-    .proj {
-      padding:12px;
-      border-radius:10px;
-      background:linear-gradient(180deg, rgba(127,77,224,0.03), rgba(255,255,255,0));
-      border:1px solid rgba(127,77,224,0.06);
+    /* Hover: light purple coloured box */
+    .proj:hover{
+      background-color: rgba(138,77,214,0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(102,0,153,0.08);
     }
     .proj a{font-size:1.05rem;font-weight:700}
     .proj p{margin:8px 0 0;color:var(--muted);font-size:0.96rem}
 
-    /* footer */
     footer{margin-top:26px;padding-top:14px;border-top:1px solid rgba(153,51,204,0.06);text-align:center;color:var(--accent);font-size:0.92rem}
 
-    /* responsive: stack columns on small screens */
     @media (max-width:920px){
-      .grid{grid-template-columns:1fr}
-      /* natural flow: About -> Projects -> Contact (keeps contact below projects if user prefers) */
-      .left{order:0}
-      .right{order:1}
-      .contact{order:2}
+      .layout{grid-template-columns:1fr}
     }
     @media (max-width:420px){
       .avatar{width:64px;height:64px;flex:0 0 64px}
@@ -146,7 +111,7 @@
   </style>
 </head>
 <body>
-  <div class="site" role="main" aria-label="Zichen Luo portfolio">
+  <div class="container" role="main" aria-label="Zichen Luo portfolio">
     <header>
       <div class="brand">
         <div class="avatar" aria-hidden="false">
@@ -154,7 +119,7 @@
         </div>
         <div>
           <h1>Zichen Luo</h1>
-          <div class="subtitle">Physics Undergraduate | Tsinghua University</div>
+          <div class="subtitle"><a href="https://www.tsinghua.edu.cn/" target="_blank" rel="noopener noreferrer">Tsinghua University</a> · Physics Undergraduate</div>
         </div>
       </div>
 
@@ -165,8 +130,8 @@
       </nav>
     </header>
 
-    <div class="grid">
-      <!-- LEFT: About + Contact stacked (keeps them together; avoids gap) -->
+    <div class="layout">
+      <!-- LEFT: About + Contact stacked -->
       <aside class="left" aria-label="About and contact">
         <section id="about" class="panel" aria-labelledby="aboutHeading">
           <h2 id="aboutHeading">About Me</h2>
@@ -181,16 +146,12 @@
           </p>
         </section>
 
-        <section id="contact" class="panel contact" aria-labelledby="contactHeading">
+        <section id="contact" class="panel" aria-labelledby="contactHeading">
           <h2 id="contactHeading">Contact</h2>
-          <p>
-            I prefer not to publish a raw email address to avoid scraping. Click the button to reveal and copy my email.
-          </p>
           <div>
-            <button id="reveal" class="reveal-btn" aria-controls="email" aria-expanded="false">Reveal & copy email</button>
-            <button id="showRaw" class="reveal-btn secondary" title="Show original format">Show obfuscated</button>
+            <button id="revealEmail" class="reveal-btn" aria-controls="emailBox" aria-expanded="false">Show email & copy</button>
           </div>
-          <div id="email" aria-live="polite" style="margin-top:10px;color:var(--muted);font-size:0.95rem">Email: luozc22[at]mails.tsinghua.edu.cn</div>
+          <div id="emailBox" aria-live="polite" style="margin-top:10px;color:var(--muted);font-size:0.95rem"></div>
         </section>
       </aside>
 
@@ -202,39 +163,38 @@
           <ul class="projects" aria-live="polite">
             <li class="proj">
               <a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="noopener noreferrer">Canonical Quantization and Path Integral Quantization (正则量子化与路径积分量子化)</a>
-              <p>A comparative essay on the formalisms of canonical quantization and Feynman's path integral quantization, discussing their equivalence and their respective advantages in different areas of quantum field theory.</p>
+              <p>An accessible comparison of canonical operator quantisation and Feynman's path integral: derivations, example systems and pragmatic trade-offs, emphasising where each method is most useful in QFT.</p>
             </li>
 
             <li class="proj">
               <a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="noopener noreferrer">A Brief Overview of Black Hole Thermodynamics</a>
-              <p>An introductory overview of the four laws of black hole mechanics and their deep connection to the principles of classical thermodynamics, including concepts like Hawking radiation and Bekenstein-Hawking entropy.</p>
+              <p>Survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy and Hawking radiation, with semiclassical examples and discussion of entropy's role in gravitational thermodynamics.</p>
             </li>
 
             <li class="proj">
               <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="noopener noreferrer">Statistical Mechanics of the Quantum Harmonic Ensemble</a>
-              <p>An analysis of a canonical ensemble of quantum harmonic oscillators, deriving thermodynamic properties from the partition function and comparing the utility of different representations.</p>
+              <p>Derives the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position and momentum representations, computing thermodynamic observables and comparing representation-specific insights.</p>
             </li>
 
             <li class="proj">
               <a href="中微子质量与振荡.pdf" target="_blank" rel="noopener noreferrer">Neutrino Mass and Oscillations (中微子质量与振荡)</a>
-              <p>A review of the experimental evidence for neutrino flavour oscillations, exploring the Standard Model and the implications of non-zero neutrino mass for physics beyond the Standard Model.</p>
+              <p>Review of experimental evidence for neutrino flavour oscillations, mass and mixing phenomenology, simple mass models and implications for the Standard Model and minimal extensions.</p>
             </li>
 
             <li class="proj">
               <a href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="noopener noreferrer">The Action Principle in Sourceless Classical Electrodynamics</a>
-              <p>A theoretical paper deriving Maxwell's equations in a vacuum from a relativistic Lagrangian density and the principle of stationary action.</p>
+              <p>Derives Maxwell’s equations in vacuum from a relativistic Lagrangian, discussing gauge freedom, conserved currents from Noether's theorem and implications for classical and quantum formulations.</p>
             </li>
 
             <li class="proj">
               <a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="noopener noreferrer">Polarised Deuteron Breakup as a Probe of the Nuclear Symmetry Energy</a>
-              <p>An exploration of how scattering experiments involving polarised deuterons can be used to constrain the density dependence of the nuclear symmetry energy, which is crucial for understanding neutron-rich matter in astrophysics.</p>
+              <p>Explores polarised-deuteron scattering observables and polarimeter design, showing how measurements can constrain the density dependence of the nuclear symmetry energy relevant for neutron-rich matter.</p>
             </li>
 
             <li class="proj">
               <a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="noopener noreferrer">The Complex Scalar Klein-Gordon Field (复标量克莱因–戈尔登场)</a>
-              <p>This paper studies complex scalar Klein-Gordon fields starting from the action, deriving canonical momenta, commutation relations, and the Hamiltonian. It shows the theory describes two particles of the same mass, linked by a conserved U(1) charge. For two fields, the symmetry extends to U(2), yielding four conserved charges with an SU(2) structure. The framework generalizes to n fields, revealing a global SU(n) symmetry and corresponding conserved charges, highlighting the role of internal symmetries in quantum field theory.</p>
+              <p>Starts from the action to derive canonical momenta and commutators for the complex Klein–Gordon field, explains the conserved U(1) charge and generalises to multiple fields and SU(n) structure.</p>
             </li>
-
           </ul>
         </section>
       </main>
@@ -246,37 +206,21 @@
   </div>
 
   <script>
-    // Email reveal & copy (obfuscation keeps address out of raw HTML)
     (function(){
-      const revealBtn = document.getElementById('reveal');
-      const showRawBtn = document.getElementById('showRaw');
-      const emailBox = document.getElementById('email');
-
-      // keep address only in JS
+      const btn = document.getElementById('revealEmail');
+      const box = document.getElementById('emailBox');
       const user = 'luozc22';
       const host = 'mails.tsinghua.edu.cn';
       const address = user + '@' + host;
-      const obfuscated = user + '[at]' + host;
 
-      // initial shows obfuscated (as in your original)
-      emailBox.textContent = 'Email: ' + obfuscated;
-
-      revealBtn.addEventListener('click', async function(){
-        // show and try to copy
-        emailBox.textContent = 'Email: ' + address + ' (copied)';
+      btn.addEventListener('click', async function(){
+        box.textContent = 'Email: ' + address + ' (copied)';
         this.setAttribute('aria-expanded','true');
         try {
           await navigator.clipboard.writeText(address);
-        } catch(e) {
-          // fallback: select text
-          console.warn('clipboard failed', e);
+        } catch (e) {
+          // if clipboard fails, still show address
         }
-        // small visual confirmation then keep shown
-      });
-
-      showRawBtn.addEventListener('click', function(){
-        emailBox.textContent = 'Email: ' + obfuscated;
-        revealBtn.setAttribute('aria-expanded','false');
       });
     })();
   </script>
