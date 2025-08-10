@@ -3,23 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="The academic portfolio of Zichen Luo, a physics undergraduate at Tsinghua University, showcasing research projects and writings.">
-  <meta name="google-site-verification" content="Gefr8Ao6VZ4F2YDwOyKPOAAIfL1fjRW7UpGcTqVIX5k" />
+  <meta name="description" content="The academic portfolio of Zichen Luo, a physics undergraduate at Tsinghua University, showcasing essays and technical notes.">
   <link rel="canonical" href="https://luozichen.github.io/">
   <title>Zichen Luo | Physics Portfolio</title>
 
   <style>
     :root{
-      --bg:#f6f7fa;
-      --card:#ffffff;
-      --accent:#660099;
-      --accent-2:#8a4dd6;
-      --muted:#495057;
-      --text:#212529;
-      --max-width:1100px;
-      --radius:12px;
-      --gap:20px;
-      --project-sidebar-width:280px;
+      --bg: #f6f7fa;
+      --card: #ffffff;
+      --accent: #660099;
+      --accent-2: #8a4dd6;
+      --muted: #495057;
+      --text: #212529;
+      --max-width: 1100px;
+      --radius: 12px;
+      --gap: 20px;
+      --projects-height: 64vh; /* internal scrollbar height */
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       line-height:1.6;
     }
@@ -32,7 +31,7 @@
     a:hover,a:focus{color:var(--accent-2);text-decoration:underline}
     :focus{outline-offset:3px}
 
-    /* Page container */
+    /* Container */
     .container{
       max-width:var(--max-width);
       margin:36px auto;
@@ -61,7 +60,7 @@
     nav.top a{padding:6px;border-radius:8px;font-weight:600}
     nav.top a:focus{box-shadow:0 0 0 4px rgba(138,77,214,0.08);border-radius:6px}
 
-    /* Section: stronger headings */
+    /* Sections: subtle rounded boxes */
     section{
       border:1px solid rgba(102,0,153,0.06);
       border-radius:10px;
@@ -69,12 +68,15 @@
       background:#fff;
       margin-bottom:20px;
     }
-    .section-title{
+
+    /* HEADINGS: more formal serif */
+    h2.section-title{
       margin:0 0 10px 0;
-      font-size:1.35rem;       /* larger */
-      font-weight:800;        /* heavier */
-      letter-spacing:-0.01em;
+      font-family: Georgia, "Times New Roman", Times, serif; /* formal serif for headings */
+      font-size:1.45rem;  /* larger */
+      font-weight:700;    /* heavier */
       color:var(--accent-2);
+      letter-spacing:-0.01em;
     }
     .section-note{
       margin:6px 0 12px 0;
@@ -82,24 +84,15 @@
       font-size:0.95rem;
     }
 
-    /* Page flow: single column */
-    main.content {
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-      margin-top:18px;
-    }
+    /* Main flow: single column */
+    main.content{display:flex;flex-direction:column;gap:18px;margin-top:18px}
 
-    /* ----- Projects boxed component with internal sidebar ----- */
+    /* Projects box: single-column list with internal scrollbar */
     .projects-box{
-      display:grid;
-      grid-template-columns: 1fr var(--project-sidebar-width);
-      gap:18px;
-      max-height:64vh; /* box height; adjust to taste */
+      max-height: var(--projects-height);
       overflow: hidden; /* contain internal scroll */
+      display:block;
     }
-
-    /* The main list scrolls within the box */
     .projects-list{
       overflow:auto;
       padding-right:6px;
@@ -107,37 +100,31 @@
       flex-direction:column;
       gap:12px;
     }
-    /* Sidebar scrolls independently inside the box */
-    .projects-sidebar{
-      overflow:auto;
-      border-left:1px dashed rgba(102,0,153,0.04);
-      padding-left:12px;
-      min-width: var(--project-sidebar-width);
-    }
 
-    /* Project card */
+    /* Full-card clickable link */
+    .proj-link{
+      display:block;
+      color:inherit;
+      text-decoration:none;
+    }
     .proj{
-      padding:12px;
-      border-radius:8px;
+      padding:14px;
+      border-radius:10px;
       border:1px solid rgba(127,77,224,0.06);
-      background: linear-gradient(180deg, rgba(127,77,224,0.01), rgba(255,255,255,0));
+      background:linear-gradient(180deg, rgba(127,77,224,0.01), rgba(255,255,255,0));
       transition: background-color .12s ease, transform .12s ease, box-shadow .12s ease;
     }
+    .proj-link:focus .proj{box-shadow:0 8px 18px rgba(102,0,153,0.08);transform:translateY(-4px)}
     .proj:hover{
       background-color: rgba(138,77,214,0.08);
       transform: translateY(-4px);
       box-shadow: 0 8px 18px rgba(102,0,153,0.08);
     }
-    .proj a{font-size:1.05rem;font-weight:700}
-    .proj p{margin:8px 0 0;color:var(--muted);font-size:0.96rem}
 
-    /* Projects sidebar content */
-    .sidebar-title{font-weight:700;color:var(--accent);margin:0 0 8px 0}
-    .toc{list-style:none;padding:0;margin:0 0 12px 0}
-    .toc li{margin:8px 0}
-    .small{color:var(--muted);font-size:0.92rem}
+    .proj-title{font-size:1.05rem;font-weight:700;margin:0}
+    .proj-desc{margin:8px 0 0;color:var(--muted);font-size:0.96rem}
 
-    /* Contact reveal button */
+    /* Contact button */
     .reveal-btn{
       display:inline-block;
       margin-top:8px;
@@ -150,19 +137,17 @@
       font-weight:700;
     }
 
-    /* Footer */
     footer{margin-top:18px;padding-top:12px;border-top:1px solid rgba(153,51,204,0.06);text-align:center;color:var(--accent);font-size:0.92rem}
 
-    /* Responsive: collapse sidebar under list on small screens */
+    /* Responsive */
     @media (max-width:920px){
-      .projects-box{grid-template-columns:1fr;max-height:none}
+      .projects-box{max-height:none}
       .projects-list{max-height:none}
-      .projects-sidebar{border-left:none;padding-left:0;border-top:1px dashed rgba(102,0,153,0.04);padding-top:12px}
     }
-
     @media (max-width:420px){
       .avatar{width:64px;height:64px;flex:0 0 64px}
       h1{font-size:1.25rem}
+      h2.section-title{font-size:1.25rem}
     }
   </style>
 </head>
@@ -187,7 +172,7 @@
     </header>
 
     <main class="content">
-      <!-- ABOUT -->
+      <!-- About -->
       <section id="about" aria-labelledby="aboutTitle">
         <h2 id="aboutTitle" class="section-title">About Me</h2>
         <p class="section-note">Third-year physics undergraduate at Tsinghua, working on detector simulation and polarimeter development.</p>
@@ -203,78 +188,66 @@
         </p>
       </section>
 
-      <!-- PROJECTS with internal sidebar that scrolls -->
+      <!-- Essays (single-column) with internal scrollbar; full-card links -->
       <section id="projects" aria-labelledby="projectsTitle">
         <h2 id="projectsTitle" class="section-title">Essays &amp; Writings</h2>
         <p class="section-note">A selection of essays and technical notes — not peer-reviewed publications.</p>
 
-        <div class="projects-box" role="region" aria-label="Essays and sidebar">
-          <!-- left: scrollable list -->
-          <div class="projects-list" tabindex="0" aria-label="Essay list (scrollable)">
-            <!-- Each project kept as originally named and description ~30 words -->
-            <article class="proj" id="p1">
-              <a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="noopener noreferrer">Canonical Quantization and Path Integral Quantization (正则量子化与路径积分量子化)</a>
-              <p>Clear comparison of canonical operator quantisation and Feynman's path integral formalism. Derivations, examples and pragmatic trade-offs, emphasising circumstances where each method simplifies quantum field calculations.</p>
-            </article>
+        <div class="projects-box" role="region" aria-label="Essays list">
+          <div class="projects-list" tabindex="0" aria-label="Scrollable list of essays">
+            <a class="proj-link" href="正则量子化与路径积分量子化.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t1">
+              <div class="proj">
+                <h3 id="t1" class="proj-title">Canonical Quantization and Path Integral Quantization (正则量子化与路径积分量子化)</h3>
+                <p class="proj-desc">Clear comparison of canonical operator quantisation and Feynman's path integral formalism. Derivations, examples and pragmatic trade-offs, emphasising circumstances where each method simplifies quantum field calculations.</p>
+              </div>
+            </a>
 
-            <article class="proj" id="p2">
-              <a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="noopener noreferrer">A Brief Overview of Black Hole Thermodynamics</a>
-              <p>Survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy and Hawking radiation, with semiclassical examples and discussion of entropy and information in gravitational thermodynamics.</p>
-            </article>
+            <a class="proj-link" href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t2">
+              <div class="proj">
+                <h3 id="t2" class="proj-title">A Brief Overview of Black Hole Thermodynamics</h3>
+                <p class="proj-desc">Survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy and Hawking radiation, with semiclassical examples and discussion of entropy and information in gravitational thermodynamics.</p>
+              </div>
+            </a>
 
-            <article class="proj" id="p3">
-              <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="noopener noreferrer">Statistical Mechanics of the Quantum Harmonic Ensemble</a>
-              <p>Derives the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position and momentum representations, computes thermodynamic observables and compares representation-specific insights.</p>
-            </article>
+            <a class="proj-link" href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t3">
+              <div class="proj">
+                <h3 id="t3" class="proj-title">Statistical Mechanics of the Quantum Harmonic Ensemble</h3>
+                <p class="proj-desc">Derives the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position and momentum representations, computes thermodynamic observables and compares representation-specific insights.</p>
+              </div>
+            </a>
 
-            <article class="proj" id="p4">
-              <a href="中微子质量与振荡.pdf" target="_blank" rel="noopener noreferrer">Neutrino Mass and Oscillations (中微子质量与振荡)</a>
-              <p>Review of experimental evidence for neutrino flavour oscillations, mass and mixing formalism, simple phenomenological mass models, experimental constraints and implications for physics beyond the Standard Model.</p>
-            </article>
+            <a class="proj-link" href="中微子质量与振荡.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t4">
+              <div class="proj">
+                <h3 id="t4" class="proj-title">Neutrino Mass and Oscillations (中微子质量与振荡)</h3>
+                <p class="proj-desc">Review of experimental evidence for neutrino flavour oscillations, mass and mixing formalism, simple phenomenological mass models, experimental constraints and implications for physics beyond the Standard Model.</p>
+              </div>
+            </a>
 
-            <article class="proj" id="p5">
-              <a href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="noopener noreferrer">The Action Principle in Sourceless Classical Electrodynamics</a>
-              <p>Derives Maxwell’s equations in vacuum from a relativistic Lagrangian, discusses gauge freedom, Noether currents and connections between classical and quantum electrodynamics formulations.</p>
-            </article>
+            <a class="proj-link" href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t5">
+              <div class="proj">
+                <h3 id="t5" class="proj-title">The Action Principle in Sourceless Classical Electrodynamics</h3>
+                <p class="proj-desc">Derives Maxwell’s equations in vacuum from a relativistic Lagrangian, discusses gauge freedom, Noether currents and connections between classical and quantum electrodynamics formulations.</p>
+              </div>
+            </a>
 
-            <article class="proj" id="p6">
-              <a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="noopener noreferrer">Polarised Deuteron Breakup as a Probe of the Nuclear Symmetry Energy</a>
-              <p>Investigates polarised-deuteron scattering observables and polarimeter design, demonstrating how targeted measurements constrain the density dependence of the nuclear symmetry energy relevant for neutron-rich astrophysical matter.</p>
-            </article>
+            <a class="proj-link" href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t6">
+              <div class="proj">
+                <h3 id="t6" class="proj-title">Polarised Deuteron Breakup as a Probe of the Nuclear Symmetry Energy</h3>
+                <p class="proj-desc">Investigates polarised-deuteron scattering observables and polarimeter design, demonstrating how targeted measurements constrain the density dependence of the nuclear symmetry energy relevant for neutron-rich astrophysical matter.</p>
+              </div>
+            </a>
 
-            <article class="proj" id="p7">
-              <a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="noopener noreferrer">The Complex Scalar Klein-Gordon Field (复标量克莱因–戈尔登场)</a>
-              <p>Begins with the action to derive canonical momenta and commutation relations for a complex Klein–Gordon field, explains the conserved U(1) charge and generalises to multiple fields with SU(n) structure.</p>
-            </article>
+            <a class="proj-link" href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t7">
+              <div class="proj">
+                <h3 id="t7" class="proj-title">The Complex Scalar Klein-Gordon Field (复标量克莱因–戈尔登场)</h3>
+                <p class="proj-desc">Begins with the action to derive canonical momenta and commutation relations for a complex Klein–Gordon field, explains the conserved U(1) charge and generalises to multiple fields with SU(n) structure.</p>
+              </div>
+            </a>
           </div>
-
-          <!-- right: sidebar (independently scrollable inside the box) -->
-          <aside class="projects-sidebar" tabindex="0" aria-label="Project sidebar (scrollable)">
-            <div>
-              <div class="sidebar-title">Quick links</div>
-              <ul class="toc" aria-hidden="false">
-                <li><a href="#p1">Canonical vs Path Integral</a></li>
-                <li><a href="#p2">Black Hole Thermodynamics</a></li>
-                <li><a href="#p3">Quantum Harmonic Ensemble</a></li>
-                <li><a href="#p4">Neutrino Mass & Oscillations</a></li>
-                <li><a href="#p5">Action Principle — Electrodynamics</a></li>
-                <li><a href="#p6">Polarised Deuteron Breakup</a></li>
-                <li><a href="#p7">Complex Klein–Gordon</a></li>
-              </ul>
-
-              <div class="sidebar-title" style="margin-top:12px">About this list</div>
-              <p class="small">These are essays and technical notes rather than peer-reviewed publications. Use the links to open PDFs in a new tab.</p>
-
-              <div class="sidebar-title" style="margin-top:12px">Tools & notes</div>
-              <p class="small">Many simulation details use Geant4 and SiPM testing. If you need experimental details, contact me via the contact section below.</p>
-
-              <div style="height:30px"></div> <!-- breathing room at bottom -->
-            </div>
-          </aside>
         </div>
       </section>
 
-      <!-- CONTACT (after projects) -->
+      <!-- Contact -->
       <section id="contact" aria-labelledby="contactTitle">
         <h2 id="contactTitle" class="section-title">Contact</h2>
         <p class="section-note">Click to reveal and copy my email address.</p>
@@ -284,7 +257,6 @@
         </div>
         <div id="emailBox" aria-live="polite" style="margin-top:10px;color:var(--muted);font-size:0.95rem"></div>
       </section>
-
     </main>
 
     <footer>
