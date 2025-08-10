@@ -1,169 +1,273 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Zichen Luo — Portfolio (fixed layout)</title>
-<style>
-  :root{
-    --bg:#f6f7fb; --card:#fff;
-    --accent:#660099; --muted:#495057; --text:#17202a;
-    --gap:20px; --left-width:320px; --radius:10px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="The academic portfolio of Zichen Luo, a physics undergraduate at Tsinghua University, showcasing research projects and writings.">
+  <meta name="google-site-verification" content="Gefr8Ao6VZ4F2YDwOyKPOAAIfL1fjRW7UpGcTqVIX5k" />
+  <link rel="canonical" href="https://luozichen.github.io/">
+  <title>Zichen Luo | Physics Portfolio</title>
 
-  /* Page reset */
-  *,*:before,*:after{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);line-height:1.45}
+  <style>
+    /* ---- Variables & Reset ---- */
+    :root{
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --accent: #660099;
+      --accent-dark: #4d007a;
+      --muted: #495057;
+      --text: #212529;
+      --shadow: rgba(102,0,153,0.08);
+      --container: 1100px;
+      --left-w: 340px; /* left column width */
+      --radius: 10px;
+      --gap: 22px;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      line-height: 1.6;
+    }
 
-  .wrap{
-    max-width:1100px;
-    margin:32px auto;
-    background:var(--card);
-    border-radius:var(--radius);
-    padding:20px;
-    box-shadow:0 8px 30px rgba(17,10,40,0.06);
-  }
+    *, *::before, *::after { box-sizing: border-box; }
+    html,body { height: 100%; margin:0; color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased; }
+    a { color:var(--accent); text-decoration: none; }
+    a:hover, a:focus { color:var(--accent-dark); text-decoration: underline; outline: none; }
 
-  .skip{position:absolute;left:-999px}
-  .skip:focus{left:12px;top:12px;background:var(--accent);color:#fff;padding:8px 12px;border-radius:6px}
+    /* ---- Page container ---- */
+    .container {
+      max-width: var(--container);
+      margin: 36px auto;
+      padding: 22px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 28px var(--shadow);
+    }
 
-  header{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,0.04)}
-  .brand{display:flex;gap:12px;align-items:center}
-  .avatar{width:72px;height:72px;border-radius:50%;overflow:hidden;border:3px solid rgba(102,0,153,0.12)}
-  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-  h1{margin:0;font-size:1.2rem;color:var(--accent)}
-  .subtitle{color:var(--muted);font-size:0.95rem;margin-top:4px}
+    /* Skip link for keyboard users */
+    .skip-link {
+      position: absolute; left: -999px; top: auto;
+    }
+    .skip-link:focus {
+      left: 16px; top: 12px; background: var(--accent); color: #fff; padding: 8px 10px; border-radius: 6px;
+    }
 
-  /* Two-column grid where left column contains ABOUT+CONTACT stacked */
-  .layout{
-    margin-top:18px;
-    display:grid;
-    grid-template-columns: var(--left-width) 1fr;
-    gap:var(--gap);
-    align-items:start; /* important: keep left column content at top */
-  }
+    /* ---- Header ---- */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(102,0,153,0.08);
+    }
+    .brand { display:flex; gap:16px; align-items:center; }
+    .profile-picture {
+      width:96px; height:96px; border-radius:50%;
+      overflow:hidden; flex:0 0 96px; border:4px solid rgba(209,179,255,0.6);
+    }
+    .profile-picture img { width:100%; height:100%; object-fit:cover; display:block; }
 
-  /* Left column: stack about + contact without any vertical stretching */
-  .sidebar{
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-  }
-  .card{
-    background:transparent;
-    padding:0;
-  }
-  #about h2, #contact h2, #projects h2{margin:0 0 10px 0;color:var(--accent)}
-  #about p{margin:0;color:var(--muted);font-size:0.95rem}
-  #contact p{margin:0;color:var(--muted);font-size:0.95rem}
+    header h1 { margin:0; font-size:1.6rem; color:var(--accent); font-weight:600; }
+    header p { margin:4px 0 0; color:var(--accent); font-size:0.98rem; }
 
-  /* Right column: projects list */
-  .content{
-    min-height:100px;
-  }
-  .projects{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
-  .project{
-    padding:12px;border-radius:8px;border:1px solid rgba(102,0,153,0.06);
-    background:linear-gradient(180deg, rgba(138,77,214,0.02), rgba(255,255,255,0));
-  }
-  .project h3{margin:0 0 6px 0;font-size:1rem;color:var(--accent)}
-  .project p{margin:0;color:var(--muted);font-size:0.95rem}
-  a{color:var(--accent);text-decoration:none;font-weight:600}
-  a:focus{outline:3px solid rgba(102,0,153,0.12);border-radius:6px;padding:2px}
+    nav.top-nav { display:flex; gap:16px; align-items:center; }
+    nav.top-nav a { font-weight:500; font-size:1rem; padding:6px; border-radius:6px; }
+    nav.top-nav a:focus { box-shadow: 0 0 0 3px rgba(102,0,153,0.08); }
 
-  footer{margin-top:20px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.04);text-align:center;color:var(--muted);font-size:0.9rem}
+    /* ---- Two-column layout: left (ABOUT+CONTACT) / right (PROJECTS) ---- */
+    .layout {
+      display: grid;
+      grid-template-columns: var(--left-w) 1fr;
+      gap: var(--gap);
+      margin-top: 22px;
+      align-items: start; /* KEEP both columns top-aligned -> prevents left column stretching and weird gap */
+    }
 
-  /* Responsive: stack columns on narrow screens */
-  @media (max-width:820px){
-    .layout{grid-template-columns:1fr; padding-bottom:8px}
-    .sidebar{order:2}   /* optionally show projects first on small screens; swap if you prefer */
-    .content{order:1}
-    .avatar{width:60px;height:60px}
-  }
-</style>
+    /* Left column: stack About then Contact (no gaps caused by right column length) */
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .card {
+      background: transparent;
+      padding: 0;
+    }
+    section h2 {
+      font-size: 1.2rem;
+      margin: 0 0 10px 0;
+      color: var(--accent-dark);
+      border-bottom: 2px solid rgba(153,51,204,0.08);
+      padding-bottom: 8px;
+    }
+
+    #about p, #contact p {
+      margin: 0 0 10px 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    /* Right column: projects */
+    .right-column {
+      padding-left: 6px;
+    }
+
+    .project-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+    .project-list li {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(153,51,204,0.06);
+      background: linear-gradient(180deg, rgba(209,179,255,0.03), rgba(255,255,255,0));
+    }
+    .project-list a {
+      font-size: 1.06rem;
+      font-weight: 600;
+    }
+    .project-list p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(153,51,204,0.06);
+      text-align:center;
+      color: var(--accent);
+      font-size: 0.92rem;
+    }
+
+    /* Responsive: stack columns on small screens, keep order About -> Projects -> Contact (user preference may vary) */
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      /* keep natural flow: About, then Projects, then Contact under them */
+      .left-column { order: 0; }
+      .right-column { order: 1; }
+    }
+
+    @media (max-width: 420px) {
+      header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .profile-picture { width:76px; height:76px; flex:0 0 76px; }
+      header h1 { font-size:1.25rem; }
+    }
+  </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to main content</a>
+  <a class="skip-link" href="#projects">Skip to projects</a>
 
-  <div class="wrap" role="main" aria-label="Zichen Luo portfolio">
+  <div class="container">
     <header>
       <div class="brand">
-        <figure class="avatar" aria-hidden="false">
-          <img src="images/profile.jpg" alt="Portrait of Zichen Luo" loading="lazy">
-        </figure>
+        <div class="profile-picture">
+          <img src="images/profile.jpg" alt="A photograph of Zichen Luo">
+        </div>
         <div>
           <h1>Zichen Luo</h1>
-          <div class="subtitle">Physics undergraduate — Tsinghua University</div>
+          <p>Physics Undergraduate | Tsinghua University</p>
         </div>
       </div>
-      <nav aria-label="primary">
-        <a href="#about">About</a>&nbsp;·&nbsp;
-        <a href="#projects">Projects</a>&nbsp;·&nbsp;
+
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects & Writings</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <!-- GRID LAYOUT -->
     <div class="layout">
-      <!-- LEFT: ABOUT (short) + CONTACT (directly underneath) -->
-      <aside class="sidebar" aria-labelledby="aboutHeading">
-        <section id="about" class="card" aria-labelledby="aboutHeading">
-          <h2 id="aboutHeading">About</h2>
+      <!-- LEFT COLUMN: ABOUT (short) + CONTACT directly under it -->
+      <aside class="left-column" aria-label="About and contact">
+        <section id="about" class="card" aria-labelledby="about-heading">
+          <h2 id="about-heading">About Me</h2>
           <p>
-            Third-year physics undergraduate at Tsinghua University. I work on Geant4 detector simulations for a polarised-deuteron breakup experiment and study QFT/GR in my free time.
+            I’m a third-year Physics undergraduate at Tsinghua University, currently part of an experimental nuclear physics research group. My research focuses on detector simulations and design for a polarised deuteron breakup experiment, which probes the nuclear symmetry energy. I study the performance of scintillators and simulate detector response using Geant4 to support the development of the polarimeter.
+          </p>
+          <p>
+            Alongside this, I have a strong passion for theoretical physics—especially quantum field theory and general relativity—which I continue to explore through independent reading and coursework. This website serves as a portfolio for my academic projects and technical writing.
+          </p>
+          <p>
+            Outside of academics, I’m a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队). The team is made up of non-sports-specialist students who train seriously while balancing academic life. You can see a more detailed log of my training and achievements <a href="running.html">on my running page</a>.
           </p>
         </section>
 
-        <section id="contact" aria-labelledby="contactHeading" class="card">
-          <h2 id="contactHeading">Contact</h2>
-          <p>Email: <a href="mailto:luozc22@mails.tsinghua.edu.cn">luozc22@mails.tsinghua.edu.cn</a></p>
-          <p><a href="running.html">Running page</a></p>
+        <section id="contact" class="card" aria-labelledby="contact-heading">
+          <h2 id="contact-heading">Contact</h2>
+          <p>
+            You can reach me via email at: <a href="mailto:luozc22@mails.tsinghua.edu.cn">luozc22[at]mails.tsinghua.edu.cn</a>.
+          </p>
         </section>
       </aside>
 
-      <!-- RIGHT: PROJECTS (long) -->
-      <main class="content" id="main" tabindex="-1" aria-labelledby="projectsHeading">
-        <section id="projects">
-          <h2 id="projectsHeading">Projects & Writings</h2>
-          <ul class="projects" aria-live="polite">
-            <li class="project">
-              <h3><a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="noopener noreferrer">Canonical Quantization & Path Integral Quantization</a></h3>
-              <p>Comparative essay on canonical vs path-integral formalisms and where each is most useful in QFT.</p>
+      <!-- RIGHT COLUMN: PROJECTS (long) -->
+      <main class="right-column" id="projects" aria-labelledby="projects-heading" tabindex="-1">
+        <section>
+          <h2 id="projects-heading">Projects & Writings</h2>
+
+          <ul class="project-list">
+            <li>
+              <a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="noopener noreferrer">
+                Canonical Quantization and Path Integral Quantization (正则量子化与路径积分量子化)
+              </a>
+              <p>A comparative essay on the formalisms of canonical quantization and Feynman's path integral quantization, discussing their equivalence and their respective advantages in different areas of quantum field theory.</p>
             </li>
 
-            <li class="project">
-              <h3><a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="noopener noreferrer">A Brief Overview of Black Hole Thermodynamics</a></h3>
-              <p>Intro to the laws of black hole mechanics and Hawking radiation.</p>
+            <li>
+              <a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="noopener noreferrer">
+                A Brief Overview of Black Hole Thermodynamics
+              </a>
+              <p>An introductory overview of the four laws of black hole mechanics and their deep connection to the principles of classical thermodynamics, including concepts like Hawking radiation and Bekenstein-Hawking entropy.</p>
             </li>
 
-            <li class="project">
-              <h3><a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="noopener noreferrer">Statistical Mechanics of the Quantum Harmonic Ensemble</a></h3>
-              <p>Partition function derivations and thermodynamic comparisons across representations.</p>
+            <li>
+              <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="noopener noreferrer">
+                Statistical Mechanics of the Quantum Harmonic Ensemble
+              </a>
+              <p>An analysis of a canonical ensemble of quantum harmonic oscillators, deriving thermodynamic properties from the partition function and comparing the utility of different representations.</p>
             </li>
 
-            <li class="project">
-              <h3><a href="中微子质量与振荡.pdf" target="_blank" rel="noopener noreferrer">Neutrino Mass and Oscillations</a></h3>
-              <p>Review of oscillation evidence and implications for beyond-standard-model physics.</p>
+            <li>
+              <a href="中微子质量与振荡.pdf" target="_blank" rel="noopener noreferrer">
+                Neutrino Mass and Oscillations (中微子质量与振荡)
+              </a>
+              <p>A review of the experimental evidence for neutrino flavour oscillations, exploring the Standard Model and the implications of non-zero neutrino mass for physics beyond the Standard Model.</p>
             </li>
 
-            <li class="project">
-              <h3><a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="noopener noreferrer">Polarised Deuteron Breakup — Nuclear Symmetry Energy</a></h3>
-              <p>How polarised deuteron scattering constrains symmetry-energy density dependence.</p>
+            <li>
+              <a href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="noopener noreferrer">
+                The Action Principle in Sourceless Classical Electrodynamics
+              </a>
+              <p>A theoretical paper deriving Maxwell's equations in a vacuum from a relativistic Lagrangian density and the principle of stationary action.</p>
             </li>
 
-            <li class="project">
-              <h3><a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="noopener noreferrer">The Complex Scalar Klein–Gordon Field</a></h3>
-              <p>Action → canonical quantisation → internal symmetries and conserved charges (U(n), SU(2)).</p>
+            <li>
+              <a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="noopener noreferrer">
+                Polarised Deuteron Breakup as a Probe of the Nuclear Symmetry Energy
+              </a>
+              <p>An exploration of how scattering experiments involving polarised deuterons can be used to constrain the density dependence of the nuclear symmetry energy, which is crucial for understanding neutron-rich matter in astrophysics.</p>
             </li>
 
-            <!-- add more items as needed; long lists will naturally extend the right column -->
+            <li>
+              <a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="noopener noreferrer">
+                The Complex Scalar Klein-Gordon Field (复标量克莱因–戈尔登场)
+              </a>
+              <p>This paper studies complex scalar Klein-Gordon fields starting from the action, deriving canonical momenta, commutation relations, and the Hamiltonian. It shows the theory describes two particles of the same mass, linked by a conserved U(1) charge. For two fields, the symmetry extends to U(2), yielding four conserved charges with an SU(2) structure. The framework generalizes to n fields, revealing a global SU(n) symmetry and corresponding conserved charges, highlighting the role of internal symmetries in quantum field theory.</p>
+            </li>
           </ul>
         </section>
       </main>
     </div>
 
-    <footer>&copy; 2025 Zichen Luo</footer>
+    <footer>
+      <p>&copy; 2025 Zichen Luo. All rights reserved.</p>
+    </footer>
   </div>
 </body>
 </html>
