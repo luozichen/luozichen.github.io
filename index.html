@@ -1,252 +1,422 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The academic portfolio of Zichen Luo, a physics undergraduate at Tsinghua University, showcasing research projects and writings.">
-    <meta name="google-site-verification" content="Gefr8Ao6VZ4F2YDwOyKPOAAIfL1fjRW7UpGcTqVIX5k" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Academic portfolio of Zichen Luo — physics undergraduate at Tsinghua University. Research, writings and contact." />
+  <link rel="canonical" href="https://luozichen.github.io/" />
+  <title>Zichen Luo — Physics Portfolio</title>
 
-    <link rel="canonical" href="https://luozichen.github.io/">
-    
-    <title>Zichen Luo | Physics Portfolio</title>
+  <!-- Theme variables, responsive, accessible -->
+  <style>
+    :root{
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --accent: #5b128f;       /* primary purple */
+      --accent-2: #8a4dd6;     /* lighter accent */
+      --muted: #495057;
+      --text: #17202a;
+      --radius: 12px;
+      --container: 1100px;
+      --gap: 20px;
+      font-size: 16px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-    <style>
-        /* Basic Reset & Body Styling */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa; /* Lighter grey background */
-            color: #212529; /* Darker, more standard text colour */
-        }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0b0c0e;
+        --card: #0f1113;
+        --accent: #b98cff;
+        --accent-2: #8f62ff;
+        --muted: #c6cbd1;
+        --text: #e6eef9;
+      }
+    }
 
-        /* Container for centering content */
-        .container {
-            max-width: 960px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(102, 0, 153, 0.1);
-            border-radius: 8px;
-        }
+    /* Reset */
+    *,*:before,*:after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg),#ffffff 80%);
+      color:var(--text);
+      line-height:1.5;
+    }
 
-        /* Header Styling */
-        header {
-            text-align: center;
-            padding: 30px 20px;
-            border-bottom: 1px solid #d1b3ff;
-            margin-bottom: 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.8em;
-            font-weight: 600;
-            color: #660099; /* Tsinghua purple */
-        }
-        header p {
-            margin: 10px 0 0;
-            font-size: 1.2em;
-            color: #660099; /* Tsinghua purple */
-        }
+    /* Skip link for keyboard users */
+    .skip-link{
+      position: absolute;
+      left: -999px;
+      top: auto;
+      background:var(--accent);
+      color:#fff;
+      padding:8px 12px;
+      border-radius:6px;
+      z-index:1000;
+    }
+    .skip-link:focus{
+      left: 12px;
+      top: 12px;
+    }
 
-        /* Navigation Styling */
-        nav {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #8000cc; /* Purple links */
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
-        }
-        nav ul li a:hover, nav ul li a:focus {
-            color: #4d007a; /* Darker purple on hover */
-            text-decoration: underline;
-        }
+    /* Page container */
+    .wrap{
+      max-width:var(--container);
+      margin:32px auto;
+      padding:28px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow: 0 6px 30px rgba(33,20,60,0.06);
+    }
 
-        /* Main Content Area Styling */
-        main {
-            padding: 0 20px;
-        }
+    /* Header */
+    header{
+      display:flex;
+      gap:var(--gap);
+      align-items:center;
+      justify-content:space-between;
+      padding-bottom:10px;
+      border-bottom:1px solid rgba(0,0,0,0.04);
+    }
+    .brand{
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+    .avatar{
+      width:92px;
+      height:92px;
+      border-radius:50%;
+      overflow:hidden;
+      flex:0 0 92px;
+      border:4px solid rgba(138,77,214,0.12);
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
 
-        /* Section Styling */
-        section {
-            margin-bottom: 40px;
-        }
-        section h2 {
-            font-size: 1.8em;
-            color: #4d007a; /* Darker purple */
-            border-bottom: 2px solid #9933cc;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
+    h1{
+      margin:0;
+      font-size:1.45rem;
+      letter-spacing: -0.02em;
+      color:var(--accent);
+      font-weight:700;
+    }
+    .subtitle{
+      margin:2px 0 0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
 
-        /* Project List Styling */
-        .project-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .project-list li {
-            margin-bottom: 25px;
-        }
-        .project-list a {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #8000cc; /* Purple links */
-            text-decoration: none;
-        }
-        .project-list a:hover {
-            color: #4d007a; /* Darker purple on hover */
-            text-decoration: underline;
-        }
-        .project-list p {
-            margin: 5px 0 0 0;
-            color: #495057;
-        }
+    /* Nav */
+    .controls{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    nav{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    nav a{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      padding:8px;
+      border-radius:8px;
+      font-size:0.95rem;
+    }
+    nav a:hover, nav a:focus{
+      background:linear-gradient(90deg, rgba(138,77,214,0.07), rgba(91,18,143,0.06));
+      outline:none;
+      color:var(--accent-2);
+      text-decoration:underline;
+    }
 
-        /* General Link Styling */
-         a {
-            color: #8000cc; /* Purple links */
-            text-decoration: none;
-        }
-        a:hover {
-            color: #4d007a; /* Darker purple on hover */
-            text-decoration: underline;
-        }
+    /* Mobile menu */
+    .menu-toggle{
+      display:none;
+      background:transparent;
+      border:1px solid rgba(0,0,0,0.06);
+      padding:8px;
+      border-radius:8px;
+      cursor:pointer;
+      color:var(--accent);
+    }
+    .menu-toggle:focus{outline:3px solid rgba(91,18,143,0.12)}
 
+    /* Main layout */
+    main{
+      display:grid;
+      grid-template-columns: 1fr 350px;
+      gap:var(--gap);
+      margin-top:22px;
+    }
 
-        /* Footer Styling */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            color: #660099; /* Tsinghua purple */
-            font-size: 0.9em;
-            border-top: 1px solid #d1b3ff;
-        }
+    /* About card */
+    .card{
+      background:transparent;
+      padding:0;
+    }
+    #about figure{
+      margin:0 0 12px 0;
+    }
+    #about p{margin:0 0 12px;color:var(--muted)}
 
-        /* Styles for the profile picture */
-        .profile-picture {
-            float: left; /* Aligns the image to the left */
-            width: 180px; /* Adjust size as needed */
-            height: 180px;
-            margin-right: 25px; /* Space between picture and text */
-            margin-bottom: 10px; /* Space below picture if text is short */
-            border-radius: 50%; /* Makes the image circular */
-            border: 4px solid #d1b3ff; /* Purple border */
-            object-fit: cover; /* Prevents image distortion */
-        }
-        
-        /* Ensures the section correctly wraps the floating image */
-        #about {
-            overflow: auto; /* A modern way to clear floats */
-        }
+    /* Projects grid */
+    .projects{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .project{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(138,77,214,0.03), rgba(91,18,143,0.01));
+      border:1px solid rgba(138,77,214,0.03);
+    }
+    .project .meta{
+      flex:1 1 auto;
+    }
+    .project h3{
+      margin:0 0 6px 0;
+      font-size:1.02rem;
+      color:var(--accent);
+    }
+    .project p{
+      margin:0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+    .project a{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+    }
+    .project a:focus{outline:2px solid rgba(138,77,214,0.12);border-radius:6px;padding:2px}
 
-    </style>
+    /* Sidebar */
+    aside{
+      background:linear-gradient(180deg, rgba(0,0,0,0.01), rgba(0,0,0,0));
+      padding:16px;
+      border-radius:8px;
+      height:fit-content;
+      border:1px solid rgba(0,0,0,0.04);
+    }
+    .contact{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      font-size:0.95rem;
+      color:var(--muted);
+    }
+    .btn{
+      display:inline-block;
+      padding:8px 12px;
+      background:var(--accent);
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+      font-weight:600;
+      text-align:center;
+    }
+    .btn.secondary{
+      background:transparent;
+      border:1px solid rgba(91,18,143,0.12);
+      color:var(--accent);
+    }
+
+    /* Footer */
+    footer{
+      margin-top:28px;
+      padding-top:18px;
+      border-top:1px solid rgba(0,0,0,0.04);
+      text-align:center;
+      color:var(--muted);
+      font-size:0.9rem;
+    }
+
+    /* Focus visible */
+    :focus{outline-offset:2px}
+    a:focus{outline:3px solid rgba(138,77,214,0.12);border-radius:6px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      main{grid-template-columns:1fr}
+      .menu-toggle{display:inline-block}
+      nav{display:none}
+      nav.open{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+      header{align-items:flex-start}
+      .avatar{width:76px;height:76px;flex:0 0 76px}
+    }
+    @media (max-width:560px){
+      .wrap{margin:10px;padding:16px}
+      h1{font-size:1.2rem}
+    }
+
+  </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-    <div class="container">
-        <header>
-            <h1>Zichen Luo</h1>
-            <p>Physics Undergraduate | Tsinghua University</p>
-        </header>
+  <div class="wrap" role="document" aria-label="Zichen Luo portfolio">
+    <header>
+      <div class="brand">
+        <figure class="avatar" aria-hidden="false">
+          <img src="images/profile.jpg" alt="Zichen Luo — portrait" loading="lazy" width="300" height="300">
+        </figure>
+        <div>
+          <h1>Zichen Luo</h1>
+          <div class="subtitle">Physics undergraduate — Tsinghua University · detector simulations & theory</div>
+        </div>
+      </div>
 
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects & Writings</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+      <div class="controls">
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle navigation">
+          ☰ Menu
+        </button>
+
+        <nav id="mainNav" aria-label="Primary" role="navigation">
+          <a href="#about">About</a>
+          <a href="#projects">Projects & Writings</a>
+          <a href="#contact">Contact</a>
         </nav>
+      </div>
+    </header>
 
-        <main>
-            <section id="about">
-                <h2>About Me</h2>
-                <img src="images/profile.jpg" alt="A photograph of Zichen Luo" class="profile-picture">
-                <p>
-                I’m a third-year Physics undergraduate at Tsinghua University, currently part of an experimental nuclear physics research group. My research focuses on detector simulations and design for a polarised deuteron breakup experiment, which probes the nuclear symmetry energy. I study the performance of scintillators and simulate detector response using Geant4 to support the development of the polarimeter.
-                </p>
-                <p>
-                Alongside this, I have a strong passion for theoretical physics—especially quantum field theory and general relativity—which I continue to explore through independent reading and coursework. This website serves as a portfolio for my academic projects and technical writing.
-                </p>
-                <p>
-                Outside of academics, I’m a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队). The team is made up of non-sports-specialist students who train seriously while balancing academic life. You can see a more detailed log of my training and achievements <a href="running.html">on my running page</a>.
-                </p>
-            </section>
+    <main id="main" tabindex="-1">
+      <section id="about" class="card" aria-labelledby="aboutHeading">
+        <h2 id="aboutHeading">About</h2>
+        <p>
+          I’m a third-year physics undergraduate at Tsinghua University working with an experimental nuclear group. My current work includes Geant4 simulations and scintillator/SiPM studies for a polarised-deuteron breakup experiment probing the nuclear symmetry energy.
+        </p>
+        <p>
+          I also study theoretical physics (QFT, GR) in my own time and write short technical essays. This site collects my papers, notes and demonstrations.
+        </p>
+        <p>
+          Outside academia I train in middle- & long-distance running and keep a running log — see the running page for details.
+        </p>
+      </section>
 
-            <section id="projects">
-                <h2>Projects & Writings</h2>
-                <ul class="project-list">
-                    <li>
-                        <a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="noopener noreferrer">
-                            Canonical Quantization and Path Integral Quantization (正则量子化与路径积分量子化)
-                        </a>
-                        <p>A comparative essay on the formalisms of canonical quantization and Feynman's path integral quantization, discussing their equivalence and their respective advantages in different areas of quantum field theory.</p>
-                    </li>
-                    <li>
-                        <a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="noopener noreferrer">
-                            A Brief Overview of Black Hole Thermodynamics
-                        </a>
-                        <p>An introductory overview of the four laws of black hole mechanics and their deep connection to the principles of classical thermodynamics, including concepts like Hawking radiation and Bekenstein-Hawking entropy.</p>
-                    </li>
-                    <li>
-                        <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="noopener noreferrer">
-                            Statistical Mechanics of the Quantum Harmonic Ensemble
-                        </a>
-                        <p>An analysis of a canonical ensemble of quantum harmonic oscillators, deriving thermodynamic properties from the partition function and comparing the utility of different representations.</p>
-                    </li>
-                    <li>
-                        <a href="中微子质量与振荡.pdf" target="_blank" rel="noopener noreferrer">
-                            Neutrino Mass and Oscillations (中微子质量与振荡)
-                        </a>
-                        <p>A review of the experimental evidence for neutrino flavour oscillations, exploring the Standard Model and the implications of non-zero neutrino mass for physics beyond the Standard Model.</p>
-                    </li>
-                    <li>
-                        <a href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="noopener noreferrer">
-                            The Action Principle in Sourceless Classical Electrodynamics
-                        </a>
-                        <p>A theoretical paper deriving Maxwell's equations in a vacuum from a relativistic Lagrangian density and the principle of stationary action.</p>
-                    </li>
-                    <li>
-                        <a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="noopener noreferrer">
-                            Polarised Deuteron Breakup as a Probe of the Nuclear Symmetry Energy
-                        </a>
-                        <p>An exploration of how scattering experiments involving polarised deuterons can be used to constrain the density dependence of the nuclear symmetry energy, which is crucial for understanding neutron-rich matter in astrophysics.</p>
-                    </li>
-                    <li>
-                        <a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="noopener noreferrer">
-                            The Complex Scalar Klein-Gordon Field (复标量克莱因–戈尔登场)
-                        </a>
-                        <p>This paper studies complex scalar Klein-Gordon fields starting from the action, deriving canonical momenta, commutation relations, and the Hamiltonian. It shows the theory describes two particles of the same mass, linked by a conserved U(1) charge. For two fields, the symmetry extends to U(2), yielding four conserved charges with an SU(2) structure. The framework generalizes to n fields, revealing a global SU(n) symmetry and corresponding conserved charges, highlighting the role of internal symmetries in quantum field theory.</p>
-                    </li>
-                </ul>
-            </section>
+      <section id="projects" aria-labelledby="projectsHeading">
+        <h2 id="projectsHeading">Projects & Writings</h2>
 
-            <section id="contact">
-                <h2>Contact</h2>
-                <p>
-                    You can reach me via email at: <a href="luozc22[at]mails.tsinghua.edu.cn">luozc22[at]mails.tsinghua.edu.cn</a>.
-                </p>
-                </section>
-        </main>
+        <ul class="projects" aria-live="polite">
+          <!-- Example project card — repeat/update for each file -->
+          <li class="project" role="article" aria-labelledby="p1">
+            <div class="meta">
+              <h3 id="p1">
+                <a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="noopener noreferrer">Canonical Quantization and Path Integral Quantization</a>
+              </h3>
+              <p>Comparative essay on canonical and path integral formalisms, equivalence and use cases in QFT.</p>
+            </div>
+          </li>
 
-        <footer>
-            <p>&copy; 2025 Zichen Luo. All rights reserved.</p>
-        </footer>
-    </div>
+          <li class="project" role="article" aria-labelledby="p2">
+            <div class="meta">
+              <h3 id="p2">
+                <a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="noopener noreferrer">A Brief Overview of Black Hole Thermodynamics</a>
+              </h3>
+              <p>Intro to the four laws of black hole mechanics and links to Hawking radiation and entropy.</p>
+            </div>
+          </li>
 
+          <!-- Keep the rest of the list, using the same pattern -->
+          <li class="project" role="article" aria-labelledby="p3">
+            <div class="meta">
+              <h3 id="p3">
+                <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="noopener noreferrer">Statistical Mechanics of the Quantum Harmonic Ensemble</a>
+              </h3>
+              <p>Partition function approaches and thermodynamic properties compared across representations.</p>
+            </div>
+          </li>
+
+          <li class="project" role="article" aria-labelledby="p4">
+            <div class="meta">
+              <h3 id="p4">
+                <a href="中微子质量与振荡.pdf" target="_blank" rel="noopener noreferrer">Neutrino Mass and Oscillations</a>
+              </h3>
+              <p>Review of oscillation evidence and implications for physics beyond the Standard Model.</p>
+            </div>
+          </li>
+
+          <li class="project" role="article" aria-labelledby="p5">
+            <div class="meta">
+              <h3 id="p5">
+                <a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="noopener noreferrer">Polarised Deuteron Breakup — Nuclear Symmetry Energy</a>
+              </h3>
+              <p>How polarised deuteron scattering constrains the density dependence of the symmetry energy.</p>
+            </div>
+          </li>
+
+          <li class="project" role="article" aria-labelledby="p6">
+            <div class="meta">
+              <h3 id="p6">
+                <a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="noopener noreferrer">The Complex Scalar Klein–Gordon Field</a>
+              </h3>
+              <p>Action → canonical quantisation → internal symmetries and conserved charges (U(n), SU(2) examples).</p>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+      <aside aria-labelledby="contactHeading">
+        <h2 id="contactHeading">Contact</h2>
+        <div class="contact">
+          <p>If you want to reach me about collaborations, questions or a copy of a paper, use the button below. I avoid publishing raw email in HTML to reduce scraping.</p>
+
+          <!-- Email reveal & copy -->
+          <button id="revealEmail" class="btn" aria-controls="emailOutput" aria-expanded="false">Reveal & copy email</button>
+          <div id="emailOutput" aria-live="polite" style="font-size:0.95rem;color:var(--muted)"></div>
+
+          <a class="btn secondary" href="running.html">Running page</a>
+          <a class="btn" href="cv.pdf" target="_blank" rel="noopener noreferrer">Download CV (PDF)</a>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>&copy; 2025 Zichen Luo. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <!-- Minimal JS: menu toggle + email reveal & copy -->
+  <script>
+    (function(){
+      const toggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('mainNav');
+
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+
+      // Email reveal & copy (obfuscation)
+      // keep actual email only in JS so bots scraping raw HTML are less likely to get it
+      const revealBtn = document.getElementById('revealEmail');
+      const out = document.getElementById('emailOutput');
+      const user = 'luozc22';
+      const domain = 'mails.tsinghua.edu.cn';
+      revealBtn.addEventListener('click', async function(){
+        const address = user + '@' + domain;
+        navigator.clipboard?.writeText?.(address).then(() => {
+          out.textContent = 'Email copied to clipboard: ' + address;
+        }, () => {
+          out.textContent = address;
+        });
+        this.setAttribute('aria-expanded','true');
+      });
+    })();
+  </script>
 </body>
 </html>
