@@ -16,25 +16,27 @@
       --accent-2:#8a4dd6;
       --muted:#495057;
       --text:#212529;
-      --left-width:360px; /* widened left column */
+      --max-width:1100px;
       --radius:12px;
       --gap:20px;
+      --project-sidebar-width:280px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       line-height:1.6;
     }
 
-    /* Reset / base */
+    /* Reset & base */
     *,*::before,*::after{box-sizing:border-box}
     html,body{height:100%;margin:0;background:linear-gradient(180deg,#fbfbfe,#f3f4f8);color:var(--text);-webkit-font-smoothing:antialiased}
+    body{font-size:16px}
     a{color:var(--accent);text-decoration:none}
     a:hover,a:focus{color:var(--accent-2);text-decoration:underline}
     :focus{outline-offset:3px}
 
     /* Page container */
     .container{
-      max-width:1100px;
+      max-width:var(--max-width);
       margin:36px auto;
-      padding:22px;
+      padding:26px;
       background:var(--card);
       border-radius:var(--radius);
       box-shadow:0 10px 30px rgba(33,20,60,0.06);
@@ -45,41 +47,34 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
-      padding-bottom:14px;
+      gap:18px;
+      padding-bottom:16px;
       border-bottom:1px solid rgba(91,18,143,0.06);
     }
     .brand{display:flex;gap:14px;align-items:center}
     .avatar{width:88px;height:88px;border-radius:50%;overflow:hidden;border:4px solid rgba(209,179,255,0.6);flex:0 0 88px}
     .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    h1{margin:0;font-size:1.5rem;color:var(--accent);font-weight:700}
-    .subtitle{margin:4px 0 0;color:var(--accent);font-size:0.98rem}
+    h1{margin:0;font-size:1.6rem;color:var(--accent);font-weight:800}
+    .subtitle{margin:6px 0 0;color:var(--accent);font-size:1rem}
     .subtitle a{color:inherit;text-decoration:underline}
     nav.top{display:flex;gap:12px}
     nav.top a{padding:6px;border-radius:8px;font-weight:600}
     nav.top a:focus{box-shadow:0 0 0 4px rgba(138,77,214,0.08);border-radius:6px}
 
-    /* Grid layout */
-    .layout{
-      display:grid;
-      grid-template-columns: var(--left-width) 1fr;
-      gap:var(--gap);
-      margin-top:22px;
-      align-items:start; /* keeps left column top-aligned, avoids weird gap */
-    }
-
-    /* Section styling - thin rounded box */
+    /* Section: stronger headings */
     section{
-      border: 1px solid rgba(102,0,153,0.06);
-      border-radius: 10px;
-      padding: 14px;
-      background: #ffffff;
+      border:1px solid rgba(102,0,153,0.06);
+      border-radius:10px;
+      padding:16px;
+      background:#fff;
+      margin-bottom:20px;
     }
-    section h2{
+    .section-title{
       margin:0 0 10px 0;
-      font-size:1.05rem;
+      font-size:1.35rem;       /* larger */
+      font-weight:800;        /* heavier */
+      letter-spacing:-0.01em;
       color:var(--accent-2);
-      font-weight:600;
     }
     .section-note{
       margin:6px 0 12px 0;
@@ -87,14 +82,62 @@
       font-size:0.95rem;
     }
 
-    /* Left column: about + contact stacked */
-    .left{
+    /* Page flow: single column */
+    main.content {
       display:flex;
       flex-direction:column;
       gap:18px;
+      margin-top:18px;
     }
-    .panel p{margin:0 0 10px 0;color:var(--muted);font-size:0.98rem}
 
+    /* ----- Projects boxed component with internal sidebar ----- */
+    .projects-box{
+      display:grid;
+      grid-template-columns: 1fr var(--project-sidebar-width);
+      gap:18px;
+      max-height:64vh; /* box height; adjust to taste */
+      overflow: hidden; /* contain internal scroll */
+    }
+
+    /* The main list scrolls within the box */
+    .projects-list{
+      overflow:auto;
+      padding-right:6px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    /* Sidebar scrolls independently inside the box */
+    .projects-sidebar{
+      overflow:auto;
+      border-left:1px dashed rgba(102,0,153,0.04);
+      padding-left:12px;
+      min-width: var(--project-sidebar-width);
+    }
+
+    /* Project card */
+    .proj{
+      padding:12px;
+      border-radius:8px;
+      border:1px solid rgba(127,77,224,0.06);
+      background: linear-gradient(180deg, rgba(127,77,224,0.01), rgba(255,255,255,0));
+      transition: background-color .12s ease, transform .12s ease, box-shadow .12s ease;
+    }
+    .proj:hover{
+      background-color: rgba(138,77,214,0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(102,0,153,0.08);
+    }
+    .proj a{font-size:1.05rem;font-weight:700}
+    .proj p{margin:8px 0 0;color:var(--muted);font-size:0.96rem}
+
+    /* Projects sidebar content */
+    .sidebar-title{font-weight:700;color:var(--accent);margin:0 0 8px 0}
+    .toc{list-style:none;padding:0;margin:0 0 12px 0}
+    .toc li{margin:8px 0}
+    .small{color:var(--muted);font-size:0.92rem}
+
+    /* Contact reveal button */
     .reveal-btn{
       display:inline-block;
       margin-top:8px;
@@ -104,37 +147,22 @@
       padding:8px 10px;
       border-radius:8px;
       cursor:pointer;
-      font-weight:600;
+      font-weight:700;
     }
 
-    /* Right column: projects */
-    .right{padding-left:6px}
-    .projects{display:flex;flex-direction:column;gap:12px;list-style:none;margin:0;padding:0}
-    .proj{
-      padding:12px;
-      border-radius:8px;
-      border:1px solid rgba(127,77,224,0.06);
-      background: linear-gradient(180deg, rgba(127,77,224,0.01), rgba(255,255,255,0));
-      transition: background-color .12s ease, transform .12s ease, box-shadow .12s ease;
-    }
-    /* Hover: light purple coloured box */
-    .proj:hover{
-      background-color: rgba(138,77,214,0.08);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 18px rgba(102,0,153,0.08);
-    }
-    .proj a{font-size:1.05rem;font-weight:700}
-    .proj p{margin:8px 0 0;color:var(--muted);font-size:0.96rem}
+    /* Footer */
+    footer{margin-top:18px;padding-top:12px;border-top:1px solid rgba(153,51,204,0.06);text-align:center;color:var(--accent);font-size:0.92rem}
 
-    footer{margin-top:26px;padding-top:14px;border-top:1px solid rgba(153,51,204,0.06);text-align:center;color:var(--accent);font-size:0.92rem}
-
-    /* Responsive */
+    /* Responsive: collapse sidebar under list on small screens */
     @media (max-width:920px){
-      .layout{grid-template-columns:1fr}
+      .projects-box{grid-template-columns:1fr;max-height:none}
+      .projects-list{max-height:none}
+      .projects-sidebar{border-left:none;padding-left:0;border-top:1px dashed rgba(102,0,153,0.04);padding-top:12px}
     }
+
     @media (max-width:420px){
       .avatar{width:64px;height:64px;flex:0 0 64px}
-      h1{font-size:1.2rem}
+      h1{font-size:1.25rem}
     }
   </style>
 </head>
@@ -158,77 +186,106 @@
       </nav>
     </header>
 
-    <div class="layout">
-      <!-- LEFT: About + Contact stacked -->
-      <aside class="left" aria-label="About and contact">
-        <section id="about" aria-labelledby="aboutHeading" class="panel">
-          <h2 id="aboutHeading">About Me</h2>
-          <p>
-            I’m a third-year Physics undergraduate at Tsinghua University, currently part of an experimental nuclear physics research group. My research focuses on detector simulations and design for a polarised deuteron breakup experiment, which probes the nuclear symmetry energy. I study the performance of scintillators and simulate detector response using Geant4 to support the development of the polarimeter.
-          </p>
-          <p>
-            Alongside this, I have a strong passion for theoretical physics—especially quantum field theory and general relativity—which I continue to explore through independent reading and coursework. This website serves as a portfolio for my academic projects and technical writing.
-          </p>
-          <p>
-            Outside of academics, I’m a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队). The team is made up of non-sports-specialist students who train seriously while balancing academic life. You can see a more detailed log of my training and achievements <a href="running.html">on my running page</a>.
-          </p>
-        </section>
+    <main class="content">
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="aboutTitle">
+        <h2 id="aboutTitle" class="section-title">About Me</h2>
+        <p class="section-note">Third-year physics undergraduate at Tsinghua, working on detector simulation and polarimeter development.</p>
 
-        <section id="contact" aria-labelledby="contactHeading" class="panel">
-          <h2 id="contactHeading">Contact</h2>
-          <div>
-            <button id="revealEmail" class="reveal-btn" aria-controls="emailBox" aria-expanded="false">Show email &amp; copy</button>
-          </div>
-          <div id="emailBox" aria-live="polite" style="margin-top:10px;color:var(--muted);font-size:0.95rem"></div>
-        </section>
-      </aside>
+        <p>
+          I’m a third-year Physics undergraduate at Tsinghua University, currently part of an experimental nuclear physics research group. My research focuses on detector simulations and design for a polarised deuteron breakup experiment, which probes the nuclear symmetry energy. I study the performance of scintillators and simulate detector response using Geant4 to support the development of the polarimeter.
+        </p>
+        <p>
+          Alongside this, I have a strong passion for theoretical physics—especially quantum field theory and general relativity—which I continue to explore through independent reading and coursework. This website serves as a portfolio for my academic projects and technical writing.
+        </p>
+        <p>
+          Outside of academics, I’m a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队). The team is made up of non-sports-specialist students who train seriously while balancing academic life. You can see a more detailed log of my training and achievements <a href="running.html">on my running page</a>.
+        </p>
+      </section>
 
-      <!-- RIGHT: Essays & Writings -->
-      <main class="right" id="projects" aria-labelledby="projectsHeading" tabindex="-1">
-        <section>
-          <h2 id="projectsHeading">Essays &amp; Writings</h2>
-          <p class="section-note">A selection of essays and technical notes — not peer-reviewed publications.</p>
+      <!-- PROJECTS with internal sidebar that scrolls -->
+      <section id="projects" aria-labelledby="projectsTitle">
+        <h2 id="projectsTitle" class="section-title">Essays &amp; Writings</h2>
+        <p class="section-note">A selection of essays and technical notes — not peer-reviewed publications.</p>
 
-          <ul class="projects" aria-live="polite">
-            <li class="proj">
+        <div class="projects-box" role="region" aria-label="Essays and sidebar">
+          <!-- left: scrollable list -->
+          <div class="projects-list" tabindex="0" aria-label="Essay list (scrollable)">
+            <!-- Each project kept as originally named and description ~30 words -->
+            <article class="proj" id="p1">
               <a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="noopener noreferrer">Canonical Quantization and Path Integral Quantization (正则量子化与路径积分量子化)</a>
               <p>Clear comparison of canonical operator quantisation and Feynman's path integral formalism. Derivations, examples and pragmatic trade-offs, emphasising circumstances where each method simplifies quantum field calculations.</p>
-            </li>
+            </article>
 
-            <li class="proj">
+            <article class="proj" id="p2">
               <a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="noopener noreferrer">A Brief Overview of Black Hole Thermodynamics</a>
               <p>Survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy and Hawking radiation, with semiclassical examples and discussion of entropy and information in gravitational thermodynamics.</p>
-            </li>
+            </article>
 
-            <li class="proj">
+            <article class="proj" id="p3">
               <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="noopener noreferrer">Statistical Mechanics of the Quantum Harmonic Ensemble</a>
               <p>Derives the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position and momentum representations, computes thermodynamic observables and compares representation-specific insights.</p>
-            </li>
+            </article>
 
-            <li class="proj">
+            <article class="proj" id="p4">
               <a href="中微子质量与振荡.pdf" target="_blank" rel="noopener noreferrer">Neutrino Mass and Oscillations (中微子质量与振荡)</a>
-              <p>Review of experimental evidence for neutrino flavour oscillations, mass and mixing formalism, simple phenomenological mass models, experimental constraints and their implications for physics beyond the Standard Model.</p>
-            </li>
+              <p>Review of experimental evidence for neutrino flavour oscillations, mass and mixing formalism, simple phenomenological mass models, experimental constraints and implications for physics beyond the Standard Model.</p>
+            </article>
 
-            <li class="proj">
+            <article class="proj" id="p5">
               <a href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="noopener noreferrer">The Action Principle in Sourceless Classical Electrodynamics</a>
-              <p>Derives Maxwell’s equations in vacuum from a relativistic Lagrangian, discusses gauge freedom, Noether currents and the connections between classical and quantum electrodynamics formulations.</p>
-            </li>
+              <p>Derives Maxwell’s equations in vacuum from a relativistic Lagrangian, discusses gauge freedom, Noether currents and connections between classical and quantum electrodynamics formulations.</p>
+            </article>
 
-            <li class="proj">
+            <article class="proj" id="p6">
               <a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="noopener noreferrer">Polarised Deuteron Breakup as a Probe of the Nuclear Symmetry Energy</a>
-              <p>Investigates polarised-deuteron scattering observables and polarimeter design, demonstrating how targeted measurements constrain the density dependence of the nuclear symmetry energy important for neutron-rich astrophysical matter.</p>
-            </li>
+              <p>Investigates polarised-deuteron scattering observables and polarimeter design, demonstrating how targeted measurements constrain the density dependence of the nuclear symmetry energy relevant for neutron-rich astrophysical matter.</p>
+            </article>
 
-            <li class="proj">
+            <article class="proj" id="p7">
               <a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="noopener noreferrer">The Complex Scalar Klein-Gordon Field (复标量克莱因–戈尔登场)</a>
               <p>Begins with the action to derive canonical momenta and commutation relations for a complex Klein–Gordon field, explains the conserved U(1) charge and generalises to multiple fields with SU(n) structure.</p>
-            </li>
+            </article>
+          </div>
 
-          </ul>
-        </section>
-      </main>
-    </div>
+          <!-- right: sidebar (independently scrollable inside the box) -->
+          <aside class="projects-sidebar" tabindex="0" aria-label="Project sidebar (scrollable)">
+            <div>
+              <div class="sidebar-title">Quick links</div>
+              <ul class="toc" aria-hidden="false">
+                <li><a href="#p1">Canonical vs Path Integral</a></li>
+                <li><a href="#p2">Black Hole Thermodynamics</a></li>
+                <li><a href="#p3">Quantum Harmonic Ensemble</a></li>
+                <li><a href="#p4">Neutrino Mass & Oscillations</a></li>
+                <li><a href="#p5">Action Principle — Electrodynamics</a></li>
+                <li><a href="#p6">Polarised Deuteron Breakup</a></li>
+                <li><a href="#p7">Complex Klein–Gordon</a></li>
+              </ul>
+
+              <div class="sidebar-title" style="margin-top:12px">About this list</div>
+              <p class="small">These are essays and technical notes rather than peer-reviewed publications. Use the links to open PDFs in a new tab.</p>
+
+              <div class="sidebar-title" style="margin-top:12px">Tools & notes</div>
+              <p class="small">Many simulation details use Geant4 and SiPM testing. If you need experimental details, contact me via the contact section below.</p>
+
+              <div style="height:30px"></div> <!-- breathing room at bottom -->
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CONTACT (after projects) -->
+      <section id="contact" aria-labelledby="contactTitle">
+        <h2 id="contactTitle" class="section-title">Contact</h2>
+        <p class="section-note">Click to reveal and copy my email address.</p>
+
+        <div>
+          <button id="revealEmail" class="reveal-btn" aria-controls="emailBox" aria-expanded="false">Show email &amp; copy</button>
+        </div>
+        <div id="emailBox" aria-live="polite" style="margin-top:10px;color:var(--muted);font-size:0.95rem"></div>
+      </section>
+
+    </main>
 
     <footer>
       <p>&copy; 2025 Zichen Luo. All rights reserved.</p>
@@ -236,7 +293,7 @@
   </div>
 
   <script>
-    // Email reveal & copy — email only exists in JS until clicked
+    // Email reveal & copy — email exists only in JS until clicked
     (function(){
       const btn = document.getElementById('revealEmail');
       const box = document.getElementById('emailBox');
@@ -244,8 +301,7 @@
       const host = 'mails.tsinghua.edu.cn';
       const address = user + '@' + host;
 
-      // initially empty (no obfuscated text)
-      box.textContent = '';
+      box.textContent = ''; // initially empty
 
       btn.addEventListener('click', async function(){
         box.textContent = 'Email: ' + address + ' (copied)';
@@ -253,7 +309,7 @@
         try {
           await navigator.clipboard.writeText(address);
         } catch (e) {
-          // clipboard may fail on some browsers; still show address
+          // clipboard may fail on some browsers; still show the address
         }
       });
     })();
