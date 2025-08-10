@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="The academic portfolio of Zichen Luo, a physics undergraduate at Tsinghua University, showcasing essays and technical notes.">
+  <meta name="google-site-verification" content="Gefr8Ao6VZ4F2YDwOyKPOAAIfL1fjRW7UpGcTqVIX5k" />
   <link rel="canonical" href="https://luozichen.github.io/">
   <title>Zichen Luo | Physics Portfolio</title>
 
@@ -18,7 +19,6 @@
       --max-width: 1100px;
       --radius: 12px;
       --gap: 20px;
-      --projects-height: 64vh; /* internal scrollbar height */
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       line-height:1.6;
     }
@@ -69,12 +69,12 @@
       margin-bottom:20px;
     }
 
-    /* HEADINGS: more formal serif */
+    /* HEADINGS: formal sans-serif, larger and bolder (same family as body) */
     h2.section-title{
       margin:0 0 10px 0;
-      font-family: Georgia, "Times New Roman", Times, serif; /* formal serif for headings */
-      font-size:1.45rem;  /* larger */
-      font-weight:700;    /* heavier */
+      font-family: inherit;       /* use same sans as body */
+      font-size:1.45rem;          /* larger */
+      font-weight:800;            /* heavier */
       color:var(--accent-2);
       letter-spacing:-0.01em;
     }
@@ -87,15 +87,14 @@
     /* Main flow: single column */
     main.content{display:flex;flex-direction:column;gap:18px;margin-top:18px}
 
-    /* Projects box: single-column list with internal scrollbar */
+    /* Projects box: single-column list, no scrollbar */
     .projects-box{
-      max-height: var(--projects-height);
-      overflow: hidden; /* contain internal scroll */
+      max-height: none; /* no internal scrollbar */
+      overflow: visible;
       display:block;
     }
     .projects-list{
-      overflow:auto;
-      padding-right:6px;
+      overflow: visible;
       display:flex;
       flex-direction:column;
       gap:12px;
@@ -141,8 +140,7 @@
 
     /* Responsive */
     @media (max-width:920px){
-      .projects-box{max-height:none}
-      .projects-list{max-height:none}
+      /* nothing special for projects */
     }
     @media (max-width:420px){
       .avatar{width:64px;height:64px;flex:0 0 64px}
@@ -188,13 +186,14 @@
         </p>
       </section>
 
-      <!-- Essays (single-column) with internal scrollbar; full-card links -->
+      <!-- Essays (single-column; no internal scrollbar) -->
       <section id="projects" aria-labelledby="projectsTitle">
         <h2 id="projectsTitle" class="section-title">Essays &amp; Writings</h2>
         <p class="section-note">A selection of essays and technical notes — not peer-reviewed publications.</p>
 
         <div class="projects-box" role="region" aria-label="Essays list">
-          <div class="projects-list" tabindex="0" aria-label="Scrollable list of essays">
+          <div class="projects-list" aria-label="List of essays">
+
             <a class="proj-link" href="正则量子化与路径积分量子化.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t1">
               <div class="proj">
                 <h3 id="t1" class="proj-title">Canonical Quantization and Path Integral Quantization (正则量子化与路径积分量子化)</h3>
@@ -243,6 +242,7 @@
                 <p class="proj-desc">Begins with the action to derive canonical momenta and commutation relations for a complex Klein–Gordon field, explains the conserved U(1) charge and generalises to multiple fields with SU(n) structure.</p>
               </div>
             </a>
+
           </div>
         </div>
       </section>
