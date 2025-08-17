@@ -1,223 +1,200 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The running portfolio and training log of Zichen Luo.">
-    <meta name="robots" content="noindex">
-    <title>Zichen Luo | Running</title>
-    <link rel="stylesheet" href="styles.css"> 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="The running portfolio and training log of Zichen Luo.">
+  <meta name="robots" content="noindex">
+  <title>Zichen Luo | Running</title>
 
-    <style>
-        /* Basic Reset & Body Styling */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa; /* Lighter grey background */
-            color: #212529; /* Darker, more standard text colour */
-        }
+  <style>
+    :root{
+      --bg: #f6f7fa;
+      --card: #ffffff;
+      --accent: #660099;
+      --accent-2: #8a4dd6;
+      --muted: #495057;
+      --text: #212529;
+      --max-width: 1100px;
+      --radius: 12px;
+      --gap: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height:1.6;
+    }
 
-        /* Container for centering content */
-        .container {
-            max-width: 960px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(102, 0, 153, 0.1);
-            border-radius: 8px;
-        }
+    /* Reset & base */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#fbfbfe,#f3f4f8);color:var(--text);-webkit-font-smoothing:antialiased}
+    body{font-size:16px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover,a:focus{color:var(--accent-2);text-decoration:underline}
+    :focus{outline-offset:3px}
 
-        /* Header Styling */
-        header {
-            text-align: center;
-            padding: 30px 20px;
-            border-bottom: 1px solid #d1b3ff;
-            margin-bottom: 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.8em;
-            font-weight: 600;
-            color: #660099; /* Tsinghua purple */
-        }
-        header p {
-            margin: 10px 0 0;
-            font-size: 1.2em;
-            color: #660099; /* Tsinghua purple */
-        }
+    /* Container */
+    .container{
+      max-width:var(--max-width);
+      margin:36px auto;
+      padding:26px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(33,20,60,0.06);
+    }
 
-        /* Navigation Styling */
-        nav {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #8000cc; /* Purple links */
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
-        }
-        nav ul li a:hover, nav ul li a:focus {
-            color: #4d007a; /* Darker purple on hover */
-            text-decoration: underline;
-        }
+    /* Header */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding-bottom:16px;
+      border-bottom:1px solid rgba(91,18,143,0.06);
+    }
+    .brand{display:flex;gap:14px;align-items:center}
+    .avatar{width:88px;height:88px;border-radius:50%;overflow:hidden;border:4px solid rgba(209,179,255,0.6);flex:0 0 88px}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    h1{margin:0;font-size:1.6rem;color:var(--accent);font-weight:800}
+    .subtitle{margin:6px 0 0;color:var(--accent);font-size:1rem}
+    .subtitle a{color:inherit;text-decoration:underline}
+    nav.top{display:flex;gap:12px}
+    nav.top a{padding:6px;border-radius:8px;font-weight:600}
+    nav.top a:focus{box-shadow:0 0 0 4px rgba(138,77,214,0.08);border-radius:6px}
 
-        /* Main Content Area Styling */
-        main {
-            padding: 0 20px;
-        }
+    /* Sections: subtle rounded boxes */
+    section{
+      border:1px solid rgba(102,0,153,0.06);
+      border-radius:10px;
+      padding:16px;
+      background:#fff;
+      margin-bottom:20px;
+    }
 
-        /* Section Styling */
-        section {
-            margin-bottom: 40px;
-        }
-        section h2 {
-            font-size: 1.8em;
-            color: #4d007a; /* Darker purple */
-            border-bottom: 2px solid #9933cc;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
+    h2.section-title{
+      margin:0 0 10px 0;
+      font-family: inherit;
+      font-size:1.45rem;
+      font-weight:800;
+      color:var(--accent-2);
+      letter-spacing:-0.01em;
+    }
+    .section-note{
+      margin:6px 0 12px 0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
 
-        /* Project List Styling */
-        .project-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .project-list li {
-            margin-bottom: 25px;
-        }
-        .project-list a {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #8000cc; /* Purple links */
-            text-decoration: none;
-        }
-        .project-list a:hover {
-            color: #4d007a; /* Darker purple on hover */
-            text-decoration: underline;
-        }
-        .project-list p {
-            margin: 5px 0 0 0;
-            color: #495057;
-        }
+    main.content{display:flex;flex-direction:column;gap:18px;margin-top:18px}
 
-        /* General Link Styling */
-         a {
-            color: #8000cc; /* Purple links */
-            text-decoration: none;
-        }
-        a:hover {
-            color: #4d007a; /* Darker purple on hover */
-            text-decoration: underline;
-        }
+    /* Table styling tuned for consistency */
+    .pr-table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.98rem;
+    }
+    .pr-table thead th{
+      text-align:left;
+      padding:10px 12px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:0.95rem;
+      border-bottom:2px solid rgba(153,51,204,0.06);
+    }
+    .pr-table tbody td{
+      padding:12px;
+      border-bottom:1px solid rgba(102,0,153,0.04);
+      color:var(--text);
+    }
 
+    /* Small utility styles */
+    .muted { color: var(--muted); font-size:0.95rem; }
+    .inline-meta { margin-top:6px; color:var(--muted); font-size:0.95rem; }
 
-        /* Footer Styling */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            color: #660099; /* Tsinghua purple */
-            font-size: 0.9em;
-            border-top: 1px solid #d1b3ff;
-        }
-    </style>
-    
+    /* Footer */
+    footer{margin-top:18px;padding-top:12px;border-top:1px solid rgba(153,51,204,0.06);text-align:center;color:var(--accent);font-size:0.92rem}
+
+    /* Responsive */
+    @media (max-width:920px){
+      /* no special layout changes necessary */
+    }
+    @media (max-width:420px){
+      .avatar{width:64px;height:64px;flex:0 0 64px}
+      h1{font-size:1.25rem}
+      h2.section-title{font-size:1.25rem}
+    }
+  </style>
 </head>
 <body>
+  <div class="container" role="main" aria-label="Zichen Luo running portfolio">
+    <header>
+      <div class="brand">
+        <div class="avatar" aria-hidden="false">
+          <img src="images/profile.jpg" alt="A photograph of Zichen Luo" loading="lazy" width="300" height="300">
+        </div>
+        <div>
+          <h1>Zichen Luo</h1>
+          <div class="subtitle"><a href="https://www.tsinghua.edu.cn/" target="_blank" rel="noopener noreferrer">Tsinghua University</a> · Running Portfolio</div>
+          <div class="inline-meta">Member of 中长跑二队 · Training &amp; achievements</div>
+        </div>
+      </div>
 
-    <div class="container">
-        <header>
-            <h1>Running Portfolio</h1>
-            <p>Zichen Luo | Training & Achievements</p>
-            <p style="font-size: 1em; color: #6c757d;">Member of 清华大学中长跑二队</p>
-        </header>
+      <nav class="top" aria-label="Primary navigation">
+        <a href="index.html">Back to Main Portfolio</a>
+      </nav>
+    </header>
 
-        <nav>
-            <ul>
-                <li><a href="index.html">Back to Main Portfolio</a></li>
-            </ul>
-        </nav>
+    <main class="content">
+      <section id="personal-bests" aria-labelledby="pbTitle">
+        <h2 id="pbTitle" class="section-title">Personal Bests</h2>
+        <p class="section-note">All times current as of July 2025.</p>
 
-        <main>
-            <section id="personal-bests">
-                <h2>Personal Bests</h2>
-                <table class="pr-table">
-                    <thead>
-                        <tr>
-                            <th>Distance</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1 km</td>
-                            <td>2:59</td>
-                        </tr>
-                        <tr>
-                            <td>1.5 km</td>
-                            <td>4:44</td>
-                        </tr>
-                        <tr>
-                            <td>3 km</td>
-                            <td>10:01</td>
-                        </tr>
-                        <tr>
-                            <td>5 km</td>
-                            <td>18:05</td>
-                        </tr>
-                        <tr>
-                            <td>10 km</td>
-                            <td>38:26</td>
-                        </tr>
-                        <tr>
-                            <td>Longest Distance</td>
-                            <td>40.0 km</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+        <table class="pr-table" aria-describedby="pb-desc">
+          <caption id="pb-desc" class="muted" style="caption-side:bottom;text-align:left;padding-top:8px;">Progression and PBs recorded in training and races.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Distance</th>
+              <th scope="col">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1 km</td><td>2:59 (2025-07-09)</td></tr>
+            <tr><td>1.5 km</td><td>4:44 (2025-04-27)</td></tr>
+            <tr><td>3 km</td><td>10:01 (2025-07)</td></tr>
+            <tr><td>5 km</td><td>18:05 (2025-04-24)</td></tr>
+            <tr><td>10 km</td><td>38:26 (2025-04-20)</td></tr>
+            <tr><td>Longest distance</td><td>40.0 km (long training)</td></tr>
+          </tbody>
+        </table>
+      </section>
 
-            <section id="goals">
-                <h2>Current Goals</h2>
-                <p>Immediate goal: break 10 minutes for 3km. I’m just one second off and aiming to hit it soon.</p>
-                <p>Next, I want to run 5km in 18 minutes. I was 5 seconds away a few months ago, but I’m building back to that level.</p>
-                <p>This year, I plan to run my first half marathon. Target pace is around 4:00/km — steady and controlled.</p>
-                <p>Long-term: a sub-3-hour marathon on my first attempt. Still a way off, but it’s the direction I’m training toward.</p>
-            </section>
+      <section id="goals" aria-labelledby="goalsTitle">
+        <h2 id="goalsTitle" class="section-title">Current Goals</h2>
+        <p class="section-note">Short- and medium-term training objectives.</p>
 
-            <section id="achievements">
-                <h2>Achievements</h2>
-                <p>2023 Tsinghua Minimarathon (~5km) – 966th place</p>
-                <p>2024 Tsinghua Marathon (~10km) – 82nd place</p>
-                <p>2024 Tsinghua Minimarathon (~5km) – 23rd place</p>
-                <p>2025 Tsinghua Marathon (~10km) – 9th place</p>
-            </section>
+        <p>Immediate: break <strong>10:00</strong> for 3 km (target pace ≈ 3:20 / km). I’m currently within a second of that PB and structuring intervals to hit it.</p>
+        <p>Near-term: 5 km in <strong>18:00</strong>. I was five seconds away earlier this year and am rebuilding race-specific speed.</p>
+        <p>This year: complete my first half marathon at an average target pace of about <strong>4:00 / km</strong>, prioritising a steady effort rather than an aggressive first attempt.</p>
+        <p>Long-term aspiration: a sub-3:00 marathon on the debut — a realistic long-term direction while I gain volume and race experience.</p>
+      </section>
 
-            <section id="garmin">
-                <h2>Garmin</h2>
-                <p>Check out my training and stats on <a href="https://connect.garmin.cn/modern/profile/df7bb8d6-df09-4701-88b8-39f8c82a5452" target="_blank" rel="noopener noreferrer">Garmin Connect</a>.</p>
-            </section>
+      <section id="achievements" aria-labelledby="achTitle">
+        <h2 id="achTitle" class="section-title">Achievements</h2>
+        <p class="section-note">Selected race results and placings.</p>
 
-        </main>
+        <p>2023 Tsinghua Minimarathon (~5 km) — 966th place</p>
+        <p>2024 Tsinghua Marathon (~10 km) — 82nd place</p>
+        <p>2024 Tsinghua Minimarathon (~5 km) — 23rd place</p>
+        <p>2025 Tsinghua Marathon (~10 km) — 9th place</p>
+      </section>
 
-        <footer>
-            <p>&copy; 2025 Zichen Luo. All rights reserved.</p>
-        </footer>
-    </div>
+      <section id="training-links" aria-labelledby="trainTitle">
+        <h2 id="trainTitle" class="section-title">Training & Data</h2>
+        <p class="section-note">Detailed logs and real-time stats are available on external platforms.</p>
+        <p>View training and metrics on <a href="https://connect.garmin.cn/modern/profile/df7bb8d6-df09-4701-88b8-39f8c82a5452" target="_blank" rel="noopener noreferrer">Garmin Connect</a>.</p>
+      </section>
+    </main>
 
+    <footer>
+      <p>&copy; 2025 Zichen Luo. All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 </html>
