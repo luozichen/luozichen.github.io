@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="The personal website of Zichen Luo, a physics undergraduate at Tsinghua University.">
-  <meta name="google-site-verification" content="Gefr8Ao6VZ4F2YDwOyKPOAAIfL1fjRW7UpGcTqVIX5k" />
-  <link rel="canonical" href="https://luozichen.github.io/">
-  <title>Zichen Luo | Personal Website</title>
+  <meta name="description" content="The running portfolio and training log of Zichen Luo.">
+  <meta name="robots" content="noindex">
+  <title>Zichen Luo | Running Portfolio</title>
 
   <style>
     :root{
@@ -51,7 +50,7 @@
     /* Header / Hero Section */
     header {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
       animation: fadeIn 0.8s ease-out;
     }
 
@@ -88,6 +87,8 @@
       color: var(--text-muted);
       margin-bottom: 24px;
     }
+    
+    .subtitle a { text-decoration: underline; }
 
     /* Navigation Pill */
     nav.top {
@@ -97,8 +98,6 @@
       border-radius: 99px;
       box-shadow: var(--shadow-sm);
       gap: 4px;
-      flex-wrap: wrap;
-      justify-content: center;
     }
 
     nav.top a {
@@ -114,108 +113,78 @@
       background: var(--accent-light);
     }
 
-    /* Sections */
-    section {
-      margin-bottom: 60px;
-    }
-
-    .section-header {
-      margin-bottom: 24px;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin: 0 0 6px 0;
-      position: relative;
-      display: inline-block;
-    }
-    
-    /* Decorative underline for H2 */
-    h2::after {
-        content: '';
-        display: block;
-        width: 40px;
-        height: 3px;
-        background: var(--accent);
-        border-radius: 2px;
-        margin-top: 6px;
-        opacity: 0.6;
-    }
-
-    .section-note {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    /* About Text */
-    .about-text p {
-      margin-bottom: 16px;
-      font-size: 1.05rem;
-      color: #4a5568;
-    }
-
-    /* Cards (Shared Style for Hobbies & Projects) */
-    .card-grid {
-      display: grid;
-      gap: 24px;
-    }
-
+    /* Cards */
     .card {
       background: var(--bg-card);
       border-radius: var(--border-radius);
-      padding: 24px;
+      padding: 30px;
       box-shadow: var(--shadow-sm);
       border: 1px solid rgba(0,0,0,0.04);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(102,0,153,0.15);
+      box-shadow: var(--shadow-md);
     }
 
-    .card h3 {
-      margin: 0 0 10px 0;
-      font-size: 1.15rem;
-      font-weight: 700;
+    h2 {
+      margin-top: 0;
       color: var(--accent);
+      font-size: 1.5rem;
+      border-bottom: 2px solid var(--accent-light);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      display: inline-block;
     }
 
-    .card p {
-      margin: 0;
-      font-size: 0.95rem;
+    /* Table Styling */
+    .table-container {
+        overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th {
+      text-align: left;
       color: var(--text-muted);
-      flex-grow: 1;
+      font-weight: 600;
+      border-bottom: 2px solid var(--accent-light);
+      padding: 12px;
+    }
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      color: var(--text-main);
+    }
+    tr:last-child td { border-bottom: none; }
+    
+    .time-highlight {
+        font-family: monospace; /* Monospace for numbers looks tabular */
+        font-weight: 600;
+        color: var(--accent);
+        font-size: 1.05rem;
     }
 
-    /* Grid Specifics */
-    .hobbies-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* Chart Container */
+    .chart-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 60%; /* Aspect ratio */
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(0,0,0,0.1);
     }
-
-    .projects-grid {
-      grid-template-columns: 1fr; /* Mobile default */
+    .chart-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
-
-    @media (min-width: 700px) {
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    /* Links wrapper for cards */
-    .card-link {
-      display: block;
-      height: 100%;
-    }
-    .card-link:hover { text-decoration: none; }
 
     /* Footer */
     footer {
@@ -237,25 +206,14 @@
         border: 1px solid rgba(102,0,153,0.1);
     }
 
-    /* Button */
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      transition: background 0.2s;
-    }
-    .btn:hover { background: var(--accent-hover); }
-
     /* Animation */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 600px) {
+        .chart-container { padding-bottom: 100%; } /* Taller chart on mobile */
     }
   </style>
 </head>
@@ -263,206 +221,153 @@
 
   <div class="container" role="main">
     
-    <!-- Hero / Profile Section -->
+    <!-- Hero Header -->
     <header>
       <div class="avatar-container">
         <div class="avatar">
-           <!-- Placeholder uses UI Avatars if local image missing -->
            <img src="images/profile.jpg" alt="Zichen Luo" onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=660099&color=fff&size=256'">
         </div>
       </div>
       
       <h1>Zichen Luo</h1>
       <div class="subtitle">
-        Physics Undergraduate at <a href="https://www.tsinghua.edu.cn/" target="_blank">Tsinghua University</a>
+        Running Portfolio · <a href="https://www.tsinghua.edu.cn/" target="_blank">Tsinghua University</a><br>
+        <span style="font-size: 0.9rem; opacity: 0.8;">Member of 中长跑二队</span>
       </div>
 
-      <nav class="top" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#hobbies">Hobbies</a>
-        <a href="#writings">Writings</a>
-        <a href="#contact">Contact</a>
+      <nav class="top">
+        <a href="index.html">&larr; Back to Main Site</a>
       </nav>
     </header>
 
     <main>
-      
-      <!-- About Section -->
-      <section id="about" class="about-text">
-        <div class="section-header">
-          <h2>About Me</h2>
+
+      <!-- Personal Bests Card -->
+      <section class="card">
+        <h2>Personal Bests</h2>
+        <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Distance</th>
+                  <th>Time</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1 km</td>
+                  <td class="time-highlight">2:53</td>
+                  <td>Track</td>
+                </tr>
+                <tr>
+                  <td>1.5 km</td>
+                  <td class="time-highlight">4:36</td>
+                  <td>Track</td>
+                </tr>
+                <tr>
+                  <td>3 km</td>
+                  <td class="time-highlight">9:58</td>
+                  <td>Track, Sub-10 achieved</td>
+                </tr>
+                <tr>
+                  <td>5 km</td>
+                  <td class="time-highlight">17:33</td>
+                  <td>Track PB</td>
+                </tr>
+                <tr>
+                  <td>10 km</td>
+                  <td class="time-highlight">37:22</td>
+                  <td>Road</td>
+                </tr>
+                <tr>
+                  <td>Half Marathon</td>
+                  <td class="time-highlight">1:23:30</td>
+                  <td>Track training run</td>
+                </tr>
+                <tr>
+                  <td>Longest Run</td>
+                  <td class="time-highlight">40.0 km</td>
+                  <td>Distance endurance</td>
+                </tr>
+              </tbody>
+            </table>
         </div>
-        <p>
-          I am a fourth-year Physics undergraduate at Tsinghua University. My research focus is currently centred on experimental nuclear physics, specifically working on detector simulations and design for a polarised deuteron breakup experiment to probe the nuclear symmetry energy.
-        </p>
-        <p>
-          Alongside my experimental work, I have a strong passion for theoretical physics—especially quantum field theory and general relativity. This website serves as a personal space for my technical notes, essays, and interests beyond the lab.
-        </p>
       </section>
 
-      <!-- Hobbies Section -->
-      <section id="hobbies">
-        <div class="section-header">
-          <h2>Hobbies &amp; Interests</h2>
-          <p class="section-note">Life outside the physics department.</p>
+      <!-- Pace Chart Card -->
+      <section class="card">
+        <h2>Pace Analysis</h2>
+        <p style="margin-bottom: 20px; color: var(--text-muted);">
+            A visualisation of my pace function across different distances. 
+        </p>
+        <div class="chart-container">
+            <iframe src="https://www.desmos.com/calculator/qaomk9sv9s?embed" frameborder="0"></iframe>
+        </div>
+      </section>
+
+      <!-- Goals Card -->
+      <section class="card">
+        <h2>Goals</h2>
+        <ul style="padding-left: 20px; color: var(--text-main); margin-top: 10px; line-height: 1.8;">
+            <li><strong>Immediate:</strong> Consolidate sub-10:00 3k form.</li>
+            <li><strong>Short-term:</strong> Break 17:30 for 5k consistently.</li>
+            <li><strong>2025 Target:</strong> Complete an official Half Marathon with a sub-1:23 target.</li>
+            <li><strong>Long-term:</strong> Sub-3:00 Marathon.</li>
+        </ul>
+      </section>
+
+      <!-- Achievements Card -->
+      <section class="card">
+        <h2>Race Results</h2>
+        <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Place</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2025 Tsinghua Marathon (10k)</td>
+                  <td>9th</td>
+                </tr>
+                <tr>
+                  <td>2024 Tsinghua Minimarathon (5k)</td>
+                  <td>23rd</td>
+                </tr>
+                <tr>
+                  <td>2024 Tsinghua Marathon (10k)</td>
+                  <td>82nd</td>
+                </tr>
+                <tr>
+                  <td>2023 Tsinghua Minimarathon (5k)</td>
+                  <td>966th</td>
+                </tr>
+              </tbody>
+            </table>
         </div>
         
-        <div class="card-grid hobbies-grid">
-          
-          <div class="card">
-            <h3>⚛️ Theoretical Physics</h3>
-            <p>
-               While my research is experimental, I have a deep passion for theory. I enjoy independently studying quantum field theory and general relativity to better understand the fundamental structures of our universe.
+        <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee;">
+            <p style="color: var(--text-muted); margin-bottom: 10px;">
+                Detailed logs and real-time stats are available on external platforms.
             </p>
-          </div>
-
-          <div class="card">
-            <h3>🤖 Artificial Intelligence</h3>
-            <p>
-               My interest in AI ranges from chess engine logic to LLM architecture.
-            </p>
-            
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #eee;">
-                <strong style="font-size: 0.95rem;">Project: Gemini UI Wrapper</strong>
-                <p style="font-size: 0.9rem; margin-top: 4px; margin-bottom: 8px;">
-                    A custom interface I designed for the Gemini API.
-                </p>
-                <a href="https://luozichen.pythonanywhere.com/" target="_blank" style="font-weight: 600; font-size: 0.9rem; display: inline-block; margin-bottom: 12px;">Launch Web App &rarr;</a>
-                
-                <div style="background: #f1f5f9; padding: 10px; border-radius: 8px; font-size: 0.85rem; color: #475569;">
-                    <div style="margin-bottom: 4px; font-weight: 600;">Access Credentials:</div>
-                    <div style="display:flex; justify-content: space-between;"><span>Username:</span> <code style="background:rgba(255,255,255,0.7); padding:0 4px; border-radius:4px;">tempcn</code></div>
-                    <div style="display:flex; justify-content: space-between;"><span>Password:</span> <code style="background:rgba(255,255,255,0.7); padding:0 4px; border-radius:4px;">temp123</code></div>
-                    <div style="margin-top: 6px; color: #dc2626; font-style: italic;">⚠️ API is currently rate-limited.</div>
-                </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>🏃 Running</h3>
-            <p>
-              I am a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队).
-            </p>
-            <ul style="margin: 12px 0 0 0; padding-left: 20px; font-size: 0.9em; color: var(--text-muted);">
-                <li><strong>5k PB:</strong> 17:33</li>
-                <li><strong>10k PB:</strong> 37:22</li>
-                <li><strong>Longest Run:</strong> 40.0 km</li>
-            </ul>
-            <div style="margin-top: 12px; font-size: 0.9em;">
-                <a href="running.html">View training logs &rarr;</a>
-            </div>
-          </div>
-
+            <a href="https://connect.garmin.cn/modern/profile/df7bb8d6-df09-4701-88b8-39f8c82a5452" target="_blank" style="font-weight: 600;">
+                View on Garmin Connect &rarr;
+            </a>
         </div>
-      </section>
-
-      <!-- Writings Section -->
-      <section id="writings">
-        <div class="section-header">
-          <h2>Essays &amp; Writings</h2>
-          <p class="section-note">A selection of technical notes and informal essays.</p>
-        </div>
-
-        <div class="card-grid projects-grid">
-          
-          <a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Canonical vs Path Integral Quantization</h3>
-              <p>A comparison of canonical operator quantisation and Feynman's path integral formalism, featuring derivations and pragmatic trade-offs.</p>
-            </div>
-          </a>
-
-          <a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Black Hole Thermodynamics</h3>
-              <p>A brief survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy, and Hawking radiation.</p>
-            </div>
-          </a>
-
-          <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Quantum Harmonic Ensemble</h3>
-              <p>Deriving the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position, and momentum representations.</p>
-            </div>
-          </a>
-
-          <a href="中微子质量与振荡.pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Neutrino Mass &amp; Oscillations</h3>
-              <p>Review of experimental evidence for neutrino flavour oscillations, mass models, and mixing formalism.</p>
-            </div>
-          </a>
-
-          <a href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Action Principle in Electrodynamics</h3>
-              <p>Deriving Maxwell’s equations in vacuum from a relativistic Lagrangian, discussing gauge freedom and Noether currents.</p>
-            </div>
-          </a>
-
-          <a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Polarised Deuteron Breakup</h3>
-              <p>Investigating polarised-deuteron scattering observables and polarimeter design to probe nuclear symmetry energy.</p>
-            </div>
-          </a>
-
-          <a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Complex Scalar Klein-Gordon Field</h3>
-              <p>Derivation of canonical momenta and commutation relations for a complex Klein–Gordon field.</p>
-            </div>
-          </a>
-
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section id="contact">
-        <div class="section-header">
-          <h2>Contact</h2>
-        </div>
-        <p style="margin-bottom: 12px; color: var(--text-muted);">Click below to reveal my email address.</p>
-        
-        <button id="revealEmail" class="btn">Show email &amp; copy</button>
-        <div id="emailBox" style="margin-top:12px; color:var(--text-main); font-weight: 500; height: 24px;"></div>
       </section>
 
     </main>
 
     <footer>
-      <div>&copy; 2025 Zichen Luo.</div>
+      <div>&copy; 2025 Zichen Luo. All rights reserved.</div>
       <div id="last-updated" class="last-updated">Last updated: November 2025</div>
     </footer>
   </div>
 
   <script>
-    // Email reveal script
-    (function(){
-      const btn = document.getElementById('revealEmail');
-      const box = document.getElementById('emailBox');
-      const user = 'luozc22';
-      const host = 'mails.tsinghua.edu.cn';
-      const address = user + '@' + host;
-
-      btn.addEventListener('click', async function(){
-        box.textContent = address;
-        btn.textContent = "Copied!";
-        btn.style.background = "#48bb78"; // Green success color
-        
-        try {
-          await navigator.clipboard.writeText(address);
-        } catch (e) {
-          // Ignore clipboard errors
-        }
-        
-        // Reset button after 2 seconds
-        setTimeout(() => {
-            btn.textContent = "Show email & copy";
-            btn.style.background = ""; // Reset to CSS default
-        }, 2000);
-      });
-
       // Auto-update date
       const dateEl = document.getElementById('last-updated');
       if (document.lastModified) {
@@ -470,7 +375,6 @@
           const options = { year: 'numeric', month: 'long', day: 'numeric' };
           dateEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', options);
       }
-    })();
   </script>
 </body>
 </html>
