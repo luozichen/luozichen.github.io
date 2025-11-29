@@ -3,269 +3,426 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="The academic portfolio of Zichen Luo, a physics undergraduate at Tsinghua University, showcasing essays and technical notes.">
+  <meta name="description" content="The personal website of Zichen Luo, a physics undergraduate at Tsinghua University.">
   <meta name="google-site-verification" content="Gefr8Ao6VZ4F2YDwOyKPOAAIfL1fjRW7UpGcTqVIX5k" />
   <link rel="canonical" href="https://luozichen.github.io/">
-  <title>Zichen Luo | Physics Portfolio</title>
+  <title>Zichen Luo | Personal Website</title>
 
   <style>
     :root{
-      --bg: #f6f7fa;
-      --card: #ffffff;
-      --accent: #660099;
-      --accent-2: #8a4dd6;
-      --muted: #495057;
-      --text: #212529;
-      --max-width: 1100px;
-      --radius: 12px;
-      --gap: 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height:1.6;
+      --bg-body: #f8f9fa;
+      --bg-card: #ffffff;
+      --accent: #660099;         /* Tsinghua Purple-ish */
+      --accent-light: #f3e6fa;   /* Very light purple for backgrounds */
+      --accent-hover: #8a4dd6;
+      --text-main: #2d3748;
+      --text-muted: #718096;
+      --border-radius: 16px;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.04);
+      --shadow-hover: 0 12px 40px rgba(102,0,153,0.1);
+      --max-width: 960px;
+      
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
     }
 
-    /* Reset & base */
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#fbfbfe,#f3f4f8);color:var(--text);-webkit-font-smoothing:antialiased}
-    body{font-size:16px}
-    a{color:var(--accent);text-decoration:none}
-    a:hover,a:focus{color:var(--accent-2);text-decoration:underline}
-    :focus{outline-offset:3px}
-
-    /* Container */
-    .container{
-      max-width:var(--max-width);
-      margin:36px auto;
-      padding:26px;
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:0 10px 30px rgba(33,20,60,0.06);
+    /* Base Reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      padding: 20px;
     }
 
-    /* Header */
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      padding-bottom:16px;
-      border-bottom:1px solid rgba(91,18,143,0.06);
-    }
-    .brand{display:flex;gap:14px;align-items:center}
-    .avatar{width:88px;height:88px;border-radius:50%;overflow:hidden;border:4px solid rgba(209,179,255,0.6);flex:0 0 88px}
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    h1{margin:0;font-size:1.6rem;color:var(--accent);font-weight:800}
-    .subtitle{margin:6px 0 0;color:var(--accent);font-size:1rem}
-    .subtitle a{color:inherit;text-decoration:underline}
-    nav.top{display:flex;gap:12px}
-    nav.top a{padding:6px;border-radius:8px;font-weight:600}
-    nav.top a:focus{box-shadow:0 0 0 4px rgba(138,77,214,0.08);border-radius:6px}
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent-hover); }
 
-    /* Sections: subtle rounded boxes */
-    section{
-      border:1px solid rgba(102,0,153,0.06);
-      border-radius:10px;
-      padding:16px;
-      background:#fff;
-      margin-bottom:20px;
+    /* Layout Container */
+    .container {
+      max-width: var(--max-width);
+      margin: 40px auto;
     }
 
-    /* HEADINGS: formal sans-serif, larger and bolder (same family as body) */
-    h2.section-title{
-      margin:0 0 10px 0;
-      font-family: inherit;       /* use same sans as body */
-      font-size:1.45rem;          /* larger */
-      font-weight:800;            /* heavier */
-      color:var(--accent-2);
-      letter-spacing:-0.01em;
-    }
-    .section-note{
-      margin:6px 0 12px 0;
-      color:var(--muted);
-      font-size:0.95rem;
+    /* Header / Hero Section */
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: fadeIn 0.8s ease-out;
     }
 
-    /* Main flow: single column */
-    main.content{display:flex;flex-direction:column;gap:18px;margin-top:18px}
-
-    /* Projects box: single-column list, no scrollbar */
-    .projects-box{
-      max-height: none; /* no internal scrollbar */
-      overflow: visible;
-      display:block;
-    }
-    .projects-list{
-      overflow: visible;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
+    .avatar-container {
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
     }
 
-    /* Full-card clickable link */
-    .proj-link{
-      display:block;
-      color:inherit;
-      text-decoration:none;
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #fff;
+      box-shadow: var(--shadow-md);
+      margin: 0 auto;
+      transition: transform 0.3s ease;
     }
-    .proj{
-      padding:14px;
-      border-radius:10px;
-      border:1px solid rgba(127,77,224,0.06);
-      background:linear-gradient(180deg, rgba(127,77,224,0.01), rgba(255,255,255,0));
-      transition: background-color .12s ease, transform .12s ease, box-shadow .12s ease;
+
+    .avatar:hover { transform: scale(1.02); }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px 0;
+      color: var(--text-main);
     }
-    .proj-link:focus .proj{box-shadow:0 8px 18px rgba(102,0,153,0.08);transform:translateY(-4px)}
-    .proj:hover{
-      background-color: rgba(138,77,214,0.08);
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* Navigation Pill */
+    nav.top {
+      display: inline-flex;
+      background: #fff;
+      padding: 6px;
+      border-radius: 99px;
+      box-shadow: var(--shadow-sm);
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav.top a {
+      padding: 8px 20px;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    nav.top a:hover {
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 60px;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 6px 0;
+      position: relative;
+      display: inline-block;
+    }
+    
+    /* Decorative underline for H2 */
+    h2::after {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 3px;
+        background: var(--accent);
+        border-radius: 2px;
+        margin-top: 6px;
+        opacity: 0.6;
+    }
+
+    .section-note {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* About Text */
+    .about-text p {
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+      color: #4a5568;
+    }
+
+    /* Cards (Shared Style for Hobbies & Projects) */
+    .card-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--border-radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 18px rgba(102,0,153,0.08);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(102,0,153,0.15);
     }
 
-    .proj-title{font-size:1.05rem;font-weight:700;margin:0}
-    .proj-desc{margin:8px 0 0;color:var(--muted);font-size:0.96rem}
-
-    /* Contact button */
-    .reveal-btn{
-      display:inline-block;
-      margin-top:8px;
-      background:var(--accent);
-      color:white;
-      border:none;
-      padding:8px 10px;
-      border-radius:8px;
-      cursor:pointer;
-      font-weight:700;
+    .card h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
     }
 
-    footer{margin-top:18px;padding-top:12px;border-top:1px solid rgba(153,51,204,0.06);text-align:center;color:var(--accent);font-size:0.92rem}
-
-    /* Responsive */
-    @media (max-width:920px){
-      /* nothing special for projects */
+    .card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      flex-grow: 1;
     }
-    @media (max-width:420px){
-      .avatar{width:64px;height:64px;flex:0 0 64px}
-      h1{font-size:1.25rem}
-      h2.section-title{font-size:1.25rem}
+
+    /* Grid Specifics */
+    .hobbies-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr; /* Mobile default */
+    }
+
+    @media (min-width: 700px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Links wrapper for cards */
+    .card-link {
+      display: block;
+      height: 100%;
+    }
+    .card-link:hover { text-decoration: none; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    .last-updated {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 4px 12px;
+        background: #fff;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        color: var(--accent);
+        border: 1px solid rgba(102,0,153,0.1);
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--accent-hover); }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="container" role="main" aria-label="Zichen Luo portfolio">
+
+  <div class="container" role="main">
+    
+    <!-- Hero / Profile Section -->
     <header>
-      <div class="brand">
-        <div class="avatar" aria-hidden="false">
-          <img src="images/profile.jpg" alt="A photograph of Zichen Luo" loading="lazy" width="300" height="300">
-        </div>
-        <div>
-          <h1>Zichen Luo</h1>
-          <div class="subtitle"><a href="https://www.tsinghua.edu.cn/" target="_blank" rel="noopener noreferrer">Tsinghua University</a> · Physics Undergraduate</div>
+      <div class="avatar-container">
+        <div class="avatar">
+           <!-- Placeholder uses UI Avatars if local image missing -->
+           <img src="images/profile.jpg" alt="Zichen Luo" onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=660099&color=fff&size=256'">
         </div>
       </div>
+      
+      <h1>Zichen Luo</h1>
+      <div class="subtitle">
+        Physics Undergraduate at <a href="https://www.tsinghua.edu.cn/" target="_blank">Tsinghua University</a>
+      </div>
 
-      <nav class="top" aria-label="Primary navigation">
+      <nav class="top" aria-label="Main navigation">
         <a href="#about">About</a>
-        <a href="#projects">Essays &amp; Writings</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#writings">Writings</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <main class="content">
-      <!-- About -->
-      <section id="about" aria-labelledby="aboutTitle">
-        <h2 id="aboutTitle" class="section-title">About Me</h2>
-        <p class="section-note">Fourth-year physics undergraduate at Tsinghua, working on detector simulation and polarimeter development.</p>
-
+    <main>
+      
+      <!-- About Section -->
+      <section id="about" class="about-text">
+        <div class="section-header">
+          <h2>About Me</h2>
+        </div>
         <p>
-          I’m a fourth-year Physics undergraduate at Tsinghua University, currently part of an experimental nuclear physics research group. My research focuses on detector simulations and design for a polarised deuteron breakup experiment, which probes the nuclear symmetry energy. I study the performance of scintillators and simulate detector response using Geant4 to support the development of the polarimeter.
+          I am a fourth-year Physics undergraduate at Tsinghua University. My research focus is currently centred on experimental nuclear physics, specifically working on detector simulations and design for a polarised deuteron breakup experiment to probe the nuclear symmetry energy.
         </p>
         <p>
-          Alongside this, I have a strong passion for theoretical physics—especially quantum field theory and general relativity—which I continue to explore through independent reading and coursework. This website serves as a portfolio for my academic projects and technical writing.
-        </p>
-        <p>
-          Outside of academics, I’m a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队). The team is made up of non-sports-specialist students who train seriously while balancing academic life. You can see a more detailed log of my training and achievements <a href="running.html">on my running page</a>.
+          Alongside my experimental work, I have a strong passion for theoretical physics—especially quantum field theory and general relativity. This website serves as a personal space for my technical notes, essays, and interests beyond the lab.
         </p>
       </section>
 
-      <!-- Essays (single-column; no internal scrollbar) -->
-      <section id="projects" aria-labelledby="projectsTitle">
-        <h2 id="projectsTitle" class="section-title">Essays &amp; Writings</h2>
-        <p class="section-note">A selection of essays and technical notes — not peer-reviewed publications.</p>
-
-        <div class="projects-box" role="region" aria-label="Essays list">
-          <div class="projects-list" aria-label="List of essays">
-
-            <a class="proj-link" href="正则量子化与路径积分量子化.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t1">
-              <div class="proj">
-                <h3 id="t1" class="proj-title">Canonical Quantization and Path Integral Quantization (正则量子化与路径积分量子化)</h3>
-                <p class="proj-desc">Clear comparison of canonical operator quantisation and Feynman's path integral formalism. Derivations, examples and pragmatic trade-offs, emphasising circumstances where each method simplifies quantum field calculations.</p>
-              </div>
-            </a>
-
-            <a class="proj-link" href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t2">
-              <div class="proj">
-                <h3 id="t2" class="proj-title">A Brief Overview of Black Hole Thermodynamics</h3>
-                <p class="proj-desc">Survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy and Hawking radiation, with semiclassical examples and discussion of entropy and information in gravitational thermodynamics.</p>
-              </div>
-            </a>
-
-            <a class="proj-link" href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t3">
-              <div class="proj">
-                <h3 id="t3" class="proj-title">Statistical Mechanics of the Quantum Harmonic Ensemble</h3>
-                <p class="proj-desc">Derives the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position and momentum representations, computes thermodynamic observables and compares representation-specific insights.</p>
-              </div>
-            </a>
-
-            <a class="proj-link" href="中微子质量与振荡.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t4">
-              <div class="proj">
-                <h3 id="t4" class="proj-title">Neutrino Mass and Oscillations (中微子质量与振荡)</h3>
-                <p class="proj-desc">Review of experimental evidence for neutrino flavour oscillations, mass and mixing formalism, simple phenomenological mass models, experimental constraints and implications for physics beyond the Standard Model.</p>
-              </div>
-            </a>
-
-            <a class="proj-link" href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t5">
-              <div class="proj">
-                <h3 id="t5" class="proj-title">The Action Principle in Sourceless Classical Electrodynamics</h3>
-                <p class="proj-desc">Derives Maxwell’s equations in vacuum from a relativistic Lagrangian, discusses gauge freedom, Noether currents and connections between classical and quantum electrodynamics formulations.</p>
-              </div>
-            </a>
-
-            <a class="proj-link" href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t6">
-              <div class="proj">
-                <h3 id="t6" class="proj-title">Polarised Deuteron Breakup as a Probe of the Nuclear Symmetry Energy</h3>
-                <p class="proj-desc">Investigates polarised-deuteron scattering observables and polarimeter design, demonstrating how targeted measurements constrain the density dependence of the nuclear symmetry energy relevant for neutron-rich astrophysical matter.</p>
-              </div>
-            </a>
-
-            <a class="proj-link" href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="noopener noreferrer" aria-labelledby="t7">
-              <div class="proj">
-                <h3 id="t7" class="proj-title">The Complex Scalar Klein-Gordon Field (复标量克莱因–戈尔登场)</h3>
-                <p class="proj-desc">Begins with the action to derive canonical momenta and commutation relations for a complex Klein–Gordon field, explains the conserved U(1) charge and generalises to multiple fields with SU(n) structure.</p>
-              </div>
-            </a>
-
+      <!-- Hobbies Section -->
+      <section id="hobbies">
+        <div class="section-header">
+          <h2>Hobbies &amp; Interests</h2>
+          <p class="section-note">Life outside the physics department.</p>
+        </div>
+        
+        <div class="card-grid hobbies-grid">
+          
+          <div class="card">
+            <h3>⚛️ Theoretical Physics</h3>
+            <p>
+               While my research is experimental, I have a deep passion for theory. I enjoy independently studying quantum field theory and general relativity to better understand the fundamental structures of our universe.
+            </p>
           </div>
+
+          <div class="card">
+            <h3>🤖 Artificial Intelligence</h3>
+            <p>
+               My interest in AI is broad, ranging from the logic of chess engines to the architecture of Large Language Models. I casually but closely follow the latest developments in model rankings, capabilities, and training methodologies.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>🏃 Running</h3>
+            <p>
+              I am a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队).
+            </p>
+            <ul style="margin: 12px 0 0 0; padding-left: 20px; font-size: 0.9em; color: var(--text-muted);">
+                <li><strong>5k PB:</strong> 17:33</li>
+                <li><strong>10k PB:</strong> 37:22</li>
+                <li><strong>Longest Run:</strong> 40.0 km</li>
+            </ul>
+            <div style="margin-top: 12px; font-size: 0.9em;">
+                <a href="running.html">View training logs &rarr;</a>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      <!-- Contact -->
-      <section id="contact" aria-labelledby="contactTitle">
-        <h2 id="contactTitle" class="section-title">Contact</h2>
-        <p class="section-note">Click to reveal and copy my email address.</p>
-
-        <div>
-          <button id="revealEmail" class="reveal-btn" aria-controls="emailBox" aria-expanded="false">Show email &amp; copy</button>
+      <!-- Writings Section -->
+      <section id="writings">
+        <div class="section-header">
+          <h2>Essays &amp; Writings</h2>
+          <p class="section-note">A selection of technical notes and informal essays.</p>
         </div>
-        <div id="emailBox" aria-live="polite" style="margin-top:10px;color:var(--muted);font-size:0.95rem"></div>
+
+        <div class="card-grid projects-grid">
+          
+          <a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="nofollow" class="card-link">
+            <div class="card">
+              <h3>Canonical vs Path Integral Quantization</h3>
+              <p>A comparison of canonical operator quantisation and Feynman's path integral formalism, featuring derivations and pragmatic trade-offs.</p>
+            </div>
+          </a>
+
+          <a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (1).pdf" target="_blank" rel="nofollow" class="card-link">
+            <div class="card">
+              <h3>Black Hole Thermodynamics</h3>
+              <p>A brief survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy, and Hawking radiation.</p>
+            </div>
+          </a>
+
+          <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations.pdf" target="_blank" rel="nofollow" class="card-link">
+            <div class="card">
+              <h3>Quantum Harmonic Ensemble</h3>
+              <p>Deriving the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position, and momentum representations.</p>
+            </div>
+          </a>
+
+          <a href="中微子质量与振荡.pdf" target="_blank" rel="nofollow" class="card-link">
+            <div class="card">
+              <h3>Neutrino Mass &amp; Oscillations</h3>
+              <p>Review of experimental evidence for neutrino flavour oscillations, mass models, and mixing formalism.</p>
+            </div>
+          </a>
+
+          <a href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="nofollow" class="card-link">
+            <div class="card">
+              <h3>Action Principle in Electrodynamics</h3>
+              <p>Deriving Maxwell’s equations in vacuum from a relativistic Lagrangian, discussing gauge freedom and Noether currents.</p>
+            </div>
+          </a>
+
+          <a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="nofollow" class="card-link">
+            <div class="card">
+              <h3>Polarised Deuteron Breakup</h3>
+              <p>Investigating polarised-deuteron scattering observables and polarimeter design to probe nuclear symmetry energy.</p>
+            </div>
+          </a>
+
+          <a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="nofollow" class="card-link">
+            <div class="card">
+              <h3>Complex Scalar Klein-Gordon Field</h3>
+              <p>Derivation of canonical momenta and commutation relations for a complex Klein–Gordon field.</p>
+            </div>
+          </a>
+
+        </div>
       </section>
+
+      <!-- Contact Section -->
+      <section id="contact">
+        <div class="section-header">
+          <h2>Contact</h2>
+        </div>
+        <p style="margin-bottom: 12px; color: var(--text-muted);">Click below to reveal my email address.</p>
+        
+        <button id="revealEmail" class="btn">Show email &amp; copy</button>
+        <div id="emailBox" style="margin-top:12px; color:var(--text-main); font-weight: 500; height: 24px;"></div>
+      </section>
+
     </main>
 
     <footer>
-      <p>&copy; 2025 Zichen Luo. All rights reserved.</p>
+      <div>&copy; 2025 Zichen Luo.</div>
+      <div id="last-updated" class="last-updated">Last updated: November 2025</div>
     </footer>
   </div>
 
   <script>
-    // Email reveal & copy — email exists only in JS until clicked
+    // Email reveal script
     (function(){
       const btn = document.getElementById('revealEmail');
       const box = document.getElementById('emailBox');
@@ -273,17 +430,31 @@
       const host = 'mails.tsinghua.edu.cn';
       const address = user + '@' + host;
 
-      box.textContent = ''; // initially empty
-
       btn.addEventListener('click', async function(){
-        box.textContent = 'Email: ' + address + ' (copied)';
-        this.setAttribute('aria-expanded','true');
+        box.textContent = address;
+        btn.textContent = "Copied!";
+        btn.style.background = "#48bb78"; // Green success color
+        
         try {
           await navigator.clipboard.writeText(address);
         } catch (e) {
-          // clipboard may fail on some browsers; still show the address
+          // Ignore clipboard errors
         }
+        
+        // Reset button after 2 seconds
+        setTimeout(() => {
+            btn.textContent = "Show email & copy";
+            btn.style.background = ""; // Reset to CSS default
+        }, 2000);
       });
+
+      // Auto-update date
+      const dateEl = document.getElementById('last-updated');
+      if (document.lastModified) {
+          const date = new Date(document.lastModified);
+          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          dateEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', options);
+      }
     })();
   </script>
 </body>
