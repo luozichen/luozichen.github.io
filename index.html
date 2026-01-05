@@ -1,476 +1,303 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="The personal website of Zichen Luo, a physics undergraduate at Tsinghua University.">
-  <meta name="google-site-verification" content="Gefr8Ao6VZ4F2YDwOyKPOAAIfL1fjRW7UpGcTqVIX5k" />
-  <link rel="canonical" href="https://luozichen.github.io/">
-  <title>Zichen Luo | Personal Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The personal website of Zichen Luo, a physics undergraduate at Tsinghua University.">
+    <meta name="google-site-verification" content="Gefr8Ao6VZ4F2YDwOyKPOAAIfL1fjRW7UpGcTqVIX5k" />
+    <link rel="canonical" href="https://luozichen.github.io/">
+    <title>Zichen Luo | Personal Website</title>
 
-  <style>
-    :root{
-      --bg-body: #f8f9fa;
-      --bg-card: #ffffff;
-      --accent: #660099;         /* Tsinghua Purple-ish */
-      --accent-light: #f3e6fa;   /* Very light purple for backgrounds */
-      --accent-hover: #8a4dd6;
-      --text-main: #2d3748;
-      --text-muted: #718096;
-      --border-radius: 16px;
-      --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
-      --shadow-md: 0 8px 30px rgba(0,0,0,0.04);
-      --shadow-hover: 0 12px 40px rgba(102,0,153,0.1);
-      --max-width: 960px;
-      
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-    }
+    <!-- PWA & Favicon -->
+    <link rel="icon" type="image/png" href="static/logo.png">
+    <link rel="apple-touch-icon" href="static/logo.png">
+    <meta name="theme-color" content="#0a0a0b">
 
-    /* Base Reset */
-    *, *::before, *::after { box-sizing: border-box; }
-    
-    body {
-      margin: 0;
-      background-color: var(--bg-body);
-      color: var(--text-main);
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-      padding: 20px;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--accent-hover); }
-
-    /* Layout Container */
-    .container {
-      max-width: var(--max-width);
-      margin: 40px auto;
-    }
-
-    /* Header / Hero Section */
-    header {
-      text-align: center;
-      margin-bottom: 60px;
-      animation: fadeIn 0.8s ease-out;
-    }
-
-    .avatar-container {
-      margin-bottom: 20px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 4px solid #fff;
-      box-shadow: var(--shadow-md);
-      margin: 0 auto;
-      transition: transform 0.3s ease;
-    }
-
-    .avatar:hover { transform: scale(1.02); }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; }
-
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin: 0 0 8px 0;
-      color: var(--text-main);
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
-
-    /* Navigation Pill */
-    nav.top {
-      display: inline-flex;
-      background: #fff;
-      padding: 6px;
-      border-radius: 99px;
-      box-shadow: var(--shadow-sm);
-      gap: 4px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    nav.top a {
-      padding: 8px 20px;
-      border-radius: 99px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    nav.top a:hover {
-      color: var(--accent);
-      background: var(--accent-light);
-    }
-
-    /* Sections */
-    section {
-      margin-bottom: 60px;
-    }
-
-    .section-header {
-      margin-bottom: 24px;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin: 0 0 6px 0;
-      position: relative;
-      display: inline-block;
-    }
-    
-    /* Decorative underline for H2 */
-    h2::after {
-        content: '';
-        display: block;
-        width: 40px;
-        height: 3px;
-        background: var(--accent);
-        border-radius: 2px;
-        margin-top: 6px;
-        opacity: 0.6;
-    }
-
-    .section-note {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    /* About Text */
-    .about-text p {
-      margin-bottom: 16px;
-      font-size: 1.05rem;
-      color: #4a5568;
-    }
-
-    /* Cards (Shared Style for Hobbies & Projects) */
-    .card-grid {
-      display: grid;
-      gap: 24px;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border-radius: var(--border-radius);
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(0,0,0,0.04);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(102,0,153,0.15);
-    }
-
-    .card h3 {
-      margin: 0 0 10px 0;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      flex-grow: 1;
-    }
-
-    /* Grid Specifics */
-    .hobbies-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-
-    .projects-grid {
-      grid-template-columns: 1fr; /* Mobile default */
-    }
-
-    @media (min-width: 700px) {
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    /* Links wrapper for cards */
-    .card-link {
-      display: block;
-      height: 100%;
-    }
-    .card-link:hover { text-decoration: none; }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding-top: 40px;
-      border-top: 1px solid rgba(0,0,0,0.05);
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-    
-    .last-updated {
-        display: inline-block;
-        margin-top: 8px;
-        padding: 4px 12px;
-        background: #fff;
-        border-radius: 12px;
-        font-size: 0.8rem;
-        color: var(--accent);
-        border: 1px solid rgba(102,0,153,0.1);
-    }
-
-    /* Button */
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      transition: background 0.2s;
-    }
-    .btn:hover { background: var(--accent-hover); }
-
-    /* Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="container" role="main">
-    
-    <!-- Hero / Profile Section -->
-    <header>
-      <div class="avatar-container">
-        <div class="avatar">
-           <!-- Placeholder uses UI Avatars if local image missing -->
-           <img src="images/profile.jpg" alt="Zichen Luo" onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=660099&color=fff&size=256'">
-        </div>
-      </div>
-      
-      <h1>Zichen Luo</h1>
-      <div class="subtitle">
-        Physics Undergraduate at <a href="https://www.tsinghua.edu.cn/" target="_blank">Tsinghua University</a>
-      </div>
-
-      <nav class="top" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#hobbies">Hobbies</a>
-        <a href="#writings">Writings</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <main>
-      
-      <!-- About Section -->
-      <section id="about" class="about-text">
-        <div class="section-header">
-          <h2>About Me</h2>
-        </div>
-        <p>
-          I am a fourth-year Physics undergraduate at Tsinghua University. My bachelor's thesis is centred on experimental nuclear physics within Prof. Xiao Zhigang’s group, specifically the development of polarization detectors for deuteron breakup experiments.
-        </p>
-        <p>
-          My work combines Geant4 simulation with the hardware design and assembly of plastic scintillator arrays to probe the isovector nature of nuclear symmetry energy. Alongside this experimental focus, I maintain a strong passion for theoretical physics. This website serves as a repository for my technical notes, essays, and academic interests.
-        </p>
-      </section>
-
-      <!-- Hobbies Section -->
-      <section id="hobbies">
-        <div class="section-header">
-          <h2>Hobbies &amp; Interests</h2>
-          <p class="section-note">Life outside the physics department.</p>
-        </div>
-        
-        <div class="card-grid hobbies-grid">
-          
-          <div class="card">
-            <h3>⚛️ Theoretical Physics</h3>
-            <p>
-               While my research is experimental, I have a deep passion for theory. I enjoy independently studying quantum field theory and general relativity to better understand the fundamental structures of our universe.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>🤖 Artificial Intelligence</h3>
-            <p>
-               My interest in AI ranges from chess engine logic to LLM architecture.
-            </p>
-            
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #eee;">
-                <strong style="font-size: 0.95rem;">Project: Gemini UI Wrapper</strong>
-                <p style="font-size: 0.9rem; margin-top: 4px; margin-bottom: 8px;">
-                    A custom-built wrapper and UI for interacting with multiple Large Language Models.
-                </p>
-                <a href="https://luozichen.pythonanywhere.com/" target="_blank" style="font-weight: 600; font-size: 0.9rem; display: inline-block; margin-bottom: 12px;">Launch Web App &rarr;</a>
-                
-                <div style="background: #f1f5f9; padding: 10px; border-radius: 8px; font-size: 0.85rem; color: #475569;">
-                    <div style="margin-bottom: 4px; font-weight: 600;">Access Credentials:</div>
-                    <div style="display:flex; justify-content: space-between;"><span>Username:</span> <code style="background:rgba(255,255,255,0.7); padding:0 4px; border-radius:4px;">tempcn</code></div>
-                    <div style="display:flex; justify-content: space-between;"><span>Password:</span> <code style="background:rgba(255,255,255,0.7); padding:0 4px; border-radius:4px;">temp123</code></div>
-                    <div style="margin-top: 6px; color: #dc2626; font-style: italic;">⚠️ API is currently rate-limited.</div>
-                </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>🏃 Running</h3>
-            <p>
-              I am a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队).
-            </p>
-            <ul style="margin: 12px 0 0 0; padding-left: 20px; font-size: 0.9em; color: var(--text-muted);">
-                <li><strong>5k PB:</strong> 17:33</li>
-                <li><strong>10k PB:</strong> 37:22</li>
-                <li><strong>Longest Run:</strong> 40.0 km</li>
-            </ul>
-            <div style="margin-top: 12px; font-size: 0.9em;">
-                <a href="running.html">View training logs &rarr;</a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Writings Section -->
-      <section id="writings">
-        <div class="section-header">
-          <h2>Essays &amp; Writings</h2>
-          <p class="section-note">A selection of technical notes and informal essays. Please note that some earlier entries date back to the start of my undergraduate studies; they may contain pedagogical errors or reflects an evolving understanding of the subject matter.</p>
-        </div>
-
-        <div class="card-grid projects-grid">
-          
-          <a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Canonical vs Path Integral Quantization</h3>
-              <p>A comparison of canonical operator quantisation and Feynman's path integral formalism, featuring derivations and pragmatic trade-offs.</p>
-            </div>
-          </a>
-
-          <a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (2).pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Black Hole Thermodynamics</h3>
-              <p>A brief survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy, and Hawking radiation.</p>
-            </div>
-          </a>
-
-          <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations (1).pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Quantum Harmonic Ensemble</h3>
-              <p>Deriving the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position, and momentum representations.</p>
-            </div>
-          </a>
-
-          <a href="中微子质量与振荡.pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Neutrino Mass &amp; Oscillations</h3>
-              <p>Review of experimental evidence for neutrino flavour oscillations, mass models, and mixing formalism.</p>
-            </div>
-          </a>
-
-          <a href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Action Principle in Electrodynamics</h3>
-              <p>Deriving Maxwell’s equations in vacuum from a relativistic Lagrangian, discussing gauge freedom and Noether currents.</p>
-            </div>
-          </a>
-
-          <a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Polarised Deuteron Breakup</h3>
-              <p>Investigating polarised-deuteron scattering observables and polarimeter design to probe nuclear symmetry energy.</p>
-            </div>
-          </a>
-
-          <a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="nofollow" class="card-link">
-            <div class="card">
-              <h3>Complex Scalar Klein-Gordon Field</h3>
-              <p>Derivation of canonical momenta and commutation relations for a complex Klein–Gordon field.</p>
-            </div>
-          </a>
-
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section id="contact">
-        <div class="section-header">
-          <h2>Contact</h2>
-        </div>
-        <p style="margin-bottom: 12px; color: var(--text-muted);">Click below to reveal my email address.</p>
-        
-        <button id="revealEmail" class="btn">Show email &amp; copy</button>
-        <div id="emailBox" style="margin-top:12px; color:var(--text-main); font-weight: 500; height: 24px;"></div>
-      </section>
-
-    </main>
-
-    <footer>
-      <div>&copy; 2025 Zichen Luo.</div>
-      <div id="last-updated" class="last-updated">Last updated: November 2025</div>
-    </footer>
-  </div>
-
-  <script>
-    // Email reveal script
-    (function(){
-      const btn = document.getElementById('revealEmail');
-      const box = document.getElementById('emailBox');
-      const user = 'luozc22';
-      const host = 'mails.tsinghua.edu.cn';
-      const address = user + '@' + host;
-
-      btn.addEventListener('click', async function(){
-        box.textContent = address;
-        btn.textContent = "Copied!";
-        btn.style.background = "#48bb78"; // Green success color
-        
-        try {
-          await navigator.clipboard.writeText(address);
-        } catch (e) {
-          // Ignore clipboard errors
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        background: '#0a0a0b',
+                        foreground: '#fafafa',
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        surface: '#1a1a1d',
+                        surface2: '#252529',
+                        border: '#2a2a2f',
+                        muted: '#71717a',
+                        accent: '#660099', /* Keeping a nod to the original purple but adapting */
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
         }
-        
-        // Reset button after 2 seconds
-        setTimeout(() => {
-            btn.textContent = "Show email & copy";
-            btn.style.background = ""; // Reset to CSS default
-        }, 2000);
-      });
+    </script>
+    <style>
+        /* Custom scrollbar to match the app */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/30 selection:text-white">
 
-      // Auto-update date
-      const dateEl = document.getElementById('last-updated');
-      if (document.lastModified) {
-          const date = new Date(document.lastModified);
-          const options = { year: 'numeric', month: 'long', day: 'numeric' };
-          dateEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', options);
-      }
-    })();
-  </script>
+    <div class="max-w-4xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
+        
+        <!-- Hero Section -->
+        <header class="text-center mb-16">
+            <div class="relative inline-block mb-6 group">
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
+                <img src="images/profile.jpg" alt="Zichen Luo" 
+                     class="relative w-36 h-36 rounded-full object-cover border-2 border-white/10 shadow-2xl"
+                     onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=6366f1&color=fff&size=256'">
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-3">
+                Zichen Luo
+            </h1>
+            <div class="text-lg text-muted font-light mb-8">
+                Physics Undergraduate at <a href="https://www.tsinghua.edu.cn/" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/30 hover:border-primary">Tsinghua University</a>
+            </div>
+
+            <nav class="inline-flex flex-wrap justify-center gap-2 bg-surface border border-white/5 p-1.5 rounded-full shadow-lg">
+                <a href="#about" class="px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">About</a>
+                <a href="#hobbies" class="px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">Hobbies</a>
+                <a href="#writings" class="px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">Writings</a>
+                <a href="#contact" class="px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">Contact</a>
+            </nav>
+        </header>
+
+        <main class="space-y-16">
+            
+            <!-- About Section -->
+            <section id="about" class="scroll-mt-20">
+                <div class="flex items-center gap-3 mb-6">
+                    <h2 class="text-2xl font-bold font-display text-white">About Me</h2>
+                    <div class="h-px bg-white/10 flex-1"></div>
+                </div>
+                <div class="bg-surface border border-white/5 rounded-2xl p-6 md:p-8 shadow-xl text-gray-300 leading-relaxed space-y-4">
+                    <p>
+                        I am a fourth-year Physics undergraduate at Tsinghua University. My bachelor's thesis is centred on experimental nuclear physics within Prof. Xiao Zhigang’s group, specifically the development of polarization detectors for deuteron breakup experiments.
+                    </p>
+                    <p>
+                        My work combines Geant4 simulation with the hardware design and assembly of plastic scintillator arrays to probe the isovector nature of nuclear symmetry energy. Alongside this experimental focus, I maintain a strong passion for theoretical physics. This website serves as a repository for my technical notes, essays, and academic interests.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Hobbies Section -->
+            <section id="hobbies" class="scroll-mt-20">
+                <div class="flex items-center gap-3 mb-2">
+                    <h2 class="text-2xl font-bold font-display text-white">Hobbies & Interests</h2>
+                    <div class="h-px bg-white/10 flex-1"></div>
+                </div>
+                <p class="text-sm text-muted mb-6 font-mono">Life outside the physics department.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Theory Card -->
+                    <div class="bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/30 transition-colors group">
+                        <h3 class="text-xl font-bold text-gray-100 mb-3 flex items-center gap-2">
+                            <span class="text-primary">⚛️</span> Theoretical Physics
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            While my research is experimental, I have a deep passion for theory. I enjoy independently studying quantum field theory and general relativity to better understand the fundamental structures of our universe.
+                        </p>
+                    </div>
+
+                    <!-- AI Card -->
+                    <div class="bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/30 transition-colors group">
+                        <h3 class="text-xl font-bold text-gray-100 mb-3 flex items-center gap-2">
+                            <span class="text-secondary">🤖</span> Artificial Intelligence
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            My interest in AI ranges from chess engine logic to LLM architecture.
+                        </p>
+                        
+                        <div class="bg-black/20 rounded-xl p-4 border border-white/5">
+                            <div class="flex justify-between items-start mb-2">
+                                <strong class="text-gray-200 text-sm">Project: Gemini UI Wrapper</strong>
+                                <a href="https://luozichen.pythonanywhere.com/" target="_blank" class="text-primary hover:text-white text-xs font-mono border border-primary/20 hover:bg-primary/20 px-2 py-1 rounded transition-colors">Launch App &rarr;</a>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-3">A custom-built wrapper and UI for interacting with multiple Large Language Models.</p>
+                            
+                            <div class="text-[10px] font-mono text-gray-400 space-y-1">
+                                <div class="flex justify-between"><span>User:</span> <span class="text-gray-300">tempcn</span></div>
+                                <div class="flex justify-between"><span>Pass:</span> <span class="text-gray-300">temp123</span></div>
+                                <div class="text-red-400/80 italic mt-1">⚠️ API is currently rate-limited.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Running Card -->
+                    <div class="bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/30 transition-colors md:col-span-2">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-gray-100 mb-3 flex items-center gap-2">
+                                <span class="text-green-400">🏃</span> Running
+                            </h3>
+                            <a href="running.html" class="text-xs font-mono text-muted hover:text-primary transition-colors">View Logs &rarr;</a>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            I am a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队).
+                        </p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center bg-white/5 rounded-lg p-2">
+                                <div class="text-xs text-muted uppercase font-mono mb-1">5k PB</div>
+                                <div class="text-lg font-bold text-white font-display">17:33</div>
+                            </div>
+                            <div class="text-center bg-white/5 rounded-lg p-2">
+                                <div class="text-xs text-muted uppercase font-mono mb-1">10k PB</div>
+                                <div class="text-lg font-bold text-white font-display">37:22</div>
+                            </div>
+                            <div class="text-center bg-white/5 rounded-lg p-2">
+                                <div class="text-xs text-muted uppercase font-mono mb-1">Longest</div>
+                                <div class="text-lg font-bold text-white font-display">40.0 km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Writings Section -->
+            <section id="writings" class="scroll-mt-20">
+                <div class="flex items-center gap-3 mb-2">
+                    <h2 class="text-2xl font-bold font-display text-white">Essays & Writings</h2>
+                    <div class="h-px bg-white/10 flex-1"></div>
+                </div>
+                <p class="text-sm text-muted mb-6 font-mono">Technical notes and informal essays.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <a href="正则量子化与路径积分量子化.pdf" target="_blank" rel="nofollow" class="group block">
+                        <div class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">Canonical vs Path Integral Quantization</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">A comparison of canonical operator quantisation and Feynman's path integral formalism, featuring derivations and pragmatic trade-offs.</p>
+                        </div>
+                    </a>
+
+                    <a href="A_Brief_Overview_of_Black_Hole_Thermodynamics (2).pdf" target="_blank" rel="nofollow" class="group block">
+                        <div class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">Black Hole Thermodynamics</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">A brief survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy, and Hawking radiation.</p>
+                        </div>
+                    </a>
+
+                    <a href="Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations (1).pdf" target="_blank" rel="nofollow" class="group block">
+                        <div class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">Quantum Harmonic Ensemble</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Deriving the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position, and momentum representations.</p>
+                        </div>
+                    </a>
+
+                    <a href="中微子质量与振荡.pdf" target="_blank" rel="nofollow" class="group block">
+                        <div class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">Neutrino Mass & Oscillations</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Review of experimental evidence for neutrino flavour oscillations, mass models, and mixing formalism.</p>
+                        </div>
+                    </a>
+
+                    <a href="The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf" target="_blank" rel="nofollow" class="group block">
+                        <div class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">Action Principle in Electrodynamics</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Deriving Maxwell’s equations in vacuum from a relativistic Lagrangian, discussing gauge freedom and Noether currents.</p>
+                        </div>
+                    </a>
+
+                    <a href="Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf" target="_blank" rel="nofollow" class="group block">
+                        <div class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">Polarised Deuteron Breakup</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Investigating polarised-deuteron scattering observables and polarimeter design to probe nuclear symmetry energy.</p>
+                        </div>
+                    </a>
+
+                    <a href="复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="nofollow" class="group block">
+                        <div class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">Complex Scalar Klein-Gordon Field</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Derivation of canonical momenta and commutation relations for a complex Klein–Gordon field.</p>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="scroll-mt-20">
+                <div class="flex items-center gap-3 mb-6">
+                    <h2 class="text-2xl font-bold font-display text-white">Contact</h2>
+                    <div class="h-px bg-white/10 flex-1"></div>
+                </div>
+                
+                <div class="bg-surface border border-white/5 rounded-2xl p-8 text-center">
+                    <p class="text-gray-400 mb-6">Click below to reveal my email address.</p>
+                    <button id="revealEmail" class="bg-primary hover:bg-primary/80 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-lg shadow-primary/25">Show email & copy</button>
+                    <div id="emailBox" class="mt-4 text-white font-mono h-6"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-sm">
+            <div class="mb-2">&copy; 2025 Zichen Luo.</div>
+            <div id="last-updated" class="inline-block px-3 py-1 bg-surface border border-white/5 rounded-lg font-mono text-xs">Last updated: November 2025</div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Email reveal script
+        (function(){
+            const btn = document.getElementById('revealEmail');
+            const box = document.getElementById('emailBox');
+            const user = 'luozc22';
+            const host = 'mails.tsinghua.edu.cn';
+            const address = user + '@' + host;
+
+            btn.addEventListener('click', async function(){
+                box.textContent = address;
+                btn.textContent = "Copied!";
+                btn.className = "bg-green-600 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-lg"; // Success state
+                
+                try {
+                    await navigator.clipboard.writeText(address);
+                } catch (e) {
+                    // Ignore clipboard errors
+                }
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    btn.textContent = "Show email & copy";
+                    btn.className = "bg-primary hover:bg-primary/80 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-lg shadow-primary/25";
+                }, 2000);
+            });
+
+            // Auto-update date
+            const dateEl = document.getElementById('last-updated');
+            if (document.lastModified) {
+                const date = new Date(document.lastModified);
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                dateEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', options);
+            }
+        })();
+    </script>
 </body>
 </html>
