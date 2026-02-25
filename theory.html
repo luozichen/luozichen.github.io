@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical notes and theoretical physics essays by Zichen Luo.">
+    <meta name="robots" content="noindex">
+    <title>Zichen Luo | Theoretical Physics</title>
+
+    <!-- PWA & Favicon -->
+    <link rel="icon" type="image/png" href="static/logo.png">
+    <link rel="apple-touch-icon" href="static/logo.png">
+    <meta name="theme-color" content="#0a0a0b">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'PingFang SC', 'Microsoft YaHei', 'monospace'],
+                    },
+                    colors: {
+                        background: '#0a0a0b',
+                        foreground: '#fafafa',
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        surface: '#1a1a1d',
+                        surface2: '#252529',
+                        border: '#2a2a2f',
+                        muted: '#71717a',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/30 selection:text-white">
+
+    <div class="max-w-4xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
+
+        <!-- Hero Header -->
+        <header class="text-center mb-16">
+            <div class="relative inline-block mb-6 group">
+                <div
+                    class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity duration-500">
+                </div>
+                <img src="images/profile.jpg" alt="Zichen Luo"
+                    class="relative w-36 h-36 rounded-full object-cover border-2 border-white/10 shadow-2xl"
+                    onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=6366f1&color=fff&size=256'">
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-3">
+                Zichen Luo
+            </h1>
+            <div class="text-lg text-muted font-light mb-8">
+                Theoretical Physics · <a href="https://www.tsinghua.edu.cn/" target="_blank"
+                    class="text-primary hover:text-white transition-colors border-b border-primary/30 hover:border-primary">Tsinghua
+                    University</a>
+                <div class="text-sm mt-1 opacity-70">Technical Notes & Essays</div>
+            </div>
+
+            <nav class="inline-flex justify-center bg-surface border border-white/5 p-1.5 rounded-full shadow-lg">
+                <a href="index.html"
+                    class="flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Main Site
+                </a>
+            </nav>
+        </header>
+
+        <main class="space-y-8">
+            <section class="bg-surface border border-white/5 rounded-2xl p-6 md:p-8 shadow-xl">
+                <h2 class="text-2xl font-bold font-display text-white mb-6 border-b border-white/5 pb-4">Essays &
+                    Writings</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                    <a href="articles/正则量子化与路径积分量子化.pdf" target="_blank" rel="nofollow" class="group block">
+                        <div
+                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                                Canonical vs Path Integral Quantization</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">A comparison of canonical operator
+                                quantisation and Feynman's path integral formalism, featuring derivations and pragmatic
+                                trade-offs.</p>
+                        </div>
+                    </a>
+
+                    <a href="articles/A_Brief_Overview_of_Black_Hole_Thermodynamics (2).pdf" target="_blank"
+                        rel="nofollow" class="group block">
+                        <div
+                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                                Black Hole Thermodynamics</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">A brief survey of the four laws of black hole
+                                mechanics, Bekenstein–Hawking entropy, and Hawking radiation.</p>
+                        </div>
+                    </a>
+
+                    <a href="articles/Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations (1).pdf"
+                        target="_blank" rel="nofollow" class="group block">
+                        <div
+                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                                Quantum Harmonic Ensemble</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Deriving the partition function for a
+                                canonical ensemble of quantum harmonic oscillators across energy, position, and momentum
+                                representations.</p>
+                        </div>
+                    </a>
+
+                    <a href="articles/中微子质量与振荡.pdf" target="_blank" rel="nofollow" class="group block">
+                        <div
+                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                                Neutrino Mass & Oscillations</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Review of experimental evidence for neutrino
+                                flavour oscillations, mass models, and mixing formalism.</p>
+                        </div>
+                    </a>
+
+                    <a href="articles/The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf"
+                        target="_blank" rel="nofollow" class="group block">
+                        <div
+                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                                Action Principle in Electrodynamics</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Deriving Maxwell’s equations in vacuum from a
+                                relativistic Lagrangian, discussing gauge freedom and Noether currents.</p>
+                        </div>
+                    </a>
+
+                    <a href="articles/Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf"
+                        target="_blank" rel="nofollow" class="group block">
+                        <div
+                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                                Polarised Deuteron Breakup</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Investigating polarised-deuteron scattering
+                                observables and polarimeter design to probe nuclear symmetry energy.</p>
+                        </div>
+                    </a>
+
+                    <a href="articles/复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="nofollow" class="group block">
+                        <div
+                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                                Complex Scalar Klein-Gordon Field</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Derivation of canonical momenta and
+                                commutation relations for a complex Klein–Gordon field.</p>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+        </main>
+
+        <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-sm">
+            <div class="mb-6 font-display text-base md:text-lg tracking-[0.4em] text-gray-400 opacity-80 uppercase">
+                Stay Hungry, Stay Curious.
+            </div>
+            <div class="mb-2">&copy; 2026 Zichen Luo. All rights reserved.</div>
+            <div id="last-updated"
+                class="inline-block px-3 py-1 bg-surface border border-white/5 rounded-lg font-mono text-xs">Last
+                updated: January 2026</div>
+        </footer>
+    </div>
+
+    <script>
+        // Auto-update date
+        const dateEl = document.getElementById('last-updated');
+        if (document.lastModified) {
+            const date = new Date(document.lastModified);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            dateEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', options);
+        }
+    </script>
+</body>
+
+</html>

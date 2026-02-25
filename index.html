@@ -107,8 +107,7 @@
                     class="px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">About</a>
                 <a href="#hobbies"
                     class="px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">Hobbies</a>
-                <a href="#writings"
-                    class="px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">Writings</a>
+
                 <a href="#contact"
                     class="px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">Contact</a>
             </nav>
@@ -150,25 +149,11 @@
                 <p class="text-sm text-muted mb-6 font-mono">Life outside the physics department.</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Theory Card -->
-                    <div
-                        class="bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/30 transition-colors group">
-                        <h3 class="text-xl font-bold text-gray-100 mb-3 flex items-center gap-2">
-                            <span class="text-primary">⚛️</span> Theoretical Physics
-                        </h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            While my primary research is rooted in experimental nuclear physics, I am deeply driven by
-                            the aesthetic and structural elegance of theoretical frameworks. I devote my independent
-                            study to Quantum Field Theory and General Relativity to better appreciate the mathematical
-                            beauty of our most foundational theories.
-                        </p>
-                    </div>
-
                     <!-- AI Card -->
                     <div
                         class="bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/30 transition-colors group">
                         <h3 class="text-xl font-bold text-gray-100 mb-3 flex items-center gap-2">
-                            <span class="text-secondary">🤖</span> Artificial Intelligence
+                            <span class="text-secondary">🤖</span> Machine Learning and Language Models
                         </h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             My interest in AI ranges from chess engine logic to LLM architecture.
@@ -192,6 +177,25 @@
                                 <div class="text-red-400/80 italic mt-1">⚠️ API is currently rate-limited.</div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Theory Card -->
+                    <div
+                        class="bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/30 transition-colors group">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-gray-100 flex items-center gap-2">
+                                <span class="text-primary">⚛️</span> Theoretical Physics
+                            </h3>
+                            <a href="theory.html"
+                                class="text-xs font-mono text-muted hover:text-primary transition-colors">View Notes
+                                &rarr;</a>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            While my primary research is rooted in experimental nuclear physics, I am deeply driven by
+                            the aesthetic and structural elegance of theoretical frameworks. I devote my independent
+                            study to Quantum Field Theory and General Relativity to better appreciate the mathematical
+                            beauty of our most foundational theories.
+                        </p>
                     </div>
 
                     <!-- Running Card -->
@@ -227,94 +231,7 @@
                 </div>
             </section>
 
-            <!-- Writings Section -->
-            <section id="writings" class="scroll-mt-20">
-                <div class="flex items-center gap-3 mb-2">
-                    <h2 class="text-2xl font-bold font-display text-white">Essays & Writings</h2>
-                    <div class="h-px bg-white/10 flex-1"></div>
-                </div>
-                <p class="text-sm text-muted mb-6 font-mono">Technical notes and informal essays.</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                    <a href="articles/正则量子化与路径积分量子化.pdf" target="_blank" rel="nofollow" class="group block">
-                        <div
-                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
-                                Canonical vs Path Integral Quantization</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">A comparison of canonical operator
-                                quantisation and Feynman's path integral formalism, featuring derivations and pragmatic
-                                trade-offs.</p>
-                        </div>
-                    </a>
-
-                    <a href="articles/A_Brief_Overview_of_Black_Hole_Thermodynamics (2).pdf" target="_blank"
-                        rel="nofollow" class="group block">
-                        <div
-                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
-                                Black Hole Thermodynamics</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">A brief survey of the four laws of black hole
-                                mechanics, Bekenstein–Hawking entropy, and Hawking radiation.</p>
-                        </div>
-                    </a>
-
-                    <a href="articles/Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations (1).pdf"
-                        target="_blank" rel="nofollow" class="group block">
-                        <div
-                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
-                                Quantum Harmonic Ensemble</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Deriving the partition function for a
-                                canonical ensemble of quantum harmonic oscillators across energy, position, and momentum
-                                representations.</p>
-                        </div>
-                    </a>
-
-                    <a href="articles/中微子质量与振荡.pdf" target="_blank" rel="nofollow" class="group block">
-                        <div
-                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
-                                Neutrino Mass & Oscillations</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Review of experimental evidence for neutrino
-                                flavour oscillations, mass models, and mixing formalism.</p>
-                        </div>
-                    </a>
-
-                    <a href="articles/The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf"
-                        target="_blank" rel="nofollow" class="group block">
-                        <div
-                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
-                                Action Principle in Electrodynamics</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Deriving Maxwell’s equations in vacuum from a
-                                relativistic Lagrangian, discussing gauge freedom and Noether currents.</p>
-                        </div>
-                    </a>
-
-                    <a href="articles/Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf"
-                        target="_blank" rel="nofollow" class="group block">
-                        <div
-                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
-                                Polarised Deuteron Breakup</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Investigating polarised-deuteron scattering
-                                observables and polarimeter design to probe nuclear symmetry energy.</p>
-                        </div>
-                    </a>
-
-                    <a href="articles/复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="nofollow" class="group block">
-                        <div
-                            class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
-                                Complex Scalar Klein-Gordon Field</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Derivation of canonical momenta and
-                                commutation relations for a complex Klein–Gordon field.</p>
-                        </div>
-                    </a>
-
-                </div>
-            </section>
 
             <!-- Contact Section -->
             <section id="contact" class="scroll-mt-20">
