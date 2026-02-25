@@ -148,26 +148,47 @@
                 </div>
                 <p class="text-sm text-muted mb-6 font-mono">Life outside the physics department.</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 gap-6">
                     <!-- AI Card -->
                     <div
                         class="bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/30 transition-colors group">
-                        <h3 class="text-xl font-bold text-gray-100 mb-3 flex items-center gap-2">
-                            <span class="text-secondary">🤖</span> Machine Learning and Language Models
-                        </h3>
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-gray-100 flex items-center gap-2">
+                                <span class="text-secondary">🤖</span> Machine Learning and Language Models
+                            </h3>
+                            <a href="ml.html"
+                                class="text-xs font-mono text-muted hover:text-primary transition-colors">View Research
+                                &rarr;</a>
+                        </div>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             My interest in AI ranges from chess engine logic to LLM architecture.
                         </p>
 
+                        <div class="bg-black/20 rounded-xl p-4 border border-white/5 mb-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <strong class="text-gray-200 text-sm">Project: LLM Ablation Study</strong>
+                                <div class="flex gap-2">
+                                    <a href="https://github.com/luozichen/neonbench" target="_blank"
+                                        class="text-primary hover:text-white text-xs font-mono border border-primary/20 hover:bg-primary/20 px-2 py-1 rounded transition-colors">Logs
+                                        &rarr;</a>
+                                    <a href="http://luozichen.pythonanywhere.com" target="_blank"
+                                        class="text-secondary hover:text-white text-xs font-mono border border-secondary/20 hover:bg-secondary/20 px-2 py-1 rounded transition-colors">Visualize
+                                        &rarr;</a>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500">Research into quasi-encoder fusion, splitbrain attention,
+                                and Learnt-Intent LLM architectures.</p>
+                        </div>
+
                         <div class="bg-black/20 rounded-xl p-4 border border-white/5">
                             <div class="flex justify-between items-start mb-2">
-                                <strong class="text-gray-200 text-sm">Project: Gemini UI Wrapper</strong>
-                                <a href="https://luozichen.pythonanywhere.com/" target="_blank"
+                                <strong class="text-gray-200 text-sm">Project: AI API Caller</strong>
+                                <a href="http://luozichen.pythonanywhere.com/neoncore" target="_blank"
                                     class="text-primary hover:text-white text-xs font-mono border border-primary/20 hover:bg-primary/20 px-2 py-1 rounded transition-colors">Launch
                                     App &rarr;</a>
                             </div>
-                            <p class="text-xs text-gray-500 mb-3">A custom-built wrapper and UI for interacting with
-                                multiple Large Language Models.</p>
+                            <p class="text-xs text-gray-500 mb-3">A custom-built REST caller serving models
+                                dynamically to the API.</p>
 
                             <div class="text-[10px] font-mono text-gray-400 space-y-1">
                                 <div class="flex justify-between"><span>User:</span> <span
@@ -200,7 +221,7 @@
 
                     <!-- Running Card -->
                     <div
-                        class="bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/30 transition-colors md:col-span-2">
+                        class="bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/30 transition-colors">
                         <div class="flex justify-between items-start">
                             <h3 class="text-xl font-bold text-gray-100 mb-3 flex items-center gap-2">
                                 <span class="text-green-400">🏃</span> Running
@@ -215,16 +236,16 @@
                         </p>
                         <div class="grid grid-cols-3 gap-4">
                             <div class="text-center bg-white/5 rounded-lg p-2">
+                                <div class="text-xs text-muted uppercase font-mono mb-1">3k PB</div>
+                                <div class="text-lg font-bold text-white font-display">9:58</div>
+                            </div>
+                            <div class="text-center bg-white/5 rounded-lg p-2">
                                 <div class="text-xs text-muted uppercase font-mono mb-1">5k PB</div>
                                 <div class="text-lg font-bold text-white font-display">17:33</div>
                             </div>
                             <div class="text-center bg-white/5 rounded-lg p-2">
                                 <div class="text-xs text-muted uppercase font-mono mb-1">10k PB</div>
                                 <div class="text-lg font-bold text-white font-display">37:22</div>
-                            </div>
-                            <div class="text-center bg-white/5 rounded-lg p-2">
-                                <div class="text-xs text-muted uppercase font-mono mb-1">Longest</div>
-                                <div class="text-lg font-bold text-white font-display">40.0 km</div>
                             </div>
                         </div>
                     </div>

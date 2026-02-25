@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Machine Learning and Language Models research by Zichen Luo.">
+    <meta name="robots" content="noindex">
+    <title>Zichen Luo | Machine Learning</title>
+
+    <!-- PWA & Favicon -->
+    <link rel="icon" type="image/png" href="static/logo.png">
+    <link rel="apple-touch-icon" href="static/logo.png">
+    <meta name="theme-color" content="#0a0a0b">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'PingFang SC', 'Microsoft YaHei', 'monospace'],
+                    },
+                    colors: {
+                        background: '#0a0a0b',
+                        foreground: '#fafafa',
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        surface: '#1a1a1d',
+                        surface2: '#252529',
+                        border: '#2a2a2f',
+                        muted: '#71717a',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/30 selection:text-white">
+
+    <div class="max-w-4xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
+
+        <!-- Hero Header -->
+        <header class="text-center mb-16">
+            <div class="relative inline-block mb-6 group">
+                <div
+                    class="absolute inset-0 bg-gradient-to-tr from-secondary to-primary rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity duration-500">
+                </div>
+                <img src="images/profile.jpg" alt="Zichen Luo"
+                    class="relative w-36 h-36 rounded-full object-cover border-2 border-white/10 shadow-2xl"
+                    onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=8b5cf6&color=fff&size=256'">
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-3">
+                Zichen Luo
+            </h1>
+            <div class="text-lg text-muted font-light mb-8">
+                Machine Learning & Language Models · <a href="https://www.tsinghua.edu.cn/" target="_blank"
+                    class="text-primary hover:text-white transition-colors border-b border-primary/30 hover:border-primary">Tsinghua
+                    University</a>
+                <div class="text-sm mt-1 opacity-70">Architectural Experiments and AI Tooling</div>
+            </div>
+
+            <nav class="inline-flex justify-center bg-surface border border-white/5 p-1.5 rounded-full shadow-lg">
+                <a href="index.html"
+                    class="flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Main Site
+                </a>
+            </nav>
+        </header>
+
+        <main class="space-y-8">
+            <section class="bg-surface border border-white/5 rounded-2xl p-6 md:p-8 shadow-xl">
+                <h2 class="text-2xl font-bold font-display text-white mb-6 border-b border-white/5 pb-4">NeonBench: LLM
+                    Architecture Research</h2>
+
+                <div class="space-y-6 text-gray-300 leading-relaxed">
+                    <p>
+                        <strong>NeonBench</strong> is my experimental framework for rapidly iterating over novel
+                        Language Model architectures, specifically targeting sub-10M parameter bounds (primarily 5.0M
+                        non-embedding parameters) to test architectural efficiency before scaling up. Below is a summary
+                        of the core concepts I've been researching:
+                    </p>
+
+                    <div class="bg-black/20 rounded-xl p-5 border border-white/5">
+                        <h3 class="text-lg font-bold text-gray-200 mb-3 text-primary">1. Quasi-Encoder Fusion &
+                            SplitBrain Attention</h3>
+                        <p class="text-sm text-gray-400 mb-3">
+                            The SplitBrain architecture operates by bifurcating the standard causal attention matrix. By
+                            processing a "causal stream" and a "lookahead stream" (which is allowed to see future tokens
+                            up to a certain sequence depth, acting as a Quasi-Encoder), the network achieves deep
+                            bidirectional context within a primarily autoregressive framework.
+                        </p>
+                        <p class="text-sm text-gray-400">
+                            Recent experiments fine-tuning the lookahead ratio (e.g., 25%, 50%, 100%) against parameter
+                            budgets have yielded fascinating trade-offs between training speed and long-context
+                            comprehension on rigorous tasks.
+                        </p>
+                    </div>
+
+                    <div class="bg-black/20 rounded-xl p-5 border border-white/5">
+                        <h3 class="text-lg font-bold text-gray-200 mb-3 text-secondary">2. Learnt Intent Streaming</h3>
+                        <p class="text-sm text-gray-400 mb-3">
+                            A novel concept where an independent set of learned residual states—the "intent
+                            stream"—flows alongside the primary token representation stream. Rather than discarding
+                            sequence representations at each layer, the intent stream aggregates contextual meaning,
+                            which is then fed back into the query projections of subsequent attention layers.
+                        </p>
+                        <p class="text-sm text-gray-400">
+                            We observed that adding this explicit parallel intent stream prevents representation
+                            collapse in deep networks and provides robust multi-token reasoning capabilities natively
+                            within the forward pass.
+                        </p>
+                    </div>
+
+                    <div class="bg-black/20 rounded-xl p-5 border border-white/5">
+                        <h3 class="text-lg font-bold text-gray-200 mb-3 text-green-400">3. Continuous Ablation Studies
+                        </h3>
+                        <p class="text-sm text-gray-400 mb-3">
+                            I enforce strict parameter-parity bounds (e.g. 5,004,528 params) across all experimental
+                            models. We dynamically adjust <code class="bg-white/10 px-1 rounded">d_ff</code> dimensions
+                            to compensate for any newly added parameters when introducing SplitBrain Lookahead, Intent
+                            Streams, or Convolutional Mixing layers.
+                        </p>
+                        <ul class="list-disc pl-5 text-sm text-gray-400 space-y-2">
+                            <li><strong>Phase 6</strong>: Validating deep lookahead mask structures (50% vs 100%
+                                visibility).</li>
+                            <li><strong>Phase 7</strong>: Combining lookahead with Learnt Intent.</li>
+                            <li><strong>Phase 8 & 9 (Current)</strong>: Pure intent-only and convolution-only ablations
+                                to definitively prove the source of representation supremacy.</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                        <a href="https://github.com/luozichen/neonbench" target="_blank"
+                            class="flex-1 text-center bg-surface hover:bg-white/5 border border-white/10 rounded-xl py-3 text-sm font-medium transition-colors">
+                            View Scripts on GitHub
+                        </a>
+                        <a href="http://luozichen.pythonanywhere.com" target="_blank"
+                            class="flex-1 text-center bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary rounded-xl py-3 text-sm font-medium transition-colors">
+                            Launch NeonCore UI
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-sm">
+            <div class="mb-6 font-display text-base md:text-lg tracking-[0.4em] text-gray-400 opacity-80 uppercase">
+                Stay Hungry, Stay Curious.
+            </div>
+            <div class="mb-2">&copy; 2026 Zichen Luo. All rights reserved.</div>
+            <div id="last-updated"
+                class="inline-block px-3 py-1 bg-surface border border-white/5 rounded-lg font-mono text-xs">Last
+                updated: January 2026</div>
+        </footer>
+    </div>
+
+    <script>
+        // Auto-update date
+        const dateEl = document.getElementById('last-updated');
+        if (document.lastModified) {
+            const date = new Date(document.lastModified);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            dateEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', options);
+        }
+    </script>
+</body>
+
+</html>
