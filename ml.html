@@ -9,7 +9,7 @@
     <title>Zichen Luo | Machine Learning</title>
 
     <!-- PWA & Favicon -->
-    <link class="icon" type="image/png" href="static/logo.png">
+    <link rel="icon" type="image/png" href="static/logo.png">
     <link rel="apple-touch-icon" href="static/logo.png">
     <meta name="theme-color" content="#0a0a0b">
 
@@ -75,6 +75,36 @@
 
 <body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/30 selection:text-white">
 
+    <!-- Floating Hamburger Button (Left Side) -->
+    <div class="fixed top-6 left-6 z-50">
+        <button id="menu-btn" onclick="toggleMenu()" class="bg-surface/85 backdrop-blur border border-white/5 p-2.5 rounded-full flex items-center justify-center shadow-xl text-gray-400 hover:text-white hover:border-white/20 hover:scale-105 active:scale-95 transition-all">
+            <!-- Hamburger Open Icon -->
+            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <!-- Hamburger Close Icon -->
+            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Slide-in Navigation Drawer -->
+    <div id="side-menu" class="fixed top-0 left-0 h-screen w-64 bg-background/95 backdrop-blur-md border-r border-white/5 z-40 transform -translate-x-full transition-transform duration-300 shadow-2xl pt-24 px-6 flex flex-col justify-between">
+        <nav class="flex flex-col gap-3 font-display text-base">
+            <a href="index.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Home" data-zh="主页">Home</a>
+            <a href="blog.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="My Blog" data-zh="我的博客">My Blog</a>
+            <a href="theory.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Notes" data-zh="理论笔记">Notes</a>
+            <a href="running.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Running Life" data-zh="跑步生活">Running Life</a>
+            <a href="ml.html" class="px-4 py-2.5 rounded-xl bg-white/5 text-white font-medium transition-all" data-en="Machine Learning" data-zh="机器学习">Machine Learning</a>
+        </nav>
+        <div class="mb-8 font-mono text-[10px] text-muted text-center" data-en="Zichen's Corner" data-zh="子辰的个人角落">
+            Zichen's Corner
+        </div>
+    </div>
+    <!-- Menu Overlay to close when clicking outside -->
+    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 hidden transition-opacity duration-300"></div>
+
     <!-- Floating Translation Toggle -->
     <div class="fixed top-6 right-6 z-50 bg-surface/80 backdrop-blur border border-white/5 px-2 py-1 rounded-full flex gap-1.5 text-xs font-mono shadow-xl">
         <button id="btn-en" onclick="changeLang('en')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
@@ -94,7 +124,7 @@
                     onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=8b5cf6&color=fff&size=256'">
             </div>
 
-            <h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-3">Zichen Luo</h1>
+            <h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-3" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</h1>
             <div class="text-lg text-muted font-light mb-8">
                 <span data-en="Machine Learning & Language Models" data-zh="机器学习与大语言模型研究">Machine Learning & Language Models</span> · <a href="https://www.tsinghua.edu.cn/" target="_blank"
                     class="text-primary hover:text-white transition-colors border-b border-primary/30 hover:border-primary">Tsinghua
@@ -133,7 +163,7 @@
                         <h3 class="text-lg font-bold text-gray-200 mb-3 text-primary" data-en="1. Quasi-Encoder Fusion & SplitBrain Attention" data-zh="1. 拟编码器融合与 SplitBrain 注意力">1. Quasi-Encoder Fusion & SplitBrain Attention</h3>
                         <p class="text-sm text-gray-400 mb-3" 
                            data-en="The SplitBrain architecture operates by bifurcating the standard causal attention matrix. By processing a 'causal stream' and a 'lookahead stream' (which is allowed to see future tokens up to a certain sequence depth, acting as a Quasi-Encoder), the network achieves deep bidirectional context within a primarily autoregressive framework."
-                           data-zh="SplitBrain 架构通过将标准的因果注意力矩阵（causal attention matrix）进行分叉运行。通过同时处理一个“因果流”和一个“前瞻流”（前瞻流被允许查看特定序列深度内的未来 Token，充当拟编码器的角色），该网络在主要是自回归的框架内实现了深度的双向上下文理解。">
+                           data-zh="SplitBrain 架构通过将标准的因果注意力矩阵（causal attention matrix）进行分叉运行。通过同时处理一个“因果流”和一个“前瞻流”（前瞻流被允许查看特定序列深度内的未来 Token，充当拟编码器的角色），该网络在主要是自回归的框架内实现了双朝向上下文理解。">
                             The SplitBrain architecture operates by bifurcating the standard causal attention matrix. By
                             processing a "causal stream" and a "lookahead stream" (which is allowed to see future tokens
                             up to a certain sequence depth, acting as a Quasi-Encoder), the network achieves deep
@@ -206,7 +236,9 @@
             <div class="mb-6 font-display text-base md:text-lg tracking-[0.4em] text-gray-400 opacity-80 uppercase" data-en="Stay Hungry, Stay Curious." data-zh="保持饥饿，保持好奇。">
                 Stay Hungry, Stay Curious.
             </div>
-            <div class="mb-2">&copy; 2026 Zichen Luo. All rights reserved.</div>
+            <div class="mb-2">
+                <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
+            </div>
             <div id="last-updated"
                 class="inline-block px-3 py-1 bg-surface border border-white/5 rounded-lg font-mono text-xs">Last
                 updated: January 2026</div>
@@ -214,6 +246,28 @@
     </div>
 
     <script>
+        // Left Side Hamburger Menu Drawer toggle logic
+        function toggleMenu() {
+            const sideMenu = document.getElementById('side-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+
+            const isClosed = sideMenu.classList.contains('-translate-x-full');
+
+            if (isClosed) {
+                sideMenu.classList.remove('-translate-x-full');
+                menuOverlay.classList.remove('hidden');
+                openIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                sideMenu.classList.add('-translate-x-full');
+                menuOverlay.classList.add('hidden');
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+
         // Auto-update date
         const dateEl = document.getElementById('last-updated');
         if (document.lastModified) {
@@ -229,7 +283,7 @@
             document.querySelectorAll('[data-zh]').forEach(el => {
                 let translation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
                 if (translation !== null) {
-                    if (translation.includes('<strong') || translation.includes('<code')) {
+                    if (translation.includes('<strong') || translation.includes('<code') || translation.includes('&copy;')) {
                         el.innerHTML = translation;
                     } else {
                         el.textContent = translation;
@@ -237,7 +291,6 @@
                 }
             });
 
-            // Toggle button styles
             const btnEn = document.getElementById('btn-en');
             const btnZh = document.getElementById('btn-zh');
 
@@ -264,6 +317,14 @@
             }
 
             localStorage.setItem('preferred-lang', lang);
+
+            // Sync side navigation text language
+            document.querySelectorAll('#side-menu [data-zh]').forEach(el => {
+                const navTranslation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+                if (navTranslation !== null) {
+                    el.textContent = navTranslation;
+                }
+            });
         }
 
         // Initialize state

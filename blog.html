@@ -75,6 +75,36 @@
 
 <body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/30 selection:text-white">
 
+    <!-- Floating Hamburger Button (Left Side) -->
+    <div class="fixed top-6 left-6 z-50">
+        <button id="menu-btn" onclick="toggleMenu()" class="bg-surface/85 backdrop-blur border border-white/5 p-2.5 rounded-full flex items-center justify-center shadow-xl text-gray-400 hover:text-white hover:border-white/20 hover:scale-105 active:scale-95 transition-all">
+            <!-- Hamburger Open Icon -->
+            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <!-- Hamburger Close Icon -->
+            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Slide-in Navigation Drawer -->
+    <div id="side-menu" class="fixed top-0 left-0 h-screen w-64 bg-background/95 backdrop-blur-md border-r border-white/5 z-40 transform -translate-x-full transition-transform duration-300 shadow-2xl pt-24 px-6 flex flex-col justify-between">
+        <nav class="flex flex-col gap-3 font-display text-base">
+            <a href="index.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Home" data-zh="主页">Home</a>
+            <a href="blog.html" class="px-4 py-2.5 rounded-xl bg-white/5 text-white font-medium transition-all" data-en="My Blog" data-zh="我的博客">My Blog</a>
+            <a href="theory.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Notes" data-zh="理论笔记">Notes</a>
+            <a href="running.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Running Life" data-zh="跑步生活">Running Life</a>
+            <a href="ml.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Machine Learning" data-zh="机器学习">Machine Learning</a>
+        </nav>
+        <div class="mb-8 font-mono text-[10px] text-muted text-center" data-en="Zichen's Corner" data-zh="子辰的个人角落">
+            Zichen's Corner
+        </div>
+    </div>
+    <!-- Menu Overlay to close when clicking outside -->
+    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 hidden transition-opacity duration-300"></div>
+
     <!-- Floating Translation Toggle -->
     <div class="fixed top-6 right-6 z-50 bg-surface/80 backdrop-blur border border-white/5 px-2 py-1 rounded-full flex gap-1.5 text-xs font-mono shadow-xl">
         <button id="btn-en" onclick="changeLang('en')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
@@ -92,7 +122,7 @@
                     onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=8b5cf6&color=fff&size=256'">
             </div>
 
-            <h1 class="text-3xl font-bold font-display tracking-tight mb-2">Zichen Luo</h1>
+            <h1 class="text-3xl font-bold font-display tracking-tight mb-2" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</h1>
             <div class="text-sm font-mono text-primary flex items-center justify-center gap-1.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
                 <span data-en="Thoughts & updates feed" data-zh="动态与主页随笔">Thoughts & updates feed</span>
@@ -147,7 +177,7 @@
 
         <!-- Footer -->
         <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-xs font-mono">
-            &copy; 2026 Zichen Luo. All rights reserved.
+            <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
         </footer>
 
     </div>
@@ -156,6 +186,28 @@
     <script>
         let allPosts = [];
         let activeCategory = 'All';
+
+        // Left Side Hamburger Menu Drawer toggle logic
+        function toggleMenu() {
+            const sideMenu = document.getElementById('side-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+
+            const isClosed = sideMenu.classList.contains('-translate-x-full');
+
+            if (isClosed) {
+                sideMenu.classList.remove('-translate-x-full');
+                menuOverlay.classList.remove('hidden');
+                openIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                sideMenu.classList.add('-translate-x-full');
+                menuOverlay.classList.add('hidden');
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
 
         // Load Blog Posts from JSON
         async function loadFeed() {
@@ -219,7 +271,7 @@
                             <img src="images/profile.jpg" alt="Zichen" class="w-10 h-10 rounded-full object-cover border border-white/10">
                             <div>
                                 <h4 class="text-sm font-bold text-gray-200 flex items-center gap-2">
-                                    Zichen Luo
+                                    ${lang === 'zh' ? '罗子辰' : 'Zichen Luo'}
                                     <span class="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full border ${categoryColor}">
                                         ${post.category}
                                     </span>
@@ -287,6 +339,7 @@
             return likesObj[postId];
         }
 
+        // Like/Unlike function
         function likePost(postId) {
             const likesObj = JSON.parse(localStorage.getItem('blog-likes') || '{}');
             const likedList = JSON.parse(localStorage.getItem('blog-liked-list') || '[]');
@@ -295,17 +348,13 @@
             const countEl = document.getElementById(`like-count-${postId}`);
             
             if (likedList.includes(postId)) {
-                // Unlike
                 likesObj[postId] = Math.max(0, (likesObj[postId] || 1) - 1);
                 likedList.splice(likedList.indexOf(postId), 1);
                 if (btn) btn.classList.remove('text-red-400');
             } else {
-                // Like
                 likesObj[postId] = (likesObj[postId] || 0) + 1;
                 likedList.push(postId);
                 if (btn) btn.classList.add('text-red-400');
-                
-                // Trigger tiny pop scale animation
                 const heart = btn.querySelector('span');
                 if (heart) {
                     heart.classList.add('scale-150');
@@ -315,11 +364,9 @@
 
             localStorage.setItem('blog-likes', JSON.stringify(likesObj));
             localStorage.setItem('blog-liked-list', JSON.stringify(likedList));
-            
             if (countEl) countEl.textContent = likesObj[postId];
         }
 
-        // Apply visual button styles for already liked items
         function updateLikeVisuals() {
             const likedList = JSON.parse(localStorage.getItem('blog-liked-list') || '[]');
             likedList.forEach(postId => {
@@ -328,11 +375,8 @@
             });
         }
 
-        // Filtering posts functionality
         function filterPosts(category) {
             activeCategory = category;
-            
-            // Toggle active classes on buttons
             const filterIds = {
                 'All': 'filter-all',
                 'Physics': 'filter-physics',
@@ -363,7 +407,6 @@
                 }
             });
 
-            // Toggle button styles
             const btnEn = document.getElementById('btn-en');
             const btnZh = document.getElementById('btn-zh');
 
@@ -379,7 +422,6 @@
 
             localStorage.setItem('preferred-lang', lang);
             
-            // Rerender timeline with new locale formatting and text
             if (allPosts.length > 0) {
                 renderTimeline();
                 updateLikeVisuals();
@@ -394,10 +436,17 @@
                     'https://giscus.app'
                 );
             }
+
+            // Sync side navigation text language
+            document.querySelectorAll('#side-menu [data-zh]').forEach(el => {
+                const navTranslation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+                if (navTranslation !== null) {
+                    el.textContent = navTranslation;
+                }
+            });
         }
 
         function focusComment() {
-            // Scroll down to the Giscus container anchor
             const element = document.querySelector('.giscus');
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -411,7 +460,6 @@
             const container = document.querySelector('.giscus');
             if (!container) return;
 
-            // Anchor element for smooth scrolling
             const anchor = document.createElement('div');
             anchor.id = 'giscus-anchor';
             container.parentNode.insertBefore(anchor, container);
@@ -419,9 +467,9 @@
             const script = document.createElement('script');
             script.src = 'https://giscus.app/client.js';
             script.setAttribute('data-repo', 'luozichen/luozichen.github.io');
-            script.setAttribute('data-repo-id', 'R_kgDONGpUAg'); // Clean default placeholder. User can customize if repo is renamed.
+            script.setAttribute('data-repo-id', 'R_kgDONGpUAg');
             script.setAttribute('data-category', 'Announcements');
-            script.setAttribute('data-category-id', 'DIC_kwDONGpUAs4Ck4_y'); // Clean default placeholder.
+            script.setAttribute('data-category-id', 'DIC_kwDONGpUAs4Ck4_y');
             script.setAttribute('data-mapping', 'pathname');
             script.setAttribute('data-strict', '0');
             script.setAttribute('data-reactions-enabled', '1');
