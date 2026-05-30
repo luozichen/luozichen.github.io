@@ -168,7 +168,7 @@
                 // Category styling (academic tags)
                 let categoryColor = 'text-primary border-primary/20 bg-primary/5';
                 if (post.category === 'Running') categoryColor = 'text-emerald-700 border-emerald-600/20 bg-emerald-50';
-                if (post.category === 'Theory') categoryColor = 'text-amber-800 border-amber-600/20 bg-amber-50';
+                if (post.category === 'Physics') categoryColor = 'text-amber-800 border-amber-600/20 bg-amber-50';
                 if (post.category === 'Machine Learning') categoryColor = 'text-blue-700 border-blue-600/20 bg-blue-50';
 
                 const postEl = document.createElement('article');
@@ -252,16 +252,17 @@
                 'All': 'filter-all',
                 'Physics': 'filter-physics',
                 'Machine Learning': 'filter-ml',
-                'Running': 'filter-running',
-                'Theory': 'filter-theory'
+                'Running': 'filter-running'
             };
 
             Object.keys(filterIds).forEach(cat => {
                 const btn = document.getElementById(filterIds[cat]);
-                if (cat === category) {
-                    btn.className = "px-3 py-1 border border-primary/30 bg-primary/5 text-primary rounded transition-all font-medium";
-                } else {
-                    btn.className = "px-3 py-1 border border-border bg-stone-100 hover:bg-stone-200 text-muted rounded transition-all";
+                if (btn) {
+                    if (cat === category) {
+                        btn.className = "px-3 py-1 border border-primary/30 bg-primary/5 text-primary rounded transition-all font-medium";
+                    } else {
+                        btn.className = "px-3 py-1 border border-border bg-stone-100 hover:bg-stone-200 text-muted rounded transition-all";
+                    }
                 }
             });
 

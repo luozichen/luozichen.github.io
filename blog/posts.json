@@ -1,6 +1,6 @@
 [
   {
-    "id": "post-4",
+    "id": "post-10",
     "date": "2026-05-28T18:45:00Z",
     "content": {
       "en": "Working on the final drafts of my bachelor's thesis today. The Geant4 simulations for our polarized deuteron polarimeter are finally converging, showing clear correlations with the nuclear symmetry energy models! Extremely grateful to Prof. Xiao Zhigang's group for the guidance.",
@@ -10,7 +10,7 @@
     "tags": ["NuclearPhysics", "Tsinghua", "Thesis"]
   },
   {
-    "id": "post-3",
+    "id": "post-9",
     "date": "2026-05-25T21:10:00Z",
     "content": {
       "en": "Phase 9 of NeonBench is live. I'm testing an 'intent-only' configuration by stripping out the convolutional mixing entirely and routing intent-state query weights back into the feed-forward blocks. Surprisingly, the model preserves context representation without dimensional collapse even under tight parameter constraints (5.0M non-embedding bounds). Full logs are on neonbench repository.",
@@ -20,7 +20,7 @@
     "tags": ["LLM", "NeonBench", "Ablation"]
   },
   {
-    "id": "post-2",
+    "id": "post-8",
     "date": "2026-05-20T08:15:00Z",
     "content": {
       "en": "Standard track interval session with the Tsinghua long-distance team this morning: 5x1000m at a threshold pace of 3:15/km, with 90s active jog recovery. Legs felt heavy after the long Sunday run, but managed to hit all splits consistently. Sub-17:30 form is feeling solid.",
@@ -30,13 +30,73 @@
     "tags": ["Intervals", "Track", "TsinghuaRunners"]
   },
   {
-    "id": "post-1",
-    "date": "2026-05-15T22:30:00Z",
+    "id": "post-7",
+    "date": "2025-08-01T14:00:00Z",
     "content": {
-      "en": "Just uploaded my new essay comparing Canonical Operator Quantization and Feynman's Path Integral Quantization. Writing down the transition from commutation brackets to the functional integral over classical actions is always a deeply rewarding mathematical journey. Check it in the Theory section!",
-      "zh": "刚刚上传了我的新随笔，对比正则算符量子化与费曼路径积分量子化。推导从对易算符括弧到经典作用量泛函积分的转变，永远是一段极其治愈的数学旅程。可以在理论物理页面中阅读！"
+      "en": "Just completed a detailed derivation of the canonical quantization of a complex scalar Klein-Gordon field. From the global U(1) Noether symmetry, we show the emergence of conserved charges representing particles and antiparticles, and extend the model to SU(2) and SU(N) non-abelian internal symmetries. The monograph is live in the Notes section.",
+      "zh": "刚刚完成了复标量克莱因-戈尔登场正则量子化的详细推导。通过全局 U(1) 诺特对称性，推导出粒子与反粒子守恒电荷的产生，并将该模型进一步拓展到了 SU(2) 与 SU(N) 非阿贝尔内部对称性。专论已在Notes页面上线。"
     },
-    "category": "Theory",
-    "tags": ["QFT", "PhysicsNotes", "Math"]
+    "category": "Physics",
+    "tags": ["QFT", "Symmetry", "PhysicsNotes"]
+  },
+  {
+    "id": "post-6",
+    "date": "2025-07-18T15:45:00Z",
+    "content": {
+      "en": "Drafted my research proposal investigating polarised deuteron breakup as a potential probe of the nuclear symmetry energy. Peripheral collisions are modeled within the ImQMD framework, suggesting sensitive differential cross-sections that could be validated at RIKEN's RIBF facility using the SAMURAI spectrometer. Uploaded to the Notes page!",
+      "zh": "起草了关于利用极化氘核解体作为高密核对称能灵敏探测手段的研究提案。基于改进的量子分子动力学（ImQMD）框架模拟了外围碰撞过程，发现其微分散射截面极具敏感性，未来有望在理化学研究所（RIKEN）的RIBF实验装置上通过SAMURAI光谱仪进行实验验证。提案笔记已上传！"
+    },
+    "category": "Physics",
+    "tags": ["NuclearPhysics", "RIKEN", "ImQMD"]
+  },
+  {
+    "id": "post-5",
+    "date": "2025-07-15T11:20:00Z",
+    "content": {
+      "en": "Completed a short monograph deriving classical electrodynamics directly from the relativistic action principle. It covers Lagrangian densities, variational derivations of Maxwell's equations in vacuum, gauge symmetries, and Noether conservation currents for energy-momentum. Read it on the Notes page!",
+      "zh": "完成了一篇从相对论性作用量原理直接推导经典电动力学方程的微专题笔记。内容涵盖拉格朗日密度、真空麦克斯韦方程组的变分推导、规范对称性以及通过诺特定理导出的电磁能量动量守恒流。已在笔记页面更新！"
+    },
+    "category": "Physics",
+    "tags": ["Electrodynamics", "ActionPrinciple", "NoetherTheorem"]
+  },
+  {
+    "id": "post-4",
+    "date": "2025-04-12T16:00:00Z",
+    "content": {
+      "en": "Submitted my review paper on Neutrino Mass and Flavor Oscillations today. It reviews the experimental evidence from solar and atmospheric anomalies (like Super-Kamiokande), electroweak symmetry breaking in the Standard Model, Majorana vs Dirac mass formulations, and the seesaw mechanism. Uploaded to the Notes section.",
+      "zh": "今天提交了关于中微子质量与风味振荡的文献综述论文。文中系统梳理了太阳与大气中微子异常的实验证据（如Super-Kamiokande）、标准模型中的电弱对称性破缺、狄拉克与马约拉纳质量形式，以及跷跷板机制。已同步至笔记（Notes）栏目。"
+    },
+    "category": "Physics",
+    "tags": ["ParticlePhysics", "StandardModel", "Neutrinos"]
+  },
+  {
+    "id": "post-3",
+    "date": "2025-03-04T09:15:00Z",
+    "content": {
+      "en": "Just finished deriving the statistical mechanics of a quantum harmonic oscillator ensemble across energy, position, and momentum representations. Showing that the partition function is invariant under basis transformations while the density matrix transforms accordingly is a beautiful mathematical exercise. Available under the Notes section!",
+      "zh": "刚刚完成了量子谐振子系综在能量、坐标和动量表征下的配分函数与物理特性详细推导。证明配分函数在表象变换下保持不变、而密度矩阵作相应变换是一个非常优美的数学练习。欢迎在笔记页面查阅！"
+    },
+    "category": "Physics",
+    "tags": ["StatisticalMechanics", "QuantumEnsemble", "PhysicsNotes"]
+  },
+  {
+    "id": "post-2",
+    "date": "2024-10-28T14:30:00Z",
+    "content": {
+      "en": "Written a brief overview on Black Hole Thermodynamics today. Investigating the four laws of black hole mechanics, Bekenstein-Hawking entropy, and Hawking radiation reveals the fascinating interplay between general relativity, thermodynamics, and quantum mechanics. Check it out on the Notes page.",
+      "zh": "今天整理并撰写了一篇关于黑洞热力学的简要概述。深入探讨黑洞力学四定律、贝肯斯坦-霍金熵和霍金辐射，能清晰地揭示广义相对论、热力学与量子力学之间美妙的交汇点。已上传至笔记页面。"
+    },
+    "category": "Physics",
+    "tags": ["GeneralRelativity", "BlackHoles", "Thermodynamics"]
+  },
+  {
+    "id": "post-1",
+    "date": "2024-05-15T10:00:00Z",
+    "content": {
+      "en": "Completed my term paper on the comparison between Canonical Operator Quantization and Feynman's Path Integral formalism. Tracing the mathematical bridge from commutation relations to functional integration over classical actions has been a deeply rewarding experience. The notes are uploaded to the Theory section.",
+      "zh": "完成了关于算符正则量子化与费曼路径积分量子化对比的课程期末论文。从算符对易关系一步步推导并建立通往经典作用量泛函积分的数学桥梁，是一次非常治愈且有收获的体验。笔记已上传至理论物理（Notes）页面。"
+    },
+    "category": "Physics",
+    "tags": ["QFT", "QuantumMechanics", "PhysicsNotes"]
   }
 ]
