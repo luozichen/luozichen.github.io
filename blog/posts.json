@@ -1,0 +1,42 @@
+[
+  {
+    "id": "post-4",
+    "date": "2026-05-28T18:45:00Z",
+    "content": {
+      "en": "Working on the final drafts of my bachelor's thesis today. The Geant4 simulations for our polarized deuteron polarimeter are finally converging, showing clear correlations with the nuclear symmetry energy models! Extremely grateful to Prof. Xiao Zhigang's group for the guidance.",
+      "zh": "今天在修改毕业论文的终稿。我们研制的极化氘核偏振仪 Geant4 模拟数据终于收敛了，显示出与核对称能模型的清晰关联！非常感谢肖志刚教授课题组的悉心指导。"
+    },
+    "category": "Physics",
+    "tags": ["NuclearPhysics", "Tsinghua", "Thesis"]
+  },
+  {
+    "id": "post-3",
+    "date": "2026-05-25T21:10:00Z",
+    "content": {
+      "en": "Phase 9 of NeonBench is live. I'm testing an 'intent-only' configuration by stripping out the convolutional mixing entirely and routing intent-state query weights back into the feed-forward blocks. Surprisingly, the model preserves context representation without dimensional collapse even under tight parameter constraints (5.0M non-embedding bounds). Full logs are on neonbench repository.",
+      "zh": "NeonBench 第九阶段上线了。我正在测试一个“纯意图”配置：剥离了所有的卷积混合，并将意图状态的查询权重直接路由回前馈网络块中。令人惊讶的是，即使在严格的参数限制（500万非嵌入参数边界）下，模型依然能保持极佳的上下文表征且没有发生维度塌缩。完整日志已上传至 neonbench 仓库。"
+    },
+    "category": "Machine Learning",
+    "tags": ["LLM", "NeonBench", "Ablation"]
+  },
+  {
+    "id": "post-2",
+    "date": "2026-05-20T08:15:00Z",
+    "content": {
+      "en": "Standard track interval session with the Tsinghua long-distance team this morning: 5x1000m at a threshold pace of 3:15/km, with 90s active jog recovery. Legs felt heavy after the long Sunday run, but managed to hit all splits consistently. Sub-17:30 form is feeling solid.",
+      "zh": "今天早上与清华中长跑队进行了一次标准的田径场间歇训练：5x1000米，3分15秒/公里的阈值配速，间歇90秒慢跑恢复。周日长跑后腿部稍显沉重，但依然稳定地完成了所有分段。突破 17分30秒 5公里的状态感觉很扎实。"
+    },
+    "category": "Running",
+    "tags": ["Intervals", "Track", "TsinghuaRunners"]
+  },
+  {
+    "id": "post-1",
+    "date": "2026-05-15T22:30:00Z",
+    "content": {
+      "en": "Just uploaded my new essay comparing Canonical Operator Quantization and Feynman's Path Integral Quantization. Writing down the transition from commutation brackets to the functional integral over classical actions is always a deeply rewarding mathematical journey. Check it in the Theory section!",
+      "zh": "刚刚上传了我的新随笔，对比正则算符量子化与费曼路径积分量子化。推导从对易算符括弧到经典作用量泛函积分的转变，永远是一段极其治愈的数学旅程。可以在理论物理页面中阅读！"
+    },
+    "category": "Theory",
+    "tags": ["QFT", "PhysicsNotes", "Math"]
+  }
+]

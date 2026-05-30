@@ -9,7 +9,7 @@
     <title>Zichen Luo | Machine Learning</title>
 
     <!-- PWA & Favicon -->
-    <link rel="icon" type="image/png" href="static/logo.png">
+    <link class="icon" type="image/png" href="static/logo.png">
     <link rel="apple-touch-icon" href="static/logo.png">
     <meta name="theme-color" content="#0a0a0b">
 
@@ -75,6 +75,12 @@
 
 <body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/30 selection:text-white">
 
+    <!-- Floating Translation Toggle -->
+    <div class="fixed top-6 right-6 z-50 bg-surface/80 backdrop-blur border border-white/5 px-2 py-1 rounded-full flex gap-1.5 text-xs font-mono shadow-xl">
+        <button id="btn-en" onclick="changeLang('en')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
+        <button id="btn-zh" onclick="changeLang('zh')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white">中文</button>
+    </div>
+
     <div class="max-w-4xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
 
         <!-- Hero Header -->
@@ -88,98 +94,107 @@
                     onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=8b5cf6&color=fff&size=256'">
             </div>
 
-            <h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-3">
-                Zichen Luo
-            </h1>
+            <h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-3">Zichen Luo</h1>
             <div class="text-lg text-muted font-light mb-8">
-                Machine Learning & Language Models · <a href="https://www.tsinghua.edu.cn/" target="_blank"
+                <span data-en="Machine Learning & Language Models" data-zh="机器学习与大语言模型研究">Machine Learning & Language Models</span> · <a href="https://www.tsinghua.edu.cn/" target="_blank"
                     class="text-primary hover:text-white transition-colors border-b border-primary/30 hover:border-primary">Tsinghua
                     University</a>
-                <div class="text-sm mt-1 opacity-70">Architectural Experiments and AI Tooling</div>
+                <div class="text-sm mt-1 opacity-70" data-en="Architectural Experiments and AI Tooling" data-zh="模型架构设计与 AI 工具链开发">Architectural Experiments and AI Tooling</div>
             </div>
 
-            <nav class="inline-flex justify-center bg-surface border border-white/5 p-1.5 rounded-full shadow-lg">
+            <nav class="inline-flex justify-center">
                 <a href="index.html"
-                    class="flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                    class="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-mono bg-surface border border-white/5 text-gray-400 hover:text-white hover:bg-white/5 transition-all shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
-                    Back to Main Site
+                    <span data-en="Back to main site" data-zh="返回主页">Back to main site</span>
                 </a>
             </nav>
         </header>
 
         <main class="space-y-8">
             <section class="bg-surface border border-white/5 rounded-2xl p-6 md:p-8 shadow-xl">
-                <h2 class="text-2xl font-bold font-display text-white mb-6 border-b border-white/5 pb-4">NeonBench: LLM
-                    Architecture Research</h2>
+                <h2 class="text-2xl font-bold font-display text-white mb-6 border-b border-white/5 pb-4" data-en="NeonBench: LLM Architecture Research" data-zh="NeonBench: 大语言模型架构研究">NeonBench: LLM Architecture Research</h2>
 
                 <div class="space-y-6 text-gray-300 leading-relaxed">
-                    <p>
+                    <p data-en="&lt;strong class='text-white'&gt;NeonBench&lt;/strong&gt; is my experimental framework for rapidly iterating over novel Language Model architectures, specifically targeting sub-10M parameter bounds (primarily 5.0M non-embedding parameters) to test architectural efficiency before scaling up. Below is a summary of the core concepts I've been researching:"
+                       data-zh="&lt;strong class='text-white'&gt;NeonBench&lt;/strong&gt; 是我的实验性研究框架，用于在大语言模型上进行新颖架构的快速迭代。我主要关注 1000万 参数以内（主要是 500万 非嵌入层参数）的参数边界，以便在大规模参数化之前测试架构效率。以下是我当前核心研究概念的概述：">
                         <strong>NeonBench</strong> is my experimental framework for rapidly iterating over novel
                         Language Model architectures, specifically targeting sub-10M parameter bounds (primarily 5.0M
                         non-embedding parameters) to test architectural efficiency before scaling up. Below is a summary
                         of the core concepts I've been researching:
                     </p>
 
+                    <!-- Concept 1 -->
                     <div class="bg-black/20 rounded-xl p-5 border border-white/5">
-                        <h3 class="text-lg font-bold text-gray-200 mb-3 text-primary">1. Quasi-Encoder Fusion &
-                            SplitBrain Attention</h3>
-                        <p class="text-sm text-gray-400 mb-3">
+                        <h3 class="text-lg font-bold text-gray-200 mb-3 text-primary" data-en="1. Quasi-Encoder Fusion & SplitBrain Attention" data-zh="1. 拟编码器融合与 SplitBrain 注意力">1. Quasi-Encoder Fusion & SplitBrain Attention</h3>
+                        <p class="text-sm text-gray-400 mb-3" 
+                           data-en="The SplitBrain architecture operates by bifurcating the standard causal attention matrix. By processing a 'causal stream' and a 'lookahead stream' (which is allowed to see future tokens up to a certain sequence depth, acting as a Quasi-Encoder), the network achieves deep bidirectional context within a primarily autoregressive framework."
+                           data-zh="SplitBrain 架构通过将标准的因果注意力矩阵（causal attention matrix）进行分叉运行。通过同时处理一个“因果流”和一个“前瞻流”（前瞻流被允许查看特定序列深度内的未来 Token，充当拟编码器的角色），该网络在主要是自回归的框架内实现了深度的双向上下文理解。">
                             The SplitBrain architecture operates by bifurcating the standard causal attention matrix. By
                             processing a "causal stream" and a "lookahead stream" (which is allowed to see future tokens
                             up to a certain sequence depth, acting as a Quasi-Encoder), the network achieves deep
                             bidirectional context within a primarily autoregressive framework.
                         </p>
-                        <p class="text-sm text-gray-400">
+                        <p class="text-sm text-gray-400" 
+                           data-en="Recent experiments fine-tuning the lookahead ratio (e.g., 25%, 50%, 100%) against parameter budgets have yielded fascinating trade-offs between training speed and long-context comprehension on rigorous tasks."
+                           data-zh="近期针对参数预算微调前瞻比例（如 25%、50%、100%）的实验表明，在严苛的任务测试中，训练速度与长上下文理解力之间存在极其有趣的折衷权衡。">
                             Recent experiments fine-tuning the lookahead ratio (e.g., 25%, 50%, 100%) against parameter
                             budgets have yielded fascinating trade-offs between training speed and long-context
                             comprehension on rigorous tasks.
                         </p>
                     </div>
 
+                    <!-- Concept 2 -->
                     <div class="bg-black/20 rounded-xl p-5 border border-white/5">
-                        <h3 class="text-lg font-bold text-gray-200 mb-3 text-secondary">2. Learnt Intent Streaming</h3>
-                        <p class="text-sm text-gray-400 mb-3">
+                        <h3 class="text-lg font-bold text-gray-200 mb-3 text-secondary" data-en="2. Learnt Intent Streaming" data-zh="2. 学习意图流机制">2. Learnt Intent Streaming</h3>
+                        <p class="text-sm text-gray-400 mb-3" 
+                           data-en="A novel concept where an independent set of learned residual states—the 'intent stream'—flows alongside the primary token representation stream. Rather than discarding sequence representations at each layer, the intent stream aggregates contextual meaning, which is then fed back into the query projections of subsequent attention layers."
+                           data-zh="这是一个新颖的机制设计，其中一组独立的、已学习的残差状态——“意图流”——与主 Token 表征流并列流动。意图流不是在每个网络层直接丢弃序列特征表征，而是不断聚合上下文语义，并在随后的注意力层中将其作为 Query 投影的反馈输入。">
                             A novel concept where an independent set of learned residual states—the "intent
                             stream"—flows alongside the primary token representation stream. Rather than discarding
                             sequence representations at each layer, the intent stream aggregates contextual meaning,
                             which is then fed back into the query projections of subsequent attention layers.
                         </p>
-                        <p class="text-sm text-gray-400">
+                        <p class="text-sm text-gray-400" 
+                           data-en="We observed that adding this explicit parallel intent stream prevents representation collapse in deep networks and provides robust multi-token reasoning capabilities natively within the forward pass."
+                           data-zh="我们观察到，引入这种显式的并行意图流不仅能防止深度神经网络中的表征塌缩（representation collapse），还能在前向传播中以原生方式赋予模型强健的跨多 Token 推理能力。">
                             We observed that adding this explicit parallel intent stream prevents representation
                             collapse in deep networks and provides robust multi-token reasoning capabilities natively
                             within the forward pass.
                         </p>
                     </div>
 
+                    <!-- Concept 3 -->
                     <div class="bg-black/20 rounded-xl p-5 border border-white/5">
-                        <h3 class="text-lg font-bold text-gray-200 mb-3 text-green-400">3. Continuous Ablation Studies
-                        </h3>
-                        <p class="text-sm text-gray-400 mb-3">
+                        <h3 class="text-lg font-bold text-gray-200 mb-3 text-green-400" data-en="3. Continuous Ablation Studies" data-zh="3. 持续消融研究">3. Continuous Ablation Studies</h3>
+                        <p class="text-sm text-gray-400 mb-3" 
+                           data-en="I enforce strict parameter-parity bounds (e.g. 5,004,528 params) across all experimental models. We dynamically adjust d_ff dimensions to compensate for any newly added parameters when introducing SplitBrain Lookahead, Intent Streams, or Convolutional Mixing layers."
+                           data-zh="我在所有实验模型中实施严格的参数均等界限约束（例如 5,004,528 个参数）。当引入 SplitBrain 前瞻、意图流或卷积混合层时，我们动态调整 d_ff 维度以补偿任何新增的参数，以确保对比的公平性。">
                             I enforce strict parameter-parity bounds (e.g. 5,004,528 params) across all experimental
                             models. We dynamically adjust <code class="bg-white/10 px-1 rounded">d_ff</code> dimensions
                             to compensate for any newly added parameters when introducing SplitBrain Lookahead, Intent
                             Streams, or Convolutional Mixing layers.
                         </p>
                         <ul class="list-disc pl-5 text-sm text-gray-400 space-y-2">
-                            <li><strong>Phase 6</strong>: Validating deep lookahead mask structures (50% vs 100%
-                                visibility).</li>
-                            <li><strong>Phase 7</strong>: Combining lookahead with Learnt Intent.</li>
-                            <li><strong>Phase 8 & 9 (Current)</strong>: Pure intent-only and convolution-only ablations
-                                to definitively prove the source of representation supremacy.</li>
+                            <li data-en="&lt;strong class='text-gray-300'&gt;Phase 6&lt;/strong&gt;: Validating deep lookahead mask structures (50% vs 100% visibility)." data-zh="&lt;strong class='text-gray-300'&gt;阶段 6&lt;/strong&gt;: 验证深度前瞻掩码结构（50% 对比 100% 可见度）。"><strong>Phase 6</strong>: Validating deep lookahead mask structures (50% vs 100% visibility).</li>
+                            <li data-en="&lt;strong class='text-gray-300'&gt;Phase 7&lt;/strong&gt;: Combining lookahead with Learnt Intent." data-zh="&lt;strong class='text-gray-300'&gt;阶段 7&lt;/strong&gt;: 将前瞻与学习意图流进行结合。"><strong>Phase 7</strong>: Combining lookahead with Learnt Intent.</li>
+                            <li data-en="&lt;strong class='text-gray-300'&gt;Phase 8 &amp; 9 (Current)&lt;/strong&gt;: Pure intent-only and convolution-only ablations to definitively prove the source of representation supremacy." data-zh="&lt;strong class='text-gray-300'&gt;阶段 8 &amp; 9 (当前)&lt;/strong&gt;: 纯意图与纯卷积消融研究，以最终证明表征主导地位的确切来源。"><strong>Phase 8 & 9 (Current)</strong>: Pure intent-only and convolution-only ablations to definitively prove the source of representation supremacy.</li>
                         </ul>
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4 mt-6">
                         <a href="https://github.com/luozichen/neonbench" target="_blank"
-                            class="flex-1 text-center bg-surface hover:bg-white/5 border border-white/10 rounded-xl py-3 text-sm font-medium transition-colors">
+                            class="flex-1 text-center bg-surface hover:bg-white/5 border border-white/10 rounded-xl py-3 text-sm font-medium transition-colors"
+                            data-en="View Scripts on GitHub" data-zh="在 GitHub 查看脚本">
                             View Scripts on GitHub
                         </a>
                         <a href="http://luozichen.pythonanywhere.com" target="_blank"
-                            class="flex-1 text-center bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary rounded-xl py-3 text-sm font-medium transition-colors">
+                            class="flex-1 text-center bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary rounded-xl py-3 text-sm font-medium transition-colors"
+                            data-en="Launch NeonCore UI" data-zh="启动 NeonCore 界面">
                             Launch NeonCore UI
                         </a>
                     </div>
@@ -187,8 +202,8 @@
             </section>
         </main>
 
-        <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-sm">
-            <div class="mb-6 font-display text-base md:text-lg tracking-[0.4em] text-gray-400 opacity-80 uppercase">
+        <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-sm font-light">
+            <div class="mb-6 font-display text-base md:text-lg tracking-[0.4em] text-gray-400 opacity-80 uppercase" data-en="Stay Hungry, Stay Curious." data-zh="保持饥饿，保持好奇。">
                 Stay Hungry, Stay Curious.
             </div>
             <div class="mb-2">&copy; 2026 Zichen Luo. All rights reserved.</div>
@@ -204,8 +219,58 @@
         if (document.lastModified) {
             const date = new Date(document.lastModified);
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            dateEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', options);
+            const currentLang = localStorage.getItem('preferred-lang') || 'en';
+            const locale = currentLang === 'zh' ? 'zh-CN' : 'en-GB';
+            dateEl.textContent = (currentLang === 'zh' ? '最后更新: ' : 'Last updated: ') + date.toLocaleDateString(locale, options);
         }
+
+        // Language Switch logic
+        function changeLang(lang) {
+            document.querySelectorAll('[data-zh]').forEach(el => {
+                let translation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+                if (translation !== null) {
+                    if (translation.includes('<strong') || translation.includes('<code')) {
+                        el.innerHTML = translation;
+                    } else {
+                        el.textContent = translation;
+                    }
+                }
+            });
+
+            // Toggle button styles
+            const btnEn = document.getElementById('btn-en');
+            const btnZh = document.getElementById('btn-zh');
+
+            if (lang === 'zh') {
+                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
+                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white";
+                document.documentElement.lang = 'zh';
+
+                const lastUpdatedEl = document.getElementById('last-updated');
+                if (lastUpdatedEl && document.lastModified) {
+                    const date = new Date(document.lastModified);
+                    lastUpdatedEl.textContent = '最后更新: ' + date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+                }
+            } else {
+                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
+                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white";
+                document.documentElement.lang = 'en';
+
+                const lastUpdatedEl = document.getElementById('last-updated');
+                if (lastUpdatedEl && document.lastModified) {
+                    const date = new Date(document.lastModified);
+                    lastUpdatedEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+                }
+            }
+
+            localStorage.setItem('preferred-lang', lang);
+        }
+
+        // Initialize state
+        (function() {
+            const preferredLang = localStorage.getItem('preferred-lang') || 'en';
+            changeLang(preferredLang);
+        })();
     </script>
 </body>
 

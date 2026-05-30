@@ -75,6 +75,12 @@
 
 <body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/30 selection:text-white">
 
+    <!-- Floating Translation Toggle -->
+    <div class="fixed top-6 right-6 z-50 bg-surface/80 backdrop-blur border border-white/5 px-2 py-1 rounded-full flex gap-1.5 text-xs font-mono shadow-xl">
+        <button id="btn-en" onclick="changeLang('en')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
+        <button id="btn-zh" onclick="changeLang('zh')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white">中文</button>
+    </div>
+
     <div class="max-w-4xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
 
         <!-- Hero Header -->
@@ -88,109 +94,143 @@
                     onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=6366f1&color=fff&size=256'">
             </div>
 
-            <h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-3">
-                Zichen Luo
-            </h1>
+            <h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-3">Zichen Luo</h1>
             <div class="text-lg text-muted font-light mb-8">
-                Theoretical Physics · <a href="https://www.tsinghua.edu.cn/" target="_blank"
+                <span data-en="Theoretical Physics" data-zh="理论物理与核物理笔记">Theoretical Physics</span> · <a href="https://www.tsinghua.edu.cn/" target="_blank"
                     class="text-primary hover:text-white transition-colors border-b border-primary/30 hover:border-primary">Tsinghua
                     University</a>
-                <div class="text-sm mt-1 opacity-70">Technical Notes & Essays</div>
+                <div class="text-sm mt-1 opacity-70" data-en="Technical Notes & Essays" data-zh="学术笔记与思考随笔">Technical Notes & Essays</div>
             </div>
 
-            <nav class="inline-flex justify-center bg-surface border border-white/5 p-1.5 rounded-full shadow-lg">
+            <nav class="inline-flex justify-center">
                 <a href="index.html"
-                    class="flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                    class="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-mono bg-surface border border-white/5 text-gray-400 hover:text-white hover:bg-white/5 transition-all shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
-                    Back to Main Site
+                    <span data-en="Back to main site" data-zh="返回主页">Back to main site</span>
                 </a>
             </nav>
         </header>
 
         <main class="space-y-8">
             <section class="bg-surface border border-white/5 rounded-2xl p-6 md:p-8 shadow-xl">
-                <h2 class="text-2xl font-bold font-display text-white mb-6 border-b border-white/5 pb-4">Essays &
-                    Writings</h2>
+                <h2 class="text-2xl font-bold font-display text-white mb-6 border-b border-white/5 pb-4" data-en="Essays & Writings" data-zh="文章与笔记写作">Essays & Writings</h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                    <a href="articles/正则量子化与路径积分量子化.pdf" target="_blank" rel="nofollow" class="group block">
+                    <!-- 1. Canonical vs Path Integral Quantization -->
+                    <a href="#" onclick="viewPaper('正则量子化与路径积分量子化.dat'); return false;" class="group block">
                         <div
                             class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                                data-en="Canonical vs Path Integral Quantization" data-zh="正则量子化与路径积分量子化">
                                 Canonical vs Path Integral Quantization</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">A comparison of canonical operator
-                                quantisation and Feynman's path integral formalism, featuring derivations and pragmatic
-                                trade-offs.</p>
+                            <p class="text-sm text-gray-500 line-clamp-2 font-light" 
+                               data-en="A comparison of canonical operator quantisation and Feynman's path integral formalism, featuring derivations and pragmatic trade-offs."
+                               data-zh="对比算符正则量子化与费曼路径积分形式，包含数学推导和实用性的物理学折衷权衡。">
+                                A comparison of canonical operator quantisation and Feynman's path integral formalism, featuring derivations and pragmatic
+                                trade-offs.
+                            </p>
                         </div>
                     </a>
 
-                    <a href="articles/A_Brief_Overview_of_Black_Hole_Thermodynamics (2).pdf" target="_blank"
-                        rel="nofollow" class="group block">
+                    <!-- 2. Black Hole Thermodynamics -->
+                    <a href="#" onclick="viewPaper('A_Brief_Overview_of_Black_Hole_Thermodynamics (2).dat'); return false;" class="group block">
                         <div
                             class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                                data-en="Black Hole Thermodynamics" data-zh="黑洞热力学简述">
                                 Black Hole Thermodynamics</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">A brief survey of the four laws of black hole
-                                mechanics, Bekenstein–Hawking entropy, and Hawking radiation.</p>
+                            <p class="text-sm text-gray-500 line-clamp-2 font-light" 
+                               data-en="A brief survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy, and Hawking radiation."
+                               data-zh="简要介绍黑洞力学四定律、贝肯斯坦-霍金熵的物理物理学背景以及霍金辐射机制。">
+                                A brief survey of the four laws of black hole
+                                mechanics, Bekenstein–Hawking entropy, and Hawking radiation.
+                            </p>
                         </div>
                     </a>
 
-                    <a href="articles/Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations (1).pdf"
-                        target="_blank" rel="nofollow" class="group block">
+                    <!-- 3. Quantum Harmonic Ensemble -->
+                    <a href="#" onclick="viewPaper('Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations (1).dat'); return false;" class="group block">
                         <div
                             class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                                data-en="Quantum Harmonic Ensemble" data-zh="量子谐振子系综的统计力学">
                                 Quantum Harmonic Ensemble</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Deriving the partition function for a
+                            <p class="text-sm text-gray-500 line-clamp-2 font-light" 
+                               data-en="Deriving the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position, and momentum representations."
+                               data-zh="详细推导量子谐振子正则系综在能量、坐标和动量表征下的配分函数与物理特性。">
+                                Deriving the partition function for a
                                 canonical ensemble of quantum harmonic oscillators across energy, position, and momentum
-                                representations.</p>
+                                representations.
+                            </p>
                         </div>
                     </a>
 
-                    <a href="articles/中微子质量与振荡.pdf" target="_blank" rel="nofollow" class="group block">
+                    <!-- 4. Neutrino Mass & Oscillations -->
+                    <a href="#" onclick="viewPaper('中微子质量与振荡.dat'); return false;" class="group block">
                         <div
                             class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                                data-en="Neutrino Mass & Oscillations" data-zh="中微子质量与风味振荡">
                                 Neutrino Mass & Oscillations</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Review of experimental evidence for neutrino
-                                flavour oscillations, mass models, and mixing formalism.</p>
+                            <p class="text-sm text-gray-500 line-clamp-2 font-light" 
+                               data-en="Review of experimental evidence for neutrino flavour oscillations, mass models, and mixing formalism."
+                               data-zh="系统回顾中微子风味振荡的实验证据、质量微扰模型以及轻子混合矩阵形式。">
+                                Review of experimental evidence for neutrino
+                                flavour oscillations, mass models, and mixing formalism.
+                            </p>
                         </div>
                     </a>
 
-                    <a href="articles/The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.pdf"
-                        target="_blank" rel="nofollow" class="group block">
+                    <!-- 5. Action Principle in Electrodynamics -->
+                    <a href="#" onclick="viewPaper('The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.dat'); return false;" class="group block">
                         <div
                             class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                                data-en="Action Principle in Electrodynamics" data-zh="无源经典电动力学中的最小作用量原理">
                                 Action Principle in Electrodynamics</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Deriving Maxwell’s equations in vacuum from a
-                                relativistic Lagrangian, discussing gauge freedom and Noether currents.</p>
+                            <p class="text-sm text-gray-500 line-clamp-2 font-light" 
+                               data-en="Deriving Maxwell’s equations in vacuum from a relativistic Lagrangian, discussing gauge freedom and Noether currents."
+                               data-zh="从相对论性拉格朗日密度出发推导真空中的麦克斯韦方程组，并深入探讨规范自由度与诺特荷流。">
+                                Deriving Maxwell’s equations in vacuum from a
+                                relativistic Lagrangian, discussing gauge freedom and Noether currents.
+                            </p>
                         </div>
                     </a>
 
-                    <a href="articles/Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).pdf"
-                        target="_blank" rel="nofollow" class="group block">
+                    <!-- 6. Polarised Deuteron Breakup -->
+                    <a href="#" onclick="viewPaper('Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).dat'); return false;" class="group block">
                         <div
                             class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                                data-en="Polarised Deuteron Breakup" data-zh="极化氘核解体与核对称能探测">
                                 Polarised Deuteron Breakup</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Investigating polarised-deuteron scattering
-                                observables and polarimeter design to probe nuclear symmetry energy.</p>
+                            <p class="text-sm text-gray-500 line-clamp-2 font-light" 
+                               data-en="Investigating polarised-deuteron scattering observables and polarimeter design to probe nuclear symmetry energy."
+                               data-zh="研究极化氘核散射可观测物理量与符合探测偏振仪硬件设计，以灵敏地探测高密核对称能。">
+                                Investigating polarised-deuteron scattering
+                                observables and polarimeter design to probe nuclear symmetry energy.
+                            </p>
                         </div>
                     </a>
 
-                    <a href="articles/复标量克莱因–戈尔登场v2.pdf" target="_blank" rel="nofollow" class="group block">
+                    <!-- 7. Complex Scalar Klein-Gordon Field -->
+                    <a href="#" onclick="viewPaper('复标量克莱因–戈尔登场v2.dat'); return false;" class="group block">
                         <div
                             class="bg-surface border border-white/5 rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2">
+                            <h3 class="text-lg font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                                data-en="Complex Scalar Klein-Gordon Field" data-zh="复标量克莱因-戈尔登场">
                                 Complex Scalar Klein-Gordon Field</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Derivation of canonical momenta and
-                                commutation relations for a complex Klein–Gordon field.</p>
+                            <p class="text-sm text-gray-500 line-clamp-2 font-light" 
+                               data-en="Derivation of canonical momenta and commutation relations for a complex Klein–Gordon field."
+                               data-zh="详细推导复标量克莱因-戈尔登场（Complex KG Field）的正则共轭动量与量子化对易关系。">
+                                Derivation of canonical momenta and
+                                commutation relations for a complex Klein–Gordon field.
+                            </p>
                         </div>
                     </a>
 
@@ -198,8 +238,8 @@
             </section>
         </main>
 
-        <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-sm">
-            <div class="mb-6 font-display text-base md:text-lg tracking-[0.4em] text-gray-400 opacity-80 uppercase">
+        <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-sm font-light">
+            <div class="mb-6 font-display text-base md:text-lg tracking-[0.4em] text-gray-400 opacity-80 uppercase" data-en="Stay Hungry, Stay Curious." data-zh="保持饥饿，保持好奇。">
                 Stay Hungry, Stay Curious.
             </div>
             <div class="mb-2">&copy; 2026 Zichen Luo. All rights reserved.</div>
@@ -215,8 +255,69 @@
         if (document.lastModified) {
             const date = new Date(document.lastModified);
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            dateEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', options);
+            const currentLang = localStorage.getItem('preferred-lang') || 'en';
+            const locale = currentLang === 'zh' ? 'zh-CN' : 'en-GB';
+            dateEl.textContent = (currentLang === 'zh' ? '最后更新: ' : 'Last updated: ') + date.toLocaleDateString(locale, options);
         }
+
+        // PDF Blob Viewer function to prevent search engine indexing
+        async function viewPaper(filename) {
+            try {
+                const response = await fetch('articles/' + filename);
+                if (!response.ok) throw new Error("HTTP error " + response.status);
+                const blob = await response.blob();
+                const pdfBlob = new Blob([blob], { type: 'application/pdf' });
+                const url = URL.createObjectURL(pdfBlob);
+                window.open(url, '_blank');
+            } catch (error) {
+                console.error("Error loading document:", error);
+                alert("Sorry, there was an error loading the document. Please try again later.");
+            }
+        }
+
+        // Language Switch logic
+        function changeLang(lang) {
+            document.querySelectorAll('[data-zh]').forEach(el => {
+                let translation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+                if (translation !== null) {
+                    el.textContent = translation;
+                }
+            });
+
+            // Toggle button styles
+            const btnEn = document.getElementById('btn-en');
+            const btnZh = document.getElementById('btn-zh');
+
+            if (lang === 'zh') {
+                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
+                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white";
+                document.documentElement.lang = 'zh';
+
+                const lastUpdatedEl = document.getElementById('last-updated');
+                if (lastUpdatedEl && document.lastModified) {
+                    const date = new Date(document.lastModified);
+                    lastUpdatedEl.textContent = '最后更新: ' + date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+                }
+            } else {
+                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
+                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white";
+                document.documentElement.lang = 'en';
+
+                const lastUpdatedEl = document.getElementById('last-updated');
+                if (lastUpdatedEl && document.lastModified) {
+                    const date = new Date(document.lastModified);
+                    lastUpdatedEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+                }
+            }
+
+            localStorage.setItem('preferred-lang', lang);
+        }
+
+        // Initialize state
+        (function() {
+            const preferredLang = localStorage.getItem('preferred-lang') || 'en';
+            changeLang(preferredLang);
+        })();
     </script>
 </body>
 

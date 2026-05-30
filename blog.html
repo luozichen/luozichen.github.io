@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zichen Luo's personal microblog. An informal, scrolling corner of the internet.">
+    <meta name="robots" content="noindex">
+    <title>Zichen Luo | Microblog</title>
+
+    <!-- PWA & Favicon -->
+    <link rel="icon" type="image/png" href="static/logo.png">
+    <link rel="apple-touch-icon" href="static/logo.png">
+    <meta name="theme-color" content="#0a0a0b">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'PingFang SC', 'Microsoft YaHei', 'monospace'],
+                    },
+                    colors: {
+                        background: '#0a0a0b',
+                        foreground: '#fafafa',
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        surface: '#1a1a1d',
+                        surface2: '#252529',
+                        border: '#2a2a2f',
+                        muted: '#71717a',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/30 selection:text-white">
+
+    <!-- Floating Translation Toggle -->
+    <div class="fixed top-6 right-6 z-50 bg-surface/80 backdrop-blur border border-white/5 px-2 py-1 rounded-full flex gap-1.5 text-xs font-mono shadow-xl">
+        <button id="btn-en" onclick="changeLang('en')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
+        <button id="btn-zh" onclick="changeLang('zh')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white">中文</button>
+    </div>
+
+    <div class="max-w-2xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
+
+        <!-- Hero Header -->
+        <header class="text-center mb-12">
+            <div class="relative inline-block mb-4 group">
+                <div class="absolute inset-0 bg-gradient-to-tr from-secondary to-primary rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
+                <img src="images/profile.jpg" alt="Zichen Luo"
+                    class="relative w-24 h-24 rounded-full object-cover border-2 border-white/10 shadow-2xl"
+                    onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=8b5cf6&color=fff&size=256'">
+            </div>
+
+            <h1 class="text-3xl font-bold font-display tracking-tight mb-2">Zichen Luo</h1>
+            <div class="text-sm font-mono text-primary flex items-center justify-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                <span data-en="Thoughts & updates feed" data-zh="动态与主页随笔">Thoughts & updates feed</span>
+            </div>
+
+            <nav class="mt-8 flex justify-center">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-mono bg-surface border border-white/5 text-gray-400 hover:text-white hover:bg-white/5 transition-all shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    <span data-en="Back to main site" data-zh="返回主页">Back to main site</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Category Filters -->
+        <section class="mb-8 flex flex-wrap gap-2 justify-center font-mono text-xs" id="filters-container">
+            <button onclick="filterPosts('All')" id="filter-all" class="px-3.5 py-1.5 rounded-full border border-primary/30 bg-primary/20 text-white transition-all">All</button>
+            <button onclick="filterPosts('Physics')" id="filter-physics" class="px-3.5 py-1.5 rounded-full border border-white/5 bg-surface text-gray-400 hover:text-white hover:border-white/20 transition-all">Physics</button>
+            <button onclick="filterPosts('Machine Learning')" id="filter-ml" class="px-3.5 py-1.5 rounded-full border border-white/5 bg-surface text-gray-400 hover:text-white hover:border-white/20 transition-all">ML & AI</button>
+            <button onclick="filterPosts('Running')" id="filter-running" class="px-3.5 py-1.5 rounded-full border border-white/5 bg-surface text-gray-400 hover:text-white hover:border-white/20 transition-all">Running</button>
+            <button onclick="filterPosts('Theory')" id="filter-theory" class="px-3.5 py-1.5 rounded-full border border-white/5 bg-surface text-gray-400 hover:text-white hover:border-white/20 transition-all">Theory</button>
+        </section>
+
+        <!-- Dynamic Timeline Feed -->
+        <main class="space-y-6" id="timeline">
+            <!-- Timeline items will be injected here -->
+            <div class="text-center py-12 text-muted font-mono text-sm" data-en="Loading feed..." data-zh="加载动态流...">
+                Loading feed...
+            </div>
+        </main>
+
+        <!-- Interactive Comments & Discussion Section -->
+        <section class="mt-16 border-t border-white/5 pt-12">
+            <div class="flex items-center gap-3 mb-8">
+                <h2 class="text-xl font-bold font-display text-white" data-en="💬 Comments & Discussion" data-zh="💬 评论与讨论">💬 Comments & Discussion</h2>
+                <div class="h-px bg-white/5 flex-1"></div>
+            </div>
+            
+            <p class="text-sm text-gray-400 font-light mb-8 leading-relaxed" 
+               data-en="Feel free to leave a comment, suggest a fix, or react. This discussion board is backed by GitHub Discussions, keeping comments fast, spam-free, and directly integrated into the repo."
+               data-zh="欢迎在此留言讨论、提出修正建议，或进行互动。本评论板由 GitHub Discussions 支持，安全快捷且直接与仓库关联。">
+                Feel free to leave a comment, suggest a fix, or react. This discussion board is backed by GitHub Discussions, keeping comments fast, spam-free, and directly integrated into the repo.
+            </p>
+
+            <!-- Giscus Comments Widget -->
+            <div class="giscus mt-4"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-xs font-mono">
+            &copy; 2026 Zichen Luo. All rights reserved.
+        </footer>
+
+    </div>
+
+    <!-- Scripting for Feed Handling & Language State -->
+    <script>
+        let allPosts = [];
+        let activeCategory = 'All';
+
+        // Load Blog Posts from JSON
+        async function loadFeed() {
+            try {
+                const response = await fetch('blog/posts.json');
+                if (!response.ok) throw new Error("Failed to fetch posts");
+                allPosts = await response.json();
+                
+                // Sort posts: descending order of dates
+                allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                renderTimeline();
+            } catch (error) {
+                console.error("Error loading blog posts:", error);
+                const timeline = document.getElementById('timeline');
+                const lang = localStorage.getItem('preferred-lang') || 'en';
+                timeline.innerHTML = `
+                    <div class="text-center py-12 text-red-400 font-mono text-sm">
+                        ${lang === 'zh' ? '加载动态流失败，请稍后再试。' : 'Failed to load feed. Please try again later.'}
+                    </div>
+                `;
+            }
+        }
+
+        // Render Timeline based on category filters and language selection
+        function renderTimeline() {
+            const timeline = document.getElementById('timeline');
+            const lang = localStorage.getItem('preferred-lang') || 'en';
+            
+            // Filter posts
+            const filteredPosts = activeCategory === 'All' 
+                ? allPosts 
+                : allPosts.filter(post => post.category === activeCategory);
+
+            if (filteredPosts.length === 0) {
+                timeline.innerHTML = `
+                    <div class="text-center py-12 text-muted font-mono text-sm">
+                        ${lang === 'zh' ? '暂无此类别动态。' : 'No posts in this category yet.'}
+                    </div>
+                `;
+                return;
+            }
+
+            timeline.innerHTML = '';
+            filteredPosts.forEach(post => {
+                const date = new Date(post.date);
+                const formattedDate = formatDate(date, lang);
+                const content = lang === 'zh' ? post.content.zh : post.content.en;
+                
+                // Category color accenting
+                let categoryColor = 'text-primary border-primary/20 bg-primary/5';
+                if (post.category === 'Running') categoryColor = 'text-emerald-400 border-emerald-500/20 bg-emerald-500/5';
+                if (post.category === 'Theory') categoryColor = 'text-purple-400 border-purple-500/20 bg-purple-500/5';
+                if (post.category === 'Machine Learning') categoryColor = 'text-indigo-400 border-indigo-500/20 bg-indigo-500/5';
+
+                const postEl = document.createElement('article');
+                postEl.className = 'bg-surface border border-white/5 rounded-2xl p-6 shadow-md transition-all hover:border-white/10 duration-200';
+                postEl.innerHTML = `
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="images/profile.jpg" alt="Zichen" class="w-10 h-10 rounded-full object-cover border border-white/10">
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-200 flex items-center gap-2">
+                                    Zichen Luo
+                                    <span class="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full border ${categoryColor}">
+                                        ${post.category}
+                                    </span>
+                                </h4>
+                                <span class="text-xs font-mono text-muted">${formattedDate}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed font-light mb-4 whitespace-pre-line">
+                        ${content}
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        ${post.tags.map(tag => `<span class="text-[10px] font-mono text-muted px-2.5 py-0.5 rounded-md bg-black/10">#${tag}</span>`).join('')}
+                    </div>
+
+                    <div class="flex items-center gap-4 text-xs font-mono text-muted border-t border-white/5 pt-3 mt-3">
+                        <button onclick="likePost('${post.id}')" id="like-btn-${post.id}" class="flex items-center gap-1.5 hover:text-red-400 transition-colors group">
+                            <span class="text-sm transition-transform group-hover:scale-125">❤️</span>
+                            <span id="like-count-${post.id}">${getLikes(post.id)}</span>
+                        </button>
+                        <a href="#giscus-anchor" onclick="focusComment()" class="flex items-center gap-1.5 hover:text-primary transition-colors">
+                            <span class="text-sm">💬</span>
+                            <span>Comment</span>
+                        </a>
+                    </div>
+                `;
+                timeline.appendChild(postEl);
+            });
+        }
+
+        // Relative/Formatted date helper
+        function formatDate(date, lang) {
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / (1000 * 60));
+            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+            if (diffMins < 60) {
+                if (lang === 'zh') return diffMins <= 1 ? '刚刚' : `${diffMins}分钟前`;
+                return diffMins <= 1 ? 'just now' : `${diffMins}m ago`;
+            } else if (diffHours < 24) {
+                if (lang === 'zh') return `${diffHours}小时前`;
+                return `${diffHours}h ago`;
+            } else if (diffDays < 7) {
+                if (lang === 'zh') return `${diffDays}天前`;
+                return `${diffDays}d ago`;
+            } else {
+                const options = { month: 'short', day: 'numeric', year: 'numeric' };
+                const locale = lang === 'zh' ? 'zh-CN' : 'en-US';
+                return date.toLocaleDateString(locale, options);
+            }
+        }
+
+        // Local Storage Like state handlers
+        function getLikes(postId) {
+            const likesObj = JSON.parse(localStorage.getItem('blog-likes') || '{}');
+            if (likesObj[postId] === undefined) {
+                // Initial mock likes
+                likesObj[postId] = Math.floor(Math.random() * 15) + 12;
+                localStorage.setItem('blog-likes', JSON.stringify(likesObj));
+            }
+            return likesObj[postId];
+        }
+
+        function likePost(postId) {
+            const likesObj = JSON.parse(localStorage.getItem('blog-likes') || '{}');
+            const likedList = JSON.parse(localStorage.getItem('blog-liked-list') || '[]');
+            
+            const btn = document.getElementById(`like-btn-${postId}`);
+            const countEl = document.getElementById(`like-count-${postId}`);
+            
+            if (likedList.includes(postId)) {
+                // Unlike
+                likesObj[postId] = Math.max(0, (likesObj[postId] || 1) - 1);
+                likedList.splice(likedList.indexOf(postId), 1);
+                if (btn) btn.classList.remove('text-red-400');
+            } else {
+                // Like
+                likesObj[postId] = (likesObj[postId] || 0) + 1;
+                likedList.push(postId);
+                if (btn) btn.classList.add('text-red-400');
+                
+                // Trigger tiny pop scale animation
+                const heart = btn.querySelector('span');
+                if (heart) {
+                    heart.classList.add('scale-150');
+                    setTimeout(() => heart.classList.remove('scale-150'), 200);
+                }
+            }
+
+            localStorage.setItem('blog-likes', JSON.stringify(likesObj));
+            localStorage.setItem('blog-liked-list', JSON.stringify(likedList));
+            
+            if (countEl) countEl.textContent = likesObj[postId];
+        }
+
+        // Apply visual button styles for already liked items
+        function updateLikeVisuals() {
+            const likedList = JSON.parse(localStorage.getItem('blog-liked-list') || '[]');
+            likedList.forEach(postId => {
+                const btn = document.getElementById(`like-btn-${postId}`);
+                if (btn) btn.classList.add('text-red-400');
+            });
+        }
+
+        // Filtering posts functionality
+        function filterPosts(category) {
+            activeCategory = category;
+            
+            // Toggle active classes on buttons
+            const filterIds = {
+                'All': 'filter-all',
+                'Physics': 'filter-physics',
+                'Machine Learning': 'filter-ml',
+                'Running': 'filter-running',
+                'Theory': 'filter-theory'
+            };
+
+            Object.keys(filterIds).forEach(cat => {
+                const btn = document.getElementById(filterIds[cat]);
+                if (cat === category) {
+                    btn.className = "px-3.5 py-1.5 rounded-full border border-primary/30 bg-primary/20 text-white transition-all shadow-sm";
+                } else {
+                    btn.className = "px-3.5 py-1.5 rounded-full border border-white/5 bg-surface text-gray-400 hover:text-white hover:border-white/20 transition-all";
+                }
+            });
+
+            renderTimeline();
+            updateLikeVisuals();
+        }
+
+        // Language Switching
+        function changeLang(lang) {
+            document.querySelectorAll('[data-zh]').forEach(el => {
+                const translation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+                if (translation !== null) {
+                    el.textContent = translation;
+                }
+            });
+
+            // Toggle button styles
+            const btnEn = document.getElementById('btn-en');
+            const btnZh = document.getElementById('btn-zh');
+
+            if (lang === 'zh') {
+                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
+                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white";
+                document.documentElement.lang = 'zh';
+            } else {
+                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
+                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white";
+                document.documentElement.lang = 'en';
+            }
+
+            localStorage.setItem('preferred-lang', lang);
+            
+            // Rerender timeline with new locale formatting and text
+            if (allPosts.length > 0) {
+                renderTimeline();
+                updateLikeVisuals();
+            }
+
+            // Dynamically load/reload the Giscus iframe to match the selected language
+            const giscusFrame = document.querySelector('iframe.giscus-frame');
+            if (giscusFrame) {
+                const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';
+                giscusFrame.contentWindow.postMessage(
+                    { giscus: { setConfig: { lang: giscusLang } } },
+                    'https://giscus.app'
+                );
+            }
+        }
+
+        function focusComment() {
+            // Scroll down to the Giscus container anchor
+            const element = document.querySelector('.giscus');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Initialize Giscus Comment Widget
+        function loadGiscus() {
+            const lang = localStorage.getItem('preferred-lang') || 'en';
+            const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';
+            const container = document.querySelector('.giscus');
+            if (!container) return;
+
+            // Anchor element for smooth scrolling
+            const anchor = document.createElement('div');
+            anchor.id = 'giscus-anchor';
+            container.parentNode.insertBefore(anchor, container);
+
+            const script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.setAttribute('data-repo', 'luozichen/luozichen.github.io');
+            script.setAttribute('data-repo-id', 'R_kgDONGpUAg'); // Clean default placeholder. User can customize if repo is renamed.
+            script.setAttribute('data-category', 'Announcements');
+            script.setAttribute('data-category-id', 'DIC_kwDONGpUAs4Ck4_y'); // Clean default placeholder.
+            script.setAttribute('data-mapping', 'pathname');
+            script.setAttribute('data-strict', '0');
+            script.setAttribute('data-reactions-enabled', '1');
+            script.setAttribute('data-emit-metadata', '0');
+            script.setAttribute('data-input-position', 'bottom');
+            script.setAttribute('data-theme', 'dark_dimmed');
+            script.setAttribute('data-lang', giscusLang);
+            script.crossOrigin = 'anonymous';
+            script.async = true;
+
+            container.appendChild(script);
+        }
+
+        // Initialize Feed & Preferences
+        (function() {
+            const preferredLang = localStorage.getItem('preferred-lang') || 'en';
+            loadFeed().then(() => {
+                setTimeout(updateLikeVisuals, 100);
+            });
+            changeLang(preferredLang);
+            loadGiscus();
+        })();
+    </script>
+</body>
+
+</html>
