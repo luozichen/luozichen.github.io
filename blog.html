@@ -11,7 +11,7 @@
     <!-- PWA & Favicon -->
     <link rel="icon" type="image/png" href="static/logo.png">
     <link rel="apple-touch-icon" href="static/logo.png">
-    <meta name="theme-color" content="#0a0a0b">
+    <meta name="theme-color" content="#161618">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,14 +31,14 @@
                         mono: ['JetBrains Mono', 'PingFang SC', 'Microsoft YaHei', 'monospace'],
                     },
                     colors: {
-                        background: '#0a0a0b',
-                        foreground: '#fafafa',
-                        primary: '#6366f1',
-                        secondary: '#8b5cf6',
-                        surface: '#1a1a1d',
-                        surface2: '#252529',
-                        border: '#2a2a2f',
-                        muted: '#71717a',
+                        background: '#161618',
+                        foreground: '#e4e4e7',
+                        primary: '#d97706', /* Warm Amber */
+                        secondary: '#b45309',
+                        surface: '#202024',
+                        surface2: '#2a2a30',
+                        border: '#2d2d30',
+                        muted: '#9a9a9f',
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.5s ease-out',
@@ -63,91 +63,85 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
 
-<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/30 selection:text-white">
+<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/20 selection:text-white">
 
     <!-- Floating Hamburger Button (Left Side) -->
     <div class="fixed top-6 left-6 z-50">
-        <button id="menu-btn" onclick="toggleMenu()" class="bg-surface/85 backdrop-blur border border-white/5 p-2.5 rounded-full flex items-center justify-center shadow-xl text-gray-400 hover:text-white hover:border-white/20 hover:scale-105 active:scale-95 transition-all">
+        <button id="menu-btn" onclick="toggleMenu()" class="bg-surface/90 backdrop-blur border border-border p-2.5 rounded-full flex items-center justify-center shadow-lg text-muted hover:text-white hover:border-white/10 hover:scale-105 active:scale-95 transition-all">
             <!-- Hamburger Open Icon -->
-            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
             <!-- Hamburger Close Icon -->
-            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
     </div>
 
     <!-- Slide-in Navigation Drawer -->
-    <div id="side-menu" class="fixed top-0 left-0 h-screen w-64 bg-background/95 backdrop-blur-md border-r border-white/5 z-40 transform -translate-x-full transition-transform duration-300 shadow-2xl pt-24 px-6 flex flex-col justify-between">
+    <div id="side-menu" class="fixed top-0 left-0 h-screen w-64 bg-[#1a1a1d]/95 backdrop-blur-md border-r border-border z-40 transform -translate-x-full transition-transform duration-300 shadow-xl pt-24 px-6 flex flex-col justify-between">
         <nav class="flex flex-col gap-3 font-display text-base">
-            <a href="index.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Home" data-zh="主页">Home</a>
+            <a href="index.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Home" data-zh="主页">Home</a>
             <a href="blog.html" class="px-4 py-2.5 rounded-xl bg-white/5 text-white font-medium transition-all" data-en="My Blog" data-zh="我的博客">My Blog</a>
-            <a href="theory.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Notes" data-zh="理论笔记">Notes</a>
-            <a href="running.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Running Life" data-zh="跑步生活">Running Life</a>
-            <a href="ml.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Machine Learning" data-zh="机器学习">Machine Learning</a>
+            <a href="theory.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Notes" data-zh="理论笔记">Notes</a>
+            <a href="running.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Running Life" data-zh="跑步生活">Running Life</a>
+            <a href="ml.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Machine Learning" data-zh="机器学习">Machine Learning</a>
         </nav>
-        <div class="mb-8 font-mono text-[10px] text-muted text-center" data-en="Zichen's Corner" data-zh="子辰的个人角落">
+        <div class="mb-8 font-mono text-[9px] text-muted text-center" data-en="Zichen's Corner" data-zh="子辰的个人角落">
             Zichen's Corner
         </div>
     </div>
     <!-- Menu Overlay to close when clicking outside -->
-    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 hidden transition-opacity duration-300"></div>
+    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden transition-opacity duration-300"></div>
 
     <!-- Floating Translation Toggle -->
-    <div class="fixed top-6 right-6 z-50 bg-surface/80 backdrop-blur border border-white/5 px-2 py-1 rounded-full flex gap-1.5 text-xs font-mono shadow-xl">
-        <button id="btn-en" onclick="changeLang('en')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
-        <button id="btn-zh" onclick="changeLang('zh')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white">中文</button>
+    <div class="fixed top-6 right-6 z-50 bg-surface/90 backdrop-blur border border-border px-2.5 py-1 rounded-full flex gap-1 text-[10px] font-mono shadow-md">
+        <button id="btn-en" onclick="changeLang('en')" class="px-2 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
+        <button id="btn-zh" onclick="changeLang('zh')" class="px-2 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white">中文</button>
     </div>
 
     <div class="max-w-2xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
 
-        <!-- Hero Header -->
-        <header class="text-center mb-12">
-            <div class="relative inline-block mb-4 group">
-                <div class="absolute inset-0 bg-gradient-to-tr from-secondary to-primary rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-                <img src="images/profile.jpg" alt="Zichen Luo"
-                    class="relative w-24 h-24 rounded-full object-cover border-2 border-white/10 shadow-2xl"
-                    onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=8b5cf6&color=fff&size=256'">
+        <!-- Minimalist Typographic Header (No Profile Pic) -->
+        <header class="mb-12 border-b border-border pb-6 flex items-center justify-between">
+            <div>
+                <a href="index.html" class="text-lg font-bold font-display text-white tracking-tight hover:text-primary transition-colors" data-en="Zichen Luo" data-zh="罗子辰">
+                    Zichen Luo
+                </a>
+                <span class="text-xs font-mono font-normal text-muted">&nbsp;/ blog</span>
+                <div class="text-[10px] font-mono text-primary flex items-center gap-1 mt-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    <span data-en="Thoughts & updates feed" data-zh="动态与随笔">Thoughts & updates feed</span>
+                </div>
             </div>
-
-            <h1 class="text-3xl font-bold font-display tracking-tight mb-2" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</h1>
-            <div class="text-sm font-mono text-primary flex items-center justify-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                <span data-en="Thoughts & updates feed" data-zh="动态与主页随笔">Thoughts & updates feed</span>
-            </div>
-
-            <nav class="mt-8 flex justify-center">
-                <a href="index.html"
-                    class="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-mono bg-surface border border-white/5 text-gray-400 hover:text-white hover:bg-white/5 transition-all shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            <nav class="font-mono text-[11px]">
+                <a href="index.html" class="text-muted hover:text-white transition-colors flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
-                    <span data-en="Back to main site" data-zh="返回主页">Back to main site</span>
+                    <span data-en="Home" data-zh="主页">Home</span>
                 </a>
             </nav>
         </header>
 
         <!-- Category Filters -->
-        <section class="mb-8 flex flex-wrap gap-2 justify-center font-mono text-xs" id="filters-container">
-            <button onclick="filterPosts('All')" id="filter-all" class="px-3.5 py-1.5 rounded-full border border-primary/30 bg-primary/20 text-white transition-all">All</button>
-            <button onclick="filterPosts('Physics')" id="filter-physics" class="px-3.5 py-1.5 rounded-full border border-white/5 bg-surface text-gray-400 hover:text-white hover:border-white/20 transition-all">Physics</button>
-            <button onclick="filterPosts('Machine Learning')" id="filter-ml" class="px-3.5 py-1.5 rounded-full border border-white/5 bg-surface text-gray-400 hover:text-white hover:border-white/20 transition-all">ML & AI</button>
-            <button onclick="filterPosts('Running')" id="filter-running" class="px-3.5 py-1.5 rounded-full border border-white/5 bg-surface text-gray-400 hover:text-white hover:border-white/20 transition-all">Running</button>
-            <button onclick="filterPosts('Theory')" id="filter-theory" class="px-3.5 py-1.5 rounded-full border border-white/5 bg-surface text-gray-400 hover:text-white hover:border-white/20 transition-all">Theory</button>
+        <section class="mb-8 flex flex-wrap gap-1.5 justify-center font-mono text-[11px]" id="filters-container">
+            <button onclick="filterPosts('All')" id="filter-all" class="px-3 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-white transition-all">All</button>
+            <button onclick="filterPosts('Physics')" id="filter-physics" class="px-3 py-1.5 rounded-full border border-border bg-surface text-muted hover:text-white hover:border-white/10 transition-all">Physics</button>
+            <button onclick="filterPosts('Machine Learning')" id="filter-ml" class="px-3 py-1.5 rounded-full border border-border bg-surface text-muted hover:text-white hover:border-white/10 transition-all">ML & AI</button>
+            <button onclick="filterPosts('Running')" id="filter-running" class="px-3 py-1.5 rounded-full border border-border bg-surface text-muted hover:text-white hover:border-white/10 transition-all">Running</button>
+            <button onclick="filterPosts('Theory')" id="filter-theory" class="px-3 py-1.5 rounded-full border border-border bg-surface text-muted hover:text-white hover:border-white/10 transition-all">Theory</button>
         </section>
 
         <!-- Dynamic Timeline Feed -->
@@ -159,13 +153,13 @@
         </main>
 
         <!-- Interactive Comments & Discussion Section -->
-        <section class="mt-16 border-t border-white/5 pt-12">
-            <div class="flex items-center gap-3 mb-8">
-                <h2 class="text-xl font-bold font-display text-white" data-en="💬 Comments & Discussion" data-zh="💬 评论与讨论">💬 Comments & Discussion</h2>
-                <div class="h-px bg-white/5 flex-1"></div>
+        <section class="mt-16 border-t border-border pt-12">
+            <div class="flex items-center gap-2 mb-6">
+                <h2 class="text-base font-bold font-display text-white" data-en="💬 Comments & Discussion" data-zh="💬 评论与讨论">💬 Comments & Discussion</h2>
+                <div class="h-px bg-border flex-1"></div>
             </div>
             
-            <p class="text-sm text-gray-400 font-light mb-8 leading-relaxed" 
+            <p class="text-xs text-zinc-400 font-light mb-6 leading-relaxed" 
                data-en="Feel free to leave a comment, suggest a fix, or react. This discussion board is backed by GitHub Discussions, keeping comments fast, spam-free, and directly integrated into the repo."
                data-zh="欢迎在此留言讨论、提出修正建议，或进行互动。本评论板由 GitHub Discussions 支持，安全快捷且直接与仓库关联。">
                 Feel free to leave a comment, suggest a fix, or react. This discussion board is backed by GitHub Discussions, keeping comments fast, spam-free, and directly integrated into the repo.
@@ -176,7 +170,7 @@
         </section>
 
         <!-- Footer -->
-        <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-xs font-mono">
+        <footer class="mt-20 pt-8 border-t border-border text-center text-zinc-500 text-xs font-mono">
             <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
         </footer>
 
@@ -215,17 +209,14 @@
                 const response = await fetch('blog/posts.json');
                 if (!response.ok) throw new Error("Failed to fetch posts");
                 allPosts = await response.json();
-                
-                // Sort posts: descending order of dates
                 allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
                 renderTimeline();
             } catch (error) {
                 console.error("Error loading blog posts:", error);
                 const timeline = document.getElementById('timeline');
                 const lang = localStorage.getItem('preferred-lang') || 'en';
                 timeline.innerHTML = `
-                    <div class="text-center py-12 text-red-400 font-mono text-sm">
+                    <div class="text-center py-12 text-red-400 font-mono text-xs">
                         ${lang === 'zh' ? '加载动态流失败，请稍后再试。' : 'Failed to load feed. Please try again later.'}
                     </div>
                 `;
@@ -237,14 +228,13 @@
             const timeline = document.getElementById('timeline');
             const lang = localStorage.getItem('preferred-lang') || 'en';
             
-            // Filter posts
             const filteredPosts = activeCategory === 'All' 
                 ? allPosts 
                 : allPosts.filter(post => post.category === activeCategory);
 
             if (filteredPosts.length === 0) {
                 timeline.innerHTML = `
-                    <div class="text-center py-12 text-muted font-mono text-sm">
+                    <div class="text-center py-12 text-muted font-mono text-xs">
                         ${lang === 'zh' ? '暂无此类别动态。' : 'No posts in this category yet.'}
                     </div>
                 `;
@@ -257,45 +247,45 @@
                 const formattedDate = formatDate(date, lang);
                 const content = lang === 'zh' ? post.content.zh : post.content.en;
                 
-                // Category color accenting
+                // Category color accenting (earth tones)
                 let categoryColor = 'text-primary border-primary/20 bg-primary/5';
-                if (post.category === 'Running') categoryColor = 'text-emerald-400 border-emerald-500/20 bg-emerald-500/5';
-                if (post.category === 'Theory') categoryColor = 'text-purple-400 border-purple-500/20 bg-purple-500/5';
+                if (post.category === 'Running') categoryColor = 'text-emerald-500 border-emerald-500/20 bg-emerald-500/5';
+                if (post.category === 'Theory') categoryColor = 'text-amber-500 border-amber-500/20 bg-amber-500/5';
                 if (post.category === 'Machine Learning') categoryColor = 'text-indigo-400 border-indigo-500/20 bg-indigo-500/5';
 
                 const postEl = document.createElement('article');
-                postEl.className = 'bg-surface border border-white/5 rounded-2xl p-6 shadow-md transition-all hover:border-white/10 duration-200';
+                postEl.className = 'bg-surface border border-border rounded-2xl p-6 shadow-sm transition-all duration-200';
                 postEl.innerHTML = `
-                    <div class="flex items-start justify-between gap-4 mb-4">
-                        <div class="flex items-center gap-3">
-                            <img src="images/profile.jpg" alt="Zichen" class="w-10 h-10 rounded-full object-cover border border-white/10">
+                    <div class="flex items-start justify-between gap-4 mb-3">
+                        <div class="flex items-center gap-2.5">
+                            <img src="images/profile.jpg" alt="Zichen" class="w-8 h-8 rounded-full object-cover border border-border">
                             <div>
-                                <h4 class="text-sm font-bold text-gray-200 flex items-center gap-2">
+                                <h4 class="text-xs font-bold text-gray-200 flex items-center gap-1.5">
                                     ${lang === 'zh' ? '罗子辰' : 'Zichen Luo'}
-                                    <span class="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full border ${categoryColor}">
+                                    <span class="text-[9px] font-mono font-medium px-2 py-0.5 rounded-full border ${categoryColor}">
                                         ${post.category}
                                     </span>
                                 </h4>
-                                <span class="text-xs font-mono text-muted">${formattedDate}</span>
+                                <span class="text-[10px] font-mono text-muted">${formattedDate}</span>
                             </div>
                         </div>
                     </div>
                     
-                    <p class="text-sm md:text-base text-gray-300 leading-relaxed font-light mb-4 whitespace-pre-line">
+                    <p class="text-xs md:text-sm text-zinc-300 leading-relaxed font-light mb-3 whitespace-pre-line">
                         ${content}
                     </p>
 
-                    <div class="flex flex-wrap gap-1.5 mb-4">
-                        ${post.tags.map(tag => `<span class="text-[10px] font-mono text-muted px-2.5 py-0.5 rounded-md bg-black/10">#${tag}</span>`).join('')}
+                    <div class="flex flex-wrap gap-1 mb-3">
+                        ${post.tags.map(tag => `<span class="text-[9px] font-mono text-muted px-2 py-0.5 rounded-md bg-black/10">#${tag}</span>`).join('')}
                     </div>
 
-                    <div class="flex items-center gap-4 text-xs font-mono text-muted border-t border-white/5 pt-3 mt-3">
-                        <button onclick="likePost('${post.id}')" id="like-btn-${post.id}" class="flex items-center gap-1.5 hover:text-red-400 transition-colors group">
-                            <span class="text-sm transition-transform group-hover:scale-125">❤️</span>
+                    <div class="flex items-center gap-4 text-[10px] font-mono text-muted border-t border-border pt-2 mt-2">
+                        <button onclick="likePost('${post.id}')" id="like-btn-${post.id}" class="flex items-center gap-1 hover:text-red-400 transition-colors group">
+                            <span class="text-xs transition-transform group-hover:scale-125">❤️</span>
                             <span id="like-count-${post.id}">${getLikes(post.id)}</span>
                         </button>
-                        <a href="#giscus-anchor" onclick="focusComment()" class="flex items-center gap-1.5 hover:text-primary transition-colors">
-                            <span class="text-sm">💬</span>
+                        <a href="#giscus-anchor" onclick="focusComment()" class="flex items-center gap-1 hover:text-primary transition-colors">
+                            <span class="text-xs">💬</span>
                             <span>Comment</span>
                         </a>
                     </div>
@@ -304,7 +294,6 @@
             });
         }
 
-        // Relative/Formatted date helper
         function formatDate(date, lang) {
             const now = new Date();
             const diffMs = now - date;
@@ -328,22 +317,18 @@
             }
         }
 
-        // Local Storage Like state handlers
         function getLikes(postId) {
             const likesObj = JSON.parse(localStorage.getItem('blog-likes') || '{}');
             if (likesObj[postId] === undefined) {
-                // Initial mock likes
                 likesObj[postId] = Math.floor(Math.random() * 15) + 12;
                 localStorage.setItem('blog-likes', JSON.stringify(likesObj));
             }
             return likesObj[postId];
         }
 
-        // Like/Unlike function
         function likePost(postId) {
             const likesObj = JSON.parse(localStorage.getItem('blog-likes') || '{}');
             const likedList = JSON.parse(localStorage.getItem('blog-liked-list') || '[]');
-            
             const btn = document.getElementById(`like-btn-${postId}`);
             const countEl = document.getElementById(`like-count-${postId}`);
             
@@ -357,8 +342,8 @@
                 if (btn) btn.classList.add('text-red-400');
                 const heart = btn.querySelector('span');
                 if (heart) {
-                    heart.classList.add('scale-150');
-                    setTimeout(() => heart.classList.remove('scale-150'), 200);
+                    heart.classList.add('scale-155');
+                    setTimeout(() => heart.classList.remove('scale-155'), 200);
                 }
             }
 
@@ -388,9 +373,9 @@
             Object.keys(filterIds).forEach(cat => {
                 const btn = document.getElementById(filterIds[cat]);
                 if (cat === category) {
-                    btn.className = "px-3.5 py-1.5 rounded-full border border-primary/30 bg-primary/20 text-white transition-all shadow-sm";
+                    btn.className = "px-3 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-white transition-all shadow-sm";
                 } else {
-                    btn.className = "px-3.5 py-1.5 rounded-full border border-white/5 bg-surface text-gray-400 hover:text-white hover:border-white/20 transition-all";
+                    btn.className = "px-3 py-1.5 rounded-full border border-border bg-surface text-muted hover:text-white hover:border-white/10 transition-all";
                 }
             });
 
@@ -412,11 +397,11 @@
 
             if (lang === 'zh') {
                 btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white";
+                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
                 document.documentElement.lang = 'zh';
             } else {
                 btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white";
+                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
                 document.documentElement.lang = 'en';
             }
 
@@ -427,7 +412,7 @@
                 updateLikeVisuals();
             }
 
-            // Dynamically load/reload the Giscus iframe to match the selected language
+            // Sync Giscus language
             const giscusFrame = document.querySelector('iframe.giscus-frame');
             if (giscusFrame) {
                 const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';

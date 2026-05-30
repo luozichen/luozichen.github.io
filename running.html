@@ -11,7 +11,7 @@
     <!-- PWA & Favicon -->
     <link rel="icon" type="image/png" href="static/logo.png">
     <link rel="apple-touch-icon" href="static/logo.png">
-    <meta name="theme-color" content="#0a0a0b">
+    <meta name="theme-color" content="#161618">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,14 +29,14 @@
                         mono: ['JetBrains Mono', 'PingFang SC', 'Microsoft YaHei', 'monospace'],
                     },
                     colors: {
-                        background: '#0a0a0b',
-                        foreground: '#fafafa',
-                        primary: '#6366f1',
-                        secondary: '#8b5cf6',
-                        surface: '#1a1a1d',
-                        surface2: '#252529',
-                        border: '#2a2a2f',
-                        muted: '#71717a',
+                        background: '#161618',
+                        foreground: '#e4e4e7',
+                        primary: '#d97706', /* Warm Amber */
+                        secondary: '#b45309',
+                        surface: '#202024',
+                        surface2: '#2a2a30',
+                        border: '#2d2d30',
+                        muted: '#9a9a9f',
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.5s ease-out',
@@ -54,70 +54,69 @@
     <style>
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
     </style>
 </head>
 
-<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/30 selection:text-white">
+<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/20 selection:text-white">
 
     <!-- Floating Hamburger Button (Left Side) -->
     <div class="fixed top-6 left-6 z-50">
-        <button id="menu-btn" onclick="toggleMenu()" class="bg-surface/85 backdrop-blur border border-white/5 p-2.5 rounded-full flex items-center justify-center shadow-xl text-gray-400 hover:text-white hover:border-white/20 hover:scale-105 active:scale-95 transition-all">
+        <button id="menu-btn" onclick="toggleMenu()" class="bg-surface/85 backdrop-blur border border-border p-2.5 rounded-full flex items-center justify-center shadow-lg text-muted hover:text-white hover:border-white/10 hover:scale-105 active:scale-95 transition-all">
             <!-- Hamburger Open Icon -->
-            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
             <!-- Hamburger Close Icon -->
-            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
     </div>
 
     <!-- Slide-in Navigation Drawer -->
-    <div id="side-menu" class="fixed top-0 left-0 h-screen w-64 bg-background/95 backdrop-blur-md border-r border-white/5 z-40 transform -translate-x-full transition-transform duration-300 shadow-2xl pt-24 px-6 flex flex-col justify-between">
+    <div id="side-menu" class="fixed top-0 left-0 h-screen w-64 bg-[#1a1a1d]/95 backdrop-blur-md border-r border-border z-40 transform -translate-x-full transition-transform duration-300 shadow-xl pt-24 px-6 flex flex-col justify-between">
         <nav class="flex flex-col gap-3 font-display text-base">
-            <a href="index.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Home" data-zh="主页">Home</a>
-            <a href="blog.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="My Blog" data-zh="我的博客">My Blog</a>
-            <a href="theory.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Notes" data-zh="理论笔记">Notes</a>
+            <a href="index.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Home" data-zh="主页">Home</a>
+            <a href="blog.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="My Blog" data-zh="我的博客">My Blog</a>
+            <a href="theory.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Notes" data-zh="理论笔记">Notes</a>
             <a href="running.html" class="px-4 py-2.5 rounded-xl bg-white/5 text-white font-medium transition-all" data-en="Running Life" data-zh="跑步生活">Running Life</a>
-            <a href="ml.html" class="px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all" data-en="Machine Learning" data-zh="机器学习">Machine Learning</a>
+            <a href="ml.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Machine Learning" data-zh="机器学习">Machine Learning</a>
         </nav>
-        <div class="mb-8 font-mono text-[10px] text-muted text-center" data-en="Zichen's Corner" data-zh="子辰的个人角落">
+        <div class="mb-8 font-mono text-[9px] text-muted text-center" data-en="Zichen's Corner" data-zh="子辰的个人角落">
             Zichen's Corner
         </div>
     </div>
     <!-- Menu Overlay to close when clicking outside -->
-    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 hidden transition-opacity duration-300"></div>
+    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden transition-opacity duration-300"></div>
 
     <!-- Floating Translation Toggle -->
-    <div class="fixed top-6 right-6 z-50 bg-surface/80 backdrop-blur border border-white/5 px-2 py-1 rounded-full flex gap-1.5 text-xs font-mono shadow-xl">
+    <div class="fixed top-6 right-6 z-50 bg-surface/80 backdrop-blur border border-border px-2.5 py-1 rounded-full flex gap-1 text-[10px] font-mono shadow-xl">
         <button id="btn-en" onclick="changeLang('en')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
         <button id="btn-zh" onclick="changeLang('zh')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white">中文</button>
     </div>
 
     <div class="max-w-4xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
         
-        <!-- Hero Header -->
-        <header class="text-center mb-16">
-            <div class="relative inline-block mb-6 group">
-                 <div class="absolute inset-0 bg-gradient-to-tr from-green-400 to-primary rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-                <img src="images/profile.jpg" alt="Zichen Luo" 
-                     class="relative w-36 h-36 rounded-full object-cover border-2 border-white/10 shadow-2xl"
-                     onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=6366f1&color=fff&size=256'">
+        <!-- Minimalist Typographic Header (No Profile Pic) -->
+        <header class="mb-12 border-b border-border pb-6 flex items-center justify-between">
+            <div>
+                <a href="index.html" class="text-lg font-bold font-display text-white tracking-tight hover:text-primary transition-colors" data-en="Zichen Luo" data-zh="罗子辰">
+                    Zichen Luo
+                </a>
+                <span class="text-xs font-mono font-normal text-muted">&nbsp;/ running</span>
+                <div class="text-[10px] font-mono text-primary flex items-center gap-1 mt-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span data-en="Competitive running logs" data-zh="清华中长跑二队">Competitive running logs</span>
+                </div>
             </div>
-            
-            <h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-3" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</h1>
-            <div class="text-lg text-muted font-light mb-8">
-                <span data-en="Running Portfolio" data-zh="竞技长跑生涯">Running Portfolio</span> · <a href="https://www.tsinghua.edu.cn/" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/30 hover:border-primary">Tsinghua University</a>
-                <div class="text-sm mt-1 opacity-70" data-en="Member of Middle- & Long-Distance Second Team" data-zh="清华中长跑二队成员">Member of Middle- & Long-Distance Second Team</div>
-            </div>
-
-            <nav class="inline-flex justify-center">
-                <a href="index.html" class="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-mono bg-surface border border-white/5 text-gray-400 hover:text-white hover:bg-white/5 transition-all shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-                    <span data-en="Back to main site" data-zh="返回主页">Back to main site</span>
+            <nav class="font-mono text-[11px]">
+                <a href="index.html" class="text-muted hover:text-white transition-colors flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    <span data-en="Home" data-zh="主页">Home</span>
                 </a>
             </nav>
         </header>
@@ -125,52 +124,52 @@
         <main class="space-y-8">
 
             <!-- Personal Bests Card -->
-            <section class="bg-surface border border-white/5 rounded-2xl p-6 md:p-8 shadow-xl">
-                <h2 class="text-2xl font-bold font-display text-white mb-6 border-b border-white/5 pb-4" data-en="Personal Bests" data-zh="个人最好成绩">Personal Bests</h2>
+            <section class="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-sm">
+                <h2 class="text-xl font-bold font-display text-white mb-6 border-b border-border pb-4" data-en="Personal Bests" data-zh="个人最好成绩">Personal Bests</h2>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="text-xs text-muted uppercase tracking-wider font-mono border-b border-white/5">
+                            <tr class="text-xs text-muted uppercase tracking-wider font-mono border-b border-border">
                                 <th class="py-3 px-4 font-medium" data-en="Distance" data-zh="距离">Distance</th>
                                 <th class="py-3 px-4 font-medium" data-en="Time" data-zh="成绩">Time</th>
                                 <th class="py-3 px-4 font-medium" data-en="Notes" data-zh="备注">Notes</th>
                             </tr>
                         </thead>
                         <tbody class="text-sm text-gray-300">
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <tr class="border-b border-border hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4">1 km</td>
-                                <td class="py-3 px-4 font-mono text-emerald-400 font-bold">2:53</td>
-                                <td class="py-3 px-4 text-gray-500" data-en="Track" data-zh="田径场">Track</td>
+                                <td class="py-3 px-4 font-mono text-primary font-bold">2:53</td>
+                                <td class="py-3 px-4 text-zinc-500" data-en="Track" data-zh="田径场">Track</td>
                             </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <tr class="border-b border-border hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4">1.5 km</td>
-                                <td class="py-3 px-4 font-mono text-emerald-400 font-bold">4:36</td>
-                                <td class="py-3 px-4 text-gray-500" data-en="Track" data-zh="田径场">Track</td>
+                                <td class="py-3 px-4 font-mono text-primary font-bold">4:36</td>
+                                <td class="py-3 px-4 text-zinc-500" data-en="Track" data-zh="田径场">Track</td>
                             </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <tr class="border-b border-border hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4">3 km</td>
-                                <td class="py-3 px-4 font-mono text-emerald-400 font-bold">9:58</td>
-                                <td class="py-3 px-4 text-gray-500" data-en="Track, Sub-10 achieved" data-zh="田径场，达成 Sub-10">Track, Sub-10 achieved</td>
+                                <td class="py-3 px-4 font-mono text-primary font-bold">9:58</td>
+                                <td class="py-3 px-4 text-zinc-500" data-en="Track, Sub-10 achieved" data-zh="田径场，达成 Sub-10">Track, Sub-10 achieved</td>
                             </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <tr class="border-b border-border hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4">5 km</td>
-                                <td class="py-3 px-4 font-mono text-emerald-400 font-bold">17:33</td>
-                                <td class="py-3 px-4 text-gray-500" data-en="Track PB" data-zh="田径场最好成绩">Track PB</td>
+                                <td class="py-3 px-4 font-mono text-primary font-bold">17:33</td>
+                                <td class="py-3 px-4 text-zinc-500" data-en="Track PB" data-zh="田径场最好成绩">Track PB</td>
                             </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <tr class="border-b border-border hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4">10 km</td>
-                                <td class="py-3 px-4 font-mono text-emerald-400 font-bold">37:22</td>
-                                <td class="py-3 px-4 text-gray-500" data-en="Road" data-zh="路跑">Road</td>
+                                <td class="py-3 px-4 font-mono text-primary font-bold">37:22</td>
+                                <td class="py-3 px-4 text-zinc-500" data-en="Road" data-zh="路跑">Road</td>
                             </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <tr class="border-b border-border hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4">Half Marathon</td>
-                                <td class="py-3 px-4 font-mono text-emerald-400 font-bold">1:23:30</td>
-                                <td class="py-3 px-4 text-gray-500" data-en="Track training run" data-zh="田径场训练跑">Track training run</td>
+                                <td class="py-3 px-4 font-mono text-primary font-bold">1:23:30</td>
+                                <td class="py-3 px-4 text-zinc-500" data-en="Track training run" data-zh="田径场训练跑">Track training run</td>
                             </tr>
                             <tr class="hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4" data-en="Longest Run" data-zh="最长跑距离">Longest Run</td>
-                                <td class="py-3 px-4 font-mono text-emerald-400 font-bold">40.0 km</td>
-                                <td class="py-3 px-4 text-gray-500" data-en="Distance endurance" data-zh="长距离耐力训练">Distance endurance</td>
+                                <td class="py-3 px-4 font-mono text-primary font-bold">40.0 km</td>
+                                <td class="py-3 px-4 text-zinc-500" data-en="Distance endurance" data-zh="长距离耐力训练">Distance endurance</td>
                             </tr>
                         </tbody>
                     </table>
@@ -178,66 +177,66 @@
             </section>
 
             <!-- Pace Chart Card -->
-            <section class="bg-surface border border-white/5 rounded-2xl p-6 md:p-8 shadow-xl">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-6 border-b border-white/5 pb-4">
+            <section class="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-sm">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-6 border-b border-border pb-4">
                     <div>
-                        <h2 class="text-2xl font-bold font-display text-white" data-en="Pace Analysis" data-zh="配速分析">Pace Analysis</h2>
-                        <p class="text-sm text-muted mt-1" data-en="A visualisation of my pace function across different distances." data-zh="我在不同跑步距离下配速模型的函数可视化。">A visualisation of my pace function across different distances.</p>
+                        <h2 class="text-xl font-bold font-display text-white" data-en="Pace Analysis" data-zh="配速分析">Pace Analysis</h2>
+                        <p class="text-xs text-muted mt-1" data-en="A visualisation of my pace function across different distances." data-zh="我在不同跑步距离下配速模型的函数可视化。">A visualisation of my pace function across different distances.</p>
                     </div>
                 </div>
-                <div class="relative w-full pb-[60%] md:pb-[40%] rounded-xl overflow-hidden border border-white/10 bg-black/20">
+                <div class="relative w-full pb-[60%] md:pb-[40%] rounded-xl overflow-hidden border border-white/5 bg-black/20">
                     <iframe src="https://www.desmos.com/calculator/qaomk9sv9s?embed" class="absolute inset-0 w-full h-full" frameborder="0"></iframe>
                 </div>
             </section>
 
             <!-- Goals Card -->
-            <section class="bg-surface border border-white/5 rounded-2xl p-6 md:p-8 shadow-xl">
-                <h2 class="text-2xl font-bold font-display text-white mb-6 border-b border-white/5 pb-4" data-en="Athletic Goals" data-zh="运动目标">Athletic Goals</h2>
+            <section class="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-sm">
+                <h2 class="text-xl font-bold font-display text-white mb-6 border-b border-border pb-4" data-en="Athletic Goals" data-zh="运动目标">Athletic Goals</h2>
                 <ul class="space-y-4 text-gray-300">
                     <li class="flex items-start gap-3">
-                        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
                         <span data-en="&lt;strong class='text-white'&gt;Immediate:&lt;/strong&gt; Consolidate sub-10:00 3k form." data-zh="&lt;strong class='text-white'&gt;近期目标：&lt;/strong&gt;巩固 3公里 10分钟以内的配速水平。"><strong>Immediate:</strong> Consolidate sub-10:00 3k form.</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
                         <span data-en="&lt;strong class='text-white'&gt;Short-term:&lt;/strong&gt; Break 17:30 for 5k consistently." data-zh="&lt;strong class='text-white'&gt;短期目标：&lt;/strong&gt;能够稳定突破 5公里 17分30秒。"><strong>Short-term:</strong> Break 17:30 for 5k consistently.</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
                         <span data-en="&lt;strong class='text-white'&gt;2026 Target:&lt;/strong&gt; Complete an official Half Marathon with a sub-1:23 target." data-zh="&lt;strong class='text-white'&gt;2026年目标：&lt;/strong&gt;完成一次官方半程马拉松赛事，并冲击 sub-1:23。"><strong>2026 Target:</strong> Complete an official Half Marathon with a sub-1:23 target.</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                        <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
                         <span data-en="&lt;strong class='text-white'&gt;Long-term:&lt;/strong&gt; Sub-3:00 Marathon." data-zh="&lt;strong class='text-white'&gt;长期目标：&lt;/strong&gt;全马突破 3小时大关。"><strong>Long-term:</strong> Sub-3:00 Marathon.</span>
                     </li>
                 </ul>
             </section>
 
             <!-- Achievements Card -->
-            <section class="bg-surface border border-white/5 rounded-2xl p-6 md:p-8 shadow-xl">
-                <h2 class="text-2xl font-bold font-display text-white mb-6 border-b border-white/5 pb-4" data-en="Race Results" data-zh="赛事历史成绩">Race Results</h2>
+            <section class="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-sm">
+                <h2 class="text-xl font-bold font-display text-white mb-6 border-b border-border pb-4" data-en="Race Results" data-zh="赛事历史成绩">Race Results</h2>
                 <div class="overflow-x-auto mb-6">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="text-xs text-muted uppercase tracking-wider font-mono border-b border-white/5">
+                            <tr class="text-xs text-muted uppercase tracking-wider font-mono border-b border-border">
                                 <th class="py-3 px-4 font-medium" data-en="Event" data-zh="比赛项目">Event</th>
                                 <th class="py-3 px-4 font-medium text-right" data-en="Place" data-zh="名次">Place</th>
                             </tr>
                         </thead>
                         <tbody class="text-sm text-gray-300">
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <tr class="border-b border-border hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4" data-en="2025 Tsinghua Minimarathon (5k)" data-zh="2025年清华半程马拉松 (5公里校庆跑)">2025 Tsinghua Minimarathon (5k)</td>
-                                <td class="py-3 px-4 text-right font-mono text-emerald-400 font-bold" data-en="5th" data-zh="第5名">5th</td>
+                                <td class="py-3 px-4 text-right font-mono text-primary font-bold" data-en="5th" data-zh="第5名">5th</td>
                             </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <tr class="border-b border-border hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4" data-en="2025 Tsinghua Marathon (10k)" data-zh="2025年清华校园马拉松 (10公里)">2025 Tsinghua Marathon (10k)</td>
-                                <td class="py-3 px-4 text-right font-mono text-emerald-400 font-bold" data-en="9th" data-zh="第9名">9th</td>
+                                <td class="py-3 px-4 text-right font-mono text-primary font-bold" data-en="9th" data-zh="第9名">9th</td>
                             </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <tr class="border-b border-border hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4" data-en="2024 Tsinghua Minimarathon (5k)" data-zh="2024年清华半程马拉松 (5公里校庆跑)">2024 Tsinghua Minimarathon (5k)</td>
                                 <td class="py-3 px-4 text-right font-mono text-gray-400" data-en="23rd" data-zh="第23名">23rd</td>
                             </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <tr class="border-b border-border hover:bg-white/5 transition-colors">
                                 <td class="py-3 px-4" data-en="2024 Tsinghua Marathon (10k)" data-zh="2024年清华校园马拉松 (10公里)">2024 Tsinghua Marathon (10k)</td>
                                 <td class="py-3 px-4 text-right font-mono text-gray-400" data-en="82nd" data-zh="第82名">82nd</td>
                             </tr>
@@ -249,9 +248,9 @@
                     </table>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center justify-between gap-4 p-4 bg-white/5 rounded-xl border border-white/5">
-                    <p class="text-sm text-muted" data-en="Detailed logs and real-time stats available on Garmin Connect." data-zh="详细的日常训练记录和统计图表已在 Garmin Connect 上公开。">Detailed logs and real-time stats available on Garmin Connect.</p>
-                    <a href="https://connect.garmin.cn/modern/profile/df7bb8d6-df09-4701-88b8-39f8c82a5452" target="_blank" class="px-5 py-2.5 bg-surface hover:bg-surface2 text-white text-sm font-medium rounded-lg border border-white/10 transition-colors flex items-center gap-2">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 p-4 bg-white/5 rounded-xl border border-border">
+                    <p class="text-xs text-muted" data-en="Detailed logs and real-time stats available on Garmin Connect." data-zh="详细的日常训练记录和统计图表已在 Garmin Connect 上公开。">Detailed logs and real-time stats available on Garmin Connect.</p>
+                    <a href="https://connect.garmin.cn/modern/profile/df7bb8d6-df09-4701-88b8-39f8c82a5452" target="_blank" class="px-5 py-2.5 bg-surface hover:bg-surface2 text-white text-xs font-medium rounded-lg border border-white/10 transition-colors flex items-center gap-2">
                         <span data-en="View Profile" data-zh="查看佳明主页">View Profile</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -260,14 +259,14 @@
 
         </main>
 
-        <footer class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-sm font-light">
-            <div class="mb-6 font-display text-base md:text-lg tracking-[0.4em] text-gray-400 opacity-80" data-en="Nothing worth having comes easy." data-zh="世上无难事，只怕有心人。">
+        <footer class="mt-20 pt-8 border-t border-border text-center text-zinc-500 text-xs font-light">
+            <div class="mb-6 font-display text-sm md:text-base tracking-[0.3em] text-zinc-400 opacity-80" data-en="Nothing worth having comes easy." data-zh="世上无难事，只怕有心人。">
                 Nothing worth having comes easy.
             </div>
             <div class="mb-2">
                 <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
             </div>
-            <div id="last-updated" class="inline-block px-3 py-1 bg-surface border border-white/5 rounded-lg font-mono text-xs">Last updated: January 2026</div>
+            <div id="last-updated" class="inline-block px-3 py-1 bg-surface border border-border rounded-lg font-mono text-[10px]">Last updated: January 2026</div>
         </footer>
     </div>
 
@@ -317,13 +316,12 @@
                 }
             });
 
-            // Toggle button styles
             const btnEn = document.getElementById('btn-en');
             const btnZh = document.getElementById('btn-zh');
 
             if (lang === 'zh') {
                 btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white";
+                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
                 document.documentElement.lang = 'zh';
 
                 const lastUpdatedEl = document.getElementById('last-updated');
@@ -333,7 +331,7 @@
                 }
             } else {
                 btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-gray-400 hover:text-white";
+                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
                 document.documentElement.lang = 'en';
 
                 const lastUpdatedEl = document.getElementById('last-updated');
