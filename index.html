@@ -68,9 +68,14 @@
 
     <!-- Minimalist Top Academic Header -->
     <header class="max-w-3xl mx-auto px-6 pt-12 pb-6 border-b border-border flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-            <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
-            <p class="text-[11px] text-muted mt-1 font-mono italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
+        <div class="flex items-center gap-3.5">
+            <img src="images/profile.jpg" alt="Zichen Luo"
+                class="w-12 h-12 rounded-full object-cover border border-border bg-stone-100 shrink-0"
+                onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=e7e5e4&color=1c1917&size=256'">
+            <div>
+                <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
+                <p class="text-[11px] text-muted mt-0.5 font-mono italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
+            </div>
         </div>
         <div class="flex items-center gap-6 text-sm font-mono">
             <nav class="flex flex-wrap gap-x-4 gap-y-1">
@@ -88,30 +93,22 @@
         </div>
     </header>
 
-    <div class="max-w-3xl mx-auto px-6 py-12 space-y-12">
+    <div class="max-w-3xl mx-auto px-6 py-12 space-y-12 animate-fade-in">
 
-        <!-- Welcoming & Hero Intro Section -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-            <div class="md:col-span-2 space-y-6 leading-relaxed text-sm md:text-base text-foreground/90 font-serif">
-                <p data-en="Hi, I'm Zichen Luo (罗子辰). Born and raised in London, UK, I have been deeply fascinated by physics and the natural world since my early childhood. At the age of 14, I received an offer to join the undergraduate physics program at Tsinghua University in Beijing. Moving across the world to pursue this passion has been an incredible journey, immersing me in the rich academic environment of one of China's most historic and rigorous physics departments."
-                   data-zh="你好，我是罗子辰。我在英国伦敦出生并长大，自幼便对物理学和自然科学深感兴趣。14岁时，我有幸收到清华大学物理系本科项目的录取通知。跨越半个地球来到北京追求这份热爱是一段非凡的旅程，让我能够全身心融入清华物理系严谨且深厚的学术氛围中。">
-                    Hi, I'm Zichen Luo (罗子辰). Born and raised in London, UK, I have been deeply fascinated by physics and the natural world since my early childhood. At the age of 14, I received an offer to join the undergraduate physics program at Tsinghua University in Beijing. Moving across the world to pursue this passion has been an incredible journey, immersing me in the rich academic environment of one of China's most historic and rigorous physics departments.
-                </p>
-                <p data-en="Currently, I am in my fourth and final year of study, completing my bachelor's thesis in experimental nuclear physics under the guidance of Prof. Xiao Zhigang. My research focuses on the development of polarization detectors for deuteron breakup experiments. This combines Geant4 Monte Carlo simulations with hands-on hardware design, including the assembly and testing of plastic scintillator arrays, to explore the isovector nature of nuclear symmetry energy."
-                   data-zh="目前，我正值大四本科毕业年，在肖志刚教授的指导下完成我的学士学位论文。我的主要研究方向为实验核物理领域中氘核解体实验偏振探测器的研制。这一工作结合了 Geant4 蒙特卡洛物理模拟与实际硬件研发，包括塑料闪烁体探测器阵列的装配与测试，以探索核对称能的同位旋矢量特性。">
-                    Currently, I am in my fourth and final year of study, completing my bachelor's thesis in experimental nuclear physics under the guidance of Prof. Xiao Zhigang. My research focuses on the development of polarization detectors for deuteron breakup experiments. This combines Geant4 Monte Carlo simulations with hands-on hardware design, including the assembly and testing of plastic scintillator arrays, to explore the isovector nature of nuclear symmetry energy.
-                </p>
-                <p data-en="Beyond the laboratory, my academic curiosities extend to the mathematical beauty of theoretical physics; I dedicate much of my independent study to Quantum Field Theory and General Relativity. This website is a simple, quiet corner of the internet where I host my academic notes, catalog my competitive running life as a member of Tsinghua's long-distance team, and share my occasional machine learning experiments. Thank you for visiting."
-                   data-zh="在实验室之外，我的学术兴趣也延伸到了理论物理的数学美感上；我利用大量课余时间自学了量子场论与广义相对论。这个网站是我在互联网上的一个小角落，用于整理和存放我的学术笔记，记录我作为清华中长跑二队成员的跑步训练日志，并分享我偶尔做的一些机器学习实验。感谢你的到访。">
-                    Beyond the laboratory, my academic curiosities extend to the mathematical beauty of theoretical physics; I dedicate much of my independent study to Quantum Field Theory and General Relativity. This website is a simple, quiet corner of the internet where I host my academic notes, catalog my competitive running life as a member of Tsinghua's long-distance team, and share my occasional machine learning experiments. Thank you for visiting.
-                </p>
-            </div>
-            <div class="flex flex-col items-center md:items-end">
-                <img src="images/profile.jpg" alt="Zichen Luo"
-                    class="w-44 h-44 md:w-48 md:h-48 rounded shadow-sm object-cover border border-border bg-stone-100"
-                    onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=e7e5e4&color=1c1917&size=256'">
-                <p class="text-[10px] text-muted font-mono mt-2 text-center md:text-right" data-en="Beijing, May 2026" data-zh="北京，2026年5月">Beijing, May 2026</p>
-            </div>
+        <!-- Welcoming & Hero Intro Section (Full Width, No wrap issues) -->
+        <section class="space-y-6 leading-relaxed text-sm md:text-base text-foreground/90 font-serif">
+            <p data-en="Hi, I'm Zichen Luo. Born and raised in London, UK, I have been deeply fascinated by physics and the natural world since my early childhood. At the age of 14, I received an offer to join the undergraduate physics program at Tsinghua University in Beijing. Moving across the world to pursue this passion has been an incredible journey, immersing me in the rich academic environment of one of China's most historic and rigorous physics departments."
+               data-zh="你好，我是罗子辰。我在英国伦敦出生并长大，自幼便对物理学和自然科学深感兴趣。14岁时，我有幸收到清华大学物理系本科项目的录取通知。跨越半个地球来到北京追求这份热爱是一段非凡的旅程，让我能够全身心融入清华物理系严谨且深厚的学术氛围中。">
+                Hi, I'm Zichen Luo. Born and raised in London, UK, I have been deeply fascinated by physics and the natural world since my early childhood. At the age of 14, I received an offer to join the undergraduate physics program at Tsinghua University in Beijing. Moving across the world to pursue this passion has been an incredible journey, immersing me in the rich academic environment of one of China's most historic and rigorous physics departments.
+            </p>
+            <p data-en="Currently, I am in my fourth and final year of study, completing my bachelor's thesis in experimental nuclear physics under the guidance of Prof. Xiao Zhigang. My research focuses on the development of polarization detectors for deuteron breakup experiments. This combines Geant4 Monte Carlo simulations with hands-on hardware design, including the assembly and testing of plastic scintillator arrays, to explore the isovector nature of nuclear symmetry energy."
+               data-zh="目前，我正值大四本科毕业年，在肖志刚教授的指导下完成我的学士学位论文。我的主要研究方向为实验核物理领域中氘核解体实验偏振探测器的研制。这一工作结合了 Geant4 蒙特卡洛物理模拟与实际硬件研发，包括塑料闪烁体探测器阵列的装配与测试，以探索核对称能的同位旋矢量特性。">
+                Currently, I am in my fourth and final year of study, completing my bachelor's thesis in experimental nuclear physics under the guidance of Prof. Xiao Zhigang. My research focuses on the development of polarization detectors for deuteron breakup experiments. This combines Geant4 Monte Carlo simulations with hands-on hardware design, including the assembly and testing of plastic scintillator arrays, to explore the isovector nature of nuclear symmetry energy.
+            </p>
+            <p data-en="Beyond the laboratory, my academic curiosities extend to the mathematical beauty of theoretical physics; I dedicate much of my independent study to Quantum Field Theory and General Relativity. This website is a simple, quiet corner of the internet where I host my academic notes, catalog my competitive running life as a member of Tsinghua's long-distance team, and share my occasional machine learning experiments. Thank you for visiting."
+               data-zh="在实验室之外，我的学术兴趣也延伸到了理论物理的数学美感上；我利用大量课余时间自学了量子场论与广义相对论。这个网站是我在互联网上的一个小角落，用于整理和存放我的学术笔记，记录我作为清华中长跑二队成员的跑步训练日志，并分享我偶尔做的一些机器学习实验。感谢你的到访。">
+                Beyond the laboratory, my academic curiosities extend to the mathematical beauty of theoretical physics; I dedicate much of my independent study to Quantum Field Theory and General Relativity. This website is a simple, quiet corner of the internet where I host my academic notes, catalog my competitive running life as a member of Tsinghua's long-distance team, and share my occasional machine learning experiments. Thank you for visiting.
+            </p>
         </section>
 
         <!-- Current Research Detail -->
