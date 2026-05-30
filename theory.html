@@ -52,9 +52,14 @@
 
     <!-- Minimalist Top Academic Header -->
     <header class="max-w-3xl mx-auto px-6 pt-12 pb-6 border-b border-border flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-            <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
-            <p class="text-[11px] text-muted mt-1 italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
+        <div class="flex items-center gap-3.5">
+            <img src="images/profile.jpg" alt="Zichen Luo"
+                class="w-12 h-12 rounded-full object-cover border border-border bg-stone-100 shrink-0"
+                onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=e7e5e4&color=1c1917&size=256'">
+            <div>
+                <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
+                <p class="text-[11px] text-muted mt-0.5 italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
+            </div>
         </div>
         <div class="flex items-center gap-6 text-sm">
             <nav class="flex flex-wrap gap-x-4 gap-y-1">
@@ -78,15 +83,26 @@
             <section class="space-y-6">
                 <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Essays & Writings" data-zh="文章与笔记写作">Essays & Writings</h2>
 
+                <!-- Humble Introduction & Course disclaimer -->
+                <div class="p-4 bg-stone-50 rounded border border-border text-xs sm:text-sm leading-relaxed text-muted italic font-serif"
+                     data-en="Welcome to my study notes and physics essays. These documents were written either as course assignments at Tsinghua University or as personal study summaries to organize and consolidate my own knowledge. Please note that these are informal notes, NOT formal publications, and they may contain errors or inaccuracies."
+                     data-zh="欢迎来到我的物理学习笔记与文章合集。这些文档或为清华大学课程作业，或为我自学特定专题时的个人总结，旨在整理和巩固我自己的知识结构。请注意，这些仅为非正式的学习笔记，并非正式发表的学术出版物，其中可能包含疏漏或错误。">
+                    Welcome to my study notes and physics essays. These documents were written either as course assignments at Tsinghua University or as personal study summaries to organize and consolidate my own knowledge. Please note that these are informal notes, NOT formal publications, and they may contain errors or inaccuracies.
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                     <!-- 1. Canonical vs Path Integral Quantization -->
                     <a href="#" onclick="viewPaper('正则量子化与路径积分量子化.dat'); return false;" class="group block text-foreground">
                         <div
                             class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
-                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
-                                data-en="Canonical vs Path Integral Quantization" data-zh="正则量子化与路径积分量子化">
-                                Canonical vs Path Integral Quantization</h3>
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
+                                    data-en="Canonical vs Path Integral Quantization" data-zh="正则量子化与路径积分量子化">
+                                    Canonical vs Path Integral Quantization</h3>
+                                <span class="text-[10px] font-mono text-muted/70 whitespace-nowrap bg-stone-100 px-1.5 py-0.5 rounded border border-border/60 font-sans"
+                                      data-en="Spring 2024" data-zh="2024年春季">Spring 2024</span>
+                            </div>
                             <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="A comparison of canonical operator quantisation and Feynman's path integral formalism, featuring derivations and pragmatic trade-offs."
                                data-zh="对比算符正则量子化与费曼路径积分形式，包含数学推导和实用性的物理学折衷权衡。">
@@ -100,9 +116,13 @@
                     <a href="#" onclick="viewPaper('A_Brief_Overview_of_Black_Hole_Thermodynamics (2).dat'); return false;" class="group block text-foreground">
                         <div
                             class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
-                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
-                                data-en="Black Hole Thermodynamics" data-zh="黑洞热力学简述">
-                                Black Hole Thermodynamics</h3>
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
+                                    data-en="Black Hole Thermodynamics" data-zh="黑洞热力学简述">
+                                    Black Hole Thermodynamics</h3>
+                                <span class="text-[10px] font-mono text-muted/70 whitespace-nowrap bg-stone-100 px-1.5 py-0.5 rounded border border-border/60 font-sans"
+                                      data-en="Autumn 2024" data-zh="2024年秋季">Autumn 2024</span>
+                            </div>
                             <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="A brief survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy, and Hawking radiation."
                                data-zh="简要介绍黑洞力学四定律、贝肯斯坦-霍金熵的物理物理学背景以及霍金辐射机制。">
@@ -116,9 +136,13 @@
                     <a href="#" onclick="viewPaper('Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations (1).dat'); return false;" class="group block text-foreground">
                         <div
                             class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
-                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
-                                data-en="Quantum Harmonic Ensemble" data-zh="量子谐振子系综的统计力学">
-                                Quantum Harmonic Ensemble</h3>
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
+                                    data-en="Quantum Harmonic Ensemble" data-zh="量子谐振子系综的统计力学">
+                                    Quantum Harmonic Ensemble</h3>
+                                <span class="text-[10px] font-mono text-muted/70 whitespace-nowrap bg-stone-100 px-1.5 py-0.5 rounded border border-border/60 font-sans"
+                                      data-en="Spring 2025" data-zh="2025年春季">Spring 2025</span>
+                            </div>
                             <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="Deriving the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position, and momentum representations."
                                data-zh="详细推导量子谐振子正则系综在能量、坐标和动量表征下的配分函数与物理特性。">
@@ -130,12 +154,16 @@
                     </a>
 
                     <!-- 4. Neutrino Mass & Oscillations -->
-                    <a href="#" onclick="viewPaper('中微子质量与风味振荡.dat'); return false;" class="group block text-foreground">
+                    <a href="#" onclick="viewPaper('中微子质量与振荡.dat'); return false;" class="group block text-foreground">
                         <div
                             class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
-                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
-                                data-en="Neutrino Mass & Oscillations" data-zh="中微子质量与风味振荡">
-                                Neutrino Mass & Oscillations</h3>
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
+                                    data-en="Neutrino Mass & Oscillations" data-zh="中微子质量与风味振荡">
+                                    Neutrino Mass & Oscillations</h3>
+                                <span class="text-[10px] font-mono text-muted/70 whitespace-nowrap bg-stone-100 px-1.5 py-0.5 rounded border border-border/60 font-sans"
+                                      data-en="Spring 2025" data-zh="2025年春季">Spring 2025</span>
+                            </div>
                             <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="Review of experimental evidence for neutrino flavour oscillations, mass models, and mixing formalism."
                                data-zh="系统回顾中微子风味振荡的实验证据、质量微扰模型以及轻子混合矩阵形式。">
@@ -149,9 +177,13 @@
                     <a href="#" onclick="viewPaper('The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.dat'); return false;" class="group block text-foreground">
                         <div
                             class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
-                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
-                                data-en="Action Principle in Electrodynamics" data-zh="无源经典电动力学中的最小作用量原理">
-                                Action Principle in Electrodynamics</h3>
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
+                                    data-en="Action Principle in Electrodynamics" data-zh="无源经典电动力学中的最小作用量原理">
+                                    Action Principle in Electrodynamics</h3>
+                                <span class="text-[10px] font-mono text-muted/70 whitespace-nowrap bg-stone-100 px-1.5 py-0.5 rounded border border-border/60 font-sans"
+                                      data-en="Summer 2025" data-zh="2025年夏季">Summer 2025</span>
+                            </div>
                             <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="Deriving Maxwell’s equations in vacuum from a relativistic Lagrangian, discussing gauge freedom and Noether currents."
                                data-zh="从相对论性拉格朗日密度出发推导真空中的麦克斯韦方程组，并深入探讨规范自由度与诺特荷流。">
@@ -165,9 +197,13 @@
                     <a href="#" onclick="viewPaper('Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).dat'); return false;" class="group block text-foreground">
                         <div
                             class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
-                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
-                                data-en="Polarised Deuteron Breakup" data-zh="极化氘核解体与核对称能探测">
-                                Polarised Deuteron Breakup</h3>
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
+                                    data-en="Polarised Deuteron Breakup" data-zh="极化氘核解体与核对称能探测">
+                                    Polarised Deuteron Breakup</h3>
+                                <span class="text-[10px] font-mono text-muted/70 whitespace-nowrap bg-stone-100 px-1.5 py-0.5 rounded border border-border/60 font-sans"
+                                      data-en="Summer 2025" data-zh="2025年夏季">Summer 2025</span>
+                            </div>
                             <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="Investigating polarised-deuteron scattering observables and polarimeter design to probe nuclear symmetry energy."
                                data-zh="研究极化氘核散射可观测物理量与符合探测偏振仪硬件设计，以灵敏地探测高密核对称能。">
@@ -181,9 +217,13 @@
                     <a href="#" onclick="viewPaper('复标量克莱因–戈尔登场v2.dat'); return false;" class="group block text-foreground">
                         <div
                             class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
-                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
-                                data-en="Complex Scalar Klein-Gordon Field" data-zh="复标量克莱因-戈尔登场">
-                                Complex Scalar Klein-Gordon Field</h3>
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
+                                    data-en="Complex Scalar Klein-Gordon Field" data-zh="复标量克莱因-戈尔登场">
+                                    Complex Scalar Klein-Gordon Field</h3>
+                                <span class="text-[10px] font-mono text-muted/70 whitespace-nowrap bg-stone-100 px-1.5 py-0.5 rounded border border-border/60 font-sans"
+                                      data-en="Summer 2025" data-zh="2025年夏季">Summer 2025</span>
+                            </div>
                             <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="Derivation of canonical momenta and commutation relations for a complex Klein–Gordon field."
                                data-zh="详细推导复标量克莱因-戈尔登场（Complex KG Field）的正则共轭动量与量子化对易关系。">
