@@ -74,118 +74,132 @@
                 onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=e7e5e4&color=1c1917&size=256'">
             <div>
                 <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
-                <p class="text-[11px] text-muted mt-0.5 font-mono italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
+                <p class="text-[11px] text-muted mt-0.5 italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
             </div>
         </div>
         <div class="flex items-center gap-6 text-sm">
-            <nav class="flex flex-wrap gap-x-4 gap-y-1">
-                <a href="index.html" class="text-foreground hover:text-primary underline decoration-primary/30 underline-offset-4 font-bold" data-en="Home" data-zh="主页">Home</a>
-                <a href="blog.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Blog" data-zh="博客">Blog</a>
-                <a href="theory.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Notes" data-zh="笔记">Notes</a>
-                <a href="running.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Running" data-zh="跑步">Running</a>
-                <a href="ml.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="ML" data-zh="机器学习">ML</a>
+            <nav class="flex flex-wrap gap-x-4 gap-y-1 font-mono">
+                <a href="index.html" class="text-foreground hover:text-primary underline decoration-primary/30 underline-offset-4 font-bold font-sans" data-en="Home" data-zh="主页">Home</a>
+                <a href="blog.html" class="text-muted hover:text-primary hover:underline underline-offset-4 font-sans" data-en="Blog" data-zh="博客">Blog</a>
+                <a href="theory.html" class="text-muted hover:text-primary hover:underline underline-offset-4 font-sans" data-en="Notes" data-zh="笔记">Notes</a>
+                <a href="running.html" class="text-muted hover:text-primary hover:underline underline-offset-4 font-sans" data-en="Running" data-zh="跑步">Running</a>
+                <a href="ml.html" class="text-muted hover:text-primary hover:underline underline-offset-4 font-sans" data-en="ML" data-zh="机器学习">ML</a>
             </nav>
-            <div class="border-l border-border pl-6 text-xs flex gap-2">
-                <button id="btn-en" onclick="changeLang('en')" class="hover:text-primary font-bold text-primary">EN</button>
+            <div class="border-l border-border pl-6 text-xs flex gap-2 font-mono">
+                <button id="btn-en" onclick="changeLang('en')" class="hover:text-primary font-bold text-primary font-sans">EN</button>
                 <span class="text-border">/</span>
-                <button id="btn-zh" onclick="changeLang('zh')" class="hover:text-primary text-muted">中文</button>
+                <button id="btn-zh" onclick="changeLang('zh')" class="hover:text-primary text-muted font-sans">中文</button>
             </div>
         </div>
     </header>
 
     <div class="max-w-3xl mx-auto px-6 py-12 space-y-12 animate-fade-in">
 
-        <!-- Welcoming & Hero Intro Section (Full Width, No wrap issues) -->
-        <section class="space-y-6 leading-relaxed text-sm md:text-base text-foreground/90 font-serif">
-            <p data-en="Hi, I'm Zichen Luo. Born and raised in London, UK, I have been deeply fascinated by physics and the natural world since my early childhood. At the age of 14, I received an offer to join the undergraduate physics program at Tsinghua University in Beijing. Moving across the world to pursue this passion has been an incredible journey, immersing me in the rich academic environment of one of China's most historic and rigorous physics departments."
-               data-zh="你好，我是罗子辰。我在英国伦敦出生并长大，自幼便对物理学和自然科学深感兴趣。14岁时，我有幸收到清华大学物理系本科项目的录取通知。跨越半个地球来到北京追求这份热爱是一段非凡的旅程，让我能够全身心融入清华物理系严谨且深厚的学术氛围中。">
-                Hi, I'm Zichen Luo. Born and raised in London, UK, I have been deeply fascinated by physics and the natural world since my early childhood. At the age of 14, I received an offer to join the undergraduate physics program at Tsinghua University in Beijing. Moving across the world to pursue this passion has been an incredible journey, immersing me in the rich academic environment of one of China's most historic and rigorous physics departments.
-            </p>
-            <p data-en="Currently, I am in my fourth and final year of study, completing my bachelor's thesis in experimental nuclear physics under the guidance of Prof. Xiao Zhigang. My research focuses on the development of polarization detectors for deuteron breakup experiments. This combines Geant4 Monte Carlo simulations with hands-on hardware design, including the assembly and testing of plastic scintillator arrays, to explore the isovector nature of nuclear symmetry energy."
-               data-zh="目前，我正值大四本科毕业年，在肖志刚教授的指导下完成我的学士学位论文。我的主要研究方向为实验核物理领域中氘核解体实验偏振探测器的研制。这一工作结合了 Geant4 蒙特卡洛物理模拟与实际硬件研发，包括塑料闪烁体探测器阵列的装配与测试，以探索核对称能的同位旋矢量特性。">
-                Currently, I am in my fourth and final year of study, completing my bachelor's thesis in experimental nuclear physics under the guidance of Prof. Xiao Zhigang. My research focuses on the development of polarization detectors for deuteron breakup experiments. This combines Geant4 Monte Carlo simulations with hands-on hardware design, including the assembly and testing of plastic scintillator arrays, to explore the isovector nature of nuclear symmetry energy.
-            </p>
-            <p data-en="Beyond the laboratory, my academic curiosities extend to the mathematical beauty of theoretical physics; I dedicate much of my independent study to Quantum Field Theory and General Relativity. This website is a simple, quiet corner of the internet where I host my academic notes, catalog my competitive running life as a member of Tsinghua's long-distance team, and share my occasional machine learning experiments. Thank you for visiting."
-               data-zh="在实验室之外，我的学术兴趣也延伸到了理论物理的数学美感上；我利用大量课余时间自学了量子场论与广义相对论。这个网站是我在互联网上的一个小角落，用于整理和存放我的学术笔记，记录我作为清华中长跑二队成员的跑步训练日志，并分享我偶尔做的一些机器学习实验。感谢你的到访。">
-                Beyond the laboratory, my academic curiosities extend to the mathematical beauty of theoretical physics; I dedicate much of my independent study to Quantum Field Theory and General Relativity. This website is a simple, quiet corner of the internet where I host my academic notes, catalog my competitive running life as a member of Tsinghua's long-distance team, and share my occasional machine learning experiments. Thank you for visiting.
+        <!-- Welcoming & Initial Greeting -->
+        <section class="space-y-4">
+            <h1 class="text-xl font-bold text-foreground border-b border-border pb-1.5" data-en="Hello there!" data-zh="你好！">Hello there!</h1>
+            <p class="text-sm md:text-base leading-relaxed text-foreground/90 font-serif" 
+               data-en="I'm Zichen. I grew up in Greenwich, London, and I'm currently studying physics at Tsinghua University in Beijing."
+               data-zh="我是子辰。我在伦敦格林威治长大，目前在清华大学物理系学习。">
+                I'm Zichen. I grew up in Greenwich, London, and I'm currently studying physics at Tsinghua University in Beijing.
             </p>
         </section>
 
-        <!-- Current Research Detail -->
-        <section id="research" class="space-y-4">
-            <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Current Research & Thesis" data-zh="学位学位论文与科研">Current Research & Thesis</h2>
-            <div class="text-sm text-foreground/90 space-y-3 leading-relaxed">
-                <p data-en="My academic work centers on experimental nuclear physics under the guidance of Prof. Xiao Zhigang’s research group. The key focus of my thesis project is:" data-zh="我的本科科研工作在清华大学物理系肖志刚教授课题组指导下进行。目前我的毕业学位论文研究重点为：">
-                    My academic work centers on experimental nuclear physics under the guidance of Prof. Xiao Zhigang’s research group. The key focus of my thesis project is:
+        <!-- Cool Photos Section -->
+        <section class="space-y-4">
+            <p class="text-xs text-muted font-mono" data-en="Here are some cool photos of me. (For more, check out my blog)" data-zh="这里有我的一些照片。（想了解更多，欢迎访问我的博客）">
+                Here are some cool photos of me. (For more, check out my blog)
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- Photo 1: Running -->
+                <div class="bg-stone-50 border border-border p-2.5 rounded shadow-sm flex flex-col items-center">
+                    <div class="w-full h-44 bg-stone-100 flex items-center justify-center border border-stone-200 overflow-hidden">
+                        <img src="images/running.jpg" alt="Running" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-muted text-[10px] font-mono\'>[Running Training]</span>'">
+                    </div>
+                    <span class="text-[10px] font-mono text-muted mt-2" data-en="Track intervals, Beijing" data-zh="北京，田径场间歇跑">Track intervals, Beijing</span>
+                </div>
+                <!-- Photo 2: Lab -->
+                <div class="bg-stone-50 border border-border p-2.5 rounded shadow-sm flex flex-col items-center">
+                    <div class="w-full h-44 bg-stone-100 flex items-center justify-center border border-stone-200 overflow-hidden">
+                        <img src="images/lab.jpg" alt="Nuclear Physics Lab" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-muted text-[10px] font-mono\'>[Physics Lab]</span>'">
+                    </div>
+                    <span class="text-[10px] font-mono text-muted mt-2" data-en="Scintillator Assembly" data-zh="闪烁体探测器装配">Scintillator Assembly</span>
+                </div>
+                <!-- Photo 3: Greenwich -->
+                <div class="bg-stone-50 border border-border p-2.5 rounded shadow-sm flex flex-col items-center">
+                    <div class="w-full h-44 bg-stone-100 flex items-center justify-center border border-stone-200 overflow-hidden">
+                        <img src="images/greenwich.jpg" alt="Greenwich" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-muted text-[10px] font-mono\'>[Greenwich Park]</span>'">
+                    </div>
+                    <span class="text-[10px] font-mono text-muted mt-2" data-en="Overlooking London" data-zh="伦敦格林威治">Overlooking London</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conversational Lore Content -->
+        <main class="space-y-8 text-sm md:text-base leading-relaxed text-foreground/90 font-serif">
+
+            <!-- Physics Lore -->
+            <section class="space-y-3">
+                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1" data-en="Childhood Passions" data-zh="童年的志趣">Childhood Passions</h2>
+                <p data-en="I've been interested in physics for a very long time. Growing up in Greenwich—home of the Prime Meridian and the Royal Observatory—I spent much of my childhood looking up at the night sky and wandering through historic exhibition halls. That environment sparked a quiet, persistent curiosity in me. I wanted to understand the fundamental laws governing the universe, from the grand motions of galaxies down to the smallest subatomic world."
+                   data-zh="我对物理学的兴趣由来已久。在伦敦格林威治长大——这里是本初子午线和皇家天文台的所在地——我童年的许多时光都在仰望星空，以及在历史悠久的科学展厅中漫步。那里的环境在我心中播下了一颗安静而持久的好奇心。我想去理解主宰宇宙的根本规律，从浩瀚星系的宏观尺度，一直到微小亚原子的微观世界。">
+                    I've been interested in physics for a very long time. Growing up in Greenwich—home of the Prime Meridian and the Royal Observatory—I spent much of my childhood looking up at the night sky and wandering through historic exhibition halls. That environment sparked a quiet, persistent curiosity in me. I wanted to understand the fundamental laws governing the universe, from the grand motions of galaxies down to the smallest subatomic world.
                 </p>
-                <ul class="list-disc pl-5 space-y-2 text-foreground/80">
-                    <li data-en="&lt;strong class='text-foreground'&gt;Polarization Detectors:&lt;/strong&gt; Development and construction of high-precision plastic scintillator arrays for deuteron breakup experiments to probe the isovector nature of nuclear symmetry energy." data-zh="&lt;strong class='text-foreground'&gt;偏振探测器开发：&lt;/strong&gt;设计与研制用于氘核解体实验的高精度塑料闪烁体阵列，以探测核对称能的同位旋矢量特性。"><strong>Polarization Detectors:</strong> Development and construction of high-precision plastic scintillator arrays for deuteron breakup experiments to probe the isovector nature of nuclear symmetry energy.</li>
-                    <li data-en="&lt;strong class='text-foreground'&gt;Simulation Frameworks:&lt;/strong&gt; Leveraging Geant4 Monte Carlo simulations to optimize scintillator geometry, light transport efficiency, and multi-particle coincidence logic." data-zh="&lt;strong class='text-foreground'&gt;蒙特卡洛模拟：&lt;/strong&gt;利用 Geant4 工具包开展物理系统建模，优化闪烁体几何结构、光传输效率以及多粒子符合物理逻辑。"><strong>Simulation Frameworks:</strong> Leveraging Geant4 Monte Carlo simulations to optimize scintillator geometry, light transport efficiency, and multi-particle coincidence logic.</li>
-                </ul>
-            </div>
-        </section>
+            </section>
 
-        <!-- Microblog Preview Section -->
-        <section id="blog-preview" class="space-y-3">
-            <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Microblog Updates" data-zh="学术与日常动态">Microblog Updates</h2>
-            <p class="text-sm text-foreground/80 leading-relaxed" data-en="I maintain an informal, scrolling timeline feed where I share quick research observations, physics derivations, running splits, and answer discussion questions." data-zh="我维护着一个非正式的、流式的个人动态博客，用于分享我的一些物理学研究随想、公式推导、田径训练配速，并答复大家的讨论留言。">
-                I maintain an informal, scrolling timeline feed where I share quick research observations, physics derivations, running splits, and answer discussion questions.
-            </p>
-            <p class="text-sm font-mono">
-                <a href="blog.html" class="text-primary hover:underline" data-en="&rarr; Read the Microblog Feed" data-zh="&rarr; 阅读动态博客流">&rarr; Read the Microblog Feed</a>
-            </p>
-        </section>
+            <!-- Tsinghua Lore -->
+            <section class="space-y-3">
+                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1" data-en="Moving to China" data-zh="求学清华物理系">求学清华物理系</h2>
+                <p data-en="At the age of 14, that curiosity led to a life-changing opportunity when I received an offer from the Tsinghua University Physics Department in Beijing. Moving across the world at such a young age to join one of China's most rigorous and historic academic departments was both daunting and exhilarating. Navigating a new language, adapting to a vibrant culture, and learning to think like a researcher among some of the brightest minds has shaped not just my scientific career, but who I am as a person."
+                   data-zh="14岁那年，这份好奇心为我带来了一个改变一生的机会：我收到了清华大学物理系本科项目的录取通知。在如此年轻的年纪跨越半个地球，加入中国最具底蕴、最严谨的物理学府之一，这既令人有些畏惧，又无比令人兴奋。在清华的这几年，学习一门新的语言，融入充满活力的文化环境，并在一些最杰出的头脑中学会像研究者一样去思考，这不仅塑造了我的科学学业，也深刻地塑造了我的人格。">
+                    At the age of 14, that curiosity led to a life-changing opportunity when I received an offer from the Tsinghua University Physics Department in Beijing. Moving across the world at such a young age to join one of China's most rigorous and historic academic departments was both daunting and exhilarating. Navigating a new language, adapting to a vibrant culture, and learning to think like a researcher among some of the brightest minds has shaped not just my scientific career, but who I am as a person.
+                </p>
+            </section>
 
-        <!-- Hobbies / Expanded Interests Section -->
-        <section id="interests" class="space-y-4">
-            <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Interests & Projects" data-zh="兴趣与项目">Interests & Projects</h2>
-            <div class="space-y-6 text-sm">
-                
-                <!-- ML -->
-                <div class="leading-relaxed">
-                    <h3 class="font-bold text-foreground flex items-center gap-1.5">
-                        <span data-en="🤖 Machine Learning" data-zh="🤖 机器学习与大语言模型">🤖 Machine Learning</span>
-                    </h3>
-                    <p class="text-foreground/80 mt-1" data-en="My computational interests focus on Language Model architectures and parameter efficiency. Specifically, I conduct ablation studies in the sub-10M parameter regime to test experimental attention structures." data-zh="我对计算科学的兴趣主要在于大语言模型的架构设计与参数效率。我具体在 1000万 参数以下的范围开展消融研究，以测试实验性注意力结构。">
-                        My computational interests focus on Language Model architectures and parameter efficiency. Specifically, I conduct ablation studies in the sub-10M parameter regime to test experimental attention structures.
-                    </p>
-                    <p class="text-xs font-mono mt-1">
-                        <a href="ml.html" class="text-primary hover:underline" data-en="View ML Projects &rarr;" data-zh="查看机器学习项目 &rarr;">View ML Projects &rarr;</a>
-                    </p>
-                </div>
+            <!-- Thesis Lore -->
+            <section class="space-y-3">
+                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1" data-en="Current Research & Thesis" data-zh="毕业论文研究">毕业论文研究</h2>
+                <p data-en="Now, I'm a 4th year student. I'm currently working on my bachelor's thesis in experimental nuclear physics within Prof. Xiao Zhigang's research group. My work revolves around developing polarization detectors for deuteron breakup experiments. In simple terms, we are designing and building plastic scintillator arrays—detector blocks that flash when hit by high-energy particles—and using Geant4 Monte Carlo simulations to model how these particles behave. Our goal is to probe the symmetry energy of atomic nuclei, helping us understand how nuclear matter holds together under extreme conditions."
+                   data-zh="如今，我已步入大四本科毕业年。目前，我正在肖志刚教授的指导下完成我的学士学位论文，专注于极化氘核解体实验中偏振探测器的研制。简单来说，我们正在设计并构建塑料闪烁体阵列——当高能粒子击中这些塑料块时它们会发出微光——并使用 Geant4 蒙特卡洛模拟来建粒子在其中的物理行为。我们的目标是探测原子核的对称能，从而帮助我们理解在极端宇宙环境下，核物质是如何结合在一起的。">
+                    Now, I'm a 4th year student. I'm currently working on my bachelor's thesis in experimental nuclear physics within Prof. Xiao Zhigang's research group. My work revolves around developing polarization detectors for deuteron breakup experiments. In simple terms, we are designing and building plastic scintillator arrays—detector blocks that flash when hit by high-energy particles—and using Geant4 Monte Carlo simulations to model how these particles behave. Our goal is to probe the symmetry energy of atomic nuclei, helping us understand how nuclear matter holds together under extreme conditions.
+                </p>
+            </section>
 
-                <!-- Theory -->
-                <div class="leading-relaxed">
-                    <h3 class="font-bold text-foreground flex items-center gap-1.5">
-                        <span data-en="⚛️ Theoretical Physics" data-zh="⚛️ 理论物理独立学习">⚛️ Theoretical Physics</span>
-                    </h3>
-                    <p class="text-foreground/80 mt-1" data-en="Alongside my experimental thesis work, I engage in self-study in Quantum Field Theory and General Relativity. I compile my notes into secure technical reports available on this site." data-zh="在实验性学位论文工作之外，我一直坚持自学量子场论和广义相对论。我将学习心得整理成技术报告，发布在本站。">
-                        Alongside my experimental thesis work, I engage in self-study in Quantum Field Theory and General Relativity. I compile my notes into secure technical reports available on this site.
-                    </p>
-                    <p class="text-xs font-mono mt-1">
-                        <a href="theory.html" class="text-primary hover:underline" data-en="Read Study Notes &rarr;" data-zh="阅读独立学习笔记 &rarr;">Read Study Notes &rarr;</a>
-                    </p>
-                </div>
+            <!-- Running Lore -->
+            <section class="space-y-3">
+                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1" data-en="Running and Endurance" data-zh="长跑与坚忍">长跑与坚忍</h2>
+                <p data-en="If you couldn't tell from the running logs and personal bests on this site, running is one of my most beloved hobbies. As an active member of Tsinghua’s middle- and long-distance athletics team (中长跑二队), I spend many of my mornings on the track, chasing splits in the crisp Beijing air. For me, running is the perfect counterweight to physics; it is a space where complex equations melt away, replaced by the simple, driving rhythm of breathing and pacing. It has taught me the value of quiet discipline, endurance, and pushing past mental barriers."
+                   data-zh="如果你还没从我网站上的跑步日志和个人最好成绩中看出来，长跑是我最热爱的爱好之一。作为清华大学中长跑二队的正式成员，我经常在清晨的跑道上度过，在清凉的北京空气中追逐着配速。对我而言，跑步是物理学术的最佳平衡器；在这个空间里，复杂的物理方程悄然消散，取而代之的是呼吸与脚步的简单律动。它教会了我安静的自律、耐力以及冲破心理极限的价值。">
+                    If you couldn't tell from the running logs and personal bests on this site, running is one of my most beloved hobbies. As an active member of Tsinghua’s middle- and long-distance athletics team (中长跑二队), I spend many of my mornings on the track, chasing splits in the crisp Beijing air. For me, running is the perfect counterweight to physics; it is a space where complex equations melt away, replaced by the simple, driving rhythm of breathing and pacing. It has taught me the value of quiet discipline, endurance, and pushing past mental barriers.
+                </p>
+            </section>
 
-                <!-- Running -->
-                <div class="leading-relaxed">
-                    <h3 class="font-bold text-foreground flex items-center gap-1.5">
-                        <span data-en="🏃 Running & Athletics" data-zh="🏃 长跑训练">🏃 Running & Athletics</span>
-                    </h3>
-                    <p class="text-foreground/80 mt-1" data-en="I train competitively as a long-distance runner and am an active member of Tsinghua’s second middle- and long-distance athletics team." data-zh="作为一名长跑运动员，我坚持高强度田径训练，是清华大学中长跑二队的正式成员。">
-                        I train competitively as a long-distance runner and am an active member of Tsinghua’s second middle- and long-distance athletics team.
-                    </p>
-                    <p class="text-xs font-mono mt-1">
-                        <a href="running.html" class="text-primary hover:underline" data-en="View Garmin Logs & PBs &rarr;" data-zh="查看佳明日志与个人最好成绩 &rarr;">View Garmin Logs & PBs &rarr;</a>
-                    </p>
-                </div>
-            </div>
-        </section>
+            <!-- Other Hobbies Lore -->
+            <section class="space-y-3">
+                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1" data-en="Other Interests" data-zh="其他兴趣">其他兴趣</h2>
+                <p data-en="I also like other things. Chess has been a constant companion—I enjoy the deep, tactical calculations of the opening and endgame, which naturally connects to my computational interest in chess engine logic and large language model architectures. When I'm not in the lab or on the track, you will likely find me reading old science fiction, analyzing chess engine logs, exploring the quiet, winding hutongs of Beijing, or brewing a warm cup of local tea."
+                   data-zh="我也喜欢其他的一些事物。国际象棋是我长期的伴侣——我享受开局与残局中深邃的战术计算，这也自然地联结到了我对计算科学中国际象棋引擎博弈以及大语言模型架构的兴趣。当我不在实验室或操场上时，你很可能会发现我正在阅读科幻小说、分析象棋引擎日志、探索北京幽静曲折的胡同，或者沏一壶暖暖的当地茶。">
+                    I also like other things. Chess has been a constant companion—I enjoy the deep, tactical calculations of the opening and endgame, which naturally connects to my computational interest in chess engine logic and large language model architectures. When I'm not in the lab or on the track, you will likely find me reading old science fiction, analyzing chess engine logs, exploring the quiet, winding hutongs of Beijing, or brewing a warm cup of local tea.
+                </p>
+            </section>
+
+            <!-- Conclusion -->
+            <section class="space-y-3 pt-4 border-t border-stone-200">
+                <p data-en="At the end of the day, I believe in keeping things simple, staying hungry, and remaining deeply curious about the world around us. Whether you share a passion for subatomic physics, marathon pacing, chess tactics, or just want to chat about studying abroad, my virtual door is always open. Feel free to explore my technical notes, check out my running splits, or drop a comment in the blog feed."
+                   data-zh="归根结底，我始终相信保持简单、保持饥饿，并对我们周围的世界永远保持深厚的好奇心。无论你是对亚原子物理学、马拉松配速、国际象棋战术感兴趣，还是只想聊聊求学经历，我的虚拟之门一直为你敞开。欢迎随时浏览我的学术笔记、查看我的跑步数据，或者在博客动态流中留下你的评论。">
+                    At the end of the day, I believe in keeping things simple, staying hungry, and remaining deeply curious about the world around us. Whether you share a passion for subatomic physics, marathon pacing, chess tactics, or just want to chat about studying abroad, my virtual door is always open. Feel free to explore my technical notes, check out my running splits, or drop a comment in the blog feed.
+                </p>
+                <p class="font-mono text-xs text-muted" data-en="Thanks for stopping by! — Zichen" data-zh="非常感谢你的到访！ — 子辰">
+                    Thanks for stopping by! — Zichen
+                </p>
+            </section>
+
+        </main>
 
         <!-- Contact Section -->
-        <section id="contact" class="space-y-4">
+        <section id="contact" class="space-y-4 pt-4 border-t border-border">
             <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Contact & Connections" data-zh="联系与链接">Contact & Connections</h2>
-            <div class="text-sm space-y-4 leading-relaxed">
+            <div class="text-sm space-y-4 leading-relaxed font-serif">
                 <p data-en="Feel free to check my public code on GitHub or reach out via my academic email:" data-zh="欢迎浏览我的 GitHub 公开代码，或通过我的清华学术邮箱与我取得联系：">
                     Feel free to check my public code on GitHub or reach out via my academic email:
                 </p>
@@ -195,7 +209,7 @@
                     <a href="http://luozichen.pythonanywhere.com" target="_blank" class="hover:underline">NeonConnect</a>
                 </div>
                 <div class="pt-2 flex items-center gap-3">
-                    <button id="revealEmail" class="border border-border bg-stone-100 hover:bg-stone-200 active:bg-stone-300 text-foreground px-4 py-1.5 rounded text-xs font-mono font-medium transition-colors">
+                    <button id="revealEmail" class="border border-border bg-stone-100 hover:bg-stone-200 active:bg-stone-300 text-foreground px-4 py-1.5 rounded text-xs font-mono font-medium transition-colors font-sans">
                         <span data-en="Reveal Email" data-zh="显示邮箱">Reveal Email</span>
                     </button>
                     <span id="emailBox" class="text-primary font-mono text-xs select-all"></span>
@@ -236,7 +250,7 @@
                 const successText = currentLang === 'zh' ? "已复制!" : "Copied!";
                 
                 btn.textContent = successText;
-                btn.className = "border border-green-600 bg-green-50 text-green-700 px-4 py-1.5 rounded text-xs font-mono font-medium transition-colors";
+                btn.className = "border border-green-600 bg-green-50 text-green-700 px-4 py-1.5 rounded text-xs font-mono font-medium transition-colors font-sans";
 
                 try {
                     await navigator.clipboard.writeText(address);
@@ -246,7 +260,7 @@
 
                 setTimeout(() => {
                     btn.textContent = currentLang === 'zh' ? "显示邮箱" : "Reveal Email";
-                    btn.className = "border border-border bg-stone-100 hover:bg-stone-200 text-foreground px-4 py-1.5 rounded text-xs font-mono font-medium transition-colors";
+                    btn.className = "border border-border bg-stone-100 hover:bg-stone-200 text-foreground px-4 py-1.5 rounded text-xs font-mono font-medium transition-colors font-sans";
                 }, 2000);
             });
 
@@ -293,8 +307,8 @@
             const btnZh = document.getElementById('btn-zh');
 
             if (lang === 'zh') {
-                btnZh.className = "hover:text-primary font-bold text-primary";
-                btnEn.className = "hover:text-primary text-muted font-normal";
+                btnZh.className = "hover:text-primary font-bold text-primary font-sans";
+                btnEn.className = "hover:text-primary text-muted font-normal font-sans";
                 document.documentElement.lang = 'zh';
                 
                 // Update email button text
@@ -309,8 +323,8 @@
                     lastUpdatedEl.textContent = '最后更新: ' + date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
                 }
             } else {
-                btnEn.className = "hover:text-primary font-bold text-primary";
-                btnZh.className = "hover:text-primary text-muted font-normal";
+                btnEn.className = "hover:text-primary font-bold text-primary font-sans";
+                btnZh.className = "hover:text-primary text-muted font-normal font-sans";
                 document.documentElement.lang = 'en';
 
                 // Update email button text
