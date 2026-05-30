@@ -52,22 +52,25 @@
 
     <!-- Minimalist Top Academic Header -->
     <header class="max-w-3xl mx-auto px-6 pt-12 pb-6 border-b border-border flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-            <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
-            <p class="text-[11px] text-muted mt-1 italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
+        <div class="flex items-center gap-3.5">
+            <img src="images/profile.jpg" alt="Zichen" class="w-12 h-12 rounded-full object-cover border border-border bg-stone-100 shrink-0">
+            <div>
+                <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
+                <p class="text-[11px] text-muted mt-0.5 italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
+            </div>
         </div>
         <div class="flex items-center gap-6 text-sm">
-            <nav class="flex flex-wrap gap-x-4 gap-y-1">
-                <a href="index.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Home" data-zh="主页">Home</a>
-                <a href="blog.html" class="text-foreground hover:text-primary underline decoration-primary/30 underline-offset-4 font-bold" data-en="Blog" data-zh="博客">Blog</a>
-                <a href="theory.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Notes" data-zh="笔记">Notes</a>
-                <a href="running.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Running" data-zh="跑步">Running</a>
-                <a href="ml.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="ML" data-zh="机器学习">ML</a>
+            <nav class="flex flex-wrap gap-x-4 gap-y-1 font-mono">
+                <a href="index.html" class="text-muted hover:text-primary hover:underline underline-offset-4 font-sans" data-en="Home" data-zh="主页">Home</a>
+                <a href="blog.html" class="text-foreground hover:text-primary underline decoration-primary/30 underline-offset-4 font-bold font-sans" data-en="Blog" data-zh="博客">Blog</a>
+                <a href="theory.html" class="text-muted hover:text-primary hover:underline underline-offset-4 font-sans" data-en="Notes" data-zh="笔记">Notes</a>
+                <a href="running.html" class="text-muted hover:text-primary hover:underline underline-offset-4 font-sans" data-en="Running" data-zh="跑步">Running</a>
+                <a href="ml.html" class="text-muted hover:text-primary hover:underline underline-offset-4 font-sans" data-en="ML" data-zh="机器学习">ML</a>
             </nav>
-            <div class="border-l border-border pl-6 text-xs flex gap-2">
-                <button id="btn-en" onclick="changeLang('en')" class="hover:text-primary font-bold text-primary">EN</button>
+            <div class="border-l border-border pl-6 text-xs flex gap-2 font-mono">
+                <button id="btn-en" onclick="changeLang('en')" class="hover:text-primary font-bold text-primary font-sans">EN</button>
                 <span class="text-border">/</span>
-                <button id="btn-zh" onclick="changeLang('zh')" class="hover:text-primary text-muted">中文</button>
+                <button id="btn-zh" onclick="changeLang('zh')" class="hover:text-primary text-muted font-sans">中文</button>
             </div>
         </div>
     </header>
@@ -193,17 +196,6 @@
                     <div class="flex flex-wrap gap-1 font-mono">
                         ${post.tags.map(tag => `<span class="text-[9px] text-muted px-2 py-0.5 rounded bg-stone-100 border border-border">#${tag}</span>`).join('')}
                     </div>
-
-                    <div class="flex items-center gap-4 text-[10px] font-mono text-muted border-t border-border pt-2 mt-2">
-                        <button onclick="likePost('${post.id}')" id="like-btn-${post.id}" class="flex items-center gap-1 hover:text-red-600 transition-colors group">
-                            <span class="text-xs transition-transform group-hover:scale-125">❤️</span>
-                            <span id="like-count-${post.id}">${getLikes(post.id)}</span>
-                        </button>
-                        <a href="#giscus-anchor" onclick="focusComment()" class="flex items-center gap-1 hover:text-primary transition-colors">
-                            <span class="text-xs">💬</span>
-                            <span>Comment</span>
-                        </a>
-                    </div>
                 `;
                 timeline.appendChild(postEl);
             });
@@ -216,63 +208,42 @@
             const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
             const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
+            // Format absolute time: "18:45"
+            const pad = (num) => String(num).padStart(2, '0');
+            const hours = pad(date.getHours());
+            const minutes = pad(date.getMinutes());
+            const timeStr = `${hours}:${minutes}`;
+
+            // Format absolute date
+            const options = { month: 'short', day: 'numeric', year: 'numeric' };
+            const locale = lang === 'zh' ? 'zh-CN' : 'en-US';
+            const dateStr = date.toLocaleDateString(locale, options);
+
+            // Calculate relative string
+            let relativeStr = '';
             if (diffMins < 60) {
-                if (lang === 'zh') return diffMins <= 1 ? '刚刚' : `${diffMins}分钟前`;
-                return diffMins <= 1 ? 'just now' : `${diffMins}m ago`;
+                if (lang === 'zh') relativeStr = diffMins <= 1 ? '刚刚' : `${diffMins}分钟前`;
+                else relativeStr = diffMins <= 1 ? 'just now' : `${diffMins}m ago`;
             } else if (diffHours < 24) {
-                if (lang === 'zh') return `${diffHours}小时前`;
-                return `${diffHours}h ago`;
+                if (lang === 'zh') relativeStr = `${diffHours}小时前`;
+                else relativeStr = `${diffHours}h ago`;
             } else if (diffDays < 7) {
-                if (lang === 'zh') return `${diffDays}天前`;
-                return `${diffDays}d ago`;
-            } else {
-                const options = { month: 'short', day: 'numeric', year: 'numeric' };
-                const locale = lang === 'zh' ? 'zh-CN' : 'en-US';
-                return date.toLocaleDateString(locale, options);
+                if (lang === 'zh') relativeStr = `${diffDays}天前`;
+                else relativeStr = `${diffDays}d ago`;
             }
-        }
 
-        function getLikes(postId) {
-            const likesObj = JSON.parse(localStorage.getItem('blog-likes') || '{}');
-            if (likesObj[postId] === undefined) {
-                likesObj[postId] = Math.floor(Math.random() * 15) + 12;
-                localStorage.setItem('blog-likes', JSON.stringify(likesObj));
-            }
-            return likesObj[postId];
-        }
-
-        function likePost(postId) {
-            const likesObj = JSON.parse(localStorage.getItem('blog-likes') || '{}');
-            const likedList = JSON.parse(localStorage.getItem('blog-liked-list') || '[]');
-            const btn = document.getElementById(`like-btn-${postId}`);
-            const countEl = document.getElementById(`like-count-${postId}`);
-            
-            if (likedList.includes(postId)) {
-                likesObj[postId] = Math.max(0, (likesObj[postId] || 1) - 1);
-                likedList.splice(likedList.indexOf(postId), 1);
-                if (btn) btn.classList.remove('text-red-600');
-            } else {
-                likesObj[postId] = (likesObj[postId] || 0) + 1;
-                likedList.push(postId);
-                if (btn) btn.classList.add('text-red-600');
-                const heart = btn.querySelector('span');
-                if (heart) {
-                    heart.classList.add('scale-125');
-                    setTimeout(() => heart.classList.remove('scale-125'), 200);
+            // Return combined string: "May 28, 2026 at 18:45 (2d ago)" or "2026年5月28日 18:45 (2天前)"
+            if (relativeStr) {
+                if (lang === 'zh') {
+                    return `${dateStr} ${timeStr} (${relativeStr})`;
                 }
+                return `${dateStr} at ${timeStr} (${relativeStr})`;
+            } else {
+                if (lang === 'zh') {
+                    return `${dateStr} ${timeStr}`;
+                }
+                return `${dateStr} at ${timeStr}`;
             }
-
-            localStorage.setItem('blog-likes', JSON.stringify(likesObj));
-            localStorage.setItem('blog-liked-list', JSON.stringify(likedList));
-            if (countEl) countEl.textContent = likesObj[postId];
-        }
-
-        function updateLikeVisuals() {
-            const likedList = JSON.parse(localStorage.getItem('blog-liked-list') || '[]');
-            likedList.forEach(postId => {
-                const btn = document.getElementById(`like-btn-${postId}`);
-                if (btn) btn.classList.add('text-red-600');
-            });
         }
 
         function filterPosts(category) {
@@ -295,7 +266,6 @@
             });
 
             renderTimeline();
-            updateLikeVisuals();
         }
 
         // Language Switching
@@ -311,12 +281,12 @@
             const btnZh = document.getElementById('btn-zh');
 
             if (lang === 'zh') {
-                btnZh.className = "hover:text-primary font-bold text-primary";
-                btnEn.className = "hover:text-primary text-muted font-normal";
+                btnZh.className = "hover:text-primary font-bold text-primary font-sans";
+                btnEn.className = "hover:text-primary text-muted font-normal font-sans";
                 document.documentElement.lang = 'zh';
             } else {
-                btnEn.className = "hover:text-primary font-bold text-primary";
-                btnZh.className = "hover:text-primary text-muted font-normal";
+                btnEn.className = "hover:text-primary font-bold text-primary font-sans";
+                btnZh.className = "hover:text-primary text-muted font-normal font-sans";
                 document.documentElement.lang = 'en';
             }
 
@@ -324,7 +294,6 @@
             
             if (allPosts.length > 0) {
                 renderTimeline();
-                updateLikeVisuals();
             }
 
             // Sync Giscus language
@@ -338,23 +307,12 @@
             }
         }
 
-        function focusComment() {
-            const element = document.querySelector('.giscus');
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
         // Initialize Giscus Comment Widget (Light Theme)
         function loadGiscus() {
             const lang = localStorage.getItem('preferred-lang') || 'en';
             const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';
             const container = document.querySelector('.giscus');
             if (!container) return;
-
-            const anchor = document.createElement('div');
-            anchor.id = 'giscus-anchor';
-            container.parentNode.insertBefore(anchor, container);
 
             const script = document.createElement('script');
             script.src = 'https://giscus.app/client.js';
@@ -378,9 +336,7 @@
         // Initialize Feed & Preferences
         (function() {
             const preferredLang = localStorage.getItem('preferred-lang') || 'en';
-            loadFeed().then(() => {
-                setTimeout(updateLikeVisuals, 100);
-            });
+            loadFeed();
             changeLang(preferredLang);
             loadGiscus();
         })();
