@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,16 +8,14 @@
     <meta name="robots" content="noindex">
     <title>Zichen Luo | Microblog</title>
 
-    <!-- PWA & Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="static/logo.png">
     <link rel="apple-touch-icon" href="static/logo.png">
-    <meta name="theme-color" content="#161618">
+    <meta name="theme-color" content="#faf9f5">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,143 +24,82 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'PingFang SC', 'Microsoft YaHei', 'monospace'],
+                        sans: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+                        serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+                        mono: ['JetBrains Mono', 'Courier New', 'monospace'],
                     },
                     colors: {
-                        background: '#161618',
-                        foreground: '#e4e4e7',
-                        primary: '#d97706', /* Warm Amber */
-                        secondary: '#b45309',
-                        surface: '#202024',
-                        surface2: '#2a2a30',
-                        border: '#2d2d30',
-                        muted: '#9a9a9f',
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        }
+                        background: '#faf9f5', // Warm paper-like white
+                        foreground: '#1c1917', // Dark charcoal text
+                        primary: '#1d4ed8',    // Deep academic blue
+                        border: '#e7e5e4',     // Muted stone border
+                        muted: '#78716c',      // Muted stone text
+                        surface: '#f5f5f4',    // Very light stone surface for tables/codeblocks
                     }
                 }
             }
         }
     </script>
     <style>
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.08); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.15); }
     </style>
 </head>
 
-<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/20 selection:text-white">
+<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/10 selection:text-foreground">
 
-    <!-- Floating Hamburger Button (Left Side) -->
-    <div class="fixed top-6 left-6 z-50">
-        <button id="menu-btn" onclick="toggleMenu()" class="bg-surface/90 backdrop-blur border border-border p-2.5 rounded-full flex items-center justify-center shadow-lg text-muted hover:text-white hover:border-white/10 hover:scale-105 active:scale-95 transition-all">
-            <!-- Hamburger Open Icon -->
-            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <!-- Hamburger Close Icon -->
-            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-    </div>
-
-    <!-- Slide-in Navigation Drawer -->
-    <div id="side-menu" class="fixed top-0 left-0 h-screen w-64 bg-[#1a1a1d]/95 backdrop-blur-md border-r border-border z-40 transform -translate-x-full transition-transform duration-300 shadow-xl pt-24 px-6 flex flex-col justify-between">
-        <nav class="flex flex-col gap-3 font-display text-base">
-            <a href="index.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Home" data-zh="主页">Home</a>
-            <a href="blog.html" class="px-4 py-2.5 rounded-xl bg-white/5 text-white font-medium transition-all" data-en="My Blog" data-zh="我的博客">My Blog</a>
-            <a href="theory.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Notes" data-zh="理论笔记">Notes</a>
-            <a href="running.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Running Life" data-zh="跑步生活">Running Life</a>
-            <a href="ml.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Machine Learning" data-zh="机器学习">Machine Learning</a>
-        </nav>
-        <div class="mb-8 font-mono text-[9px] text-muted text-center" data-en="Zichen's Corner" data-zh="子辰的个人角落">
-            Zichen's Corner
+    <!-- Minimalist Top Academic Header -->
+    <header class="max-w-3xl mx-auto px-6 pt-12 pb-6 border-b border-border flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+            <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
+            <p class="text-[11px] text-muted mt-1 font-mono italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
         </div>
-    </div>
-    <!-- Menu Overlay to close when clicking outside -->
-    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden transition-opacity duration-300"></div>
-
-    <!-- Floating Translation Toggle -->
-    <div class="fixed top-6 right-6 z-50 bg-surface/90 backdrop-blur border border-border px-2.5 py-1 rounded-full flex gap-1 text-[10px] font-mono shadow-md">
-        <button id="btn-en" onclick="changeLang('en')" class="px-2 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
-        <button id="btn-zh" onclick="changeLang('zh')" class="px-2 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white">中文</button>
-    </div>
-
-    <div class="max-w-2xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
-
-        <!-- Minimalist Typographic Header (No Profile Pic) -->
-        <header class="mb-12 border-b border-border pb-6 flex items-center justify-between">
-            <div>
-                <a href="index.html" class="text-lg font-bold font-display text-white tracking-tight hover:text-primary transition-colors" data-en="Zichen Luo" data-zh="罗子辰">
-                    Zichen Luo
-                </a>
-                <span class="text-xs font-mono font-normal text-muted">&nbsp;/ blog</span>
-                <div class="text-[10px] font-mono text-primary flex items-center gap-1 mt-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                    <span data-en="Thoughts & updates feed" data-zh="动态与随笔">Thoughts & updates feed</span>
-                </div>
-            </div>
-            <nav class="font-mono text-[11px]">
-                <a href="index.html" class="text-muted hover:text-white transition-colors flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    <span data-en="Home" data-zh="主页">Home</span>
-                </a>
+        <div class="flex items-center gap-6 text-sm font-mono">
+            <nav class="flex flex-wrap gap-x-4 gap-y-1">
+                <a href="index.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Home" data-zh="主页">Home</a>
+                <a href="blog.html" class="text-foreground hover:text-primary underline decoration-primary/30 underline-offset-4 font-bold" data-en="Blog" data-zh="博客">Blog</a>
+                <a href="theory.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Notes" data-zh="笔记">Notes</a>
+                <a href="running.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Running" data-zh="跑步">Running</a>
+                <a href="ml.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="ML" data-zh="机器学习">ML</a>
             </nav>
-        </header>
+            <div class="border-l border-border pl-6 text-xs flex gap-2">
+                <button id="btn-en" onclick="changeLang('en')" class="hover:text-primary font-bold text-primary">EN</button>
+                <span class="text-border">/</span>
+                <button id="btn-zh" onclick="changeLang('zh')" class="hover:text-primary text-muted">中文</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-6 py-12 space-y-8 animate-fade-in">
 
         <!-- Category Filters -->
-        <section class="mb-8 flex flex-wrap gap-1.5 justify-center font-mono text-[11px]" id="filters-container">
-            <button onclick="filterPosts('All')" id="filter-all" class="px-3 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-white transition-all">All</button>
-            <button onclick="filterPosts('Physics')" id="filter-physics" class="px-3 py-1.5 rounded-full border border-border bg-surface text-muted hover:text-white hover:border-white/10 transition-all">Physics</button>
-            <button onclick="filterPosts('Machine Learning')" id="filter-ml" class="px-3 py-1.5 rounded-full border border-border bg-surface text-muted hover:text-white hover:border-white/10 transition-all">ML & AI</button>
-            <button onclick="filterPosts('Running')" id="filter-running" class="px-3 py-1.5 rounded-full border border-border bg-surface text-muted hover:text-white hover:border-white/10 transition-all">Running</button>
-            <button onclick="filterPosts('Theory')" id="filter-theory" class="px-3 py-1.5 rounded-full border border-border bg-surface text-muted hover:text-white hover:border-white/10 transition-all">Theory</button>
+        <section class="flex flex-wrap gap-2 justify-center font-mono text-xs" id="filters-container">
+            <button onclick="filterPosts('All')" id="filter-all" class="px-3 py-1 border border-primary/30 bg-primary/5 text-primary rounded transition-all font-medium">All</button>
+            <button onclick="filterPosts('Physics')" id="filter-physics" class="px-3 py-1 border border-border bg-stone-100 hover:bg-stone-200 text-muted rounded transition-all">Physics</button>
+            <button onclick="filterPosts('Machine Learning')" id="filter-ml" class="px-3 py-1 border border-border bg-stone-100 hover:bg-stone-200 text-muted rounded transition-all">ML & AI</button>
+            <button onclick="filterPosts('Running')" id="filter-running" class="px-3 py-1 border border-border bg-stone-100 hover:bg-stone-200 text-muted rounded transition-all">Running</button>
+            <button onclick="filterPosts('Theory')" id="filter-theory" class="px-3 py-1 border border-border bg-stone-100 hover:bg-stone-200 text-muted rounded transition-all">Theory</button>
         </section>
 
         <!-- Dynamic Timeline Feed -->
         <main class="space-y-6" id="timeline">
-            <!-- Timeline items will be injected here -->
-            <div class="text-center py-12 text-muted font-mono text-sm" data-en="Loading feed..." data-zh="加载动态流...">
+            <div class="text-center py-12 text-muted font-mono text-xs animate-pulse" data-en="Loading feed..." data-zh="加载动态流...">
                 Loading feed...
             </div>
         </main>
 
         <!-- Interactive Comments & Discussion Section -->
         <section class="mt-16 border-t border-border pt-12">
-            <div class="flex items-center gap-2 mb-6">
-                <h2 class="text-base font-bold font-display text-white" data-en="💬 Comments & Discussion" data-zh="💬 评论与讨论">💬 Comments & Discussion</h2>
-                <div class="h-px bg-border flex-1"></div>
+            <div class="flex items-center gap-2 mb-4">
+                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1" data-en="Comments & Discussion" data-zh="评论与讨论">Comments & Discussion</h2>
             </div>
             
-            <p class="text-xs text-zinc-400 font-light mb-6 leading-relaxed" 
-               data-en="Feel free to leave a comment, suggest a fix, or react. This discussion board is backed by GitHub Discussions, keeping comments fast, spam-free, and directly integrated into the repo."
-               data-zh="欢迎在此留言讨论、提出修正建议，或进行互动。本评论板由 GitHub Discussions 支持，安全快捷且直接与仓库关联。">
-                Feel free to leave a comment, suggest a fix, or react. This discussion board is backed by GitHub Discussions, keeping comments fast, spam-free, and directly integrated into the repo.
+            <p class="text-xs text-muted font-mono mb-6 leading-relaxed" 
+               data-en="Feel free to leave a comment or reaction. This discussion board is backed by GitHub Discussions, keeping comments fast, spam-free, and directly integrated into the repo."
+               data-zh="欢迎在此留言讨论或互动。本评论板由 GitHub Discussions 支持，安全快捷且直接与仓库关联。">
+                Feel free to leave a comment or reaction. This discussion board is backed by GitHub Discussions, keeping comments fast, spam-free, and directly integrated into the repo.
             </p>
 
             <!-- Giscus Comments Widget -->
@@ -170,38 +107,16 @@
         </section>
 
         <!-- Footer -->
-        <footer class="mt-20 pt-8 border-t border-border text-center text-zinc-500 text-xs font-mono">
+        <footer class="mt-20 pt-8 border-t border-border text-center text-muted text-xs font-mono">
             <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
         </footer>
 
     </div>
 
-    <!-- Scripting for Feed Handling & Language State -->
+    <!-- Scripting for Feed Handling -->
     <script>
         let allPosts = [];
         let activeCategory = 'All';
-
-        // Left Side Hamburger Menu Drawer toggle logic
-        function toggleMenu() {
-            const sideMenu = document.getElementById('side-menu');
-            const menuOverlay = document.getElementById('menu-overlay');
-            const openIcon = document.getElementById('menu-icon-open');
-            const closeIcon = document.getElementById('menu-icon-close');
-
-            const isClosed = sideMenu.classList.contains('-translate-x-full');
-
-            if (isClosed) {
-                sideMenu.classList.remove('-translate-x-full');
-                menuOverlay.classList.remove('hidden');
-                openIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-            } else {
-                sideMenu.classList.add('-translate-x-full');
-                menuOverlay.classList.add('hidden');
-                openIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-            }
-        }
 
         // Load Blog Posts from JSON
         async function loadFeed() {
@@ -216,7 +131,7 @@
                 const timeline = document.getElementById('timeline');
                 const lang = localStorage.getItem('preferred-lang') || 'en';
                 timeline.innerHTML = `
-                    <div class="text-center py-12 text-red-400 font-mono text-xs">
+                    <div class="text-center py-12 text-red-600 font-mono text-xs">
                         ${lang === 'zh' ? '加载动态流失败，请稍后再试。' : 'Failed to load feed. Please try again later.'}
                     </div>
                 `;
@@ -247,22 +162,22 @@
                 const formattedDate = formatDate(date, lang);
                 const content = lang === 'zh' ? post.content.zh : post.content.en;
                 
-                // Category color accenting (earth tones)
+                // Category styling (academic tags)
                 let categoryColor = 'text-primary border-primary/20 bg-primary/5';
-                if (post.category === 'Running') categoryColor = 'text-emerald-500 border-emerald-500/20 bg-emerald-500/5';
-                if (post.category === 'Theory') categoryColor = 'text-amber-500 border-amber-500/20 bg-amber-500/5';
-                if (post.category === 'Machine Learning') categoryColor = 'text-indigo-400 border-indigo-500/20 bg-indigo-500/5';
+                if (post.category === 'Running') categoryColor = 'text-emerald-700 border-emerald-600/20 bg-emerald-50';
+                if (post.category === 'Theory') categoryColor = 'text-amber-800 border-amber-600/20 bg-amber-50';
+                if (post.category === 'Machine Learning') categoryColor = 'text-blue-700 border-blue-600/20 bg-blue-50';
 
                 const postEl = document.createElement('article');
-                postEl.className = 'bg-surface border border-border rounded-2xl p-6 shadow-sm transition-all duration-200';
+                postEl.className = 'bg-[#fcfcf9] border border-border rounded p-5 space-y-3 font-serif transition-colors duration-150';
                 postEl.innerHTML = `
-                    <div class="flex items-start justify-between gap-4 mb-3">
+                    <div class="flex items-start justify-between gap-4">
                         <div class="flex items-center gap-2.5">
-                            <img src="images/profile.jpg" alt="Zichen" class="w-8 h-8 rounded-full object-cover border border-border">
+                            <img src="images/profile.jpg" alt="Zichen" class="w-8 h-8 rounded border border-border bg-stone-100">
                             <div>
-                                <h4 class="text-xs font-bold text-gray-200 flex items-center gap-1.5">
+                                <h4 class="text-xs font-bold text-foreground flex items-center gap-1.5 font-mono">
                                     ${lang === 'zh' ? '罗子辰' : 'Zichen Luo'}
-                                    <span class="text-[9px] font-mono font-medium px-2 py-0.5 rounded-full border ${categoryColor}">
+                                    <span class="text-[9px] font-mono font-medium px-2 py-0.5 rounded border ${categoryColor}">
                                         ${post.category}
                                     </span>
                                 </h4>
@@ -271,16 +186,16 @@
                         </div>
                     </div>
                     
-                    <p class="text-xs md:text-sm text-zinc-300 leading-relaxed font-light mb-3 whitespace-pre-line">
+                    <p class="text-xs md:text-sm text-foreground/90 leading-relaxed font-serif whitespace-pre-line">
                         ${content}
                     </p>
 
-                    <div class="flex flex-wrap gap-1 mb-3">
-                        ${post.tags.map(tag => `<span class="text-[9px] font-mono text-muted px-2 py-0.5 rounded-md bg-black/10">#${tag}</span>`).join('')}
+                    <div class="flex flex-wrap gap-1 font-mono">
+                        ${post.tags.map(tag => `<span class="text-[9px] text-muted px-2 py-0.5 rounded bg-stone-100 border border-border">#${tag}</span>`).join('')}
                     </div>
 
                     <div class="flex items-center gap-4 text-[10px] font-mono text-muted border-t border-border pt-2 mt-2">
-                        <button onclick="likePost('${post.id}')" id="like-btn-${post.id}" class="flex items-center gap-1 hover:text-red-400 transition-colors group">
+                        <button onclick="likePost('${post.id}')" id="like-btn-${post.id}" class="flex items-center gap-1 hover:text-red-600 transition-colors group">
                             <span class="text-xs transition-transform group-hover:scale-125">❤️</span>
                             <span id="like-count-${post.id}">${getLikes(post.id)}</span>
                         </button>
@@ -335,15 +250,15 @@
             if (likedList.includes(postId)) {
                 likesObj[postId] = Math.max(0, (likesObj[postId] || 1) - 1);
                 likedList.splice(likedList.indexOf(postId), 1);
-                if (btn) btn.classList.remove('text-red-400');
+                if (btn) btn.classList.remove('text-red-600');
             } else {
                 likesObj[postId] = (likesObj[postId] || 0) + 1;
                 likedList.push(postId);
-                if (btn) btn.classList.add('text-red-400');
+                if (btn) btn.classList.add('text-red-600');
                 const heart = btn.querySelector('span');
                 if (heart) {
-                    heart.classList.add('scale-155');
-                    setTimeout(() => heart.classList.remove('scale-155'), 200);
+                    heart.classList.add('scale-125');
+                    setTimeout(() => heart.classList.remove('scale-125'), 200);
                 }
             }
 
@@ -356,7 +271,7 @@
             const likedList = JSON.parse(localStorage.getItem('blog-liked-list') || '[]');
             likedList.forEach(postId => {
                 const btn = document.getElementById(`like-btn-${postId}`);
-                if (btn) btn.classList.add('text-red-400');
+                if (btn) btn.classList.add('text-red-600');
             });
         }
 
@@ -373,9 +288,9 @@
             Object.keys(filterIds).forEach(cat => {
                 const btn = document.getElementById(filterIds[cat]);
                 if (cat === category) {
-                    btn.className = "px-3 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-white transition-all shadow-sm";
+                    btn.className = "px-3 py-1 border border-primary/30 bg-primary/5 text-primary rounded transition-all font-medium";
                 } else {
-                    btn.className = "px-3 py-1.5 rounded-full border border-border bg-surface text-muted hover:text-white hover:border-white/10 transition-all";
+                    btn.className = "px-3 py-1 border border-border bg-stone-100 hover:bg-stone-200 text-muted rounded transition-all";
                 }
             });
 
@@ -396,12 +311,12 @@
             const btnZh = document.getElementById('btn-zh');
 
             if (lang === 'zh') {
-                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
+                btnZh.className = "hover:text-primary font-bold text-primary";
+                btnEn.className = "hover:text-primary text-muted font-normal";
                 document.documentElement.lang = 'zh';
             } else {
-                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
+                btnEn.className = "hover:text-primary font-bold text-primary";
+                btnZh.className = "hover:text-primary text-muted font-normal";
                 document.documentElement.lang = 'en';
             }
 
@@ -421,14 +336,6 @@
                     'https://giscus.app'
                 );
             }
-
-            // Sync side navigation text language
-            document.querySelectorAll('#side-menu [data-zh]').forEach(el => {
-                const navTranslation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
-                if (navTranslation !== null) {
-                    el.textContent = navTranslation;
-                }
-            });
         }
 
         function focusComment() {
@@ -438,7 +345,7 @@
             }
         }
 
-        // Initialize Giscus Comment Widget
+        // Initialize Giscus Comment Widget (Light Theme)
         function loadGiscus() {
             const lang = localStorage.getItem('preferred-lang') || 'en';
             const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';
@@ -460,7 +367,7 @@
             script.setAttribute('data-reactions-enabled', '1');
             script.setAttribute('data-emit-metadata', '0');
             script.setAttribute('data-input-position', 'bottom');
-            script.setAttribute('data-theme', 'dark_dimmed');
+            script.setAttribute('data-theme', 'light');
             script.setAttribute('data-lang', giscusLang);
             script.crossOrigin = 'anonymous';
             script.async = true;

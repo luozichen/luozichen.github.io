@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,15 +10,15 @@
     <link rel="canonical" href="https://luozichen.github.io/">
     <title>Zichen Luo | Personal Website</title>
 
-    <!-- PWA & Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="static/logo.png">
     <link rel="apple-touch-icon" href="static/logo.png">
-    <meta name="theme-color" content="#161618">
+    <meta name="theme-color" content="#faf9f5">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,28 +28,17 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'PingFang SC', 'Microsoft YaHei', 'monospace'],
+                        sans: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+                        serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+                        mono: ['JetBrains Mono', 'Courier New', 'monospace'],
                     },
                     colors: {
-                        background: '#161618',
-                        foreground: '#e4e4e7',
-                        primary: '#d97706', /* Warm Amber */
-                        secondary: '#b45309',
-                        surface: '#202024',
-                        surface2: '#2a2a30',
-                        border: '#2d2d30',
-                        muted: '#9a9a9f',
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        }
+                        background: '#faf9f5', // Warm paper-like white
+                        foreground: '#1c1917', // Dark charcoal/stone text
+                        primary: '#1d4ed8',    // Deep academic blue
+                        border: '#e7e5e4',     // Muted stone border
+                        muted: '#78716c',      // Muted stone text
+                        surface: '#f5f5f4',    // Very light stone surface for tables/codeblocks
                     }
                 }
             }
@@ -65,306 +54,177 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.08);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.15);
         }
     </style>
 </head>
 
-<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/20 selection:text-white">
+<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/10 selection:text-foreground">
 
-    <!-- Floating Hamburger Button (Left Side) -->
-    <div class="fixed top-6 left-6 z-50">
-        <button id="menu-btn" onclick="toggleMenu()" class="bg-surface/90 backdrop-blur border border-border p-2.5 rounded-full flex items-center justify-center shadow-lg text-muted hover:text-white hover:border-white/10 hover:scale-105 active:scale-95 transition-all">
-            <!-- Hamburger Open Icon -->
-            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <!-- Hamburger Close Icon -->
-            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-    </div>
-
-    <!-- Slide-in Navigation Drawer -->
-    <div id="side-menu" class="fixed top-0 left-0 h-screen w-64 bg-[#1a1a1d]/95 backdrop-blur-md border-r border-border z-40 transform -translate-x-full transition-transform duration-300 shadow-xl pt-24 px-6 flex flex-col justify-between">
-        <nav class="flex flex-col gap-2.5 font-display text-sm">
-            <a href="index.html" class="px-4 py-2.5 rounded-xl bg-white/5 text-white font-medium transition-all" data-en="Home" data-zh="主页">Home</a>
-            <a href="blog.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="My Blog" data-zh="我的博客">My Blog</a>
-            <a href="theory.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Notes" data-zh="理论笔记">Notes</a>
-            <a href="running.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Running Life" data-zh="跑步生活">Running Life</a>
-            <a href="ml.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Machine Learning" data-zh="机器学习">Machine Learning</a>
-        </nav>
-        <div class="mb-8 font-mono text-[9px] text-muted text-center" data-en="Zichen's Corner" data-zh="子辰的个人角落">
-            Zichen's Corner
+    <!-- Minimalist Top Academic Header -->
+    <header class="max-w-3xl mx-auto px-6 pt-12 pb-6 border-b border-border flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+            <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
+            <p class="text-[11px] text-muted mt-1 font-mono italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
         </div>
-    </div>
-    <!-- Menu Overlay to close when clicking outside -->
-    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden transition-opacity duration-300"></div>
-
-    <!-- Floating Translation Toggle -->
-    <div class="fixed top-6 right-6 z-50 bg-surface/90 backdrop-blur border border-border px-2.5 py-1 rounded-full flex gap-1 text-[10px] font-mono shadow-md">
-        <button id="btn-en" onclick="changeLang('en')" class="px-2 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
-        <button id="btn-zh" onclick="changeLang('zh')" class="px-2 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white">中文</button>
-    </div>
-
-    <div class="max-w-2xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
-
-        <!-- Hero Section -->
-        <header class="text-center mb-12">
-            <div class="relative inline-block mb-4">
-                <img src="images/profile.jpg" alt="Zichen Luo"
-                    class="w-28 h-28 rounded-full object-cover border border-border shadow-md"
-                    onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=d97706&color=fff&size=256'">
+        <div class="flex items-center gap-6 text-sm font-mono">
+            <nav class="flex flex-wrap gap-x-4 gap-y-1">
+                <a href="index.html" class="text-foreground hover:text-primary underline decoration-primary/30 underline-offset-4 font-bold" data-en="Home" data-zh="主页">Home</a>
+                <a href="blog.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Blog" data-zh="博客">Blog</a>
+                <a href="theory.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Notes" data-zh="笔记">Notes</a>
+                <a href="running.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Running" data-zh="跑步">Running</a>
+                <a href="ml.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="ML" data-zh="机器学习">ML</a>
+            </nav>
+            <div class="border-l border-border pl-6 text-xs flex gap-2">
+                <button id="btn-en" onclick="changeLang('en')" class="hover:text-primary font-bold text-primary">EN</button>
+                <span class="text-border">/</span>
+                <button id="btn-zh" onclick="changeLang('zh')" class="hover:text-primary text-muted">中文</button>
             </div>
+        </div>
+    </header>
 
-            <h1 class="text-3xl md:text-4xl font-bold font-display tracking-tight text-white mb-2" data-en="Zichen Luo" data-zh="罗子辰">
-                Zichen Luo
-            </h1>
-        </header>
+    <div class="max-w-3xl mx-auto px-6 py-12 space-y-12">
 
-        <main class="space-y-12">
+        <!-- Welcoming & Hero Intro Section -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+            <div class="md:col-span-2 space-y-6 leading-relaxed text-sm md:text-base text-foreground/90 font-serif">
+                <p data-en="Hi, I'm Zichen Luo (罗子辰). Born and raised in London, UK, I have been deeply fascinated by physics and the natural world since my early childhood. At the age of 14, I received an offer to join the undergraduate physics program at Tsinghua University in Beijing. Moving across the world to pursue this passion has been an incredible journey, immersing me in the rich academic environment of one of China's most historic and rigorous physics departments."
+                   data-zh="你好，我是罗子辰。我在英国伦敦出生并长大，自幼便对物理学和自然科学深感兴趣。14岁时，我有幸收到清华大学物理系本科项目的录取通知。跨越半个地球来到北京追求这份热爱是一段非凡的旅程，让我能够全身心融入清华物理系严谨且深厚的学术氛围中。">
+                    Hi, I'm Zichen Luo (罗子辰). Born and raised in London, UK, I have been deeply fascinated by physics and the natural world since my early childhood. At the age of 14, I received an offer to join the undergraduate physics program at Tsinghua University in Beijing. Moving across the world to pursue this passion has been an incredible journey, immersing me in the rich academic environment of one of China's most historic and rigorous physics departments.
+                </p>
+                <p data-en="Currently, I am in my fourth and final year of study, completing my bachelor's thesis in experimental nuclear physics under the guidance of Prof. Xiao Zhigang. My research focuses on the development of polarization detectors for deuteron breakup experiments. This combines Geant4 Monte Carlo simulations with hands-on hardware design, including the assembly and testing of plastic scintillator arrays, to explore the isovector nature of nuclear symmetry energy."
+                   data-zh="目前，我正值大四本科毕业年，在肖志刚教授的指导下完成我的学士学位论文。我的主要研究方向为实验核物理领域中氘核解体实验偏振探测器的研制。这一工作结合了 Geant4 蒙特卡洛物理模拟与实际硬件研发，包括塑料闪烁体探测器阵列的装配与测试，以探索核对称能的同位旋矢量特性。">
+                    Currently, I am in my fourth and final year of study, completing my bachelor's thesis in experimental nuclear physics under the guidance of Prof. Xiao Zhigang. My research focuses on the development of polarization detectors for deuteron breakup experiments. This combines Geant4 Monte Carlo simulations with hands-on hardware design, including the assembly and testing of plastic scintillator arrays, to explore the isovector nature of nuclear symmetry energy.
+                </p>
+                <p data-en="Beyond the laboratory, my academic curiosities extend to the mathematical beauty of theoretical physics; I dedicate much of my independent study to Quantum Field Theory and General Relativity. This website is a simple, quiet corner of the internet where I host my academic notes, catalog my competitive running life as a member of Tsinghua's long-distance team, and share my occasional machine learning experiments. Thank you for visiting."
+                   data-zh="在实验室之外，我的学术兴趣也延伸到了理论物理的数学美感上；我利用大量课余时间自学了量子场论与广义相对论。这个网站是我在互联网上的一个小角落，用于整理和存放我的学术笔记，记录我作为清华中长跑二队成员的跑步训练日志，并分享我偶尔做的一些机器学习实验。感谢你的到访。">
+                    Beyond the laboratory, my academic curiosities extend to the mathematical beauty of theoretical physics; I dedicate much of my independent study to Quantum Field Theory and General Relativity. This website is a simple, quiet corner of the internet where I host my academic notes, catalog my competitive running life as a member of Tsinghua's long-distance team, and share my occasional machine learning experiments. Thank you for visiting.
+                </p>
+            </div>
+            <div class="flex flex-col items-center md:items-end">
+                <img src="images/profile.jpg" alt="Zichen Luo"
+                    class="w-44 h-44 md:w-48 md:h-48 rounded shadow-sm object-cover border border-border bg-stone-100"
+                    onerror="this.src='https://ui-avatars.com/api/?name=Zichen+Luo&background=e7e5e4&color=1c1917&size=256'">
+                <p class="text-[10px] text-muted font-mono mt-2 text-center md:text-right" data-en="Beijing, May 2026" data-zh="北京，2026年5月">Beijing, May 2026</p>
+            </div>
+        </section>
 
-            <!-- Cozy Friendly Welcoming Greeting -->
-            <section>
-                <div class="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-sm">
-                    <p class="text-base md:text-lg text-zinc-300 leading-relaxed font-light" 
-                       data-en="Hi! I'm Zichen, a physics student, runner, and machine learning hobbyist based in Beijing. I grew up in London and moved to Tsinghua University at 14, where I'm currently finishing my final year of physics. This website is a quiet, personal corner of the internet where I share my academic notes, running logs, and coding experiments. Thanks for stopping by!"
-                       data-zh="你好！我是子辰，一个目前在北京的物理系学生、跑者和机器学习爱好者。我在伦敦长大，14岁时来到清华大学物理系，目前正值我的大四毕业年。这个网站是我在互联网上的一个小角落，用于分享我的学术笔记、个人长跑记录以及机器学习实验。非常感谢你的到访！">
-                        Hi! I'm Zichen, a physics student, runner, and machine learning hobbyist based in Beijing. I grew up in London and moved to Tsinghua University at 14, where I'm currently finishing my final year of physics. This website is a quiet, personal corner of the internet where I share my academic notes, running logs, and coding experiments. Thanks for stopping by!
+        <!-- Current Research Detail -->
+        <section id="research" class="space-y-4">
+            <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Current Research & Thesis" data-zh="学位学位论文与科研">Current Research & Thesis</h2>
+            <div class="text-sm text-foreground/90 space-y-3 leading-relaxed">
+                <p data-en="My academic work centers on experimental nuclear physics under the guidance of Prof. Xiao Zhigang’s research group. The key focus of my thesis project is:" data-zh="我的本科科研工作在清华大学物理系肖志刚教授课题组指导下进行。目前我的毕业学位论文研究重点为：">
+                    My academic work centers on experimental nuclear physics under the guidance of Prof. Xiao Zhigang’s research group. The key focus of my thesis project is:
+                </p>
+                <ul class="list-disc pl-5 space-y-2 text-foreground/80">
+                    <li data-en="&lt;strong class='text-foreground'&gt;Polarization Detectors:&lt;/strong&gt; Development and construction of high-precision plastic scintillator arrays for deuteron breakup experiments to probe the isovector nature of nuclear symmetry energy." data-zh="&lt;strong class='text-foreground'&gt;偏振探测器开发：&lt;/strong&gt;设计与研制用于氘核解体实验的高精度塑料闪烁体阵列，以探测核对称能的同位旋矢量特性。"><strong>Polarization Detectors:</strong> Development and construction of high-precision plastic scintillator arrays for deuteron breakup experiments to probe the isovector nature of nuclear symmetry energy.</li>
+                    <li data-en="&lt;strong class='text-foreground'&gt;Simulation Frameworks:&lt;/strong&gt; Leveraging Geant4 Monte Carlo simulations to optimize scintillator geometry, light transport efficiency, and multi-particle coincidence logic." data-zh="&lt;strong class='text-foreground'&gt;蒙特卡洛模拟：&lt;/strong&gt;利用 Geant4 工具包开展物理系统建模，优化闪烁体几何结构、光传输效率以及多粒子符合物理逻辑。"><strong>Simulation Frameworks:</strong> Leveraging Geant4 Monte Carlo simulations to optimize scintillator geometry, light transport efficiency, and multi-particle coincidence logic.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Microblog Preview Section -->
+        <section id="blog-preview" class="space-y-3">
+            <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Microblog Updates" data-zh="学术与日常动态">Microblog Updates</h2>
+            <p class="text-sm text-foreground/80 leading-relaxed" data-en="I maintain an informal, scrolling timeline feed where I share quick research observations, physics derivations, running splits, and answer discussion questions." data-zh="我维护着一个非正式的、流式的个人动态博客，用于分享我的一些物理学研究随想、公式推导、田径训练配速，并答复大家的讨论留言。">
+                I maintain an informal, scrolling timeline feed where I share quick research observations, physics derivations, running splits, and answer discussion questions.
+            </p>
+            <p class="text-sm font-mono">
+                <a href="blog.html" class="text-primary hover:underline" data-en="&rarr; Read the Microblog Feed" data-zh="&rarr; 阅读动态博客流">&rarr; Read the Microblog Feed</a>
+            </p>
+        </section>
+
+        <!-- Hobbies / Expanded Interests Section -->
+        <section id="interests" class="space-y-4">
+            <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Interests & Projects" data-zh="兴趣与项目">Interests & Projects</h2>
+            <div class="space-y-6 text-sm">
+                
+                <!-- ML -->
+                <div class="leading-relaxed">
+                    <h3 class="font-bold text-foreground flex items-center gap-1.5">
+                        <span data-en="🤖 Machine Learning" data-zh="🤖 机器学习与大语言模型">🤖 Machine Learning</span>
+                    </h3>
+                    <p class="text-foreground/80 mt-1" data-en="My computational interests focus on Language Model architectures and parameter efficiency. Specifically, I conduct ablation studies in the sub-10M parameter regime to test experimental attention structures." data-zh="我对计算科学的兴趣主要在于大语言模型的架构设计与参数效率。我具体在 1000万 参数以下的范围开展消融研究，以测试实验性注意力结构。">
+                        My computational interests focus on Language Model architectures and parameter efficiency. Specifically, I conduct ablation studies in the sub-10M parameter regime to test experimental attention structures.
+                    </p>
+                    <p class="text-xs font-mono mt-1">
+                        <a href="ml.html" class="text-primary hover:underline" data-en="View ML Projects &rarr;" data-zh="查看机器学习项目 &rarr;">View ML Projects &rarr;</a>
                     </p>
                 </div>
-            </section>
 
-            <!-- 1. About & Thesis Section -->
-            <section id="about" class="scroll-mt-16">
-                <div class="flex items-center gap-2 mb-4">
-                    <h2 class="text-lg font-bold font-display text-white" data-en="About & Research" data-zh="个人科研与学位论文">About & Research</h2>
-                    <div class="h-px bg-border flex-1"></div>
-                </div>
-                <div class="bg-surface border border-border rounded-2xl p-6 shadow-sm text-zinc-300 leading-relaxed space-y-4 font-light text-sm">
-                    <p data-en="I am a fourth-year Physics undergraduate at Tsinghua University. My bachelor's thesis is centred on experimental nuclear physics within Prof. Xiao Zhigang’s group, specifically the development of polarization detectors for deuteron breakup experiments."
-                       data-zh="我是清华大学物理系的大四本科生。我的学士学位论文主要集中在肖志刚教授课题组的实验核物理领域，具体是关于氘核解体实验中偏振探测器的研制开发。">
-                        I am a fourth-year Physics undergraduate at Tsinghua University. My bachelor's thesis is centred on experimental nuclear physics within Prof. Xiao Zhigang’s group, specifically the development of polarization detectors for deuteron breakup experiments.
+                <!-- Theory -->
+                <div class="leading-relaxed">
+                    <h3 class="font-bold text-foreground flex items-center gap-1.5">
+                        <span data-en="⚛️ Theoretical Physics" data-zh="⚛️ 理论物理独立学习">⚛️ Theoretical Physics</span>
+                    </h3>
+                    <p class="text-foreground/80 mt-1" data-en="Alongside my experimental thesis work, I engage in self-study in Quantum Field Theory and General Relativity. I compile my notes into secure technical reports available on this site." data-zh="在实验性学位论文工作之外，我一直坚持自学量子场论和广义相对论。我将学习心得整理成技术报告，发布在本站。">
+                        Alongside my experimental thesis work, I engage in self-study in Quantum Field Theory and General Relativity. I compile my notes into secure technical reports available on this site.
                     </p>
-                    <p data-en="My work combines Geant4 simulation with the hardware design and assembly of plastic scintillator arrays to probe the isovector nature of nuclear symmetry energy. Alongside this experimental focus, I maintain a strong passion for theoretical physics. This website serves as a repository for my technical notes, essays, and academic interests."
-                       data-zh="我的主要科研工作结合了 Geant4 模拟以及塑料闪烁体探测器阵列的硬件物理设计与装配，以探测核对称能的同位旋矢量特性。除了实验研究，我也对理论物理保持着浓厚的兴趣。本网站是我个人学术笔记、随笔与专业兴趣的整合角落。">
-                        My work combines Geant4 simulation with the hardware design and assembly of plastic scintillator arrays to probe the isovector nature of nuclear symmetry energy. Alongside this experimental focus, I maintain a strong passion for theoretical physics. This website serves as a repository for my technical notes, essays, and academic interests.
+                    <p class="text-xs font-mono mt-1">
+                        <a href="theory.html" class="text-primary hover:underline" data-en="Read Study Notes &rarr;" data-zh="阅读独立学习笔记 &rarr;">Read Study Notes &rarr;</a>
                     </p>
                 </div>
-            </section>
 
-            <!-- 2. The Custom Microblog Section -->
-            <section id="blog-preview" class="scroll-mt-16">
-                <div class="flex items-center gap-2 mb-4">
-                    <h2 class="text-lg font-bold font-display text-white" data-en="My Blog" data-zh="我的博客">My Blog</h2>
-                    <div class="h-px bg-border flex-1"></div>
+                <!-- Running -->
+                <div class="leading-relaxed">
+                    <h3 class="font-bold text-foreground flex items-center gap-1.5">
+                        <span data-en="🏃 Running & Athletics" data-zh="🏃 长跑训练">🏃 Running & Athletics</span>
+                    </h3>
+                    <p class="text-foreground/80 mt-1" data-en="I train competitively as a long-distance runner and am an active member of Tsinghua’s second middle- and long-distance athletics team." data-zh="作为一名长跑运动员，我坚持高强度田径训练，是清华大学中长跑二队的正式成员。">
+                        I train competitively as a long-distance runner and am an active member of Tsinghua’s second middle- and long-distance athletics team.
+                    </p>
+                    <p class="text-xs font-mono mt-1">
+                        <a href="running.html" class="text-primary hover:underline" data-en="View Garmin Logs & PBs &rarr;" data-zh="查看佳明日志与个人最好成绩 &rarr;">View Garmin Logs & PBs &rarr;</a>
+                    </p>
                 </div>
-                <div class="bg-surface border border-border rounded-2xl p-6 shadow-sm hover:border-primary/20 transition-all duration-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div class="flex-1">
-                        <h3 class="text-base font-bold text-white mb-1.5" data-en="✍️ Zichen's Microblog Timeline" data-zh="✍️ 罗子辰的动态博客流">✍️ Zichen's Microblog Timeline</h3>
-                        <p class="text-zinc-400 text-xs font-light leading-relaxed" 
-                           data-en="Explore my cozy, scrolling social feed where I share quick research updates, code snippets, track interval logs, and answer visitor comments."
-                           data-zh="浏览我温馨、滚动的动态博客。在此我分享简短的科研进展、代码片段、田径训练日志，并回复大家的留言讨论。">
-                            Explore my cozy, scrolling social feed where I share quick research updates, code snippets, track interval logs, and answer visitor comments.
-                        </p>
-                    </div>
-                    <a href="blog.html" class="px-4 py-2 bg-primary hover:bg-primary/80 text-white text-[11px] font-mono rounded-xl transition-all shadow-md shrink-0 font-medium">
-                        <span data-en="Open Feed &rarr;" data-zh="进入动态流 &rarr;">Open Feed &rarr;</span>
-                    </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="space-y-4">
+            <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Contact & Connections" data-zh="联系与链接">Contact & Connections</h2>
+            <div class="text-sm space-y-4 leading-relaxed">
+                <p data-en="Feel free to check my public code on GitHub or reach out via my academic email:" data-zh="欢迎浏览我的 GitHub 公开代码，或通过我的清华学术邮箱与我取得联系：">
+                    Feel free to check my public code on GitHub or reach out via my academic email:
+                </p>
+                <div class="flex gap-6 font-mono text-xs text-primary">
+                    <a href="https://github.com/luozichen" target="_blank" class="hover:underline">GitHub</a>
+                    <a href="https://huggingface.co/luozhangzichen" target="_blank" class="hover:underline">HuggingFace</a>
+                    <a href="http://luozichen.pythonanywhere.com" target="_blank" class="hover:underline">NeonConnect</a>
                 </div>
-            </section>
-
-            <!-- 3. Hobbies & Interests Section -->
-            <section id="hobbies" class="scroll-mt-16">
-                <div class="flex items-center gap-2 mb-2">
-                    <h2 class="text-lg font-bold font-display text-white" data-en="Hobbies & Interests" data-zh="兴趣与爱好">Hobbies & Interests</h2>
-                    <div class="h-px bg-border flex-1"></div>
+                <div class="pt-2 flex items-center gap-3">
+                    <button id="revealEmail" class="border border-border bg-stone-100 hover:bg-stone-200 active:bg-stone-300 text-foreground px-4 py-1.5 rounded text-xs font-mono font-medium transition-colors">
+                        <span data-en="Reveal Email" data-zh="显示邮箱">Reveal Email</span>
+                    </button>
+                    <span id="emailBox" class="text-primary font-mono text-xs select-all"></span>
                 </div>
-                <p class="text-[11px] text-muted mb-4 font-mono" data-en="Life outside the physics department." data-zh="清华物理系之外的精彩生活。">Life outside the physics department.</p>
-
-                <div class="space-y-4">
-                    
-                    <!-- Hobbies: AI Card -->
-                    <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/10 transition-all duration-200">
-                        <div class="flex justify-between items-start mb-3">
-                            <h3 class="text-base font-bold text-gray-100 flex items-center gap-2">
-                                <span class="text-primary">🤖</span> <span data-en="Machine Learning & LLMs" data-zh="机器学习与大语言模型">Machine Learning & LLMs</span>
-                            </h3>
-                            <a href="ml.html" class="text-xs font-mono text-muted hover:text-primary transition-colors border-b border-transparent hover:border-primary" data-en="View Research &rarr;" data-zh="查看研究 &rarr;">View Research &rarr;</a>
-                        </div>
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-4 font-light" 
-                           data-en="My interest in AI ranges from chess engine logic to transformer architectures."
-                           data-zh="我对人工智能的兴趣十分广泛，从国际象棋引擎的博弈逻辑到大语言模型的 Transformer 架构均有涉及。">
-                            My interest in AI ranges from chess engine logic to transformer architectures.
-                        </p>
-
-                        <!-- ML subproject 1 -->
-                        <div class="bg-black/10 rounded-xl p-4 border border-border mb-3">
-                            <div class="flex justify-between items-start mb-2">
-                                <strong class="text-gray-200 text-xs font-medium" data-en="Project: LLM Ablation Study" data-zh="项目: 大语言模型消融研究">Project: LLM Ablation Study</strong>
-                                <div class="flex gap-2 flex-wrap justify-end text-[10px] font-mono">
-                                    <a href="https://github.com/luozichen/neonbench" target="_blank" class="text-primary hover:text-white border border-primary/10 hover:bg-primary/10 px-1.5 py-0.5 rounded transition-colors">Logs</a>
-                                    <a href="https://huggingface.co/luozhangzichen" target="_blank" class="text-orange-400 hover:text-white border border-orange-400/10 hover:bg-orange-400/10 px-1.5 py-0.5 rounded transition-colors">Models</a>
-                                    <a href="http://luozichen.pythonanywhere.com" target="_blank" class="text-muted hover:text-white border border-border hover:bg-white/5 px-1.5 py-0.5 rounded transition-colors">Visualize</a>
-                                </div>
-                            </div>
-                            <p class="text-[11px] text-zinc-500 leading-relaxed" 
-                               data-en="Research into quasi-encoder fusion, splitbrain attention, and Learnt-Intent LLM architectures."
-                               data-zh="深入研究拟编码器融合（quasi-encoder fusion）、SplitBrain 分离注意力机制以及学习意图大语言模型架构。">
-                                Research into quasi-encoder fusion, splitbrain attention, and Learnt-Intent LLM architectures.
-                            </p>
-                        </div>
-
-                        <!-- ML subproject 2 -->
-                        <div class="bg-black/10 rounded-xl p-4 border border-border">
-                            <div class="flex justify-between items-start mb-2">
-                                <strong class="text-gray-200 text-xs font-medium" data-en="Project: AI API Caller" data-zh="项目: AI API 调用分流器">Project: AI API Caller</strong>
-                                <a href="http://luozichen.pythonanywhere.com/neoncore" target="_blank" class="text-primary hover:text-white text-[10px] font-mono border border-primary/10 hover:bg-primary/10 px-1.5 py-0.5 rounded transition-colors" data-en="Launch &rarr;" data-zh="启动 &rarr;">Launch &rarr;</a>
-                            </div>
-                            <p class="text-[11px] text-zinc-500 mb-2.5 leading-relaxed" 
-                               data-en="A custom-built REST caller serving models dynamically to the API."
-                               data-zh="一个自定义的 REST 接口分流调用器，能够动态地向 API 端点分流并提供模型运算服务。">
-                                A custom-built REST caller serving models dynamically to the API.
-                            </p>
-                            <div class="text-[9px] font-mono text-zinc-400 space-y-0.5 bg-black/10 p-2 rounded">
-                                <div class="flex justify-between"><span>User:</span> <span class="text-zinc-300">tempcn</span></div>
-                                <div class="flex justify-between"><span>Pass:</span> <span class="text-zinc-300">temp123</span></div>
-                                <div class="text-red-400/80 italic mt-0.5" data-en="⚠️ API is currently rate-limited." data-zh="⚠️ 接口目前处于流量限制状态。">⚠️ API is currently rate-limited.</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hobbies: Theory Card -->
-                    <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/10 transition-all duration-200">
-                        <div class="flex justify-between items-start mb-3">
-                            <h3 class="text-base font-bold text-gray-100 flex items-center gap-2">
-                                <span class="text-primary">⚛️</span> <span data-en="Theoretical Physics" data-zh="理论物理独立学习">Theoretical Physics</span>
-                            </h3>
-                            <a href="theory.html" class="text-xs font-mono text-muted hover:text-primary transition-colors border-b border-transparent hover:border-primary" data-en="View Notes &rarr;" data-zh="查看笔记 &rarr;">View Notes &rarr;</a>
-                        </div>
-                        <p class="text-zinc-400 text-sm leading-relaxed font-light" 
-                           data-en="While my primary research is rooted in experimental nuclear physics, I am deeply driven by the aesthetic and structural elegance of theoretical frameworks. I devote my independent study to Quantum Field Theory and General Relativity to better appreciate the mathematical beauty of our most foundational theories."
-                           data-zh="尽管我的主要本科科研根植于实验核物理学，但我一直深受物理理论框架的美学和结构优雅性的驱动。我利用课余时间自学量子场论（QFT）以及广义相对论（GR），以便更好地领会和欣赏我们最前沿基础科学的数学美学。">
-                            While my primary research is rooted in experimental nuclear physics, I am deeply driven by the aesthetic and structural elegance of theoretical frameworks. I devote my independent study to Quantum Field Theory and General Relativity to better appreciate the mathematical beauty of our most foundational theories.
-                        </p>
-                    </div>
-
-                    <!-- Hobbies: Running Card -->
-                    <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/10 transition-all duration-200">
-                        <div class="flex justify-between items-start mb-3">
-                            <h3 class="text-base font-bold text-gray-100 flex items-center gap-2">
-                                <span class="text-emerald-500">🏃</span> <span data-en="Running" data-zh="长跑训练与赛事">Running</span>
-                            </h3>
-                            <a href="running.html" class="text-xs font-mono text-muted hover:text-primary transition-colors border-b border-transparent hover:border-primary" data-en="View Logs &rarr;" data-zh="查看日志 &rarr;">View Logs &rarr;</a>
-                        </div>
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-4 font-light" 
-                           data-en="I am a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队)."
-                           data-zh="我是一名专注且执着的长距离跑者，同时也是清华大学中长跑二队的正式成员。">
-                            I am a dedicated long-distance runner and a member of Tsinghua’s middle- and long-distance second team (中长跑二队).
-                        </p>
-                        <div class="grid grid-cols-3 gap-3">
-                            <div class="text-center bg-black/10 rounded-lg p-2 border border-border">
-                                <div class="text-[9px] text-muted uppercase font-mono mb-0.5">3k PB</div>
-                                <div class="text-sm md:text-base font-bold text-white font-display">9:58</div>
-                            </div>
-                            <div class="text-center bg-black/10 rounded-lg p-2 border border-border">
-                                <div class="text-[9px] text-muted uppercase font-mono mb-0.5">5k PB</div>
-                                <div class="text-sm md:text-base font-bold text-white font-display">17:33</div>
-                            </div>
-                            <div class="text-center bg-black/10 rounded-lg p-2 border border-border">
-                                <div class="text-[9px] text-muted uppercase font-mono mb-0.5">10k PB</div>
-                                <div class="text-sm md:text-base font-bold text-white font-display">37:22</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. Contact Section -->
-            <section id="contact" class="scroll-mt-16">
-                <div class="flex items-center gap-2 mb-4">
-                    <h2 class="text-lg font-bold font-display text-white" data-en="Contact & Links" data-zh="联系与友情链接">Contact & Links</h2>
-                    <div class="h-px bg-border flex-1"></div>
-                </div>
-
-                <div class="bg-surface border border-border rounded-2xl p-6 md:p-8 text-center space-y-4">
-                    <div>
-                        <p class="text-zinc-400 mb-3 font-light text-xs" data-en="Find me on these platforms:" data-zh="在以下平台上关注我:">Find me on these platforms:</p>
-                        <div class="flex flex-wrap justify-center gap-6 font-mono text-xs">
-                            <a href="https://github.com/luozichen" target="_blank"
-                                class="text-zinc-300 hover:text-white transition-colors border-b border-border hover:border-white">GitHub</a>
-                            <a href="https://huggingface.co/luozhangzichen" target="_blank"
-                                class="text-zinc-300 hover:text-white transition-colors border-b border-border hover:border-white">HuggingFace</a>
-                            <a href="http://luozichen.pythonanywhere.com" target="_blank"
-                                class="text-zinc-300 hover:text-white transition-colors border-b border-border hover:border-white">NeonConnect</a>
-                        </div>
-                    </div>
-                    <div class="border-t border-border pt-4">
-                        <p class="text-zinc-400 text-xs mb-4 font-light" data-en="Click below to reveal my academic email." data-zh="点击下方按钮以显示并复制我的学术邮箱。">Click below to reveal my academic email.</p>
-                        <button id="revealEmail"
-                            class="bg-primary hover:bg-primary/80 text-white font-medium px-5 py-2 rounded-xl transition-all shadow-md font-mono text-xs">
-                            <span data-en="Show Email" data-zh="显示邮箱">Show Email</span>
-                        </button>
-                        <div id="emailBox" class="mt-3 text-primary font-mono text-xs h-6"></div>
-                    </div>
-                </div>
-            </section>
-
-        </main>
+            </div>
+        </section>
 
         <!-- Footer -->
-        <footer class="mt-20 pt-8 border-t border-border text-center text-zinc-500 text-xs">
-            <div class="mb-4 font-display text-sm md:text-base tracking-[0.3em] text-zinc-400 opacity-80 uppercase" data-en="Stay Hungry, Stay Curious." data-zh="保持饥饿，保持好奇。">
+        <footer class="pt-8 border-t border-border text-center text-muted text-xs font-mono space-y-4">
+            <div class="italic text-[11px]" data-en="Stay Hungry, Stay Curious." data-zh="保持饥饿，保持好奇。">
                 Stay Hungry, Stay Curious.
             </div>
-            <div class="mb-2">&copy; 2026 Zichen Luo.</div>
-            <div class="flex flex-wrap items-center justify-center gap-4 mt-4">
-                <div id="last-updated"
-                    class="inline-block px-3 py-1 bg-surface border border-border rounded-lg font-mono text-[10px]">Last
-                    updated: January 2026</div>
-                <div id="visitor-count"
-                    class="inline-block px-3 py-1 bg-surface border border-border rounded-lg font-mono text-[10px] flex items-center gap-1.5"
-                    title="Total page visits">
-                    <span class="text-primary opacity-80">👁</span>
-                    <span id="visit-number" class="font-medium">Loading...</span>
+            <div>&copy; 2026 Zichen Luo.</div>
+            <div class="flex flex-wrap items-center justify-center gap-4 text-[10px]">
+                <div id="last-updated" class="px-2.5 py-1 bg-stone-100 border border-border rounded">Last updated: January 2026</div>
+                <div id="visitor-count" class="px-2.5 py-1 bg-stone-100 border border-border rounded flex items-center gap-1.5" title="Total page visits">
+                    <span class="text-primary">👁</span>
+                    <span id="visit-number">Loading...</span>
                 </div>
             </div>
         </footer>
 
     </div>
 
-    <!-- Layout & Nav State Scripts -->
+    <!-- Script block -->
     <script>
-        // Left Side Hamburger Menu Drawer toggle logic
-        function toggleMenu() {
-            const sideMenu = document.getElementById('side-menu');
-            const menuOverlay = document.getElementById('menu-overlay');
-            const openIcon = document.getElementById('menu-icon-open');
-            const closeIcon = document.getElementById('menu-icon-close');
-
-            const isClosed = sideMenu.classList.contains('-translate-x-full');
-
-            if (isClosed) {
-                // Open menu
-                sideMenu.classList.remove('-translate-x-full');
-                menuOverlay.classList.remove('hidden');
-                openIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-            } else {
-                // Close menu
-                sideMenu.classList.add('-translate-x-full');
-                menuOverlay.classList.add('hidden');
-                openIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-            }
-        }
-
         // Email reveal and copy script
         (function () {
             const btn = document.getElementById('revealEmail');
@@ -379,7 +239,7 @@
                 const successText = currentLang === 'zh' ? "已复制!" : "Copied!";
                 
                 btn.textContent = successText;
-                btn.className = "bg-green-600 text-white font-medium px-5 py-2 rounded-xl transition-all shadow-md font-mono text-xs";
+                btn.className = "border border-green-600 bg-green-50 text-green-700 px-4 py-1.5 rounded text-xs font-mono font-medium transition-colors";
 
                 try {
                     await navigator.clipboard.writeText(address);
@@ -388,8 +248,8 @@
                 }
 
                 setTimeout(() => {
-                    btn.textContent = currentLang === 'zh' ? "显示邮箱" : "Show Email";
-                    btn.className = "bg-primary hover:bg-primary/80 text-white font-medium px-5 py-2 rounded-xl transition-all shadow-lg font-mono text-xs";
+                    btn.textContent = currentLang === 'zh' ? "显示邮箱" : "Reveal Email";
+                    btn.className = "border border-border bg-stone-100 hover:bg-stone-200 text-foreground px-4 py-1.5 rounded text-xs font-mono font-medium transition-colors";
                 }, 2000);
             });
 
@@ -413,7 +273,7 @@
                     document.getElementById('visit-number').textContent = data.count.toLocaleString();
                 })
                 .catch(error => {
-                    console.log("Counter offline or blocked:", error);
+                    console.log("Counter offline:", error);
                     document.getElementById('visit-number').textContent = "Offline";
                 });
         })();
@@ -423,7 +283,11 @@
             document.querySelectorAll('[data-zh]').forEach(el => {
                 const translation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
                 if (translation !== null) {
-                    el.textContent = translation;
+                    if (translation.includes('<strong') || translation.includes('</strong')) {
+                        el.innerHTML = translation;
+                    } else {
+                        el.textContent = translation;
+                    }
                 }
             });
 
@@ -432,8 +296,8 @@
             const btnZh = document.getElementById('btn-zh');
 
             if (lang === 'zh') {
-                btnZh.className = "px-2 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnEn.className = "px-2 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
+                btnZh.className = "hover:text-primary font-bold text-primary";
+                btnEn.className = "hover:text-primary text-muted font-normal";
                 document.documentElement.lang = 'zh';
                 
                 // Update email button text
@@ -448,14 +312,14 @@
                     lastUpdatedEl.textContent = '最后更新: ' + date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
                 }
             } else {
-                btnEn.className = "px-2 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnZh.className = "px-2 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
+                btnEn.className = "hover:text-primary font-bold text-primary";
+                btnZh.className = "hover:text-primary text-muted font-normal";
                 document.documentElement.lang = 'en';
 
                 // Update email button text
                 const emailBtn = document.getElementById('revealEmail');
                 if (emailBtn && emailBtn.textContent.trim() !== "Copied!" && emailBtn.textContent.trim() !== "已复制!") {
-                    emailBtn.textContent = "Show Email";
+                    emailBtn.textContent = "Reveal Email";
                 }
                 // Update last updated prefix
                 const lastUpdatedEl = document.getElementById('last-updated');
@@ -466,14 +330,6 @@
             }
 
             localStorage.setItem('preferred-lang', lang);
-            
-            // Sync side navigation text language
-            document.querySelectorAll('#side-menu [data-zh]').forEach(el => {
-                const navTranslation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
-                if (navTranslation !== null) {
-                    el.textContent = navTranslation;
-                }
-            });
         }
 
         // Initialize preferred language

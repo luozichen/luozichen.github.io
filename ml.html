@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,14 +8,14 @@
     <meta name="robots" content="noindex">
     <title>Zichen Luo | Machine Learning</title>
 
-    <!-- PWA & Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="static/logo.png">
     <link rel="apple-touch-icon" href="static/logo.png">
-    <meta name="theme-color" content="#161618">
+    <meta name="theme-color" content="#faf9f5">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -24,28 +24,17 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'PingFang SC', 'Microsoft YaHei', 'monospace'],
+                        sans: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+                        serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+                        mono: ['JetBrains Mono', 'Courier New', 'monospace'],
                     },
                     colors: {
-                        background: '#161618',
-                        foreground: '#e4e4e7',
-                        primary: '#d97706', /* Warm Amber */
-                        secondary: '#b45309',
-                        surface: '#202024',
-                        surface2: '#2a2a30',
-                        border: '#2d2d30',
-                        muted: '#9a9a9f',
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        }
+                        background: '#faf9f5', // Warm paper-like white
+                        foreground: '#1c1917', // Dark charcoal text
+                        primary: '#1d4ed8',    // Deep academic blue
+                        border: '#e7e5e4',     // Muted stone border
+                        muted: '#78716c',      // Muted stone text
+                        surface: '#f5f5f4',    // Very light stone surface
                     }
                 }
             }
@@ -54,80 +43,44 @@
     <style>
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.08); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.15); }
     </style>
 </head>
 
-<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/20 selection:text-white">
+<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/10 selection:text-foreground">
 
-    <!-- Floating Hamburger Button (Left Side) -->
-    <div class="fixed top-6 left-6 z-50">
-        <button id="menu-btn" onclick="toggleMenu()" class="bg-surface/85 backdrop-blur border border-border p-2.5 rounded-full flex items-center justify-center shadow-lg text-muted hover:text-white hover:border-white/10 hover:scale-105 active:scale-95 transition-all">
-            <!-- Hamburger Open Icon -->
-            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <!-- Hamburger Close Icon -->
-            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-    </div>
-
-    <!-- Slide-in Navigation Drawer -->
-    <div id="side-menu" class="fixed top-0 left-0 h-screen w-64 bg-[#1a1a1d]/95 backdrop-blur-md border-r border-border z-40 transform -translate-x-full transition-transform duration-300 shadow-xl pt-24 px-6 flex flex-col justify-between">
-        <nav class="flex flex-col gap-3 font-display text-base">
-            <a href="index.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Home" data-zh="主页">Home</a>
-            <a href="blog.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="My Blog" data-zh="我的博客">My Blog</a>
-            <a href="theory.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Notes" data-zh="理论笔记">Notes</a>
-            <a href="running.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Running Life" data-zh="跑步生活">Running Life</a>
-            <a href="ml.html" class="px-4 py-2.5 rounded-xl bg-white/5 text-white font-medium transition-all" data-en="Machine Learning" data-zh="机器学习">Machine Learning</a>
-        </nav>
-        <div class="mb-8 font-mono text-[9px] text-muted text-center" data-en="Zichen's Corner" data-zh="子辰的个人角落">
-            Zichen's Corner
+    <!-- Minimalist Top Academic Header -->
+    <header class="max-w-3xl mx-auto px-6 pt-12 pb-6 border-b border-border flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+            <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
+            <p class="text-[11px] text-muted mt-1 font-mono italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
         </div>
-    </div>
-    <!-- Menu Overlay to close when clicking outside -->
-    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden transition-opacity duration-300"></div>
-
-    <!-- Floating Translation Toggle -->
-    <div class="fixed top-6 right-6 z-50 bg-surface/80 backdrop-blur border border-border px-2.5 py-1 rounded-full flex gap-1 text-[10px] font-mono shadow-xl">
-        <button id="btn-en" onclick="changeLang('en')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
-        <button id="btn-zh" onclick="changeLang('zh')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white">中文</button>
-    </div>
-
-    <div class="max-w-4xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
-
-        <!-- Minimalist Typographic Header (No Profile Pic) -->
-        <header class="mb-12 border-b border-border pb-6 flex items-center justify-between">
-            <div>
-                <a href="index.html" class="text-lg font-bold font-display text-white tracking-tight hover:text-primary transition-colors" data-en="Zichen Luo" data-zh="罗子辰">
-                    Zichen Luo
-                </a>
-                <span class="text-xs font-mono font-normal text-muted">&nbsp;/ ml</span>
-                <div class="text-[10px] font-mono text-primary flex items-center gap-1 mt-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span data-en="Machine Learning & Language Models" data-zh="机器学习与大语言模型研究">Machine Learning & Language Models</span>
-                </div>
-            </div>
-            <nav class="font-mono text-[11px]">
-                <a href="index.html" class="text-muted hover:text-white transition-colors flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    <span data-en="Home" data-zh="主页">Home</span>
-                </a>
+        <div class="flex items-center gap-6 text-sm font-mono">
+            <nav class="flex flex-wrap gap-x-4 gap-y-1">
+                <a href="index.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Home" data-zh="主页">Home</a>
+                <a href="blog.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Blog" data-zh="博客">Blog</a>
+                <a href="theory.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Notes" data-zh="笔记">Notes</a>
+                <a href="running.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Running" data-zh="跑步">Running</a>
+                <a href="ml.html" class="text-foreground hover:text-primary underline decoration-primary/30 underline-offset-4 font-bold" data-en="ML" data-zh="机器学习">ML</a>
             </nav>
-        </header>
+            <div class="border-l border-border pl-6 text-xs flex gap-2">
+                <button id="btn-en" onclick="changeLang('en')" class="hover:text-primary font-bold text-primary">EN</button>
+                <span class="text-border">/</span>
+                <button id="btn-zh" onclick="changeLang('zh')" class="hover:text-primary text-muted">中文</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-6 py-12 space-y-12 animate-fade-in">
 
         <main class="space-y-8">
-            <section class="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-sm">
-                <h2 class="text-xl font-bold font-display text-white mb-6 border-b border-border pb-4" data-en="NeonBench: LLM Architecture Research" data-zh="NeonBench: 大语言模型架构研究">NeonBench: LLM Architecture Research</h2>
+            <section class="space-y-6">
+                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="NeonBench: LLM Architecture Research" data-zh="NeonBench: 大语言模型架构研究">NeonBench: LLM Architecture Research</h2>
 
-                <div class="space-y-6 text-gray-300 leading-relaxed text-sm font-light">
-                    <p data-en="&lt;strong class='text-white'&gt;NeonBench&lt;/strong&gt; is my experimental framework for rapidly iterating over novel Language Model architectures, specifically targeting sub-10M parameter bounds (primarily 5.0M non-embedding parameters) to test architectural efficiency before scaling up. Below is a summary of the core concepts I've been researching:"
-                       data-zh="&lt;strong class='text-white'&gt;NeonBench&lt;/strong&gt; 是我的实验性研究框架，用于在大语言模型上进行新颖架构的快速迭代。我主要关注 1000万 参数以内（主要是 500万 非嵌入层参数）的参数边界，以便在大规模参数化之前测试架构效率。以下是我当前核心研究概念的概述：">
+                <div class="space-y-6 text-foreground/90 leading-relaxed text-sm font-serif">
+                    <p data-en="&lt;strong class='text-foreground'&gt;NeonBench&lt;/strong&gt; is my experimental framework for rapidly iterating over novel Language Model architectures, specifically targeting sub-10M parameter bounds (primarily 5.0M non-embedding parameters) to test architectural efficiency before scaling up. Below is a summary of the core concepts I've been researching:"
+                       data-zh="&lt;strong class='text-foreground'&gt;NeonBench&lt;/strong&gt; 是我的实验性研究框架，用于在大语言模型上进行新颖架构的快速迭代。我主要关注 1000万 参数以内（主要是 500万 非嵌入层参数）的参数边界，以便在大规模参数化之前测试架构效率。以下是我当前核心研究概念的概述：">
                         <strong>NeonBench</strong> is my experimental framework for rapidly iterating over novel
                         Language Model architectures, specifically targeting sub-10M parameter bounds (primarily 5.0M
                         non-embedding parameters) to test architectural efficiency before scaling up. Below is a summary
@@ -135,9 +88,9 @@
                     </p>
 
                     <!-- Concept 1 -->
-                    <div class="bg-black/10 rounded-xl p-5 border border-border">
-                        <h3 class="text-base font-bold text-gray-200 mb-3 text-primary" data-en="1. Quasi-Encoder Fusion & SplitBrain Attention" data-zh="1. 拟编码器融合与 SplitBrain 注意力">1. Quasi-Encoder Fusion & SplitBrain Attention</h3>
-                        <p class="text-zinc-400 text-xs leading-relaxed mb-3" 
+                    <div class="bg-[#fcfcf9] rounded border border-border p-5 space-y-3">
+                        <h3 class="text-sm font-bold font-mono text-primary" data-en="1. Quasi-Encoder Fusion & SplitBrain Attention" data-zh="1. 拟编码器融合与 SplitBrain 注意力">1. Quasi-Encoder Fusion & SplitBrain Attention</h3>
+                        <p class="text-xs text-muted leading-relaxed" 
                            data-en="The SplitBrain architecture operates by bifurcating the standard causal attention matrix. By processing a 'causal stream' and a 'lookahead stream' (which is allowed to see future tokens up to a certain sequence depth, acting as a Quasi-Encoder), the network achieves deep bidirectional context within a primarily autoregressive framework."
                            data-zh="SplitBrain 架构通过将标准的因果注意力矩阵（causal attention matrix）进行分叉运行。通过同时处理一个“因果流”和一个“前瞻流”（前瞻流被允许查看特定序列深度内的未来 Token，充当拟编码器的角色），该网络在主要是自回归的框架内实现了双朝向上下文理解。">
                             The SplitBrain architecture operates by bifurcating the standard causal attention matrix. By
@@ -145,7 +98,7 @@
                             up to a certain sequence depth, acting as a Quasi-Encoder), the network achieves deep
                             bidirectional context within a primarily autoregressive framework.
                         </p>
-                        <p class="text-zinc-400 text-xs leading-relaxed" 
+                        <p class="text-xs text-muted leading-relaxed" 
                            data-en="Recent experiments fine-tuning the lookahead ratio (e.g., 25%, 50%, 100%) against parameter budgets have yielded fascinating trade-offs between training speed and long-context comprehension on rigorous tasks."
                            data-zh="近期针对参数预算微调前瞻比例（如 25%、50%、100%）的实验表明，在严苛的任务测试中，训练速度与长上下文理解力之间存在极其有趣的折衷权衡。">
                             Recent experiments fine-tuning the lookahead ratio (e.g., 25%, 50%, 100%) against parameter
@@ -155,9 +108,9 @@
                     </div>
 
                     <!-- Concept 2 -->
-                    <div class="bg-black/10 rounded-xl p-5 border border-border">
-                        <h3 class="text-base font-bold text-gray-200 mb-3 text-primary" data-en="2. Learnt Intent Streaming" data-zh="2. 学习意图流机制">2. Learnt Intent Streaming</h3>
-                        <p class="text-zinc-400 text-xs leading-relaxed mb-3" 
+                    <div class="bg-[#fcfcf9] rounded border border-border p-5 space-y-3">
+                        <h3 class="text-sm font-bold font-mono text-primary" data-en="2. Learnt Intent Streaming" data-zh="2. 学习意图流机制">2. Learnt Intent Streaming</h3>
+                        <p class="text-xs text-muted leading-relaxed" 
                            data-en="A novel concept where an independent set of learned residual states—the 'intent stream'—flows alongside the primary token representation stream. Rather than discarding sequence representations at each layer, the intent stream aggregates contextual meaning, which is then fed back into the query projections of subsequent attention layers."
                            data-zh="这是一个新颖的机制设计，其中一组独立的、已学习的残差状态——“意图流”——与主 Token 表征流并列流动。意图流不是在每个网络层直接丢弃序列特征表征，而是不断聚合上下文语义，并在随后的注意力层中将其作为 Query 投影的反馈输入。">
                             A novel concept where an independent set of learned residual states—the "intent
@@ -165,7 +118,7 @@
                             sequence representations at each layer, the intent stream aggregates contextual meaning,
                             which is then fed back into the query projections of subsequent attention layers.
                         </p>
-                        <p class="text-zinc-400 text-xs leading-relaxed" 
+                        <p class="text-xs text-muted leading-relaxed" 
                            data-en="We observed that adding this explicit parallel intent stream prevents representation collapse in deep networks and provides robust multi-token reasoning capabilities natively within the forward pass."
                            data-zh="我们观察到，引入这种显式的并行意图流不仅能防止深度神经网络中的表征塌缩（representation collapse），还能在前向传播中以原生方式赋予模型强健的跨多 Token 推理能力。">
                             We observed that adding this explicit parallel intent stream prevents representation
@@ -175,31 +128,31 @@
                     </div>
 
                     <!-- Concept 3 -->
-                    <div class="bg-black/10 rounded-xl p-5 border border-border">
-                        <h3 class="text-base font-bold text-gray-200 mb-3 text-primary" data-en="3. Continuous Ablation Studies" data-zh="3. 持续消融研究">3. Continuous Ablation Studies</h3>
-                        <p class="text-zinc-400 text-xs leading-relaxed mb-3" 
+                    <div class="bg-[#fcfcf9] rounded border border-border p-5 space-y-3">
+                        <h3 class="text-sm font-bold font-mono text-primary" data-en="3. Continuous Ablation Studies" data-zh="3. 持续消融研究">3. Continuous Ablation Studies</h3>
+                        <p class="text-xs text-muted leading-relaxed" 
                            data-en="I enforce strict parameter-parity bounds (e.g. 5,004,528 params) across all experimental models. We dynamically adjust d_ff dimensions to compensate for any newly added parameters when introducing SplitBrain Lookahead, Intent Streams, or Convolutional Mixing layers."
                            data-zh="我在所有实验模型中实施严格的参数均等界限约束（例如 5,004,528 个参数）。当引入 SplitBrain 前瞻、意图流或卷积混合层时，我们动态调整 d_ff 维度以补偿任何新增的参数，以确保对比的公平性。">
                             I enforce strict parameter-parity bounds (e.g. 5,004,528 params) across all experimental
-                            models. We dynamically adjust <code class="bg-white/10 px-1 rounded text-[11px] font-mono">d_ff</code> dimensions
+                            models. We dynamically adjust <code class="bg-stone-100 border border-stone-200 px-1 rounded font-mono text-[10px]">d_ff</code> dimensions
                             to compensate for any newly added parameters when introducing SplitBrain Lookahead, Intent
                             Streams, or Convolutional Mixing layers.
                         </p>
-                        <ul class="list-disc pl-5 text-zinc-400 text-xs space-y-2 leading-relaxed">
-                            <li data-en="&lt;strong class='text-gray-300'&gt;Phase 6&lt;/strong&gt;: Validating deep lookahead mask structures (50% vs 100% visibility)." data-zh="&lt;strong class='text-gray-300'&gt;阶段 6&lt;/strong&gt;: 验证深度前瞻掩码结构（50% 对比 100% 可见度）。"><strong>Phase 6</strong>: Validating deep lookahead mask structures (50% vs 100% visibility).</li>
-                            <li data-en="&lt;strong class='text-gray-300'&gt;Phase 7&lt;/strong&gt;: Combining lookahead with Learnt Intent." data-zh="&lt;strong class='text-gray-300'&gt;阶段 7&lt;/strong&gt;: 将前瞻与学习意图流进行结合。"><strong>Phase 7</strong>: Combining lookahead with Learnt Intent.</li>
-                            <li data-en="&lt;strong class='text-gray-300'&gt;Phase 8 &amp; 9 (Current)&lt;/strong&gt;: Pure intent-only and convolution-only ablations to definitively prove the source of representation supremacy." data-zh="&lt;strong class='text-gray-300'&gt;阶段 8 &amp; 9 (当前)&lt;/strong&gt;: 纯意图与纯卷积消融研究，以最终证明表征主导地位的确切来源。"><strong>Phase 8 & 9 (Current)</strong>: Pure intent-only and convolution-only ablations to definitively prove the source of representation supremacy.</li>
+                        <ul class="list-disc pl-5 text-xs text-muted space-y-2 leading-relaxed">
+                            <li data-en="&lt;strong class='text-foreground'&gt;Phase 6&lt;/strong&gt;: Validating deep lookahead mask structures (50% vs 100% visibility)." data-zh="&lt;strong class='text-foreground'&gt;阶段 6&lt;/strong&gt;: 验证深度前瞻掩码结构（50% 对比 100% 可见度）。"><strong>Phase 6</strong>: Validating deep lookahead mask structures (50% vs 100% visibility).</li>
+                            <li data-en="&lt;strong class='text-foreground'&gt;Phase 7&lt;/strong&gt;: Combining lookahead with Learnt Intent." data-zh="&lt;strong class='text-foreground'&gt;阶段 7&lt;/strong&gt;: 将前瞻与学习意图流进行结合。"><strong>Phase 7</strong>: Combining lookahead with Learnt Intent.</li>
+                            <li data-en="&lt;strong class='text-foreground'&gt;Phase 8 &amp; 9 (Current)&lt;/strong&gt;: Pure intent-only and convolution-only ablations to definitively prove the source of representation supremacy." data-zh="&lt;strong class='text-foreground'&gt;阶段 8 &amp; 9 (当前)&lt;/strong&gt;: 纯意图与纯卷积消融研究，以最终证明表征主导地位的确切来源。"><strong>Phase 8 & 9 (Current)</strong>: Pure intent-only and convolution-only ablations to definitively prove the source of representation supremacy.</li>
                         </ul>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row gap-4 mt-6 font-mono text-xs font-medium">
+                    <div class="flex flex-col sm:flex-row gap-4 mt-6 font-mono text-xs">
                         <a href="https://github.com/luozichen/neonbench" target="_blank"
-                            class="flex-1 text-center bg-surface hover:bg-surface2 border border-white/10 rounded-xl py-3 text-white transition-colors"
+                            class="flex-1 text-center bg-stone-100 hover:bg-stone-200 border border-border rounded py-3 text-foreground transition-colors font-medium"
                             data-en="View Scripts on GitHub" data-zh="在 GitHub 查看脚本">
                             View Scripts on GitHub
                         </a>
                         <a href="http://luozichen.pythonanywhere.com" target="_blank"
-                            class="flex-1 text-center bg-primary hover:bg-primary/80 border border-primary/20 text-white rounded-xl py-3 transition-colors"
+                            class="flex-1 text-center bg-primary hover:bg-primary/80 border border-primary/20 text-white rounded py-3 transition-colors font-medium"
                             data-en="Launch NeonCore UI" data-zh="启动 NeonCore 界面">
                             Launch NeonCore UI
                         </a>
@@ -208,40 +161,18 @@
             </section>
         </main>
 
-        <footer class="mt-20 pt-8 border-t border-border text-center text-zinc-500 text-xs font-light">
-            <div class="mb-6 font-display text-sm md:text-base tracking-[0.3em] text-zinc-400 opacity-80" data-en="Stay Hungry, Stay Curious." data-zh="保持饥饿，保持好奇。">
+        <footer class="mt-20 pt-8 border-t border-border text-center text-muted text-xs font-mono">
+            <div class="mb-4 italic" data-en="Stay Hungry, Stay Curious." data-zh="保持饥饿，保持好奇。">
                 Stay Hungry, Stay Curious.
             </div>
             <div class="mb-2">
                 <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
             </div>
-            <div id="last-updated" class="inline-block px-3 py-1 bg-surface border border-border rounded-lg font-mono text-[10px]">Last updated: January 2026</div>
+            <div id="last-updated" class="inline-block px-3 py-1 bg-stone-100 border border-border rounded text-[10px]">Last updated: January 2026</div>
         </footer>
     </div>
 
     <script>
-        // Left Side Hamburger Menu Drawer toggle logic
-        function toggleMenu() {
-            const sideMenu = document.getElementById('side-menu');
-            const menuOverlay = document.getElementById('menu-overlay');
-            const openIcon = document.getElementById('menu-icon-open');
-            const closeIcon = document.getElementById('menu-icon-close');
-
-            const isClosed = sideMenu.classList.contains('-translate-x-full');
-
-            if (isClosed) {
-                sideMenu.classList.remove('-translate-x-full');
-                menuOverlay.classList.remove('hidden');
-                openIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-            } else {
-                sideMenu.classList.add('-translate-x-full');
-                menuOverlay.classList.add('hidden');
-                openIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-            }
-        }
-
         // Auto-update date
         const dateEl = document.getElementById('last-updated');
         if (document.lastModified) {
@@ -269,8 +200,8 @@
             const btnZh = document.getElementById('btn-zh');
 
             if (lang === 'zh') {
-                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
+                btnZh.className = "hover:text-primary font-bold text-primary";
+                btnEn.className = "hover:text-primary text-muted font-normal";
                 document.documentElement.lang = 'zh';
 
                 const lastUpdatedEl = document.getElementById('last-updated');
@@ -279,8 +210,8 @@
                     lastUpdatedEl.textContent = '最后更新: ' + date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
                 }
             } else {
-                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
+                btnEn.className = "hover:text-primary font-bold text-primary";
+                btnZh.className = "hover:text-primary text-muted font-normal";
                 document.documentElement.lang = 'en';
 
                 const lastUpdatedEl = document.getElementById('last-updated');
@@ -291,14 +222,6 @@
             }
 
             localStorage.setItem('preferred-lang', lang);
-
-            // Sync side navigation text language
-            document.querySelectorAll('#side-menu [data-zh]').forEach(el => {
-                const navTranslation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
-                if (navTranslation !== null) {
-                    el.textContent = navTranslation;
-                }
-            });
         }
 
         // Initialize state

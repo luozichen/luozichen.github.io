@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,14 +8,14 @@
     <meta name="robots" content="noindex">
     <title>Zichen Luo | Theoretical Physics</title>
 
-    <!-- PWA & Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="static/logo.png">
     <link rel="apple-touch-icon" href="static/logo.png">
-    <meta name="theme-color" content="#161618">
+    <meta name="theme-color" content="#faf9f5">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -24,28 +24,17 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'PingFang SC', 'Microsoft YaHei', 'monospace'],
+                        sans: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+                        serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+                        mono: ['JetBrains Mono', 'Courier New', 'monospace'],
                     },
                     colors: {
-                        background: '#161618',
-                        foreground: '#e4e4e7',
-                        primary: '#d97706', /* Warm Amber */
-                        secondary: '#b45309',
-                        surface: '#202024',
-                        surface2: '#2a2a30',
-                        border: '#2d2d30',
-                        muted: '#9a9a9f',
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        }
+                        background: '#faf9f5', // Warm paper-like white
+                        foreground: '#1c1917', // Dark charcoal text
+                        primary: '#1d4ed8',    // Deep academic blue
+                        border: '#e7e5e4',     // Muted stone border
+                        muted: '#78716c',      // Muted stone text
+                        surface: '#f5f5f4',    // Very light stone surface
                     }
                 }
             }
@@ -54,87 +43,51 @@
     <style>
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.08); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.15); }
     </style>
 </head>
 
-<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/20 selection:text-white">
+<body class="bg-background text-foreground font-sans min-h-screen selection:bg-primary/10 selection:text-foreground">
 
-    <!-- Floating Hamburger Button (Left Side) -->
-    <div class="fixed top-6 left-6 z-50">
-        <button id="menu-btn" onclick="toggleMenu()" class="bg-surface/85 backdrop-blur border border-border p-2.5 rounded-full flex items-center justify-center shadow-lg text-muted hover:text-white hover:border-white/10 hover:scale-105 active:scale-95 transition-all">
-            <!-- Hamburger Open Icon -->
-            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <!-- Hamburger Close Icon -->
-            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-    </div>
-
-    <!-- Slide-in Navigation Drawer -->
-    <div id="side-menu" class="fixed top-0 left-0 h-screen w-64 bg-[#1a1a1d]/95 backdrop-blur-md border-r border-border z-40 transform -translate-x-full transition-transform duration-300 shadow-xl pt-24 px-6 flex flex-col justify-between">
-        <nav class="flex flex-col gap-3 font-display text-base">
-            <a href="index.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Home" data-zh="主页">Home</a>
-            <a href="blog.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="My Blog" data-zh="我的博客">My Blog</a>
-            <a href="theory.html" class="px-4 py-2.5 rounded-xl bg-white/5 text-white font-medium transition-all" data-en="Notes" data-zh="理论笔记">Notes</a>
-            <a href="running.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Running Life" data-zh="跑步生活">Running Life</a>
-            <a href="ml.html" class="px-4 py-2.5 rounded-xl text-muted hover:text-white hover:bg-white/5 transition-all" data-en="Machine Learning" data-zh="机器学习">Machine Learning</a>
-        </nav>
-        <div class="mb-8 font-mono text-[9px] text-muted text-center" data-en="Zichen's Corner" data-zh="子辰的个人角落">
-            Zichen's Corner
+    <!-- Minimalist Top Academic Header -->
+    <header class="max-w-3xl mx-auto px-6 pt-12 pb-6 border-b border-border flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+            <a href="index.html" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors text-foreground" data-en="Zichen Luo" data-zh="罗子辰">Zichen Luo</a>
+            <p class="text-[11px] text-muted mt-1 font-mono italic" data-en="Tsinghua Physics Undergraduate" data-zh="清华大学物理系本科生">Tsinghua Physics Undergraduate</p>
         </div>
-    </div>
-    <!-- Menu Overlay to close when clicking outside -->
-    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden transition-opacity duration-300"></div>
-
-    <!-- Floating Translation Toggle -->
-    <div class="fixed top-6 right-6 z-50 bg-surface/80 backdrop-blur border border-border px-2.5 py-1 rounded-full flex gap-1 text-[10px] font-mono shadow-xl">
-        <button id="btn-en" onclick="changeLang('en')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary">EN</button>
-        <button id="btn-zh" onclick="changeLang('zh')" class="px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white">中文</button>
-    </div>
-
-    <div class="max-w-4xl mx-auto px-4 py-12 md:py-20 animate-fade-in">
-
-        <!-- Minimalist Typographic Header (No Profile Pic) -->
-        <header class="mb-12 border-b border-border pb-6 flex items-center justify-between">
-            <div>
-                <a href="index.html" class="text-lg font-bold font-display text-white tracking-tight hover:text-primary transition-colors" data-en="Zichen Luo" data-zh="罗子辰">
-                    Zichen Luo
-                </a>
-                <span class="text-xs font-mono font-normal text-muted">&nbsp;/ notes</span>
-                <div class="text-[10px] font-mono text-primary flex items-center gap-1 mt-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span data-en="Technical Notes & Essays" data-zh="学术笔记与思考随笔">Technical Notes & Essays</span>
-                </div>
-            </div>
-            <nav class="font-mono text-[11px]">
-                <a href="index.html" class="text-muted hover:text-white transition-colors flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    <span data-en="Home" data-zh="主页">Home</span>
-                </a>
+        <div class="flex items-center gap-6 text-sm font-mono">
+            <nav class="flex flex-wrap gap-x-4 gap-y-1">
+                <a href="index.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Home" data-zh="主页">Home</a>
+                <a href="blog.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Blog" data-zh="博客">Blog</a>
+                <a href="theory.html" class="text-foreground hover:text-primary underline decoration-primary/30 underline-offset-4 font-bold" data-en="Notes" data-zh="笔记">Notes</a>
+                <a href="running.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Running" data-zh="跑步">Running</a>
+                <a href="ml.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="ML" data-zh="机器学习">ML</a>
             </nav>
-        </header>
+            <div class="border-l border-border pl-6 text-xs flex gap-2">
+                <button id="btn-en" onclick="changeLang('en')" class="hover:text-primary font-bold text-primary">EN</button>
+                <span class="text-border">/</span>
+                <button id="btn-zh" onclick="changeLang('zh')" class="hover:text-primary text-muted">中文</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-6 py-12 space-y-12 animate-fade-in">
 
         <main class="space-y-8">
-            <section class="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-sm">
-                <h2 class="text-xl font-bold font-display text-white mb-6 border-b border-border pb-4" data-en="Essays & Writings" data-zh="文章与笔记写作">Essays & Writings</h2>
+            <section class="space-y-6">
+                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Essays & Writings" data-zh="文章与笔记写作">Essays & Writings</h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                     <!-- 1. Canonical vs Path Integral Quantization -->
-                    <a href="#" onclick="viewPaper('正则量子化与路径积分量子化.dat'); return false;" class="group block">
+                    <a href="#" onclick="viewPaper('正则量子化与路径积分量子化.dat'); return false;" class="group block text-foreground">
                         <div
-                            class="bg-[#1c1c1f] border border-border rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-base font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                            class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
+                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
                                 data-en="Canonical vs Path Integral Quantization" data-zh="正则量子化与路径积分量子化">
                                 Canonical vs Path Integral Quantization</h3>
-                            <p class="text-xs text-zinc-400 font-light leading-relaxed line-clamp-2" 
+                            <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="A comparison of canonical operator quantisation and Feynman's path integral formalism, featuring derivations and pragmatic trade-offs."
                                data-zh="对比算符正则量子化与费曼路径积分形式，包含数学推导和实用性的物理学折衷权衡。">
                                 A comparison of canonical operator quantisation and Feynman's path integral formalism, featuring derivations and pragmatic
@@ -144,13 +97,13 @@
                     </a>
 
                     <!-- 2. Black Hole Thermodynamics -->
-                    <a href="#" onclick="viewPaper('A_Brief_Overview_of_Black_Hole_Thermodynamics (2).dat'); return false;" class="group block">
+                    <a href="#" onclick="viewPaper('A_Brief_Overview_of_Black_Hole_Thermodynamics (2).dat'); return false;" class="group block text-foreground">
                         <div
-                            class="bg-[#1c1c1f] border border-border rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-base font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                            class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
+                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
                                 data-en="Black Hole Thermodynamics" data-zh="黑洞热力学简述">
                                 Black Hole Thermodynamics</h3>
-                            <p class="text-xs text-zinc-400 font-light leading-relaxed line-clamp-2" 
+                            <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="A brief survey of the four laws of black hole mechanics, Bekenstein–Hawking entropy, and Hawking radiation."
                                data-zh="简要介绍黑洞力学四定律、贝肯斯坦-霍金熵的物理物理学背景以及霍金辐射机制。">
                                 A brief survey of the four laws of black hole
@@ -160,13 +113,13 @@
                     </a>
 
                     <!-- 3. Quantum Harmonic Ensemble -->
-                    <a href="#" onclick="viewPaper('Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations (1).dat'); return false;" class="group block">
+                    <a href="#" onclick="viewPaper('Statistical_Mechanics_of_the_Quantum_Harmonic_Ensemble_in_Energy__Position__and_Momentum_Representations (1).dat'); return false;" class="group block text-foreground">
                         <div
-                            class="bg-[#1c1c1f] border border-border rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-base font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                            class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
+                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
                                 data-en="Quantum Harmonic Ensemble" data-zh="量子谐振子系综的统计力学">
                                 Quantum Harmonic Ensemble</h3>
-                            <p class="text-xs text-zinc-400 font-light leading-relaxed line-clamp-2" 
+                            <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="Deriving the partition function for a canonical ensemble of quantum harmonic oscillators across energy, position, and momentum representations."
                                data-zh="详细推导量子谐振子正则系综在能量、坐标和动量表征下的配分函数与物理特性。">
                                 Deriving the partition function for a
@@ -177,13 +130,13 @@
                     </a>
 
                     <!-- 4. Neutrino Mass & Oscillations -->
-                    <a href="#" onclick="viewPaper('中微子质量与风味振荡.dat'); return false;" class="group block">
+                    <a href="#" onclick="viewPaper('中微子质量与风味振荡.dat'); return false;" class="group block text-foreground">
                         <div
-                            class="bg-[#1c1c1f] border border-border rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-base font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                            class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
+                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
                                 data-en="Neutrino Mass & Oscillations" data-zh="中微子质量与风味振荡">
                                 Neutrino Mass & Oscillations</h3>
-                            <p class="text-xs text-zinc-400 font-light leading-relaxed line-clamp-2" 
+                            <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="Review of experimental evidence for neutrino flavour oscillations, mass models, and mixing formalism."
                                data-zh="系统回顾中微子风味振荡的实验证据、质量微扰模型以及轻子混合矩阵形式。">
                                 Review of experimental evidence for neutrino
@@ -193,13 +146,13 @@
                     </a>
 
                     <!-- 5. Action Principle in Electrodynamics -->
-                    <a href="#" onclick="viewPaper('The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.dat'); return false;" class="group block">
+                    <a href="#" onclick="viewPaper('The_Action_Principle_in_Sourceless_Classical_Electrodynamics_v2.dat'); return false;" class="group block text-foreground">
                         <div
-                            class="bg-[#1c1c1f] border border-border rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-base font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                            class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
+                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
                                 data-en="Action Principle in Electrodynamics" data-zh="无源经典电动力学中的最小作用量原理">
                                 Action Principle in Electrodynamics</h3>
-                            <p class="text-xs text-zinc-400 font-light leading-relaxed line-clamp-2" 
+                            <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="Deriving Maxwell’s equations in vacuum from a relativistic Lagrangian, discussing gauge freedom and Noether currents."
                                data-zh="从相对论性拉格朗日密度出发推导真空中的麦克斯韦方程组，并深入探讨规范自由度与诺特荷流。">
                                 Deriving Maxwell’s equations in vacuum from a
@@ -209,13 +162,13 @@
                     </a>
 
                     <!-- 6. Polarised Deuteron Breakup -->
-                    <a href="#" onclick="viewPaper('Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).dat'); return false;" class="group block">
+                    <a href="#" onclick="viewPaper('Polarised_Deuteron_Breakup_as_a_Probe_of_the_Nuclear_Symmetry_Energy (2).dat'); return false;" class="group block text-foreground">
                         <div
-                            class="bg-[#1c1c1f] border border-border rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-base font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                            class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
+                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
                                 data-en="Polarised Deuteron Breakup" data-zh="极化氘核解体与核对称能探测">
                                 Polarised Deuteron Breakup</h3>
-                            <p class="text-xs text-zinc-400 font-light leading-relaxed line-clamp-2" 
+                            <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="Investigating polarised-deuteron scattering observables and polarimeter design to probe nuclear symmetry energy."
                                data-zh="研究极化氘核散射可观测物理量与符合探测偏振仪硬件设计，以灵敏地探测高密核对称能。">
                                 Investigating polarised-deuteron scattering
@@ -225,13 +178,13 @@
                     </a>
 
                     <!-- 7. Complex Scalar Klein-Gordon Field -->
-                    <a href="#" onclick="viewPaper('复标量克莱因–戈尔登场v2.dat'); return false;" class="group block">
+                    <a href="#" onclick="viewPaper('复标量克莱因–戈尔登场v2.dat'); return false;" class="group block text-foreground">
                         <div
-                            class="bg-[#1c1c1f] border border-border rounded-xl p-5 h-full hover:bg-white/5 hover:border-primary/50 transition-all duration-300">
-                            <h3 class="text-base font-bold text-gray-200 group-hover:text-primary transition-colors mb-2"
+                            class="bg-[#fcfcf9] border border-border rounded p-5 h-full hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
+                            <h3 class="text-sm font-bold group-hover:text-primary transition-colors font-mono"
                                 data-en="Complex Scalar Klein-Gordon Field" data-zh="复标量克莱因-戈尔登场">
                                 Complex Scalar Klein-Gordon Field</h3>
-                            <p class="text-xs text-zinc-400 font-light leading-relaxed line-clamp-2" 
+                            <p class="text-xs text-muted leading-relaxed font-serif" 
                                data-en="Derivation of canonical momenta and commutation relations for a complex Klein–Gordon field."
                                data-zh="详细推导复标量克莱因-戈尔登场（Complex KG Field）的正则共轭动量与量子化对易关系。">
                                 Derivation of canonical momenta and
@@ -244,40 +197,18 @@
             </section>
         </main>
 
-        <footer class="mt-20 pt-8 border-t border-border text-center text-zinc-500 text-xs font-light">
-            <div class="mb-6 font-display text-sm md:text-base tracking-[0.3em] text-zinc-400 opacity-80" data-en="Stay Hungry, Stay Curious." data-zh="保持饥饿，保持好奇。">
+        <footer class="mt-20 pt-8 border-t border-border text-center text-muted text-xs font-mono">
+            <div class="mb-6 italic" data-en="Stay Hungry, Stay Curious." data-zh="保持饥饿，保持好奇。">
                 Stay Hungry, Stay Curious.
             </div>
             <div class="mb-2">
                 <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
             </div>
-            <div id="last-updated" class="inline-block px-3 py-1 bg-surface border border-border rounded-lg font-mono text-[10px]">Last updated: January 2026</div>
+            <div id="last-updated" class="inline-block px-3 py-1 bg-stone-100 border border-border rounded text-[10px]">Last updated: January 2026</div>
         </footer>
     </div>
 
     <script>
-        // Left Side Hamburger Menu Drawer toggle logic
-        function toggleMenu() {
-            const sideMenu = document.getElementById('side-menu');
-            const menuOverlay = document.getElementById('menu-overlay');
-            const openIcon = document.getElementById('menu-icon-open');
-            const closeIcon = document.getElementById('menu-icon-close');
-
-            const isClosed = sideMenu.classList.contains('-translate-x-full');
-
-            if (isClosed) {
-                sideMenu.classList.remove('-translate-x-full');
-                menuOverlay.classList.remove('hidden');
-                openIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-            } else {
-                sideMenu.classList.add('-translate-x-full');
-                menuOverlay.classList.add('hidden');
-                openIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-            }
-        }
-
         // Auto-update date
         const dateEl = document.getElementById('last-updated');
         if (document.lastModified) {
@@ -321,8 +252,8 @@
             const btnZh = document.getElementById('btn-zh');
 
             if (lang === 'zh') {
-                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
+                btnZh.className = "hover:text-primary font-bold text-primary";
+                btnEn.className = "hover:text-primary text-muted font-normal";
                 document.documentElement.lang = 'zh';
 
                 const lastUpdatedEl = document.getElementById('last-updated');
@@ -331,8 +262,8 @@
                     lastUpdatedEl.textContent = '最后更新: ' + date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
                 }
             } else {
-                btnEn.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-white bg-primary shadow-sm";
-                btnZh.className = "px-2.5 py-0.5 rounded-full font-medium transition-all text-muted hover:text-white";
+                btnEn.className = "hover:text-primary font-bold text-primary";
+                btnZh.className = "hover:text-primary text-muted font-normal";
                 document.documentElement.lang = 'en';
 
                 const lastUpdatedEl = document.getElementById('last-updated');
@@ -343,14 +274,6 @@
             }
 
             localStorage.setItem('preferred-lang', lang);
-
-            // Sync side navigation text language
-            document.querySelectorAll('#side-menu [data-zh]').forEach(el => {
-                const navTranslation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
-                if (navTranslation !== null) {
-                    el.textContent = navTranslation;
-                }
-            });
         }
 
         // Initialize state
