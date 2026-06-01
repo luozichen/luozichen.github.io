@@ -153,7 +153,12 @@
             
             const filteredPosts = activeCategory === 'All' 
                 ? allPosts 
-                : allPosts.filter(post => post.category === activeCategory);
+                : allPosts.filter(post => {
+                    if (Array.isArray(post.category)) {
+                        return post.category.includes(activeCategory);
+                    }
+                    return post.category === activeCategory;
+                });
 
             if (filteredPosts.length === 0) {
                 timeline.innerHTML = `
@@ -172,12 +177,20 @@
                 const location = post.location ? (lang === 'zh' ? post.location.zh : post.location.en) : '';
                 const locationHtml = location ? ` · ${location}` : '';
                 
-                // Category styling (academic tags)
-                let categoryColor = 'text-primary border-primary/20 bg-primary/5';
-                if (post.category === 'Running') categoryColor = 'text-emerald-700 border-emerald-600/20 bg-emerald-50';
-                if (post.category === 'Physics') categoryColor = 'text-amber-800 border-amber-600/20 bg-amber-50';
-                if (post.category === 'Machine Learning') categoryColor = 'text-blue-700 border-blue-600/20 bg-blue-50';
-                if (post.category === 'Theory') categoryColor = 'text-indigo-800 border-indigo-600/20 bg-indigo-50';
+                // Category styling & multiple tag badges generation
+                const categories = Array.isArray(post.category) ? post.category : [post.category];
+                const badgesHtml = categories.map(cat => {
+                    let categoryColor = 'text-primary border-primary/20 bg-primary/5';
+                    if (cat === 'Running') categoryColor = 'text-emerald-700 border-emerald-600/20 bg-emerald-50';
+                    if (cat === 'Physics') categoryColor = 'text-amber-800 border-amber-600/20 bg-amber-50';
+                    if (cat === 'Machine Learning') categoryColor = 'text-blue-700 border-blue-600/20 bg-blue-50';
+                    if (cat === 'Theory') categoryColor = 'text-indigo-800 border-indigo-600/20 bg-indigo-50';
+                    return `
+                        <span class="text-[9px] font-mono font-medium px-2 py-0.5 rounded border ${categoryColor}">
+                            ${cat}
+                        </span>
+                    `;
+                }).join('');
 
                 // Optional attached image rendering
                 let imageHtml = '';
@@ -196,11 +209,9 @@
                         <div class="flex items-center gap-2.5">
                             <img src="images/profile.jpg" alt="Zichen" class="w-8 h-8 rounded border border-border bg-stone-100 shrink-0">
                             <div>
-                                <h4 class="text-xs font-bold text-foreground flex items-center gap-1.5 font-serif">
+                                <h4 class="text-xs font-bold text-foreground flex flex-wrap items-center gap-1.5 font-serif">
                                     ${lang === 'zh' ? '罗子辰' : 'Zichen Luo'}
-                                    <span class="text-[9px] font-mono font-medium px-2 py-0.5 rounded border ${categoryColor}">
-                                        ${post.category}
-                                    </span>
+                                    ${badgesHtml}
                                 </h4>
                                 <span class="text-[10px] font-mono text-muted relative inline-block">
                                     <span class="group relative inline-block cursor-help border-b border-dashed border-stone-300 pb-0.5 hover:text-primary transition-colors">

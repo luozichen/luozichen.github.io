@@ -6,7 +6,7 @@
       "en": "Working on the final drafts of my bachelor's thesis today. The Geant4 simulations for our polarized deuteron polarimeter are finally converging, showing clear correlations with the nuclear symmetry energy models! Extremely grateful to Prof. Xiao Zhigang's group for the guidance.",
       "zh": "今天在修改毕业论文的终稿。我们研制的极化氘核偏振仪 Geant4 模拟数据终于收敛了，显示出与核对称能模型的清晰关联！非常感谢肖志刚教授课题组的悉心指导。"
     },
-    "category": "Physics",
+    "category": ["Physics"],
     "tags": ["NuclearPhysics", "Tsinghua", "Thesis"],
     "location": {
       "en": "Tsinghua University, Beijing",
@@ -21,7 +21,7 @@
       "en": "Phase 9 of NeonBench is live. I'm testing an 'intent-only' configuration by stripping out the convolutional mixing entirely and routing intent-state query weights back into the feed-forward blocks. Surprisingly, the model preserves context representation without dimensional collapse even under tight parameter constraints (5.0M non-embedding bounds). Full logs are on neonbench repository.",
       "zh": "NeonBench 第九阶段上线了。我正在测试一个“纯意图”配置：剥离了所有的卷积混合，并将意图状态的查询权重直接路由回前馈网络块中。令人惊讶的是，即使在严格的参数限制（500万非嵌入参数边界）下，模型依然能保持极佳的上下文表征且没有发生维度塌缩。完整日志已上传至 neonbench 仓库。"
     },
-    "category": "Machine Learning",
+    "category": ["Machine Learning", "Theory"],
     "tags": ["LLM", "NeonBench", "Ablation"],
     "location": {
       "en": "Greenwich, London",
@@ -36,7 +36,7 @@
       "en": "Standard track interval session with the Tsinghua long-distance team this morning: 5x1000m at a threshold pace of 3:15/km, with 90s active jog recovery. Legs felt heavy after the long Sunday run, but managed to hit all splits consistently. Sub-17:30 form is feeling solid.",
       "zh": "今天早上与清华中长跑队进行了一次标准的田径场间歇训练：5x1000米，3分15秒/公里的阈值配速，间歇90秒慢跑恢复。周日长跑后腿部稍显沉重，但依然稳定地完成了所有分段。突破 17分30秒 5公里的状态感觉很扎实。"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["Intervals", "Track", "TsinghuaRunners"],
     "location": {
       "en": "East Playground, Tsinghua",
@@ -51,7 +51,7 @@
       "en": "Had the absolute honor of meeting Nobel laureate Prof. Barry Barish today during his visit to Tsinghua for a seminar on LIGO and gravitational wave astrophysics. Hearing him discuss the decades-long journey of precision engineering and fundamental physics that led to the detection of gravitational waves was deeply inspiring. A core memory for my undergraduate physics journey!",
       "zh": "今天非常荣幸能在清华大学聆听诺贝尔奖得主巴里·巴里什（Barry Barish）教授关于LIGO与引力波天体物理学的专题报告，并与他合影交流！听他讲述几十年来为了探测引力波而在精密工程和基础物理上付出的努力与探索，深感震撼与启发。这是我本科物理求学生涯中极具纪念意义的时刻！"
     },
-    "category": "Physics",
+    "category": ["Physics"],
     "tags": ["Astrophysics", "NobelLaureate", "Tsinghua", "LIGO"],
     "location": {
       "en": "Tsinghua University",
@@ -67,7 +67,7 @@
       "en": "An unexpected motivation boost at the gym tonight! Had the privilege of taking a picture with Wang Wenjie (3rd from left), the current China 10k and half-marathon record holder, and my running squad. It's incredibly humbling to train in the same facilities as elite athletes who push the boundaries of Chinese endurance running. Time to put in more work!",
       "zh": "今晚在健身房训练得到了意想不到的激励！非常荣幸能和中国男子10公里和半程马拉松国家纪录保持者王文杰老师（左三）合影。能与这些在耐力跑领域不断打破极限的顶级运动员在同一个场地训练，深感震撼和敬佩。继续加油！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["RunningAssociation", "TsinghuaGym", "WangWenjie", "Inspiration"],
     "location": {
       "en": "Tsinghua Gym",
@@ -83,7 +83,7 @@
       "en": "Incredibly proud to finish in 4th place at the 2026 Tsinghua Campus Marathon today! I struggled with severe side stitches during the middle stages of the race and couldn't hit my target pace, but fought hard until the end to secure 4th. Standing on the podium next to these phenomenal runners is a moment I'll never forget. Tsinghua's running community is unmatched!",
       "zh": "今天在2026年清华校园马拉松中获得第四名，感到无比自豪！比赛中程遭遇了严重的岔气，未能跑到预期配速，但最终还是咬牙坚持拼下了第四。站在领奖台上，与这些优秀的跑友们并肩，是我难以忘怀的时刻。清华的爱跑氛围真是太棒了！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["Marathon", "Podium", "TsinghuaRunners", "10K"],
     "location": {
       "en": "Tsinghua University, Beijing",
@@ -99,7 +99,7 @@
       "en": "Celebrating the 76th National Day today by running 76 laps around the Zijing Playground track with the Tsinghua Running Association! It was a fantastic test of mental grit and consistent pacing. Happy National Day!",
       "zh": "今天为庆祝国庆76周年，与清华长跑协会的跑友们一起在紫荆操场刷了76圈（30.4公里）！这是一次对耐力和意志力的极佳锤炼。祝祖国生日快乐！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["NationalDay", "76Laps", "ZijingPlayground", "Endurance"],
     "location": {
       "en": "Zijing Playground, Tsinghua",
@@ -114,7 +114,7 @@
       "en": "Final day in Japan. Leaving Saitama Wakoshi and heading back to Tokyo Haneda Airport today. This week-class research immersion has been an absolutely wonderful experience. Grateful for all the brilliant minds I met, the physics discussions, and the hospitality. Heading home with fresh motivation!",
       "zh": "日本之行的最后一天。今天离开和光市前往东京羽田机场登机。这次世界一流的研究体验非常美妙。十分感激在这里遇到的各位优秀学者、精彩的物理讨论以及热情的招待。带着满满的动力启程回国！"
     },
-    "category": "Physics",
+    "category": ["Physics"],
     "tags": ["JapanTrip", "Farewell", "Wakoshi", "Memory"],
     "location": {
       "en": "Haneda Airport, Tokyo",
@@ -129,7 +129,7 @@
       "en": "Unbelievable news today—I received the Outstanding Poster Award at the conference! Truly humbled and thrilled to have my work on deuteron polarimeter simulations recognized among so many exceptional presentations. This wraps up an unforgettable trip to RIKEN.",
       "zh": "今天收到了令人难以置信的好消息——我获得了本次研讨会的优秀海报奖（Outstanding Poster Award）！在众多杰出的展示报告中，我关于极化氘核偏振仪模拟的研究工作能获得认可，深感荣幸和激动。这为我难忘的理化所之行画上了完美的句号。"
     },
-    "category": "Physics",
+    "category": ["Physics"],
     "tags": ["OutstandingPoster", "Award", "RIKEN", "Achievement"],
     "location": {
       "en": "RIKEN, Saitama, Japan",
@@ -144,7 +144,7 @@
       "en": "Gave my conference poster presentation today! There were over 15 poster presentations, and the discussions with doctoral researchers and staff scientists were incredibly engaging and rigorous. Also, celebrating my 18th birthday today in Saitama—could not have asked for a better way to turn 18!",
       "zh": "今天完成了我的会议海报展示！现场有超过15个海报展位，与各位博士后及研究员的学术讨论既严谨又极具启发性。另外，今天也是我在和光市度过的18岁生日——没有什么能比用一次学术报告来迎接成年礼更棒的了！"
     },
-    "category": "Physics",
+    "category": ["Physics"],
     "tags": ["RIKEN", "PosterPresentation", "18thBirthday", "Conference"],
     "location": {
       "en": "RIKEN, Saitama, Japan",
@@ -159,7 +159,7 @@
       "en": "First official day at the RIKEN campus. There are a lot of brilliant doctoral and post-graduate researchers here, and I'm one of the only two undergraduate attendees. The welcome ceremony was incredibly warm, the lab tours were fascinating, and the local sushi tonight was absolutely delicious!",
       "zh": "在理化学研究所（RIKEN）的第一天。这里汇聚了众多杰出的博士和研究生研究员，而我是仅有的两名本科生参会者之一。欢迎仪式非常温馨，实验室参观令人大开眼界，今晚的当地寿司也无比美味！"
     },
-    "category": "Physics",
+    "category": ["Physics"],
     "tags": ["RIKEN", "PhysicsCamp", "AcademicExchange", "Sushi"],
     "location": {
       "en": "RIKEN, Saitama",
@@ -174,7 +174,7 @@
       "en": "Just arrived in Japan, landing at Tokyo Haneda Airport! Settling into Saitama Wakoshi now for my 7-day academic exchange trip. Exploring the neighborhood tonight before heading to the RIKEN campus tomorrow morning. Looking forward to an intense week of physics!",
       "zh": "刚刚顺利降落日本东京羽田机场！已抵达埼玉县和光市安顿下来，开启为期7天的学术交流之旅。今晚在周边转了转，明天一早将前往理化学研究所（RIKEN）园区。期待充满挑战的物理学术周！"
     },
-    "category": "Physics",
+    "category": ["Physics"],
     "tags": ["JapanTrip", "TravelLog", "Wakoshi", "PhysicsVisit"],
     "location": {
       "en": "Haneda Airport, Tokyo",
@@ -189,7 +189,7 @@
       "en": "Finished finalising my research poster layout today and just got it printed out! It's going to be a very busy next few weeks preparing for the presentation, rehearsing the talk, and packing. Looking forward immensely to the upcoming trip to Japan and exchanging ideas with researchers at RIKEN!",
       "zh": "今天终于完成了学术海报的设计并打印了出来！接下来的几周将非常忙碌：打磨演讲稿、反复模拟宣讲并打包行李。非常期待即将到来的日本之行，以及在理化学研究所（RIKEN）与各位学者交流讨论！"
     },
-    "category": "Physics",
+    "category": ["Physics"],
     "tags": ["PosterPrinting", "RIKENConference", "Preparation", "AcademicLog"],
     "location": {
       "en": "Tsinghua University",
@@ -204,7 +204,7 @@
       "en": "Just completed a detailed derivation of the canonical quantization of a complex scalar Klein-Gordon field. From the global U(1) Noether symmetry, we show the emergence of conserved charges representing particles and antiparticles, and extend the model to SU(2) and SU(N) non-abelian internal symmetries. The monograph is live in the Notes section.",
       "zh": "刚刚完成了复标量克莱因-戈尔登场正则量子化的详细推导。通过全局 U(1) 诺特对称性，推导出粒子与反粒子守恒电荷的产生，并将该模型进一步拓展到了 SU(2) 与 SU(N) 非阿贝尔内部对称性。专论已在Notes页面上线。"
     },
-    "category": "Theory",
+    "category": ["Theory", "Physics"],
     "tags": ["QFT", "Symmetry", "PhysicsNotes"],
     "location": {
       "en": "Tsinghua University",
@@ -219,7 +219,7 @@
       "en": "Just uploaded my final report on Polarised Deuteron Breakup! I was introduced to this project by my seniors a while ago and wrote this report as a submission for my undergraduate research training course. Also, incredibly excited that my supervisor has given me an opportunity to visit Japan for a conference later this summer to present a poster on this work. Preparing for Saitama Wakoshi!",
       "zh": "刚刚上传了我关于极化氘核解体的结题报告！前阵子在学长学姐的介绍下接触了这个课题，并作为本科生学术研究训练课的结项报告撰写了这篇笔记。非常兴奋的是，导师还给了我今年夏天去日本参加学术会议并进行海报展示的机会。开始为和光市学术研讨会做准备！"
     },
-    "category": "Theory",
+    "category": ["Theory", "Physics"],
     "tags": ["NuclearPhysics", "UndergradResearch", "JapanConference", "AcademicLog"],
     "location": {
       "en": "Tsinghua University, Beijing",
@@ -234,7 +234,7 @@
       "en": "Completed a short monograph deriving classical electrodynamics directly from the relativistic action principle. It covers Lagrangian densities, variational derivations of Maxwell's equations in vacuum, gauge symmetries, and Noether conservation currents for energy-momentum. Read it on the Notes page!",
       "zh": "完成了一篇从相对论性作用量原理直接推导经典电动力学方程的微专题笔记。内容涵盖拉格朗日密度、真空麦克斯韦方程组的变分推导、规范对称性以及通过诺特定理导出的电磁能量动量守恒流。已在笔记页面更新！"
     },
-    "category": "Theory",
+    "category": ["Theory", "Physics"],
     "tags": ["Electrodynamics", "ActionPrinciple", "NoetherTheorem"],
     "location": {
       "en": "Tsinghua University",
@@ -249,7 +249,7 @@
       "en": "Participated in the Tsinghua 114th Anniversary campus run today! The goal of the event was to run 114 laps around the historic West Stadium track. Managed to complete as many laps as I could, though I had to take a few hydration breaks in between. The atmosphere was incredibly festive!",
       "zh": "今天参加了清华大学114周年校庆纪念长跑活动！活动的目标是在历史悠久的西大操场上跑完114圈。在不断的坚持中完成了目标，中间停下来补水了几次。全校同庆的氛围真的太赞了！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["TsinghuaAnniversary", "114Laps", "WestPlayground", "RunningAssociation"],
     "location": {
       "en": "West Playground, Tsinghua",
@@ -262,9 +262,9 @@
     "date": "2025-04-20T00:30:00Z",
     "content": {
       "en": "Completed the 2025 Tsinghua Minimarathon (5k) today! Extremely excited to finish in 5th place overall. All those cold winter runs are paying off—my pacing felt strong from start to finish, and the kick at the end was solid. Sub-17:30 target is drawing closer!",
-      "zh": "完成了2025年清华校庆半程马拉松（5公里组别）比赛！非常高兴能获得总名次第5名。冬训的汗水没有白流——从起跑至终点步频与呼吸都极其稳定，最后的冲刺也非常有力。离5公里突破17分30秒的目标越来越近了！"
+      "zh": "完成了2025年清华校庆半程马拉松（5公里组别）比赛！非常高兴能获得总名次第5名。冬训 of 的汗水没有白流——从起跑至终点步频与呼吸都极其稳定，最后的冲刺也非常有力。离5公里突破17分30秒的目标越来越近了！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["Minimarathon", "5K", "TsinghuaRunners", "Achievement"],
     "location": {
       "en": "Tsinghua University, Beijing",
@@ -279,7 +279,7 @@
       "en": "Submitted my review paper on Neutrino Mass and Flavor Oscillations today. It reviews the experimental evidence from solar and atmospheric anomalies (like Super-Kamiokande), electroweak symmetry breaking in the Standard Model, Majorana vs Dirac mass formulations, and the seesaw mechanism. Uploaded to the Notes section.",
       "zh": "今天提交了关于中微子质量与风味振荡的文献综述论文。文中系统梳理了太阳与大气中微子异常的实验证据（如Super-Kamiokande）、标准模型中的电弱对称性破缺、狄拉克与马约拉纳质量形式，以及跷跷板机制。已同步至笔记（Notes）栏目。"
     },
-    "category": "Theory",
+    "category": ["Theory", "Physics"],
     "tags": ["ParticlePhysics", "StandardModel", "Neutrinos"],
     "location": {
       "en": "Tsinghua University",
@@ -294,7 +294,7 @@
       "en": "Completed the 2025 Tsinghua Campus Marathon (10k) this morning! Finished in 9th place overall with strong pacing throughout the road course. Breaking into the top 10 at Tsinghua's premier running event is a huge milestone for my training logs. Onwards and upwards!",
       "zh": "今天早晨完成了2025年清华校园马拉松（10公里）比赛！在起伏的校内公路上保持了强有力的配速，最终获得总名次第9名。能在清华顶级的校园跑步赛事中闯入前十，是我训练生涯中的一个重要里程碑。继续加油！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["Marathon", "10K", "TsinghuaRunners", "Top10"],
     "location": {
       "en": "Tsinghua University, Beijing",
@@ -309,7 +309,7 @@
       "en": "Just finished deriving the statistical mechanics of a quantum harmonic oscillator ensemble across energy, position, and momentum representations. Showing that the partition function is invariant under basis transformations while the density matrix transforms accordingly is a beautiful mathematical exercise. Available under the Notes section!",
       "zh": "刚刚完成了量子谐振子系综在能量、坐标和动量表征下的配分函数与物理特性详细推导。证明配分函数在表象变换下保持不变、而密度矩阵作相应变换是一个非常优美的数学练习。欢迎在笔记页面查阅！"
     },
-    "category": "Theory",
+    "category": ["Theory", "Physics"],
     "tags": ["StatisticalMechanics", "QuantumEnsemble", "PhysicsNotes"],
     "location": {
       "en": "Tsinghua University",
@@ -324,7 +324,7 @@
       "en": "Best Christmas gift ever! Officially entered the Tsinghua Middle- and Long-Distance Athletics Team (Team Two) today after meeting three strict B-standards. My recorded test times: 5k in 18:24, 3k in 10:41, and 1.5k in 4:50. Thrilled to start training rigorously with some of the best runners on campus!",
       "zh": "最棒的圣诞礼物！在成功达到三个严格的“二队B标”后，我今天正式加入了清华大学中长跑二队！我的考核成绩为：5公里 18:24，3公里 10:41，1.5公里 4:50。非常兴奋能与学校里最优秀的一群跑友们开启系统化、高强度的合练！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["MiddleAndLongDistance", "SecondTeam", "Milestone", "Athletics"],
     "location": {
       "en": "Tsinghua University",
@@ -339,7 +339,7 @@
       "en": "Written a brief overview on Black Hole Thermodynamics today. Investigating the four laws of black hole mechanics, Bekenstein-Hawking entropy, and Hawking radiation reveals the fascinating interplay between general relativity, thermodynamics, and quantum mechanics. Check it out on the Notes page.",
       "zh": "今天整理并撰写了一篇关于黑洞热力学的简要概述。深入探讨黑洞力学四定律、贝肯斯坦-霍金熵和霍金辐射，能清晰地揭示广义相对论、热力学与量子力学之间美妙的交汇点。已上传至笔记页面。"
     },
-    "category": "Theory",
+    "category": ["Theory", "Physics"],
     "tags": ["GeneralRelativity", "BlackHoles", "Thermodynamics"],
     "location": {
       "en": "Tsinghua University",
@@ -354,7 +354,7 @@
       "en": "Ran 75 laps around the East Playground track (30.0 km) with the Tsinghua Running Association this morning to celebrate the 75th National Day! Truly a phenomenal group effort and an amazing test of physical limits. A perfect way to spend National Day morning!",
       "zh": "今天清晨与清华长跑协会的伙伴们一起在东大操场跑了75圈（30公里），共同庆祝国庆75周年！一次了不起的集体耐力挑战，也是对自己体能极限的绝佳摸底。用跑步开启国庆假期，完美！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["NationalDay", "75Laps", "Endurance", "TsinghuaRunners"],
     "location": {
       "en": "East Playground, Tsinghua",
@@ -369,7 +369,7 @@
       "en": "Leaving Singapore today. Had an absolutely wonderful experience visiting world-class quantum research labs and tech hubs across the country. Next week will be packed with writing up all the detailed reports for the visited research centers, but it was worth every single second! Thank you, Singapore!",
       "zh": "今天启程离开新加坡。参访世界顶级的量子研究实验室和高科技中心是一次极其美妙的体验。下周要忙着写各个参访机构的学术报告了，但这一趟绝对收获满满，不虚此行！再见，新加坡！"
     },
-    "category": "Physics",
+    "category": ["Physics"],
     "tags": ["SingaporeExchange", "Farewell", "QuantumResearch", "AcademicReport"],
     "location": {
       "en": "Changi Airport, Singapore",
@@ -384,7 +384,7 @@
       "en": "Just arrived in Singapore with my Tsinghua classmates! Over the next week, we will be visiting A*STAR, the National University of Singapore (specifically the Centre for Quantum Technologies - CQT), Nanyang Technological University, Huawei's research facilities, and others. Looking forward to it immensely—my first time visiting another country in Asia!",
       "zh": "和清华同学们刚刚降落新加坡！在接下来的这一周里，我们将陆续参访新加坡科研局（A*STAR）、新加坡国立大学（特别是量子技术中心 CQT）、南洋理工大学（NTU）、华为研发中心等知名机构。非常期待——这也是我第一次访问其他亚洲国家！"
     },
-    "category": "Physics",
+    "category": ["Physics"],
     "tags": ["SingaporeTrip", "CQT", "NUS", "AcademicExchange", "FirstTimeAbroad"],
     "location": {
       "en": "Changi Airport, Singapore",
@@ -399,7 +399,7 @@
       "en": "Ran around the West Stadium track today for the Tsinghua 113th Anniversary campus run! The goal was to run 113 laps to celebrate the university's history. I ran as much as I possibly could, though I had to take breaks and walk in between laps. Exhausting but extremely rewarding experience with the Running Association!",
       "zh": "今天参加了清华大学113周年校庆纪念跑活动，围绕西大操场进行挑战！活动的目标是完成113圈的长跑。我尽了自己最大的努力跑了大部分路程，虽然中途也不得不进行间歇休息和步行调整。虽然极其疲惫，但与长协的跑友们一起坚持下来真的太有成就感了！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["TsinghuaAnniversary", "113Laps", "WestPlayground", "RunningAssociation"],
     "location": {
       "en": "West Playground, Tsinghua",
@@ -414,7 +414,7 @@
       "en": "Completed the 2024 Tsinghua Minimarathon (5k) today! Super excited to finish in 23rd place overall. My endurance is improving steadily since I began structured runs, and my leg strength felt solid during the final kilometer. Sub-18:00 feels achievable soon!",
       "zh": "顺利完成了2024年清华校庆半程马拉松（5公里组别）比赛！非常开心能获得男子第23名。自接触系统性训练以来，心肺耐力一直在稳步提升，最后一公里的双腿冲刺感非常扎实。感觉很快就能实现突破18分钟大关的目标！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["Minimarathon", "5K", "TsinghuaRunners", "Improvement"],
     "location": {
       "en": "Tsinghua University, Beijing",
@@ -429,7 +429,7 @@
       "en": "Finished the 2024 Tsinghua Campus Marathon (10k) today! Placed 82nd overall in the field. It was a tough, undulating road course, and I felt the fatigue in the later stages, but pushing through to cross the line was a fantastic learning experience. Lots of lessons for my training journals!",
       "zh": "今天完成了2024年清华校园马拉松（10公里）比赛！最终在全体参赛者中获得第82名。校内高低起伏的柏油路很有挑战性，后半程大腿感到有些紧绷，但咬牙冲过终点线是一次极佳的历练。在我的训练日记中记录下了许多可改进的地方！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["Marathon", "10K", "TsinghuaRunners", "RoadRun"],
     "location": {
       "en": "Tsinghua University, Beijing",
@@ -444,7 +444,7 @@
       "en": "Completed my term paper on the comparison between Canonical Operator Quantization and Feynman's Path Integral formalism. Tracing the mathematical bridge from commutation relations to functional integration over classical actions has been a deeply rewarding experience. The notes are uploaded to the Theory section.",
       "zh": "完成了关于算符正则量子化与费曼路径积分量子化对比的课程期末论文。从算符对易关系一步步推导并建立通往经典作用量泛函积分的数学桥梁，是一次非常治愈且有收获的体验。笔记已上传至理论物理（Notes）页面。"
     },
-    "category": "Theory",
+    "category": ["Theory", "Physics"],
     "tags": ["QFT", "QuantumMechanics", "PhysicsNotes"],
     "location": {
       "en": "Tsinghua University",
@@ -459,7 +459,7 @@
       "en": "Completed the 2023 Tsinghua Minimarathon (5k) this morning! Finished in 966th place overall. I had to walk multiple times in the middle and struggled to catch my breath in the final kilometer. This is a clear wake-up call—Tsinghua's PE running requirements are tough, and I need to start building actual cardiovascular fitness. My running journey starts here!",
       "zh": "今天早晨参加了2023年清华校庆半程马拉松（5公里组别）比赛，获得了总第966名。中途不得不走了好几次，最后一公里更是觉得呼吸困难。这绝对是给我的一个警钟——清华的体育阳光长跑打卡确实有道理，我必须开始建立真正的耐力和体能了。我的跑步之旅就从这里正式出发！"
     },
-    "category": "Running",
+    "category": ["Running"],
     "tags": ["Minimarathon", "5K", "FirstRace", "WakeUpCall"],
     "location": {
       "en": "Tsinghua University, Beijing",
