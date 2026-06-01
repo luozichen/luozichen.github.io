@@ -162,8 +162,10 @@
             timeline.innerHTML = '';
             filteredPosts.forEach(post => {
                 const date = new Date(post.date);
-                const formattedDate = formatDate(date, lang);
+                const formattedDate = formatDate(date, lang, post.timezone);
                 const content = lang === 'zh' ? post.content.zh : post.content.en;
+                const location = post.location ? (lang === 'zh' ? post.location.zh : post.location.en) : '';
+                const locationHtml = location ? ` · ${location}` : '';
                 
                 // Category styling (academic tags)
                 let categoryColor = 'text-primary border-primary/20 bg-primary/5';
@@ -178,13 +180,13 @@
                         <div class="flex items-center gap-2.5">
                             <img src="images/profile.jpg" alt="Zichen" class="w-8 h-8 rounded border border-border bg-stone-100">
                             <div>
-                                <h4 class="text-xs font-bold text-foreground flex items-center gap-1.5 font-mono">
+                                <h4 class="text-xs font-bold text-foreground flex items-center gap-1.5 font-serif">
                                     ${lang === 'zh' ? '罗子辰' : 'Zichen Luo'}
                                     <span class="text-[9px] font-mono font-medium px-2 py-0.5 rounded border ${categoryColor}">
                                         ${post.category}
                                     </span>
                                 </h4>
-                                <span class="text-[10px] font-mono text-muted">${formattedDate}</span>
+                                <span class="text-[10px] font-mono text-muted">${formattedDate}${locationHtml}</span>
                             </div>
                         </div>
                     </div>
@@ -201,23 +203,12 @@
             });
         }
 
-        function formatDate(date, lang) {
+        function formatDate(date, lang, tz) {
             const now = new Date();
             const diffMs = now - date;
             const diffMins = Math.floor(diffMs / (1000 * 60));
             const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
             const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-            // Format absolute time: "18:45"
-            const pad = (num) => String(num).padStart(2, '0');
-            const hours = pad(date.getHours());
-            const minutes = pad(date.getMinutes());
-            const timeStr = `${hours}:${minutes}`;
-
-            // Format absolute date
-            const options = { month: 'short', day: 'numeric', year: 'numeric' };
-            const locale = lang === 'zh' ? 'zh-CN' : 'en-US';
-            const dateStr = date.toLocaleDateString(locale, options);
 
             // Calculate relative string
             let relativeStr = '';
@@ -232,17 +223,46 @@
                 else relativeStr = `${diffDays}d ago`;
             }
 
-            // Return combined string: "May 28, 2026 at 18:45 (2d ago)" or "2026年5月28日 18:45 (2天前)"
+            const targetTz = tz || 'Asia/Shanghai';
+            
+            // Format absolute time: "18:45"
+            const timeOptions = {
+                timeZone: targetTz,
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            };
+            const timeFormatter = new Intl.DateTimeFormat('en-GB', timeOptions);
+            const timeStr = timeFormatter.format(date);
+
+            // Format absolute date
+            const dateOptions = {
+                timeZone: targetTz,
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            };
+            const locale = lang === 'zh' ? 'zh-CN' : 'en-US';
+            const dateFormatter = new Intl.DateTimeFormat(locale, dateOptions);
+            const dateStr = dateFormatter.format(date);
+
+            // Timezone suffix abbreviation (CST, JST, GMT/BST)
+            let tzName = '';
+            if (targetTz === 'Asia/Tokyo') tzName = ' JST';
+            else if (targetTz === 'Europe/London') tzName = ' GMT/BST';
+            else if (targetTz === 'Asia/Shanghai') tzName = ' CST';
+
+            // Return combined string
             if (relativeStr) {
                 if (lang === 'zh') {
-                    return `${dateStr} ${timeStr} (${relativeStr})`;
+                    return `${dateStr} ${timeStr}${tzName} (${relativeStr})`;
                 }
-                return `${dateStr} at ${timeStr} (${relativeStr})`;
+                return `${dateStr} at ${timeStr}${tzName} (${relativeStr})`;
             } else {
                 if (lang === 'zh') {
-                    return `${dateStr} ${timeStr}`;
+                    return `${dateStr} ${timeStr}${tzName}`;
                 }
-                return `${dateStr} at ${timeStr}`;
+                return `${dateStr} at ${timeStr}${tzName}`;
             }
         }
 

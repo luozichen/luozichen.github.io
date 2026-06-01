@@ -7,7 +7,12 @@
       "zh": "今天在修改毕业论文的终稿。我们研制的极化氘核偏振仪 Geant4 模拟数据终于收敛了，显示出与核对称能模型的清晰关联！非常感谢肖志刚教授课题组的悉心指导。"
     },
     "category": "Physics",
-    "tags": ["NuclearPhysics", "Tsinghua", "Thesis"]
+    "tags": ["NuclearPhysics", "Tsinghua", "Thesis"],
+    "location": {
+      "en": "Tsinghua University, Beijing",
+      "zh": "北京，清华大学"
+    },
+    "timezone": "Asia/Shanghai"
   },
   {
     "id": "post-9",
@@ -17,7 +22,12 @@
       "zh": "NeonBench 第九阶段上线了。我正在测试一个“纯意图”配置：剥离了所有的卷积混合，并将意图状态的查询权重直接路由回前馈网络块中。令人惊讶的是，即使在严格的参数限制（500万非嵌入参数边界）下，模型依然能保持极佳的上下文表征且没有发生维度塌缩。完整日志已上传至 neonbench 仓库。"
     },
     "category": "Machine Learning",
-    "tags": ["LLM", "NeonBench", "Ablation"]
+    "tags": ["LLM", "NeonBench", "Ablation"],
+    "location": {
+      "en": "Greenwich, London",
+      "zh": "英国伦敦，格林威治"
+    },
+    "timezone": "Europe/London"
   },
   {
     "id": "post-8",
@@ -27,7 +37,12 @@
       "zh": "今天早上与清华中长跑队进行了一次标准的田径场间歇训练：5x1000米，3分15秒/公里的阈值配速，间歇90秒慢跑恢复。周日长跑后腿部稍显沉重，但依然稳定地完成了所有分段。突破 17分30秒 5公里的状态感觉很扎实。"
     },
     "category": "Running",
-    "tags": ["Intervals", "Track", "TsinghuaRunners"]
+    "tags": ["Intervals", "Track", "TsinghuaRunners"],
+    "location": {
+      "en": "East Playground, Tsinghua",
+      "zh": "清华东大操场"
+    },
+    "timezone": "Asia/Shanghai"
   },
   {
     "id": "post-7",
@@ -37,7 +52,12 @@
       "zh": "刚刚完成了复标量克莱因-戈尔登场正则量子化的详细推导。通过全局 U(1) 诺特对称性，推导出粒子与反粒子守恒电荷的产生，并将该模型进一步拓展到了 SU(2) 与 SU(N) 非阿贝尔内部对称性。专论已在Notes页面上线。"
     },
     "category": "Physics",
-    "tags": ["QFT", "Symmetry", "PhysicsNotes"]
+    "tags": ["QFT", "Symmetry", "PhysicsNotes"],
+    "location": {
+      "en": "Tsinghua University",
+      "zh": "清华大学"
+    },
+    "timezone": "Asia/Shanghai"
   },
   {
     "id": "post-6",
@@ -47,7 +67,12 @@
       "zh": "起草了关于利用极化氘核解体作为高密核对称能灵敏探测手段的研究提案。基于改进的量子分子动力学（ImQMD）框架模拟了外围碰撞过程，发现其微分散射截面极具敏感性，未来有望在理化学研究所（RIKEN）的RIBF实验装置上通过SAMURAI光谱仪进行实验验证。提案笔记已上传！"
     },
     "category": "Physics",
-    "tags": ["NuclearPhysics", "RIKEN", "ImQMD"]
+    "tags": ["NuclearPhysics", "RIKEN", "ImQMD"],
+    "location": {
+      "en": "RIKEN, Wakoshi, Japan",
+      "zh": "日本和光，理化学研究所"
+    },
+    "timezone": "Asia/Tokyo"
   },
   {
     "id": "post-5",
