@@ -64,8 +64,8 @@
     "id": "post-21",
     "date": "2026-04-14T10:00:00Z",
     "content": {
-      "en": "An unexpected motivation boost at the gym tonight! Had the privilege of taking a picture with Wang Wenjie (3rd from left), the current China 10k and half-marathon record holder, and my running squad. It's incredibly humbling to train in the same facilities as elite athletes who push the boundaries of Chinese endurance running. Time to put in more work!",
-      "zh": "今晚在健身房训练得到了意想不到的激励！非常荣幸能和中国男子10公里和半程马拉松国家纪录保持者王文杰老师（左三）合影。能与这些在耐力跑领域不断打破极限的顶级运动员在同一个场地训练，深感震撼和敬佩。继续加油！"
+      "en": "An unexpected motivation boost at the gym tonight! Had the privilege of taking a picture with Wang Wenjie (second from right), the current China 10k and half-marathon record holder, and my running squad. It's incredibly humbling to train in the same facilities as elite athletes who push the boundaries of Chinese endurance running. Time to put in more work!",
+      "zh": "今晚在健身房训练得到了意想不到的激励！非常荣幸能和中国男子10公里和半程马拉松国家纪录保持者王文杰老师（右二）合影。能与这些在耐力跑领域不断打破极限的顶级运动员在同一个场地训练，深感震撼和敬佩。继续加油！"
     },
     "category": ["Running"],
     "tags": ["RunningAssociation", "TsinghuaGym", "WangWenjie", "Inspiration"],
@@ -91,6 +91,66 @@
     },
     "timezone": "Asia/Shanghai",
     "image": "images/me_on_the_podium.jpg"
+  },
+  {
+    "id": "post-neonbench-intro-2026",
+    "date": "2026-02-24T14:00:00Z",
+    "content": {
+      "en": "Introducing NeonBench—my new playground for LLM architecture and intent-state analysis! What started as a pivot when my lab detectors broke down has evolved into a fully fledged benchmarking project. I'm building it to study representations in tight parameter environments. Excited to share the initial code repository today!",
+      "zh": "正式介绍 NeonBench——我研究大语言模型架构与意图状态分析的全新游乐场！这原本是实验室探测器故障后的无奈转型，如今已演变成一个初具规模的基准测试项目。我构建它的目的是在受限的参数环境下探索表征特性。非常高兴今天能开源最初的代码仓库！"
+    },
+    "category": ["Machine Learning", "Theory"],
+    "tags": ["NeonBench", "LLM", "DeepLearning", "Beijing", "OpenSource"],
+    "location": {
+      "en": "Tsinghua University, Beijing",
+      "zh": "北京，清华大学"
+    },
+    "timezone": "Asia/Shanghai"
+  },
+  {
+    "id": "post-detector-breakdown-2026",
+    "date": "2026-02-10T11:00:00Z",
+    "content": {
+      "en": "A bit of a setback in the lab today—one of the key detectors broke down, and to make matters worse, I cannot fix it myself. The PCB manufacturer is currently closed to celebrate the Chinese New Year, so replacements will have to wait. I decided to pivot and do some other work in the meantime, particularly AI and machine learning, which has fascinated me for a long time!",
+      "zh": "实验室里遇到了一点小挫折——其中一台关键的探测器故障罢工了，更糟糕的是我自己无法修复。PCB板制造商目前因放假庆祝春节而歇业，因此只能等待年后返工。我决定趁这段时间做点别的事，比如我一直非常感兴趣的人工智能与机器学习研究！"
+    },
+    "category": ["Physics", "Machine Learning"],
+    "tags": ["PhysicsLab", "Setback", "Pivoting", "ChineseNewYear", "MachineLearning"],
+    "location": {
+      "en": "Tsinghua University, Beijing",
+      "zh": "北京，清华大学"
+    },
+    "timezone": "Asia/Shanghai"
+  },
+  {
+    "id": "post-thesis-detectors-2026",
+    "date": "2026-02-03T10:00:00Z",
+    "content": {
+      "en": "Decided to stay in Beijing for the winter break to focus on my undergraduate thesis. Looking forward to a highly productive winter break! I have just designed and fully assembled 4 physics detectors in the lab, and will be doing experiments soon. Exciting times ahead!",
+      "zh": "决定今年寒假留京全力撰写毕业论文。期待度过一个高产的冬日！刚刚在实验室完成设计并完整组装了4台物理探测器，接下来就要开始进行实验测试了。动力满满！"
+    },
+    "category": ["Physics"],
+    "tags": ["Thesis", "PhysicsLab", "Detectors", "WinterBreak", "Tsinghua"],
+    "location": {
+      "en": "Tsinghua University, Beijing",
+      "zh": "北京，清华大学"
+    },
+    "timezone": "Asia/Shanghai"
+  },
+  {
+    "id": "post-changsha-2025",
+    "date": "2025-10-26T08:00:00Z",
+    "content": {
+      "en": "Completed the 2025 Changsha Half Marathon today—my debut HM! Thrilled to cross the finish line in an official time of 1:27:04. The atmosphere along the Xiang River was absolutely electric, and my pacing felt incredibly locked in from start to finish. Breaking 1:30 in my very first half marathon is a huge boost for my training!",
+      "zh": "今天顺利完成了2025年长沙半程马拉松——我的半马首秀！以1:27:04的官方成绩越过终点线，感到无比兴奋。湘江两岸的赛事氛围极其热烈，我的配速从头到尾都非常稳定。首马便成功突破1小时30分大关，为我的系统训练注入了强劲动力！"
+    },
+    "category": ["Running"],
+    "tags": ["ChangshaMarathon", "HalfMarathon", "Debut", "PersonalBest", "RunningAssociation"],
+    "location": {
+      "en": "Changsha, Hunan",
+      "zh": "湖南，长沙"
+    },
+    "timezone": "Asia/Shanghai"
   },
   {
     "id": "post-19",
@@ -259,10 +319,10 @@
   },
   {
     "id": "post-8",
-    "date": "2025-04-20T00:30:00Z",
+    "date": "2025-11-30T09:00:00Z",
     "content": {
-      "en": "Completed the 2025 Tsinghua Minimarathon (5k) today! Extremely excited to finish in 5th place overall. All those cold winter runs are paying off—my pacing felt strong from start to finish, and the kick at the end was solid. Sub-17:30 target is drawing closer!",
-      "zh": "完成了2025年清华校庆半程马拉松（5公里组别）比赛！非常高兴能获得总名次第5名。冬训 of 的汗水没有白流——从起跑至终点步频与呼吸都极其稳定，最后的冲刺也非常有力。离5公里突破17分30秒的目标越来越近了！"
+      "en": "Completed the 2025 Tsinghua Winter Minimarathon (5k) today! Extremely excited to finish in 5th place overall. All those cold winter training sessions are paying off—my pacing felt strong from start to finish, and the kick at the end was solid. Sub-17:30 target is drawing closer!",
+      "zh": "顺利完成了2025年清华大学冬季迷你马拉松（5公里组别）比赛！非常高兴能获得总名次第5名。冬训的汗水没有白流——从起跑至终点步频与呼吸都极其稳定，最后的冲刺也非常有力。离5公里突破17分30秒的目标越来越近了！"
     },
     "category": ["Running"],
     "tags": ["Minimarathon", "5K", "TsinghuaRunners", "Achievement"],
@@ -289,7 +349,7 @@
   },
   {
     "id": "post-6",
-    "date": "2025-04-12T02:00:00Z",
+    "date": "2025-04-20T08:00:00Z",
     "content": {
       "en": "Completed the 2025 Tsinghua Campus Marathon (10k) this morning! Finished in 9th place overall with strong pacing throughout the road course. Breaking into the top 10 at Tsinghua's premier running event is a huge milestone for my training logs. Onwards and upwards!",
       "zh": "今天早晨完成了2025年清华校园马拉松（10公里）比赛！在起伏的校内公路上保持了强有力的配速，最终获得总名次第9名。能在清华顶级的校园跑步赛事中闯入前十，是我训练生涯中的一个重要里程碑。继续加油！"
@@ -409,10 +469,10 @@
   },
   {
     "id": "post-minimarathon-2024",
-    "date": "2024-04-21T00:30:00Z",
+    "date": "2024-12-01T09:00:00Z",
     "content": {
-      "en": "Completed the 2024 Tsinghua Minimarathon (5k) today! Super excited to finish in 23rd place overall. My endurance is improving steadily since I began structured runs, and my leg strength felt solid during the final kilometer. Sub-18:00 feels achievable soon!",
-      "zh": "顺利完成了2024年清华校庆半程马拉松（5公里组别）比赛！非常开心能获得男子第23名。自接触系统性训练以来，心肺耐力一直在稳步提升，最后一公里的双腿冲刺感非常扎实。感觉很快就能实现突破18分钟大关的目标！"
+      "en": "Completed the 2024 Tsinghua Winter Minimarathon (5k) today! Super excited to finish in 23rd place overall. My endurance is improving steadily since I began structured runs, and my leg strength felt solid during the final kilometer. Sub-18:00 feels achievable soon!",
+      "zh": "顺利完成了2024年清华大学冬季迷你马拉松（5公里组别）比赛！非常开心能获得男子第23名。自接触系统性训练以来，心肺耐力一直在稳步提升，最后一公里的双腿冲刺感非常扎实。感觉很快就能实现突破18分钟大关的目标！"
     },
     "category": ["Running"],
     "tags": ["Minimarathon", "5K", "TsinghuaRunners", "Improvement"],
@@ -454,7 +514,7 @@
   },
   {
     "id": "post-minimarathon-2023",
-    "date": "2023-04-23T00:30:00Z",
+    "date": "2023-04-16T09:00:00Z",
     "content": {
       "en": "Completed the 2023 Tsinghua Minimarathon (5k) this morning! Finished in 966th place overall. I had to walk multiple times in the middle and struggled to catch my breath in the final kilometer. This is a clear wake-up call—Tsinghua's PE running requirements are tough, and I need to start building actual cardiovascular fitness. My running journey starts here!",
       "zh": "今天早晨参加了2023年清华校庆半程马拉松（5公里组别）比赛，获得了总第966名。中途不得不走了好几次，最后一公里更是觉得呼吸困难。这绝对是给我的一个警钟——清华的体育阳光长跑打卡确实有道理，我必须开始建立真正的耐力和体能了。我的跑步之旅就从这里正式出发！"

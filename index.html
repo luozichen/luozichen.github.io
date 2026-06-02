@@ -105,18 +105,17 @@
             </p>
         </section>
 
-        <!-- Cool Photos Section -->
         <section class="space-y-4">
-            <p class="text-xs text-muted font-mono" data-en="Here are some cool photos of me. (For more, check out my blog)" data-zh="这里有我的一些照片。（想了解更多，欢迎访问我的博客）">
-                Here are some cool photos of me. (For more, check out my blog)
+            <p class="text-xs text-muted font-mono" data-en="Here are some cool photos of me. (For more, check out my <a href='blog.html' class='underline text-primary hover:opacity-80'>blog</a>)" data-zh="这里有我的一些照片。（想了解更多，欢迎访问我的<a href='blog.html' class='underline text-primary hover:opacity-80'>博客</a>）">
+                Here are some cool photos of me. (For more, check out my <a href="blog.html" class="underline text-primary hover:opacity-80">blog</a>)
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <!-- Photo 1: Podium -->
                 <div class="bg-stone-50 border border-border p-2.5 rounded shadow-sm flex flex-col items-center">
                     <div class="w-full h-64 bg-stone-100/50 flex items-center justify-center border border-stone-200 overflow-hidden rounded-sm">
-                        <img src="images/me_on_the_podium.jpg" alt="Tsinghua Campus Marathon Podium" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-muted text-[10px] font-mono\'>[Podium Photo]</span>'">
+                        <img src="images/me_on_the_podium.jpg" alt="2026 Tsinghua Campus Marathon Podium" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-muted text-[10px] font-mono\'>[Podium Photo]</span>'">
                     </div>
-                    <span class="text-[10px] font-mono text-muted mt-2 text-center" data-en="Tsinghua Campus Marathon Podium" data-zh="清华校园马拉松领奖台">Tsinghua Campus Marathon Podium</span>
+                    <span class="text-[10px] font-mono text-muted mt-2 text-center" data-en="2026 Tsinghua Campus Marathon Podium" data-zh="2026年清华校园马拉松领奖台">2026 Tsinghua Campus Marathon Podium</span>
                 </div>
                 <!-- Photo 2: Barry Barish -->
                 <div class="bg-stone-50 border border-border p-2.5 rounded shadow-sm flex flex-col items-center">
@@ -128,9 +127,9 @@
                 <!-- Photo 3: Wang Wenjie -->
                 <div class="bg-stone-50 border border-border p-2.5 rounded shadow-sm flex flex-col items-center">
                     <div class="w-full h-64 bg-stone-100/50 flex items-center justify-center border border-stone-200 overflow-hidden rounded-sm">
-                        <img src="images/me_with_wangwenjie.jpg" alt="With National Record Holder Wang Wenjie" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-muted text-[10px] font-mono\'>[Wang Wenjie Photo]</span>'">
+                        <img src="images/me_with_wangwenjie.jpg" alt="With Wang Wenjie (second from right), China's 10k and half marathon record holder" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-muted text-[10px] font-mono\'>[Wang Wenjie Photo]</span>'">
                     </div>
-                    <span class="text-[10px] font-mono text-muted mt-2 text-center" data-en="With National Record Holder Wang Wenjie" data-zh="与国家长跑纪录保持者王文杰老师合影">With National Record Holder Wang Wenjie</span>
+                    <span class="text-[10px] font-mono text-muted mt-2 text-center" data-en="With Wang Wenjie (second from right), China's 10k and half marathon record holder" data-zh="与中国男子10公里和半程马拉松纪录保持者王文杰老师（右二）合影">With Wang Wenjie (second from right), China's 10k and half marathon record holder</span>
                 </div>
             </div>
         </section>
@@ -294,7 +293,7 @@
             document.querySelectorAll('[data-zh]').forEach(el => {
                 const translation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
                 if (translation !== null) {
-                    if (translation.includes('<strong') || translation.includes('</strong')) {
+                    if (translation.includes('<strong') || translation.includes('</strong') || translation.includes('<a') || translation.includes('</a')) {
                         el.innerHTML = translation;
                     } else {
                         el.textContent = translation;
