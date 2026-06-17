@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Technical notes and theoretical physics essays by Zichen Luo.">
+    <meta name="description" content="Physics study notes, 'What is' series, and essays by Zichen Luo.">
     <meta name="robots" content="noindex">
-    <title>Zichen Luo | Theoretical Physics</title>
+    <title>Zichen Luo | Notes</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="static/logo.png">
@@ -65,7 +65,7 @@
             <nav class="flex flex-wrap gap-x-4 gap-y-1">
                 <a href="index.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Home" data-zh="主页">Home</a>
                 <a href="blog.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Blog" data-zh="博客">Blog</a>
-                <a href="theory.html" class="text-foreground hover:text-primary underline decoration-primary/30 underline-offset-4 font-bold" data-en="Notes" data-zh="笔记">Notes</a>
+                <a href="notes.html" class="text-foreground hover:text-primary underline decoration-primary/30 underline-offset-4 font-bold" data-en="Notes" data-zh="笔记">Notes</a>
                 <a href="running.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="Running" data-zh="跑步">Running</a>
                 <a href="ml.html" class="text-muted hover:text-primary hover:underline underline-offset-4" data-en="ML" data-zh="机器学习">ML</a>
             </nav>
@@ -79,9 +79,57 @@
 
     <div class="max-w-3xl mx-auto px-6 py-12 space-y-12 animate-fade-in">
 
-        <main class="space-y-8">
+        <main class="space-y-12">
+
+            <!-- "What is physics?" Section -->
+            <section class="space-y-4">
+                <h1 class="text-xl font-bold text-foreground border-b border-border pb-1.5" data-en="What is physics?" data-zh="什么是物理学？">What is physics?</h1>
+                <div class="space-y-4 text-sm md:text-base leading-relaxed text-foreground/90 font-serif">
+                    <p data-en="Physics is the study of the fundamental laws of nature—from the grand movements of galaxies down to the subatomic realm of quarks and leptons. It is an endeavor to discover the simple principles that underlie the complexity of our universe."
+                       data-zh="物理学是对自然界最基本规律的研究——从星系的宏观运动到夸克与轻子的亚原子微观世界。它致力于揭示构成我们复杂宇宙的简单原理。">
+                        Physics is the study of the fundamental laws of nature—from the grand movements of galaxies down to the subatomic realm of quarks and leptons. It is an endeavor to discover the simple principles that underlie the complexity of our universe.
+                    </p>
+                    <blockquote class="pl-4 border-l-2 border-primary/30 italic text-muted"
+                                data-en="As Richard Feynman famously noted, &quot;What I cannot create, I do not understand.&quot; In physics, true understanding isn't just about memorizing equations or names; it is about being able to construct, explain, and rebuild a concept from its simplest foundations."
+                                data-zh="正如理查德·费曼的名言所说：‘我不能创造的，我也不理解。’在物理学中，真正的理解不仅在于记住方程或名词，而在于能够从最简单的基础出发去构建、解释和重塑一个概念。">
+                        As Richard Feynman famously noted, "What I cannot create, I do not understand." In physics, true understanding isn't just about memorizing equations or names; it is about being able to construct, explain, and rebuild a concept from its simplest foundations.
+                    </blockquote>
+                </div>
+            </section>
+
+            <!-- The "What is..." Series -->
+            <section class="space-y-4">
+                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="The &quot;What is&quot; Series" data-zh="“什么是”系列">The "What is" Series</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- 1. What is Electric Charge? -->
+                    <div class="bg-[#fcfcf9] border border-border rounded p-5 flex flex-col justify-between hover:bg-stone-50 hover:border-primary/50 transition-all duration-200 space-y-2">
+                        <div class="space-y-2">
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-sm font-bold text-foreground font-serif"
+                                    data-en="What is Electric Charge?" data-zh="什么是电荷？">
+                                    What is Electric Charge?
+                                </h3>
+                                <span class="text-[10px] font-mono text-muted/70 whitespace-nowrap bg-stone-100 px-1.5 py-0.5 rounded border border-border/60 font-sans"
+                                      data-en="June 2026" data-zh="2026年6月">June 2026</span>
+                            </div>
+                            <p class="text-xs text-muted leading-relaxed font-serif" 
+                               data-en="An intuitive, foundational dive into the nature of electric charge. Available in both English and Chinese."
+                               data-zh="直观且基础地探讨电荷的本质。提供英文与中文双语版本。">
+                                An intuitive, foundational dive into the nature of electric charge. Available in both English and Chinese.
+                            </p>
+                        </div>
+                        <div class="pt-2 flex gap-3 text-[11px] font-mono border-t border-stone-100">
+                            <a href="#" onclick="viewPaper('en-electric-charge.dat'); return false;" class="text-primary hover:underline" data-en="English PDF" data-zh="英文 PDF">English PDF</a>
+                            <span class="text-stone-300">|</span>
+                            <a href="#" onclick="viewPaper('cn-electric-charge.dat'); return false;" class="text-primary hover:underline" data-en="中文 PDF" data-zh="中文 PDF">中文 PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other Notes / Essays & Writings -->
             <section class="space-y-6">
-                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Essays & Writings" data-zh="文章与笔记写作">Essays & Writings</h2>
+                <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="Other Notes / Essays & Writings" data-zh="其他笔记与文章">Other Notes / Essays & Writings</h2>
 
                 <!-- Humble Introduction & Course disclaimer -->
                 <div class="p-4 bg-stone-50 rounded border border-border text-xs sm:text-sm leading-relaxed text-muted italic font-serif"

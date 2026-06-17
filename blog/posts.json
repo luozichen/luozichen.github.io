@@ -15,36 +15,6 @@
     "timezone": "Asia/Shanghai"
   },
   {
-    "id": "post-24",
-    "date": "2026-05-25T20:10:00Z",
-    "content": {
-      "en": "Phase 9 of NeonBench is live. I'm testing an 'intent-only' configuration by stripping out the convolutional mixing entirely and routing intent-state query weights back into the feed-forward blocks. Surprisingly, the model preserves context representation without dimensional collapse even under tight parameter constraints (5.0M non-embedding bounds). Full logs are on neonbench repository.",
-      "zh": "NeonBench 第九阶段上线了。我正在测试一个“纯意图”配置：剥离了所有的卷积混合，并将意图状态的查询权重直接路由回前馈网络块中。令人惊讶的是，即使在严格的参数限制（500万非嵌入参数边界）下，模型依然能保持极佳的上下文表征且没有发生维度塌缩。完整日志已上传至 neonbench 仓库。"
-    },
-    "category": ["Machine Learning", "Theory"],
-    "tags": ["LLM", "NeonBench", "Ablation"],
-    "location": {
-      "en": "Greenwich, London",
-      "zh": "英国伦敦，格林威治"
-    },
-    "timezone": "Europe/London"
-  },
-  {
-    "id": "post-23",
-    "date": "2026-05-20T00:15:00Z",
-    "content": {
-      "en": "Standard track interval session with the Tsinghua long-distance team this morning: 5x1000m at a threshold pace of 3:15/km, with 90s active jog recovery. Legs felt heavy after the long Sunday run, but managed to hit all splits consistently. Sub-17:30 form is feeling solid.",
-      "zh": "今天早上与清华中长跑队进行了一次标准的田径场间歇训练：5x1000米，3分15秒/公里的阈值配速，间歇90秒慢跑恢复。周日长跑后腿部稍显沉重，但依然稳定地完成了所有分段。突破 17分30秒 5公里的状态感觉很扎实。"
-    },
-    "category": ["Running"],
-    "tags": ["Intervals", "Track", "TsinghuaRunners"],
-    "location": {
-      "en": "East Playground, Tsinghua",
-      "zh": "清华东大操场"
-    },
-    "timezone": "Asia/Shanghai"
-  },
-  {
     "id": "post-22",
     "date": "2026-04-16T07:30:00Z",
     "content": {
