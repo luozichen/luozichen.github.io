@@ -235,7 +235,9 @@
             <div class="italic text-sm" data-en="Guided by childhood dreams, driven by lifetime ambitions." data-zh="<strong class='text-red-600 font-normal'>不忘初心，牢记使命。</strong>">
                 Guided by childhood dreams, driven by lifetime ambitions.
             </div>
-            <div>&copy; 2026 Zichen Luo.</div>
+            <div class="text-sm">
+                <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
+            </div>
             <div class="flex flex-wrap items-center justify-center gap-4 text-xs">
                 <div id="last-updated" class="px-2.5 py-1 bg-stone-100 border border-border rounded">Last updated: January 2026</div>
                 <div id="visitor-count" class="px-2.5 py-1 bg-stone-100 border border-border rounded flex items-center gap-1.5" title="Total page visits">
@@ -335,7 +337,7 @@
             document.querySelectorAll('[data-zh]').forEach(el => {
                 const translation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
                 if (translation !== null) {
-                    if (translation.includes('<strong') || translation.includes('</strong') || translation.includes('<a') || translation.includes('</a')) {
+                    if (translation.includes('<strong') || translation.includes('</strong') || translation.includes('<a') || translation.includes('</a') || translation.includes('&copy;')) {
                         el.innerHTML = translation;
                     } else {
                         el.textContent = translation;
