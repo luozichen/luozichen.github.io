@@ -496,5 +496,16 @@
       "zh": "北京，清华大学"
     },
     "timezone": "Asia/Shanghai"
+  },
+  {
+    "id": "post-born-2007",
+    "date": "2007-08-27T10:00:00Z",
+    "content": {
+      "en": "Hello world. Great to be born!",
+      "zh": "你好，世界。出生真好！"
+    },
+    "category": [],
+    "tags": ["HelloWorld", "Born"],
+    "timezone": "UTC"
   }
 ]
