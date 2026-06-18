@@ -113,8 +113,17 @@
         </section>
 
         <!-- Footer -->
-        <footer class="mt-20 pt-8 border-t border-border text-center text-muted text-xs font-mono">
-            <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
+        <footer class="mt-20 pt-8 border-t border-border text-center text-muted text-sm font-mono space-y-4">
+            <div>
+                <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-4 text-xs">
+                <div id="last-updated" class="px-2.5 py-1 bg-stone-100 border border-border rounded">Last updated: January 2026</div>
+                <div id="visitor-count" class="px-2.5 py-1 bg-stone-100 border border-border rounded flex items-center gap-1.5" title="Total page visits">
+                    <span class="text-primary">👁</span>
+                    <span id="visit-number">Loading...</span>
+                </div>
+            </div>
         </footer>
 
     </div>
@@ -381,10 +390,22 @@
                 btnZh.className = "hover:text-primary font-bold text-primary font-sans";
                 btnEn.className = "hover:text-primary text-muted font-normal font-sans";
                 document.documentElement.lang = 'zh';
+
+                const lastUpdatedEl = document.getElementById('last-updated');
+                if (lastUpdatedEl && document.lastModified) {
+                    const date = new Date(document.lastModified);
+                    lastUpdatedEl.textContent = '最后更新: ' + date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+                }
             } else {
                 btnEn.className = "hover:text-primary font-bold text-primary font-sans";
                 btnZh.className = "hover:text-primary text-muted font-normal font-sans";
                 document.documentElement.lang = 'en';
+
+                const lastUpdatedEl = document.getElementById('last-updated');
+                if (lastUpdatedEl && document.lastModified) {
+                    const date = new Date(document.lastModified);
+                    lastUpdatedEl.textContent = 'Last updated: ' + date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+                }
             }
 
             localStorage.setItem('preferred-lang', lang);
@@ -454,6 +475,58 @@
         // Initialize Feed & Preferences
         (function() {
             const preferredLang = localStorage.getItem('preferred-lang') || 'en';
+            
+            // Auto-update date
+            const dateEl = document.getElementById('last-updated');
+            if (document.lastModified && dateEl) {
+                const date = new Date(document.lastModified);
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const locale = preferredLang === 'zh' ? 'zh-CN' : 'en-GB';
+                dateEl.textContent = (preferredLang === 'zh' ? '最后更新: ' : 'Last updated: ') + date.toLocaleDateString(locale, options);
+            }
+
+            // Analytics Tracking & Visitor Counter API
+            (function() {
+                function logPageVisit() {
+                    const payload = {
+                        page: window.location.pathname.split('/').pop() || 'blog.html',
+                        referrer: document.referrer || 'direct',
+                        screen_resolution: `${window.screen.width}x${window.screen.height}`,
+                        language: navigator.language || 'unknown'
+                    };
+
+                    fetch('https://luozichen.pythonanywhere.com/api/track', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                    .catch(err => console.log("Analytics offline:", err));
+                }
+
+                function fetchGlobalCount() {
+                    const visitNumEl = document.getElementById('visit-number');
+                    if (!visitNumEl) return;
+                    
+                    fetch('https://luozichen.pythonanywhere.com/api/counter')
+                        .then(response => {
+                            if (!response.ok) throw new Error("Network error");
+                            return response.json();
+                        })
+                        .then(data => {
+                            visitNumEl.textContent = data.count.toLocaleString();
+                        })
+                        .catch(error => {
+                            console.log("Counter offline:", error);
+                            visitNumEl.textContent = "Offline";
+                        });
+                }
+
+                logPageVisit();
+                fetchGlobalCount();
+            })();
+
             loadFeed();
             changeLang(preferredLang);
             loadGiscus();
