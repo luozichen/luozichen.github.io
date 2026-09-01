@@ -90,69 +90,53 @@
                 <h2 class="text-lg font-bold text-foreground border-b border-border pb-1.5" data-en="NeonBench: LLM Architecture Research" data-zh="NeonBench: 大语言模型架构研究">NeonBench: LLM Architecture Research</h2>
 
                 <div class="space-y-6 text-foreground/90 leading-relaxed text-sm font-serif">
-                    <p data-en="&lt;strong class='text-foreground'&gt;NeonBench&lt;/strong&gt; is my experimental framework for rapidly iterating over novel Language Model architectures, specifically targeting sub-10M parameter bounds (primarily 5.0M non-embedding parameters) to test architectural efficiency before scaling up. Below is a summary of the core concepts I've been researching:"
-                       data-zh="&lt;strong class='text-foreground'&gt;NeonBench&lt;/strong&gt; 是我的实验性研究框架，用于在大语言模型上进行新颖架构的快速迭代。我主要关注 1000万 参数以内（主要是 500万 非嵌入层参数）的参数边界，以便在大规模参数化之前测试架构效率。以下是我当前核心研究概念的概述：">
-                        <strong>NeonBench</strong> is my experimental framework for rapidly iterating over novel
-                        Language Model architectures, specifically targeting sub-10M parameter bounds (primarily 5.0M
-                        non-embedding parameters) to test architectural efficiency before scaling up. Below is a summary
-                        of the core concepts I've been researching:
+                    <p data-en="&lt;strong class='text-foreground'&gt;NeonBench&lt;/strong&gt; is an experimental setup I built to test architectural variants on small language models (~5.0M non-embedding parameters) under fixed compute and parameter budgets. Key concepts under investigation:"
+                       data-zh="&lt;strong class='text-foreground'&gt;NeonBench&lt;/strong&gt; 是我搭建的一个实验性测试框架，用于在固定算力与参数预算下，探索小规模语言模型（约 500 万非嵌入层参数）的架构设计。主要研究方向包括：">
+                        <strong>NeonBench</strong> is an experimental setup I built to test architectural variants on small language models (~5.0M non-embedding parameters) under fixed compute and parameter budgets. Key concepts under investigation:
                     </p>
 
                     <!-- Concept 1 -->
                     <div class="bg-[#fcfcf9] rounded border border-border p-5 space-y-3">
-                        <h3 class="text-sm font-bold font-mono text-primary" data-en="1. Quasi-Encoder Fusion & SplitBrain Attention" data-zh="1. 拟编码器融合与 SplitBrain 注意力">1. Quasi-Encoder Fusion & SplitBrain Attention</h3>
+                        <h3 class="text-sm font-bold font-mono text-primary" data-en="1. Quasi-Encoder &amp; Lookahead Attention" data-zh="1. 拟编码器与前瞻注意力 (Lookahead Attention)">1. Quasi-Encoder &amp; Lookahead Attention</h3>
                         <p class="text-xs text-muted leading-relaxed" 
-                           data-en="The SplitBrain architecture operates by bifurcating the standard causal attention matrix. By processing a 'causal stream' and a 'lookahead stream' (which is allowed to see future tokens up to a certain sequence depth, acting as a Quasi-Encoder), the network achieves deep bidirectional context within a primarily autoregressive framework."
-                           data-zh="SplitBrain 架构通过将标准的因果注意力矩阵进行分叉运行。通过同时处理一个“因果流”和一个“前瞻流”（前瞻流被允许查看特定序列深度内的未来 Token，充当拟编码器的角色），该网络在主要是自回归的框架内实现了双朝向上下文理解。">
-                            The SplitBrain architecture operates by bifurcating the standard causal attention matrix. By
-                            processing a "causal stream" and a "lookahead stream" (which is allowed to see future tokens
-                            up to a certain sequence depth, acting as a Quasi-Encoder), the network achieves deep
-                            bidirectional context within a primarily autoregressive framework.
+                           data-en="Splits standard causal attention into a primary causal stream and a bounded lookahead stream that can access local future tokens up to a specified window depth. This provides bidirectional contextual representations during training while preserving autoregressive generation."
+                           data-zh="将标准因果注意力拆分为因果主流与有界前瞻流（允许在特定窗口深度内查看后续 Token），在保留自回归生成特性的同时，于训练阶段引入双向上下文表征。">
+                            Splits standard causal attention into a primary causal stream and a bounded lookahead stream that can access local future tokens up to a specified window depth. This provides bidirectional contextual representations during training while preserving autoregressive generation.
                         </p>
                         <p class="text-xs text-muted leading-relaxed" 
-                           data-en="Recent experiments fine-tuning the lookahead ratio (e.g., 25%, 50%, 100%) against parameter budgets have yielded fascinating trade-offs between training speed and long-context comprehension on rigorous tasks."
-                           data-zh="近期针对参数预算微调前瞻比例（如 25%、50%、100%）的实验表明，在严苛的任务测试中，训练速度与长上下文理解力之间存在极其有趣的折衷权衡。">
-                            Recent experiments fine-tuning the lookahead ratio (e.g., 25%, 50%, 100%) against parameter
-                            budgets have yielded fascinating trade-offs between training speed and long-context
-                            comprehension on rigorous tasks.
+                           data-en="Experiments evaluating different lookahead ratios (25%, 50%, 100%) show clear trade-offs between training throughput and downstream perplexity."
+                           data-zh="针对不同前瞻比例（25%、50%、100%）的对比测试展示了训练吞吐效率与验证集困惑度之间的明确权衡。">
+                            Experiments evaluating different lookahead ratios (25%, 50%, 100%) show clear trade-offs between training throughput and downstream perplexity.
                         </p>
                     </div>
 
                     <!-- Concept 2 -->
                     <div class="bg-[#fcfcf9] rounded border border-border p-5 space-y-3">
-                        <h3 class="text-sm font-bold font-mono text-primary" data-en="2. Learnt Intent Streaming" data-zh="2. 学习意图流机制">2. Learnt Intent Streaming</h3>
+                        <h3 class="text-sm font-bold font-mono text-primary" data-en="2. Learned Intent Streams" data-zh="2. 学习意图流 (Learned Intent Streams)">2. Learned Intent Streams</h3>
                         <p class="text-xs text-muted leading-relaxed" 
-                           data-en="A novel concept where an independent set of learned residual states—the 'intent stream'—flows alongside the primary token representation stream. Rather than discarding sequence representations at each layer, the intent stream aggregates contextual meaning, which is then fed back into the query projections of subsequent attention layers."
-                           data-zh="这是一个新颖的机制设计，其中一组独立的、已学习的残差状态——“意图流”——与主 Token 表征流并列流动。意图流不是在每个网络层直接丢弃序列特征表征，而是不断聚合上下文语义，并在随后的注意力层中将其作为 Query 投影的反馈输入。">
-                            A novel concept where an independent set of learned residual states—the "intent
-                            stream"—flows alongside the primary token representation stream. Rather than discarding
-                            sequence representations at each layer, the intent stream aggregates contextual meaning,
-                            which is then fed back into the query projections of subsequent attention layers.
+                           data-en="Maintains a parallel stream of residual vectors ('intent stream') alongside token representations across layers. Instead of recomputing full sequence context from scratch at each block, the intent stream aggregates multi-layer representations and modulates query projections in deeper attention layers."
+                           data-zh="在各网络层中维护一条与 Token 表征并行的残差向量流（意图流）。该机制不断汇聚深层上下文特征，并作为反馈输入调节后续注意力层的 Query 投影。">
+                            Maintains a parallel stream of residual vectors ('intent stream') alongside token representations across layers. Instead of recomputing full sequence context from scratch at each block, the intent stream aggregates multi-layer representations and modulates query projections in deeper attention layers.
                         </p>
                         <p class="text-xs text-muted leading-relaxed" 
-                           data-en="We observed that adding this explicit parallel intent stream prevents representation collapse in deep networks and provides robust multi-token reasoning capabilities natively within the forward pass."
-                           data-zh="我们观察到，引入这种显式的并行意图流不仅能防止深度神经网络中的表征塌缩，还能在前向传播中以原生方式赋予模型强健的跨多 Token 推理能力。">
-                            We observed that adding this explicit parallel intent stream prevents representation
-                            collapse in deep networks and provides robust multi-token reasoning capabilities natively
-                            within the forward pass.
+                           data-en="This helps retain global context in deeper networks and improves multi-token associative recall without increasing the input sequence length."
+                           data-zh="这有助于在深层网络中保留全局语境，并在不增加输入序列长度的前提下改善多步关联推理能力。">
+                            This helps retain global context in deeper networks and improves multi-token associative recall without increasing the input sequence length.
                         </p>
                     </div>
 
                     <!-- Concept 3 -->
                     <div class="bg-[#fcfcf9] rounded border border-border p-5 space-y-3">
-                        <h3 class="text-sm font-bold font-mono text-primary" data-en="3. Continuous Ablation Studies" data-zh="3. 持续消融研究">3. Continuous Ablation Studies</h3>
+                        <h3 class="text-sm font-bold font-mono text-primary" data-en="3. Controlled Ablations &amp; Parameter Parity" data-zh="3. 参数均等与消融实验">3. Controlled Ablations &amp; Parameter Parity</h3>
                         <p class="text-xs text-muted leading-relaxed" 
-                           data-en="I enforce strict parameter-parity bounds (e.g. 5,004,528 params) across all experimental models. We dynamically adjust d_ff dimensions to compensate for any newly added parameters when introducing SplitBrain Lookahead, Intent Streams, or Convolutional Mixing layers."
-                           data-zh="我在所有实验模型中实施严格的参数均等界限约束（例如 5,004,528 个参数）。当引入 SplitBrain 前瞻、意图流或卷积混合层时，我们动态调整 d_ff 维度以补偿任何新增的参数，以确保对比的公平性。">
-                            I enforce strict parameter-parity bounds (e.g. 5,004,528 params) across all experimental
-                            models. We dynamically adjust <code class="bg-stone-100 border border-stone-200 px-1 rounded font-mono text-[10px]">d_ff</code> dimensions
-                            to compensate for any newly added parameters when introducing SplitBrain Lookahead, Intent
-                            Streams, or Convolutional Mixing layers.
+                           data-en="All model variants are evaluated under strict parameter-parity bounds (~5.0M params) by adjusting the feed-forward dimension (d_ff) when adding lookahead, intent, or convolutional mixing modules."
+                           data-zh="所有对比模型均在严格的参数对齐约束（约 500 万参数）下进行评估。当引入前瞻注意力、意图流或卷积混合模块时，通过动态微调前馈层维度 (d_ff) 来确保参数量一致。">
+                            All model variants are evaluated under strict parameter-parity bounds (~5.0M params) by adjusting the feed-forward dimension (<code class="bg-stone-100 border border-stone-200 px-1 rounded font-mono text-[10px]">d_ff</code>) when adding lookahead, intent, or convolutional mixing modules.
                         </p>
                         <ul class="list-disc pl-5 text-xs text-muted space-y-2 leading-relaxed">
-                            <li data-en="&lt;strong class='text-foreground'&gt;Phase 6&lt;/strong&gt;: Validating deep lookahead mask structures (50% vs 100% visibility)." data-zh="&lt;strong class='text-foreground'&gt;阶段 6&lt;/strong&gt;: 验证深度前瞻掩码结构（50% 对比 100% 可见度）。"><strong>Phase 6</strong>: Validating deep lookahead mask structures (50% vs 100% visibility).</li>
-                            <li data-en="&lt;strong class='text-foreground'&gt;Phase 7&lt;/strong&gt;: Combining lookahead with Learnt Intent." data-zh="&lt;strong class='text-foreground'&gt;阶段 7&lt;/strong&gt;: 将前瞻与学习意图流进行结合。"><strong>Phase 7</strong>: Combining lookahead with Learnt Intent.</li>
-                            <li data-en="&lt;strong class='text-foreground'&gt;Phase 8 &amp; 9 (Current)&lt;/strong&gt;: Pure intent-only and convolution-only ablations to definitively prove the source of representation supremacy." data-zh="&lt;strong class='text-foreground'&gt;阶段 8 &amp; 9 (当前)&lt;/strong&gt;: 纯意图与纯卷积消融研究，以最终证明表征主导地位的确切来源。"><strong>Phase 8 & 9 (Current)</strong>: Pure intent-only and convolution-only ablations to definitively prove the source of representation supremacy.</li>
+                            <li data-en="&lt;strong class='text-foreground'&gt;Phase 6&lt;/strong&gt;: Lookahead mask depth and visibility windows (50% vs 100%)." data-zh="&lt;strong class='text-foreground'&gt;阶段 6&lt;/strong&gt;: 评估前瞻掩码深度与可见窗口大小（50% 对比 100%）。"><strong>Phase 6</strong>: Lookahead mask depth and visibility windows (50% vs 100%).</li>
+                            <li data-en="&lt;strong class='text-foreground'&gt;Phase 7&lt;/strong&gt;: Combining lookahead attention with learned intent streams." data-zh="&lt;strong class='text-foreground'&gt;阶段 7&lt;/strong&gt;: 结合前瞻注意力与学习意图流。"><strong>Phase 7</strong>: Combining lookahead attention with learned intent streams.</li>
+                            <li data-en="&lt;strong class='text-foreground'&gt;Phase 8 &amp; 9 (Current)&lt;/strong&gt;: Isolated ablations (intent-only vs conv-mixing) to compare validation loss and throughput." data-zh="&lt;strong class='text-foreground'&gt;阶段 8 &amp; 9 (当前)&lt;/strong&gt;: 纯意图流与纯卷积混合的消融对比，测试验证集 Loss 与吞吐量。"><strong>Phase 8 & 9 (Current)</strong>: Isolated ablations (intent-only vs conv-mixing) to compare validation loss and throughput.</li>
                         </ul>
                     </div>
 
@@ -173,8 +157,8 @@
         </main>
 
         <footer class="mt-20 pt-8 border-t border-border text-center text-muted text-sm font-mono space-y-4">
-            <div class="italic text-sm" data-en="Guided by childhood dreams, driven by lifetime ambitions." data-zh="<strong class='text-red-600 font-bold'>不忘初心，牢记使命。</strong>">
-                Guided by childhood dreams, driven by lifetime ambitions.
+            <div class="text-xs text-muted" data-en="Physics · Machine Learning · Running" data-zh="物理 · 机器学习 · 跑步">
+                Physics · Machine Learning · Running
             </div>
             <div class="text-sm">
                 <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
@@ -205,7 +189,7 @@
             document.querySelectorAll('[data-zh]').forEach(el => {
                 let translation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
                 if (translation !== null) {
-                    if (translation.includes('<strong') || translation.includes('<code') || translation.includes('&copy;')) {
+                    if (translation.includes('<') || translation.includes('&')) {
                         el.innerHTML = translation;
                     } else {
                         el.textContent = translation;

@@ -117,8 +117,8 @@
 
         <!-- Footer -->
         <footer class="mt-20 pt-8 border-t border-border text-center text-muted text-sm font-mono space-y-4">
-            <div class="italic text-sm" data-en="Guided by childhood dreams, driven by lifetime ambitions." data-zh="<strong class='text-red-600 font-bold'>不忘初心，牢记使命。</strong>">
-                Guided by childhood dreams, driven by lifetime ambitions.
+            <div class="text-xs text-muted" data-en="Physics · Machine Learning · Running" data-zh="物理 · 机器学习 · 跑步">
+                Physics · Machine Learning · Running
             </div>
             <div class="text-sm">
                 <span data-en="&copy; 2026 Zichen Luo. All rights reserved." data-zh="&copy; 2026 罗子辰。保留所有权利。">&copy; 2026 Zichen Luo. All rights reserved.</span>
@@ -381,7 +381,7 @@
             document.querySelectorAll('[data-zh]').forEach(el => {
                 const translation = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
                 if (translation !== null) {
-                    if (translation.includes('<strong') || translation.includes('<code') || translation.includes('&copy;')) {
+                    if (translation.includes('<') || translation.includes('&')) {
                         el.innerHTML = translation;
                     } else {
                         el.textContent = translation;
